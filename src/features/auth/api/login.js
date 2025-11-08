@@ -1,4 +1,5 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
+import sessionUser from "../../../shared/utils/session.js";
 
 async function login(loginProps) {
   try {
@@ -11,6 +12,12 @@ async function login(loginProps) {
     const data = await response.json();
 
     console.log("data :", data);
+
+    //세션에 유저 저장
+    if (response.ok) {
+      sessionUser.getUser(response.body);
+      location.hash = "/home"; //페이지 이동
+    }
 
     //에러 경고 응답
     if (!response.ok) {
