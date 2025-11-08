@@ -4,12 +4,12 @@ import validatePassword from "../../../features/auth/lib/validatePassword.js";
 import { loginBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 
 async function loginService({ emailField, passwordField }) {
-  const email = emailField.value;
-  const password = passwordField.value;
+  const emailValue = emailField.value;
+  const passwordValue = passwordField.value;
 
   //유효성 검사 진행
-  const emailError = validateEmail(email);
-  const passwordError = validatePassword(password);
+  const emailError = validateEmail(emailValue);
+  const passwordError = validatePassword(passwordValue);
 
   emailField.helperText = emailError;
   passwordField.helperText = passwordError;
@@ -18,8 +18,8 @@ async function loginService({ emailField, passwordField }) {
   if (!emailError && !passwordError) {
     try {
       const loginProps = {
-        email,
-        password,
+        emailValue,
+        passwordValue,
       };
       const loginAPI = await login(loginProps);
       console.log("loginAPI", loginAPI);
