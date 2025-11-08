@@ -1,18 +1,31 @@
 import BackButton from "../../../features/navigation/BackButton.js";
+import ProefileButton from "../../../features/profile/ui/ProfileButton.js";
 
 //기본 Shadow DOM 스타일 정의
 const template = document.createElement("template");
 
 const style = document.createElement("style");
 style.textContent = /*CSS*/ `
+:host{
+  border-bottom: 1px solid var(--color-secondary);
+    display: flex;
+    justify-content: center;
+
+}
 h3 {
-                margin:0 auto; 
-                padding:16px; 
-                width:100%;
+                padding:10px;   
                 color:var(--color-text); 
                 text-align:center;
-                border-bottom: 1px solid var(--color-secondary);
+                display:flex;
+              
             }
+.header-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: var(--auth-max-width);
+    align-items: center;
+    justify-content: space-between;
+}
 `;
 
 //요소 생성
@@ -23,9 +36,9 @@ wrapper.className = "header-wrapper";
 const h3 = document.createElement("h3");
 const slot = document.createElement("slot");
 const backButton = BackButton();
+const profileButton = ProefileButton();
 
 h3.appendChild(slot);
-wrapper.appendChild(h3);
 
 template.content.appendChild(style);
 template.content.appendChild(wrapper);
@@ -37,7 +50,9 @@ class Header extends HTMLElement {
 
     shadow.appendChild(template.content.cloneNode(true)); //위에서 만든 템플릿 복제 후 추가
 
-    shadow.querySelector(".header-wrapper").appendChild(backButton);
+    shadow.querySelector(".header-wrapper").appendChild(backButton); //뒤로가기 추가
+    shadow.querySelector(".header-wrapper").appendChild(h3); //헤더 타이틀 추가
+    shadow.querySelector(".header-wrapper").appendChild(profileButton); //프로필 버튼 추가
   }
 }
 
