@@ -22,17 +22,11 @@ function main() {
   container.className = "container";
 
   const pageContent = Page();
-  app.appendChild(pageContent);
+  container.appendChild(pageContent);
+
+  app.appendChild(container);
 }
 
 window.addEventListener("hashchange", main);
 
 window.addEventListener("load", main);
-
-// //history 객체 안에 data, title, url|string 이 들어감
-// history.pushState({}, null, '/home');
-// //html이 로드되면 mainj가 로드되고 제일먼저 /home으로 이동
-
-// document.getElementById('app').innerHTML = //여기에 라우터가 들어가야지 ;
-
-// //첫번째 위치는 현재 /init
