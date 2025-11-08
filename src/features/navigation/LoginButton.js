@@ -13,7 +13,7 @@ export default function LoginButton() {
 
   button.addEventListener("click", () => {
     console.log("로그인 버튼 클릭됨");
-    location.hash = "";
+    location.hash = "/login";
     console.log("로그인 버튼 클릭됨");
   });
 
