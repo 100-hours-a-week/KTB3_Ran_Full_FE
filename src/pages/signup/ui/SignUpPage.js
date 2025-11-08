@@ -1,5 +1,5 @@
 import "../../../shared/ui/InputField/InputField.js";
-import Button from "../../../shared/ui/Button/ui/Button.js";
+import { signupBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 import LoginButton from "../../../features/navigation/LoginButton.js";
 
 export default function SignUpPage() {
@@ -8,19 +8,20 @@ export default function SignUpPage() {
   signupPage.innerHTML = /*HTML*/ `
       <div class="auth-container">
         <h2>회원가입</h2>
-        <input-field type="text" placeholder="이메일을 입력하세요" helperText="*helper Text">이메일*</input-field>
-        <input-field type="password" placeholder="비밀번호를 입력하세요" helperText="*비밀번호를 확인해주세요">비밀번호*</input-field>
-        <input-field type="password" placeholder="비밀번호를 한번 더 입력하세요" helperText="*비밀번호가 같지 않습니다.">비밀번호 확인*</input-field>
-        <input-field type="password" placeholder="닉네임을 입력하세요" helperText="*helper Text">닉네임*</input-field>
+        <input-field id="email" type="text" placeholder="이메일을 입력하세요">이메일*</input-field>
+        <input-field id="password" type="password" placeholder="비밀번호를 입력하세요">비밀번호*</input-field>
+        <input-field id="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력하세요">비밀번호 확인*</input-field>
+        <input-field id="username" type="text" placeholder="닉네임을 입력하세요">닉네임*</input-field>
         
         </div>
 
   `;
-  const loginButton = LoginButton();
-  const primaryButton = Button({ text: "회원가입" });
+
+  const loginNavButton = LoginButton();
+  const signupButton = signupBtn();
   const container = signupPage.querySelector(".auth-container");
-  container.appendChild(primaryButton);
-  container.appendChild(loginButton);
+  container.appendChild(signupButton);
+  container.appendChild(loginNavButton);
 
   return signupPage;
 }
