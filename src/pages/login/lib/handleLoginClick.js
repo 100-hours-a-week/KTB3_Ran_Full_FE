@@ -1,12 +1,12 @@
 import loginService from "../model/loginService.js";
 
 async function handleLoginClick() {
-  const emailField = document.querySelector("#email");
-  const passwordField = document.querySelector("#password");
+  const email = document.querySelector("#email").value;
+  const password = document.querySelector("#password").value;
 
   const loginFieldProps = {
-    emailField,
-    passwordField,
+    email,
+    password,
   };
 
   await loginService(loginFieldProps);
