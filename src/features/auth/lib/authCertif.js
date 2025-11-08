@@ -1,3 +1,5 @@
-function authCertif() {}
+// function authCertif() {
 
-export default authCertif;
+// }
+
+// export default authCertif;
