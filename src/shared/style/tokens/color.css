@@ -4,4 +4,6 @@
   --color-error: #ff0000; /*경고*/
   --color-background: #f4f5f7;
   --color-text: #111111;
+
+  --color-disable: #cccccc;
 }
