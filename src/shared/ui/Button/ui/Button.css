@@ -1,0 +1,9 @@
+.primaryBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
