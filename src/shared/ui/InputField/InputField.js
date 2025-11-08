@@ -17,13 +17,27 @@ class InputField extends HTMLElement {
     this.render();
   }
 
+  //현재값 getter
+  get value() {
+    return this._value || "";
+  }
+
+  //속성값 반환 setter
+  set helperText(message) {
+    this.setAttribute("helpertext", message);
+  }
+
+  get helperText() {
+    this.getAttribute("helpertext");
+  }
+
   render() {
     const prevValue = this._value;
 
     const type = this.getAttribute("type") || "text";
     const placeholder = this.getAttribute("placeholder") || "";
     const helperText = this.getAttribute("helpertext") || "";
-    const label = this.textContent.trim();
+    const label = this.textContent;
 
     this.shadowRoot.innerHTML = /*HTML*/ `
       <style>
@@ -57,20 +71,17 @@ class InputField extends HTMLElement {
     `;
 
     const input = this.shadowRoot.querySelector("input");
-
     input.value = prevValue;
 
     input.addEventListener("input", (e) => {
       this._value = e.target.value;
     });
-  }
 
-  get value() {
-    return this._value || "";
-  }
-
-  set helperText(message) {
-    this.setAttribute("helpertext", message);
+    input.addEventListener("blur", () => {
+      this.dispatchEvent(
+        new CustomEvent("field-blur", { detail: { value: this._value } })
+      );
+    });
   }
 }
 
