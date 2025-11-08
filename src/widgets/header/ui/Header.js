@@ -25,8 +25,6 @@ const slot = document.createElement("slot");
 const backButton = BackButton();
 
 h3.appendChild(slot);
-
-wrapper.appendChild(backButton);
 wrapper.appendChild(h3);
 
 template.content.appendChild(style);
@@ -36,11 +34,10 @@ class Header extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" }); //shadow DOM 생성
+
     shadow.appendChild(template.content.cloneNode(true)); //위에서 만든 템플릿 복제 후 추가
-    shadow.querySelector(".back-button").addEventListener("click", () => {
-      console.log("뒤로가기 버튼 클릭됨");
-      window.history.back();
-    });
+
+    shadow.querySelector(".header-wrapper").appendChild(backButton);
   }
 }
 
