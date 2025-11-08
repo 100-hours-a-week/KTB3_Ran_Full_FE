@@ -3,7 +3,7 @@ export default function SignupButton() {
   button.className = "signupBtn";
   button.textContent = "회원가입";
   const style = document.createElement("style");
-  style.textContent = /*HTML*/ `
+  style.textContent = /*CSS*/ `
     .signupBtn{
                 border:none;
                 cursor:pointer;
