@@ -1,5 +1,5 @@
 import SignupButton from "../../../features/navigation/SignupButton.js";
-import Button from "../../../shared/ui/Button/Button.js";
+import Button from "../../../shared/ui/Button/ui/Button.js";
 import "../../../shared/ui/InputField/InputField.js";
 
 export default function LoginPage() {
