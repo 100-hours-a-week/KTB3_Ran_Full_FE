@@ -1,15 +1,26 @@
 //router
-import LoginPage from "../pages/login/ui/loginPage.js";
-import SignUpPage from "../pages/signup/ui/SignUpPage.js";
+import { routerPage } from "./router.js/router.js";
 import "../widgets/header/ui/Header.js";
-
-const routerPage = { "": LoginPage, "/signup": SignUpPage };
+import session from "../shared/utils/session.js";
 
 function main() {
   const app = document.getElementById("app");
-  const path = location.hash.replace("#", ""); //해시 제거
-  const Page = routerPage[path]; //현재 내 경로면 어떤 페이지가 나와야하는지
+  let path = location.hash.replace("#", ""); //해시 제거
+
   //페이지를 innerHTML로 넣어주기
+
+  //리다이렉션 -> 로그인 상태 확인
+  if (path == "" || path == "/") {
+    if (session.isLogout()) {
+      path = "/login";
+      location.hash = "/login";
+    } else {
+      path = "/home";
+      location.hash = "/home";
+    }
+  }
+
+  const Page = routerPage[path]; //현재 내 경로면 어떤 페이지가 나와야하는지
 
   //초기화 진행
   app.innerHTML = "";
