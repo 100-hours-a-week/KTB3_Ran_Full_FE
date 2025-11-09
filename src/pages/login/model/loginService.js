@@ -1,6 +1,8 @@
 import login from "../../../features/auth/api/login.js";
 
-async function loginService({ email, password }) {
+async function loginService({ emailField, passwordField }) {
+  const email = emailField.value;
+  const password = passwordField.value;
   try {
     const loginProps = {
       email,
