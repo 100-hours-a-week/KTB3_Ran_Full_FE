@@ -1,14 +1,13 @@
 import login from "../../../features/auth/api/login.js";
+import { loginProps } from "../../../features/auth/model/props.js";
 
 async function loginService({ emailField, passwordField }) {
-  const email = emailField.value;
-  const password = passwordField.value;
+  const props = { ...loginProps };
+  props.email = emailField.value;
+  props.password = passwordField.value;
+
   try {
-    const loginProps = {
-      email,
-      password,
-    };
-    const loginAPI = await login(loginProps);
+    const loginAPI = await login(props);
     console.log("loginAPI", loginAPI);
   } catch (error) {
     const message =

@@ -1,13 +1,11 @@
+import { loginFieldProps } from "../../../features/auth/model/props.js";
 import loginService from "../model/loginService.js";
 
 async function handleLoginClick() {
-  const emailField = document.querySelector("#email");
-  const passwordField = document.querySelector("#password");
+  const loginFieldProps = { ...loginFieldProps };
 
-  const loginFieldProps = {
-    emailField,
-    passwordField,
-  };
+  loginFieldProps.emailField = document.querySelector("#email");
+  loginFieldProps.passwordField = document.querySelector("#password");
 
   await loginService(loginFieldProps);
 }
