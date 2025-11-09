@@ -22,7 +22,7 @@ h3 {
 .header-wrapper {
     display: flex;
     width: 100%;
-    max-width: var(--auth-max-width);
+    max-width: var(--layout-max-width);
     align-items: center;
     justify-content: space-between;
 }
