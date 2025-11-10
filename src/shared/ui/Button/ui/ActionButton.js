@@ -1,32 +1,25 @@
-export default function Button({
-  text = "버튼",
-  onClick = null,
-  styleProps = {},
-} = {}) {
+function ActionButton({ text = "버튼", onClick = null, styleProps = {} } = {}) {
   const button = document.createElement("button");
-  button.className = "primaryBtn";
+
+  button.className = "actionBtn";
   button.textContent = text;
+
   const style = document.createElement("style");
   const Button = document.createElement("div");
-  Button.className = "wrapper";
+  Button.className = "wrapper-Btn";
 
   style.textContent = /*CSS*/ `
-  .wrapper{
-    display: flex;
-    justify-content: flex-end;
+  .action-group{
+    display:flex;
+    gap:5px;
   }
-        .primaryBtn{
-                padding:12px 30px;
-                color:#FFFFFF;
-                justify-content:center;
-                background-color:var(--color-primary);
-                border-radius:4px;
+        .actionBtn{
+                padding:2px 12px;
+               border:1px solid var(--color-primary);
+               color:var(--color-text);
+                border-radius: var(--radius-button);
                 cursor:pointer;
-        }
-
-        button.disabled,button:disabled{
-          background-color:var(--color-disable);
-          cursor:default;
+                font-size:var(--font-size-action);
         }
 
         `;
@@ -34,7 +27,6 @@ export default function Button({
   if (styleProps.width) button.style.width = `${styleProps.width}%`;
   if (styleProps.radius) button.style.borderRadius = `${styleProps.radius}px`;
   if (styleProps.margin) button.style.margin = `${styleProps.margin}px`;
-  if (styleProps.padding) button.style.padding = `${styleProps.padding}px`;
 
   const handleClick =
     onClick != null ? onClick : () => console.log("버튼을 클릭하였습니다.");
@@ -46,3 +38,5 @@ export default function Button({
 
   return Button;
 }
+
+export default ActionButton;
