@@ -5,7 +5,7 @@ export default function ProefileButton() {
   style.textContent = /*CSS*/ `
         .profile-button{
             display:flex;
-            width:40px;
+            width:var(--header-side-width);
             height:40px;
             border-radius:50%;
             overflow:hidden;
