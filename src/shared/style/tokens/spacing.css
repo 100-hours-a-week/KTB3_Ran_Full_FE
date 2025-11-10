@@ -2,8 +2,20 @@
   /* 전체 레이아웃 */
   --layout-max-width: 600px;
 
+  --header-side-width: 40px;
+
   /* 인증 관련 페이지 레이아웃 */
   --auth-max-width: 400px;
 
   --gap-md: 20px;
+  --gap-mn: 10px;
+
+  --padding-h3: 24px;
+
+  --radius-md: 16px;
+  --radius-button: 8px;
+
+  --card-height: 170px;
+  --card-top-height: 80px;
+  --card-bottom-height: 70px;
 }
