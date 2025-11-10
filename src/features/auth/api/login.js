@@ -1,12 +1,12 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 import sessionUser from "../../../shared/utils/session.js";
 
-async function login(loginProps) {
+async function login({ email, password }) {
   try {
     const response = await fetch(Endpoint.USER.LOGIN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginProps),
+      body: JSON.stringify({ email, password }),
     });
     //답변 기다리기
     const data = await response.json();
