@@ -13,10 +13,13 @@ style.textContent = /*CSS*/ `
 
 }
 h3 {
-                padding:10px;   
-                color:var(--color-text); 
-                text-align:center;
-                display:flex;
+    font-size: var(--font-size-header);
+    font-weight : 400;
+    margin: 10px;
+    padding: 10px;
+    color: var(--color-text);
+    text-align: center;
+    display: flex;
               
             }
 .header-wrapper {
