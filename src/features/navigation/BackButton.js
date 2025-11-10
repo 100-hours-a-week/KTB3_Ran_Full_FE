@@ -6,6 +6,7 @@ export default function BackButton() {
   style.textContent = /*CSS*/ `
     .back-button{
       cursor : pointer;
+      width:var(--header-side-width);
     }
   `;
 
