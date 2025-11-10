@@ -42,13 +42,13 @@ class InputField extends HTMLElement {
     this.shadowRoot.innerHTML = /*HTML*/ `
       <style>
         .input-field-container { width: 100%; }
-        .title {
+        .input-field-container .title {
           margin-bottom: 8px;
           display: flex;
           font-weight: 700;
           font-size: 16px;
         }
-        input {
+        .input-field-container input {
           width: 380px;
           padding: 8px;
           border: 1px solid #ccc;
@@ -65,7 +65,7 @@ class InputField extends HTMLElement {
       </style>
       <div class="input-field-container">
           <div class="title">${label}</div>
-          <div><input type="${type}" placeholder="${placeholder}" /></div>
+          <input type="${type}" placeholder="${placeholder}" />
           <div class="helper">${helperText}</div>
       </div>
     `;
