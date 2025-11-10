@@ -9,7 +9,9 @@ export const Endpoint = {
     LOGIN: path("/users/login"),
     SIGNUP: path("/users/signup"),
   },
-  POST: {},
+  POST: {
+    POST: path("/posts"),
+  },
   COMMENT: {},
   LIKE: {},
 };
