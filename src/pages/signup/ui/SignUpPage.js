@@ -1,10 +1,12 @@
 import "../../../shared/ui/InputField/InputField.js";
+import { signupDto } from "../../../features/auth/model/authDto.js";
 import { signupBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 import LoginButton from "../../../features/navigation/LoginButton.js";
 import validateConfirmPassword from "../../../features/auth/lib/confirmPassword.js";
 import validateEmail from "../../../features/auth/lib/validateEmail.js";
 import validatePassword from "../../../features/auth/lib/validatePassword.js";
 import validateUsername from "../../../features/auth/lib/validateUsername.js";
+import { passwordConfirmProps } from "../../auth/model/props.js";
 
 export default function SignUpPage() {
   const signupPage = document.createElement("div");
@@ -37,18 +39,16 @@ export default function SignUpPage() {
   function __updateState() {
     const email = emailField.value;
     const password = passwordField.value;
-    const confirmPassword = passwordConfirmField.value;
     const username = usernameField.value;
 
-    const passwordConfirmProps = {
-      password,
-      confirmPassword,
-    };
+    const validateConfirmPasswordProps = { ...passwordConfirmProps };
+    validateConfirmPasswordProps.password = passwordField.value;
+    validateConfirmPasswordProps.confirmPassword = passwordConfirmField.value;
 
     if (
       !validateEmail(email) &&
       !validatePassword(password) &&
-      !validateConfirmPassword(passwordConfirmProps) &&
+      !validateConfirmPassword(validateConfirmPasswordProps) &&
       !validateUsername(username)
     ) {
       button.disabled = false;
@@ -73,6 +73,7 @@ export default function SignUpPage() {
   });
 
   passwordConfirmField.addEventListener("field-blur", (e) => {
+    const validateConfirmPasswordProps = { ...validateConfirmPasswordProps };
     const confirmPassword = e.detail.value;
     const password = passwordField.value;
 

@@ -1,4 +1,6 @@
 import signup from "../../../features/auth/api/signup.js";
+import { signupDto } from "../../../features/auth/model/authDto.js";
+import { passwordConfirmProps } from "../../auth/model/props.js";
 
 async function SignupService({
   emailField,
@@ -6,22 +8,12 @@ async function SignupService({
   passwordConfirmField,
   usernameField,
 }) {
-  const email = emailField.value;
-  const password = passwordField.value;
-  const confirmPassword = passwordConfirmField.value;
-  const username = usernameField.value;
+  const signupProps = { ...signupDto };
+  signupProps.email = emailField.value;
+  signupProps.password = passwordField.value;
+  signupProps.confirmPassword = passwordConfirmField.value;
+  signupProps.username = usernameField.value;
 
-  const signupProps = {
-    email,
-    password,
-    confirmPassword,
-    username,
-  };
-
-  const passwordConfirmProps = {
-    password,
-    confirmPassword,
-  };
   try {
     const signupAPI = await signup(signupProps);
     console.log("signupAPI", signupAPI);
