@@ -1,8 +1,8 @@
 import login from "../../../features/auth/api/login.js";
-import { loginProps } from "../../../features/auth/model/props.js";
+import { loginDto } from "../../../features/auth/model/authDto.js";
 
 async function loginService({ emailField, passwordField }) {
-  const props = { ...loginProps };
+  const props = { ...loginDto };
   props.email = emailField.value;
   props.password = passwordField.value;
 
