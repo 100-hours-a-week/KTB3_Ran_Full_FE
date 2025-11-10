@@ -1,0 +1,62 @@
+import actionGroup from "../../../../widgets/actionGroup/ui/actionGroup.js";
+
+function postHeader({ title = "", author = "", date = "" } = {}) {
+  const headerTop = document.createElement("div");
+  headerTop.className = "post-container";
+
+  headerTop.innerHTML = /*HTML*/ `
+        <div class="post-title">${title}</div>
+        <div class="detail">
+            <div class="log">
+                <div class="author">${author}</div>
+                <div class="date">${date}</div>
+            </div>
+        </div>
+  `;
+
+  const style = document.createElement("style");
+  style.textContent = /*CSS */ `
+    .post-container div{
+        display:flex;
+    }
+
+    .post-container{
+        padding : var(--padding-h3);
+        display: flex;
+        flex-direction : column;
+        gap : var(--gap-mn);
+    }
+
+    .post-title{
+        font-weight:var(--font-weight-bold);
+        font-size:var(--font-size-title);
+    }
+
+    .author{
+        font-weight:var(--font-weight-bold);
+    }
+
+    .log{
+        gap:10px;
+    }
+
+    .detail{
+        justify-content: space-between;
+    }
+
+    
+  `;
+
+  const actionBtnGroup = actionGroup();
+
+  const postDetail = headerTop.querySelector(".detail");
+  postDetail.appendChild(actionBtnGroup);
+
+  const HeaderTop = document.createElement("div");
+  HeaderTop.appendChild(style);
+  HeaderTop.appendChild(headerTop);
+
+  return HeaderTop;
+}
+
+export default postHeader;
