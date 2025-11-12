@@ -29,3 +29,17 @@ button {
   /* display: flex; */
   background: none;
 }
+
+.primaryBtn {
+  padding: 12px 30px;
+  color: #ffffff;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primaryBtn:disabled {
+  background-color: var(--color-disable);
+  cursor: default;
+}

@@ -1,3 +1,4 @@
+import validateUsername from "../../../features/auth/lib/validateUsername.js";
 import { updateBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 import Title from "../../../shared/ui/Title/Title.js";
 import inputFieldUser from "../../../widgets/inputField/ui/inputFieldUser.js";
@@ -17,19 +18,23 @@ function UserInfoPage() {
   const textInfo = document.createElement("div");
   textInfo.className = "text-info-container";
   const inputFieldEmail = inputFieldUser({ title: "이메일", userData: "dd" });
-  const inputFieldUsername = inputFieldUser({
-    title: "닉네임",
-    userData: "dd",
-  });
+
+  const inputFieldUsername = document.createElement("input-field");
+  inputFieldUsername.id = "username";
+  inputFieldUsername.setAttribute("type", "text");
+  inputFieldUsername.setAttribute("placeholder", "닉네임을 입력하세요");
+  inputFieldUsername.textContent = "닉네임";
+
   const deleteUserBtn = DeleteUserButton();
 
-  const Btn = updateBtn();
+  const button = updateBtn();
+  const modifyButton = button.querySelector("button");
 
   container.appendChild(pageTitle);
   textInfo.appendChild(inputFieldEmail);
   textInfo.appendChild(inputFieldUsername);
   container.appendChild(textInfo);
-  container.appendChild(Btn);
+  container.appendChild(modifyButton);
   container.appendChild(deleteUserBtn);
 
   const style = document.createElement("style");
@@ -61,6 +66,28 @@ function UserInfoPage() {
   const containerWrapper = document.createElement("div");
   containerWrapper.appendChild(style);
   containerWrapper.appendChild(container);
+
+  const usernameField = container.querySelector("#username");
+
+  function __updateState() {
+    const username = usernameField.value;
+
+    if (!validateUsername(username)) {
+      modifyButton.disabled = false;
+      modifyButton.classList.remove("disabled");
+    } else {
+      modifyButton.disabled = true;
+      modifyButton.classList.add("disabled");
+    }
+  }
+
+  usernameField.addEventListener("field-blur", (e) => {
+    const username = e.detail.value;
+    usernameField.helperText = validateUsername(username);
+    __updateState();
+  });
+
+  __updateState();
 
   return containerWrapper;
 }

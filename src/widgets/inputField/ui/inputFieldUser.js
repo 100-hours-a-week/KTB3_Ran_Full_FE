@@ -12,7 +12,6 @@ function inputFieldUser({
   container.innerHTML = /*HTML*/ `
     <div>${title}</div>
     <div>${userData}</div>
-    <div>${helperText}</div>
   `;
 
   const style = document.createElement("style");

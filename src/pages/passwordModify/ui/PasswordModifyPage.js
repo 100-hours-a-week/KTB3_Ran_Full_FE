@@ -25,8 +25,8 @@ function PasswordModifyPage() {
   inputField.className = "input-field-container";
 
   inputField.innerHTML = /*HTML*/ `
-        <input-field id="password" type="password" placeholder="비밀번호를 입력하세요">비밀번호*</input-field>
-        <input-field id="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력하세요">비밀번호 확인*</input-field>
+        <input-field id="password" type="password" placeholder="비밀번호를 입력하세요">비밀번호</input-field>
+        <input-field id="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력하세요">비밀번호 확인</input-field>
     `;
 
   const deleteUserNavButton = DeleteUserButton();

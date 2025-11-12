@@ -15,20 +15,6 @@ export default function Button({
     display: flex;
     justify-content: flex-end;
   }
-        .primaryBtn{
-                padding:12px 30px;
-                color:#FFFFFF;
-                justify-content:center;
-                background-color:var(--color-primary);
-                border-radius:4px;
-                cursor:pointer;
-        }
-
-        button.disabled,button:disabled{
-          background-color:var(--color-disable);
-          cursor:default;
-        }
-
         `;
 
   if (styleProps.width) button.style.width = `${styleProps.width}%`;
