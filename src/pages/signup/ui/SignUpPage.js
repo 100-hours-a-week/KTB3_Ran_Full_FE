@@ -73,7 +73,6 @@ export default function SignUpPage() {
   });
 
   passwordConfirmField.addEventListener("field-blur", (e) => {
-    const validateConfirmPasswordProps = { ...passwordConfirmProps };
     const confirmPassword = e.detail.value;
     const password = passwordField.value;
 
