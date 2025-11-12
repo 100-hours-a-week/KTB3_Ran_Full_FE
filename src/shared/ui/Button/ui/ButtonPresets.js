@@ -51,6 +51,19 @@ export function commentCreatBtn() {
   });
 }
 
+//수정하기 버튼
+export function updateBtn() {
+  return Button({
+    text: "수정하기",
+    onClick: handleLoginClick,
+    styleProps: {
+      radius: 6,
+      padding: "7px 10px",
+      width: "100",
+    },
+  });
+}
+
 /////모달의 확인 취소
 
 //확인 버튼

@@ -26,6 +26,6 @@ body {
 
 button {
   border: none;
-  display: flex;
+  /* display: flex; */
   background: none;
 }
