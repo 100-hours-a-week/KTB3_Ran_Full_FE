@@ -34,7 +34,12 @@ function BoardPostDetailPage() {
   boardPostDetailPage.appendChild(contentCreatCard);
 
   ///comment card
-  const comment = commentCount({ author: "ddd", date: "dd", content: "ddd" });
+  const comment = commentCount({
+    author: "ddd",
+    date: "dd",
+    createAt: "ddd",
+    content: "ddd",
+  });
   boardPostDetailPage.appendChild(comment);
 
   return boardPostDetailPage;
