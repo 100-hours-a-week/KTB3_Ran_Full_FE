@@ -1,4 +1,4 @@
-import post from "../../../../features/board/api/post.js";
+import post from "../../../../features/board/api/postHomeFetch.js";
 
 async function handleBoardGet() {
   const postGet = await post();

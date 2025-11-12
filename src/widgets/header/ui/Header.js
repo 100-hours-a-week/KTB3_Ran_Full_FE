@@ -1,5 +1,5 @@
 import BackButton from "../../../features/navigation/BackButton.js";
-import ProefileButton from "../../../features/profile/ui/ProfileButton.js";
+import ProefileButton from "../../profile/ui/ProfileButton.js";
 
 //기본 Shadow DOM 스타일 정의
 const template = document.createElement("template");

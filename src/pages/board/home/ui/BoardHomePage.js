@@ -1,5 +1,5 @@
 import Title from "../../../../shared/ui/Title/Title.js";
-import boardCard from "./boardCard.js";
+import boardCard from "../../../../widgets/post/ui/boardCard.js";
 import handleBoardGet from "../lib/handleBoardGet.js";
 import { postCreateBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
 
