@@ -3,6 +3,8 @@ import handleLoginClick from "../../../../pages/login/lib/handleLoginClick.js";
 import handleSignupClick from "../../../../pages/signup/lib/handleSignupClick.js";
 import handlerPostCreat from "../../../../features/navigation/handlerPostCreat.js";
 import ActionButton from "./ActionButton.js";
+import DeleteModal from "../../../lib/DeleteModal.js";
+import EditModal from "../../../lib/EditModal.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -49,17 +51,43 @@ export function commentCreatBtn() {
   });
 }
 
+/////모달의 확인 취소
+
+//확인 버튼
+export function confirmBtn() {
+  return Button({
+    text: "확인",
+    onClick: () => console.log("확인 버튼"),
+  });
+}
+
+//취소 버튼 : 어떤 모달인지 전송받아야됨
+export function quitBtn(modal) {
+  return Button({
+    text: "취소",
+    onClick: () => {
+      modal.remove();
+    },
+    styleProps: {
+      background: "#000000ff",
+    },
+  });
+}
+
+///
+
 ///ActionButton
 export function editBtn() {
   return ActionButton({
     text: "수정",
-    onClick: () => console.log("edit"),
+    onClick: () => EditModal(),
+    styleProps: {},
   });
 }
 
 export function delBtn() {
   return ActionButton({
     text: "삭제",
-    onClick: () => console.log("delete"),
+    onClick: () => DeleteModal(),
   });
 }
