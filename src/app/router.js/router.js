@@ -3,6 +3,8 @@ import SignUpPage from "../../pages/signup/ui/SignUpPage.js";
 import BoardHomePage from "../../pages/board/home/ui/BoardHomePage.js";
 import BoardPostCreatPage from "../../pages/board/create/ui/BoardPostCreatPage.js";
 import BoardPostDetailPage from "../../pages/board/detail/ui/BoardPostDetailPage.js";
+import UserInfoPage from "../../pages/info/ui/UserInfoPage.js";
+import PasswordModifyPage from "../../pages/passwordModify/ui/PasswordModifyPage.js";
 
 export const routerPage = {
   "/login": LoginPage,
@@ -10,4 +12,6 @@ export const routerPage = {
   "/home": BoardHomePage,
   "/post": BoardPostCreatPage,
   "/get": BoardPostDetailPage,
+  "/user/info": UserInfoPage,
+  "/user/password-modify": PasswordModifyPage,
 };
