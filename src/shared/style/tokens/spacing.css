@@ -6,6 +6,7 @@
 
   /* 인증 관련 페이지 레이아웃 */
   --auth-max-width: 400px;
+  --max-width-md: 400px;
 
   --gap-md: 20px;
   --gap-mn: 10px;
