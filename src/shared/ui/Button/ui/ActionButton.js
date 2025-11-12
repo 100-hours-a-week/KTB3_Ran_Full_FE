@@ -27,6 +27,8 @@ function ActionButton({ text = "버튼", onClick = null, styleProps = {} } = {})
   if (styleProps.width) button.style.width = `${styleProps.width}%`;
   if (styleProps.radius) button.style.borderRadius = `${styleProps.radius}px`;
   if (styleProps.margin) button.style.margin = `${styleProps.margin}px`;
+  if (styleProps.background)
+    button.style.background = `${styleProps.background}`;
 
   const handleClick =
     onClick != null ? onClick : () => console.log("버튼을 클릭하였습니다.");

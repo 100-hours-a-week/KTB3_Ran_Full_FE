@@ -35,6 +35,8 @@ export default function Button({
   if (styleProps.radius) button.style.borderRadius = `${styleProps.radius}px`;
   if (styleProps.margin) button.style.margin = `${styleProps.margin}px`;
   if (styleProps.padding) button.style.padding = `${styleProps.padding}px`;
+  if (styleProps.background)
+    button.style.background = `${styleProps.background}`;
 
   const handleClick =
     onClick != null ? onClick : () => console.log("버튼을 클릭하였습니다.");
