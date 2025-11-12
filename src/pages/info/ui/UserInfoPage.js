@@ -5,7 +5,7 @@ import DeleteUserButton from "../../../widgets/profile/ui/DeleteUserButton.js";
 
 function UserInfoPage() {
   const container = document.createElement("div");
-  container.className = "user-info-page";
+  container.className = "user-page";
 
   const pageTitle = Title({
     text: "회원정보수정",
@@ -34,7 +34,7 @@ function UserInfoPage() {
 
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
-    .user-info-page{
+    .user-page{
         display: flex;
             flex-direction: column;
             justify-content: center;
