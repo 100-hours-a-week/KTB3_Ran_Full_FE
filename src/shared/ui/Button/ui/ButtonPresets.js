@@ -5,6 +5,7 @@ import handlerPostCreat from "../../../../features/navigation/handlerPostCreat.j
 import ActionButton from "./ActionButton.js";
 import DeleteModal from "../../../lib/DeleteModal.js";
 import EditModal from "../../../lib/EditModal.js";
+import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -68,7 +69,7 @@ export function updateBtn() {
 export function pageCreatBtn() {
   return Button({
     text: "완료",
-    onClick: handlerPostCreat,
+    onClick: handlePostCreat,
     styleProps: {
       radius: 6,
       margin: "12px 0",
