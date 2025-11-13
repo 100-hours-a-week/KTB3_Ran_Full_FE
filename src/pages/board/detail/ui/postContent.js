@@ -1,9 +1,9 @@
-function postContent({ content = "" } = {}) {
+function postContent(props) {
   const container = document.createElement("div");
   container.className = "post-container";
 
   container.innerHTML = /*HTML*/ `
-        <div class="post-content">${content}</div>
+        <div class="post-content">${props.content}</div>
   `;
 
   const style = document.createElement("style");

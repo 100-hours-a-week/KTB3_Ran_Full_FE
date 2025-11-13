@@ -1,7 +1,8 @@
 import Title from "../../../../shared/ui/Title/Title.js";
 import boardCard from "../../../../widgets/post/ui/boardCard.js";
-import handleBoardGet from "../lib/handleBoardGet.js";
+import handleBoardGet from "../../../../features/board/model/handleBoardGet.js";
 import { postCreateBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
+import { boardPostDataDto } from "../../model/boardPostDto.js";
 
 function BoardHomePage() {
   const boardHomePage = document.createElement("div");
@@ -21,7 +22,9 @@ function BoardHomePage() {
   handleBoardGet()
     .then((posts) => {
       posts.forEach((post) => {
-        cardContainer.appendChild(boardCard(post));
+        const boardPostProp = boardPostDataDto(post); //props
+        const card = boardCard(boardPostProp);
+        cardContainer.appendChild(card);
       });
     })
     .catch((error) => {

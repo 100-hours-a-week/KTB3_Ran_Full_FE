@@ -1,15 +1,15 @@
 import actionGroup from "../../../../widgets/actionGroup/ui/actionGroup.js";
 
-function postHeader({ title = "", author = "", date = "" } = {}) {
+function postHeader(props) {
   const headerTop = document.createElement("div");
   headerTop.className = "post-container";
 
   headerTop.innerHTML = /*HTML*/ `
-        <div class="post-title">${title}</div>
+        <div class="post-title">${props.title}</div>
         <div class="detail">
             <div class="log">
-                <div class="author">${author}</div>
-                <div class="date">${date}</div>
+                <div class="author">${props.author}</div>
+                <div class="date">${props.date}</div>
             </div>
         </div>
   `;
