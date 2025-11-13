@@ -1,7 +1,7 @@
 const sessionUser = {
   getUser() {
     const user = sessionStorage.getItem("user");
-    return user ? JSON.stringify(user) : null;
+    return user ? JSON.parse(user) : null;
   },
 
   //function 꼭 추가해야하는가?

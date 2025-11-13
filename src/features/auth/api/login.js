@@ -7,15 +7,15 @@ async function login({ email, password }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
+      credentials: "include",
+      cache: "no-store",
     });
-    //답변 기다리기
-    const data = await response.json();
-
-    console.log("data :", data);
 
     //세션에 유저 저장
     if (response.ok) {
-      sessionUser.getUser(response.body);
+      const data = (await response.json()).data;
+      console.log("data :", data);
+      sessionUser.setUser(data);
       location.hash = "/home"; //페이지 이동
     }
 
