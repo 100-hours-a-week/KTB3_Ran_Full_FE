@@ -4,7 +4,7 @@ import Title from "../../../shared/ui/Title/Title.js";
 import inputFieldUser from "../../../widgets/inputField/ui/inputFieldUser.js";
 import DeleteUserButton from "../../../widgets/profile/ui/DeleteUserButton.js";
 
-function UserInfoPage() {
+function UserInfoPage(user) {
   const container = document.createElement("div");
   container.className = "user-page";
 
@@ -15,9 +15,15 @@ function UserInfoPage() {
     },
   });
 
+  console.log(user);
+  const userEmail = user?.email ?? "로그인 정보를 불러올 수 없습니다.";
+
   const textInfo = document.createElement("div");
   textInfo.className = "text-info-container";
-  const inputFieldEmail = inputFieldUser({ title: "이메일", userData: "dd" });
+  const inputFieldEmail = inputFieldUser({
+    title: "이메일",
+    userData: userEmail,
+  });
 
   const inputFieldUsername = document.createElement("input-field");
   inputFieldUsername.id = "username";

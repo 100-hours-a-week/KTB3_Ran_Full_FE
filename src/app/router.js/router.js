@@ -5,13 +5,14 @@ import BoardPostCreatPage from "../../pages/board/create/ui/BoardPostCreatPage.j
 import BoardPostDetailPage from "../../pages/board/detail/ui/BoardPostDetailPage.js";
 import UserInfoPage from "../../pages/info/ui/UserInfoPage.js";
 import PasswordModifyPage from "../../pages/passwordModify/ui/PasswordModifyPage.js";
+import handleUserInfo from "../../pages/info/lib/handleUserInfo.js";
 
 export const routerPage = {
   "/login": LoginPage,
   "/signup": SignUpPage,
   "/home": BoardHomePage,
   "/post": BoardPostCreatPage,
-  "/user/info": UserInfoPage,
+  "/user/info": handleUserInfo,
   "/user/password-modify": PasswordModifyPage,
   "/post/get/:id": BoardPostDetailPage,
 };
