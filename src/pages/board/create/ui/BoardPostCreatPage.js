@@ -1,5 +1,6 @@
 import Title from "../../../../shared/ui/Title/Title.js";
 import textInputField from "../../../../shared/ui/InputField/TextInputField.js";
+import { pageCreatBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
 
 function BoardPostCreatPage() {
   const boardPostCreatPage = document.createElement("div");
@@ -27,9 +28,12 @@ function BoardPostCreatPage() {
     helperText: "",
   });
 
+  const createBtn = pageCreatBtn();
+
   boardPostCreatPage.appendChild(pageTitle);
   boardPostCreatPage.appendChild(titleField);
   boardPostCreatPage.appendChild(contentField);
+  boardPostCreatPage.appendChild(createBtn);
 
   return boardPostCreatPage;
 }

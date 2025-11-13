@@ -64,6 +64,20 @@ export function updateBtn() {
   });
 }
 
+//페이지 생성 버튼
+export function pageCreatBtn() {
+  return Button({
+    text: "완료",
+    onClick: handlerPostCreat,
+    styleProps: {
+      radius: 6,
+      margin: "12px 0",
+      width: 70,
+      justifyContent: "center",
+    },
+  });
+}
+
 /////모달의 확인 취소
 
 //확인 버튼

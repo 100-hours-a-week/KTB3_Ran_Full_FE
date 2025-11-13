@@ -14,6 +14,7 @@ export default function Button({
   .wrapper{
     display: flex;
     justify-content: flex-end;
+    
   }
         `;
 
@@ -23,6 +24,8 @@ export default function Button({
   if (styleProps.padding) button.style.padding = `${styleProps.padding}px`;
   if (styleProps.background)
     button.style.background = `${styleProps.background}`;
+  if (styleProps.justifyContent)
+    Button.style.justifyContent = `${styleProps.justifyContent}`;
 
   const handleClick =
     onClick != null ? onClick : () => console.log("버튼을 클릭하였습니다.");
