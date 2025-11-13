@@ -22,7 +22,7 @@ function BoardHomePage() {
   handleBoardGet()
     .then((posts) => {
       posts.forEach((post) => {
-        const boardPostProp = boardPostDataDto(post); //props
+        const boardPostProp = boardPostDataDto(post);
         const card = boardCard(boardPostProp);
         cardContainer.appendChild(card);
       });

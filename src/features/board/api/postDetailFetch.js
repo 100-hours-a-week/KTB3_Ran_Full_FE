@@ -11,6 +11,7 @@ async function postDetail(postId) {
     });
 
     const data = (await response.json()).data;
+    console.log(data);
 
     const postData = boardDetailProps(data);
     const commentsData = data.comments.map(commentDto);
@@ -19,8 +20,6 @@ async function postDetail(postId) {
       throw new Error(data?.messgae);
     }
 
-    if (response.ok) {
-    }
     return { postData, commentsData };
   } catch (error) {
     throw error;
