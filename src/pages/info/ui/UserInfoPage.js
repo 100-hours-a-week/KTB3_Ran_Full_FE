@@ -17,6 +17,7 @@ function UserInfoPage(user) {
 
   console.log(user);
   const userEmail = user?.email ?? "로그인 정보를 불러올 수 없습니다.";
+  const userName = user?.username ?? "";
 
   const textInfo = document.createElement("div");
   textInfo.className = "text-info-container";
@@ -30,6 +31,7 @@ function UserInfoPage(user) {
   inputFieldUsername.setAttribute("type", "text");
   inputFieldUsername.setAttribute("placeholder", "닉네임을 입력하세요");
   inputFieldUsername.textContent = "닉네임";
+  inputFieldUsername.value = userName;
 
   const deleteUserBtn = DeleteUserButton();
 

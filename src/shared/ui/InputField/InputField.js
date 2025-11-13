@@ -22,6 +22,12 @@ class InputField extends HTMLElement {
     return this._value || "";
   }
 
+  set value(value) {
+    this._value = value;
+    const input = this.shadowRoot.querySelector("input");
+    input.value = value;
+  }
+
   //속성값 반환 setter
   set helperText(message) {
     this.setAttribute("helpertext", message);

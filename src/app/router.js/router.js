@@ -6,6 +6,7 @@ import BoardPostDetailPage from "../../pages/board/detail/ui/BoardPostDetailPage
 import UserInfoPage from "../../pages/info/ui/UserInfoPage.js";
 import PasswordModifyPage from "../../pages/passwordModify/ui/PasswordModifyPage.js";
 import handleUserInfo from "../../pages/info/lib/handleUserInfo.js";
+import handlePasswordModify from "../../pages/passwordModify/lib/handlePasswordModify.js";
 
 export const routerPage = {
   "/login": LoginPage,
@@ -13,6 +14,6 @@ export const routerPage = {
   "/home": BoardHomePage,
   "/post": BoardPostCreatPage,
   "/user/info": handleUserInfo,
-  "/user/password-modify": PasswordModifyPage,
+  "/user/password-modify": handlePasswordModify,
   "/post/get/:id": BoardPostDetailPage,
 };
