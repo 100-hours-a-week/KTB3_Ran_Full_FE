@@ -11,12 +11,12 @@ function ProfileMenuModal() {
 
   style.textContent = /*CSS*/ `
     #profile-modal-container-wrapper{
-      display:block;
+      display:none;
         position:absolute;
         transform: translate(-64%, 10%);
     }
     #profile-modal-container-wrapper.active{
-      display:none;
+      display:block;
     }
 
 
@@ -25,7 +25,7 @@ function ProfileMenuModal() {
   const containerWrapper = document.createElement("div");
   containerWrapper.id = "profile-modal-container-wrapper";
 
-  if (containerWrapper.id != "profile-modal-container-wrapper") {
+  if (containerWrapper.id == "profile-modal-container-wrapper") {
     containerWrapper.classList.remove("active");
   } else {
     containerWrapper.classList.add("active");
