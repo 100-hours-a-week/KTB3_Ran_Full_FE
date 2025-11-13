@@ -6,6 +6,8 @@ import ActionButton from "./ActionButton.js";
 import DeleteModal from "../../../lib/DeleteModal.js";
 import EditModal from "../../../lib/EditModal.js";
 import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
+import handleUserUpdate from "../../../../pages/info/lib/handleUserUpdate.js";
+import handleCreatComment from "../../../../pages/board/detail/lib/handleCreatComment.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -41,10 +43,20 @@ export function postCreateBtn() {
 }
 
 //댓글 생성 버튼
-export function commentCreatBtn() {
+export function commentCreatBtn({ text, containerWrapper }) {
   return Button({
     text: "댓글 등록",
-    onClick: handleLoginClick,
+    onClick: () => {
+      const value = text.value.trim();
+      containerWrapper.dispatchEvent(
+        new CustomEvent("commentSubmit", {
+          detail: { value },
+          bubbles: true,
+        })
+      );
+
+      text.value = ""; //초기화
+    },
     styleProps: {
       radius: 16,
       padding: "7px 10px",
@@ -56,7 +68,7 @@ export function commentCreatBtn() {
 export function updateBtn() {
   return Button({
     text: "수정하기",
-    onClick: handleLoginClick,
+    onClick: handleUserUpdate,
     styleProps: {
       radius: 6,
       padding: "7px 10px",

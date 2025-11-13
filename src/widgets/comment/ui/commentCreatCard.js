@@ -5,9 +5,7 @@ function commentCreatCard() {
   container.className = "comment-creat-card";
 
   container.innerHTML = /*HTML*/ `
-    
         <textarea placeholder="댓글을 남겨주세요!"></textarea>
-    
   `;
 
   const style = document.createElement("style");
@@ -38,13 +36,15 @@ function commentCreatCard() {
   `;
 
   //생성 버튼
-  const button = commentCreatBtn();
+  const text = container.querySelector("textarea");
+  const containerWrapper = document.createElement("div");
+  const button = commentCreatBtn({ text, containerWrapper });
+
   const buttonWrapper = document.createElement("div");
   buttonWrapper.className = "buttonWrapper";
   buttonWrapper.appendChild(button);
   container.appendChild(buttonWrapper);
 
-  const containerWrapper = document.createElement("div");
   containerWrapper.appendChild(style);
   containerWrapper.appendChild(container);
 

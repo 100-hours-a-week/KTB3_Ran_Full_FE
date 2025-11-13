@@ -14,6 +14,9 @@ export const Endpoint = {
     POST: path("/posts"),
     GET: path("/posts"),
   },
-  COMMENT: {},
+  COMMENT: {
+    POST: (postId) => path(`/posts/${postId}/comments`),
+    GET: (postId) => path(`/posts/${postId}/comments`),
+  },
   LIKE: {},
 };

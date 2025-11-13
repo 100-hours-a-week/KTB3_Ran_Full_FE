@@ -9,6 +9,8 @@ import { boardDetailProps } from "../../model/boardDto.js";
 import { postHeaderProps } from "../model/postHeaderProps.js";
 import { postContentProps } from "../model/postContentProps.js";
 import { postCountGroupProps } from "../model/postCountGroupProps.js";
+import handleCreatComment from "../lib/handleCreatComment.js";
+import { creatCommentDto } from "../../../../features/comment/model/creatCommentDto.js";
 
 function BoardPostDetailPage({ post, comments }) {
   //id에 해당하는 게시글 데이터 불러오기
@@ -48,6 +50,12 @@ function BoardPostDetailPage({ post, comments }) {
 
   //댓글 작성 컴포넌트
   const contentCreatCard = commentCreatCard();
+  contentCreatCard.addEventListener("commentSubmit", (e) => {
+    const content = e.detail.value;
+    console.log(content);
+    handleCreatComment(content);
+  });
+
   boardPostDetailPage.appendChild(contentCreatCard);
 
   ///comment card : 배열로 만들기
