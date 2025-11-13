@@ -42,6 +42,10 @@ const backButton = BackButton();
 const profileButton = ProefileButton();
 
 h3.appendChild(slot);
+h3.style.cursor = "pointer";
+h3.addEventListener("click", () => {
+  location.hash = "/";
+});
 
 template.content.appendChild(style);
 template.content.appendChild(wrapper);
