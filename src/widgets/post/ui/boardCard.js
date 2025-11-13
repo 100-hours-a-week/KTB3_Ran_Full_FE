@@ -1,12 +1,4 @@
-function boardCard({
-  title = "",
-  author = "",
-  imgUrl = "",
-  commentCount = 0,
-  likeCount = 0,
-  viewCount = 0,
-  createdAt = "",
-} = {}) {
+function boardCard(props) {
   const container = document.createElement("div");
   container.className = "board-card";
   const style = document.createElement("style");
@@ -59,24 +51,28 @@ function boardCard({
   container.innerHTML = /*HTML */ `
         <div class="card-background">
             <div class="card-wrapper top">
-                <div class="card-title">${title}</div>
+                <div class="card-title">${props.title}</div>
                 <div class="log">
                     <div class="count">
-                        <div>좋아요 ${likeCount}</div>
-                        <div>댓글 ${commentCount}</div>
-                        <div>조회수 ${viewCount}</div>
+                        <div>좋아요 ${props.likeCount}</div>
+                        <div>댓글 ${props.commentCount}</div>
+                        <div>조회수 ${props.viewCount}</div>
                     </div>
-                    <div class="createdAt">${createdAt}</div>
+                    <div class="createdAt">${props.createAt}</div>
                 </div>
             
             </div>
             <hr/>
             <div class="card-wrapper bottom">
-                <div class="author">${author}</div>
+                <div class="author">${props.author}</div>
             </div>
         </div>
     `;
 
+  //클릭 이벤트
+  container.addEventListener("click", () => {
+    location.hash = `/post/get/${props.id}`;
+  });
   const BoardCard = document.createElement("div");
   BoardCard.appendChild(container);
   BoardCard.appendChild(style);

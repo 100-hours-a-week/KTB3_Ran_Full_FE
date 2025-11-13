@@ -7,7 +7,7 @@ async function post() {
       headers: { "Content-Type": "application/json" },
     });
 
-    const data = await response.json();
+    const data = (await response.json()).data;
     console.log("postData:", data);
 
     if (!response.ok) {

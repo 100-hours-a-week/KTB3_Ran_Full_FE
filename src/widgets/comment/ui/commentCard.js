@@ -1,14 +1,14 @@
 import actionGroup from "../../actionGroup/ui/actionGroup.js";
 
-function commentCount({ author = "", createAt = "", content = "" } = {}) {
+function commentCount(props) {
   const container = document.createElement("div");
   container.className = "comment-card";
 
   container.innerHTML = /*HTML*/ `
         <div class="detail">
             <div class="log">
-                <div class="author">${author}</div>
-                <div class="date">${createAt}</div>
+                <div class="author">${props.author}</div>
+                <div class="date">${props.created_at}</div>
             </div>
         </div>
   `;
@@ -41,7 +41,7 @@ function commentCount({ author = "", createAt = "", content = "" } = {}) {
   const commentContent = document.createElement("div");
   commentContent.className = "comment-content";
   commentContent.innerHTML = /*HTML */ `
-    <div>${content}</div>
+    <div>${props.content}</div>
   `;
 
   container.appendChild(commentContent);

@@ -11,6 +11,7 @@ export const Endpoint = {
   },
   POST: {
     POST: path("/posts"),
+    GET: path("/posts"),
   },
   COMMENT: {},
   LIKE: {},

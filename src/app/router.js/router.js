@@ -11,7 +11,7 @@ export const routerPage = {
   "/signup": SignUpPage,
   "/home": BoardHomePage,
   "/post": BoardPostCreatPage,
-  "/get": BoardPostDetailPage,
   "/user/info": UserInfoPage,
   "/user/password-modify": PasswordModifyPage,
+  "/post/get/:id": BoardPostDetailPage,
 };
