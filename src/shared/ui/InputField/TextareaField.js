@@ -1,4 +1,4 @@
-class PostInputField extends HTMLElement {
+class TextareaField extends HTMLElement {
   static get observedAttributes() {
     return ["label", "type", "placeholder", "helpertext"];
   }
@@ -93,20 +93,20 @@ class PostInputField extends HTMLElement {
       </style>
           <div class="input-title">${label}*</div>
           <div class="input-line">
-              <input class="createInput" type="${type}" placeholder="${placeholder}"/>
+              <textarea class="createInput ${type}" type="${type}" placeholder="${placeholder}"></textarea>
           </div>
           <div class="helper">${helperText}</div>
     `;
 
     //field
-    const input = this.shadowRoot.querySelector("input");
-    input.value = prevValue;
+    const field = this.shadowRoot.querySelector("textarea");
+    field.value = prevValue;
 
-    input.addEventListener("input", (e) => {
+    field.addEventListener("input", (e) => {
       this._value = e.target.value;
     });
 
-    input.addEventListener("blur", () => {
+    field.addEventListener("blur", () => {
       this.dispatchEvent(
         new CustomEvent("field-blur", { detail: { value: this._value } })
       );
@@ -114,4 +114,4 @@ class PostInputField extends HTMLElement {
   }
 }
 
-customElements.define("text-input-field", PostInputField);
+customElements.define("textarea-field", TextareaField);
