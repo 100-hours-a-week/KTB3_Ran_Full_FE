@@ -19,12 +19,7 @@ function BoardPostDetailPage({ post, comments }) {
 
   ///props 변환
   //titleHeader
-  const headerProps = postHeaderProps({
-    title: ` ${post.title}`,
-    author: `${post.author}`,
-    date: `${post.createAt}`,
-    content: `${post.content}`,
-  });
+  const headerProps = postHeaderProps(post);
 
   //content:내용
   const contentProps = postContentProps({

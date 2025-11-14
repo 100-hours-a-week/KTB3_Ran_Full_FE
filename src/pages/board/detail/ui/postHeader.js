@@ -51,6 +51,7 @@ function postHeader(props) {
     
   `;
 
+  console.log(props);
   const type = {
     type: ContentType.POST,
     onDelete: () => handlePostDelete(props.postId),

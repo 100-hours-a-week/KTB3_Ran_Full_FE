@@ -1,5 +1,4 @@
 import Modal from "../ui/modal/Modal.js";
-import handlePostDelete from "./handlePostDelete.js";
 
 function DeleteModal(action) {
   const modal = Modal({
