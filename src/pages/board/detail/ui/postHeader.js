@@ -51,11 +51,10 @@ function postHeader(props) {
     
   `;
 
-  const [, route, action, postId] = location.hash.split("/");
   const type = {
     type: ContentType.POST,
-    onDelete: () => handlePostDelete(postId),
-    onEdit: () => handlePostEdit(postId),
+    onDelete: () => handlePostDelete(props.postId),
+    onEdit: () => handlePostEdit(props),
   };
 
   const btnType = Props(type);

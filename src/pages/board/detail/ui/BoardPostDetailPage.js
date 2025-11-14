@@ -23,6 +23,7 @@ function BoardPostDetailPage({ post, comments }) {
     title: ` ${post.title}`,
     author: `${post.author}`,
     date: `${post.createAt}`,
+    content: `${post.content}`,
   });
 
   //content:내용

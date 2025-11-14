@@ -4,6 +4,7 @@ import "../widgets/header/ui/Header.js";
 import session from "../shared/utils/session.js";
 import BoardPostDetailPage from "../pages/board/detail/ui/BoardPostDetailPage.js";
 import handlePostDetail from "../features/board/model/handlePostDetail.js";
+import handlePostEdit from "../shared/lib/handlePostEdit.js";
 
 function main() {
   const app = document.getElementById("app");
@@ -34,10 +35,11 @@ function main() {
 
   const [, route, action, id] = path.split("/");
 
+  //이거 따로 빼야할거같은데
+  //게시글 상세 보기
   //id 있을때와 없을때 분기점
   if (route === "post" && action === "get" && id) {
     //id에 해당하는 게시글 데이터 반환
-    console.log(id);
     handlePostDetail(id).then((post) => {
       const pageContent = BoardPostDetailPage({
         post: post.postData,
@@ -47,6 +49,8 @@ function main() {
       //header 아래의 container에 페이지 업로드
       container.appendChild(pageContent);
     });
+  } else if (route === "post" && action === "update" && id) {
+    handlePostEdit(id);
   } else {
     //////일반 경로 처리
     const Page = routerPage[path];
@@ -63,7 +67,6 @@ function main() {
 }
 
 window.addEventListener("hashchange", main);
-
 window.addEventListener("load", main);
 
 export default main;
