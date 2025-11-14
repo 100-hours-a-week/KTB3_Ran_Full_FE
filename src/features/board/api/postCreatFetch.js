@@ -1,3 +1,4 @@
+import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postCreatFetch(dto) {
@@ -18,7 +19,7 @@ async function postCreatFetch(dto) {
     if (!response.ok) {
       throw new Error(data?.messgae);
     }
-
+    main();
     return data;
   } catch (error) {
     throw error;

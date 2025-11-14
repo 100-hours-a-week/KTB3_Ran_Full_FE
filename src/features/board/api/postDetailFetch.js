@@ -1,3 +1,4 @@
+import main from "../../../app/main.js";
 import BoardPostDetailPage from "../../../pages/board/detail/ui/BoardPostDetailPage.js";
 import { boardDetailProps } from "../../../pages/board/model/boardDto.js";
 import { commentDto } from "../../../pages/board/model/commentDto.js";
@@ -19,7 +20,6 @@ async function postDetail(postId) {
     if (!response.ok) {
       throw new Error(data?.messgae);
     }
-
     return { postData, commentsData };
   } catch (error) {
     throw error;

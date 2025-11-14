@@ -1,3 +1,4 @@
+import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postDeleteFetch(postId) {
@@ -12,6 +13,8 @@ async function postDeleteFetch(postId) {
     if (response.ok) {
       data = await response.json();
       console.log(data);
+      main();
+      location.hash = "/"; //home으로 돌아가기
       return data;
     } else {
       console.log("data 오류");

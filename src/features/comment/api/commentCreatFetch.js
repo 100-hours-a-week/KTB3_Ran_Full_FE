@@ -1,3 +1,4 @@
+import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function commentCreatFetch(props) {
@@ -15,6 +16,7 @@ async function commentCreatFetch(props) {
 
     if (response.ok) {
       console.log(data);
+      main();
       return data;
     } else {
       console.log("data가 없대요");
