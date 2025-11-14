@@ -1,3 +1,4 @@
+import main from "../../app/main.js";
 import postDeleteFetch from "../../features/board/api/postDeleteFetch.js";
 import commentDeleteFetch from "../../features/comment/api/commentDeleteFetch.js";
 import sessionUser from "../utils/session.js";

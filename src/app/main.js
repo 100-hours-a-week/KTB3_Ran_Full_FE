@@ -65,3 +65,5 @@ function main() {
 window.addEventListener("hashchange", main);
 
 window.addEventListener("load", main);
+
+export default main;
