@@ -1,3 +1,6 @@
+import { ContentType } from "../../../shared/lib/ContentType.js";
+import handleCommentDelete from "../../../shared/lib/handleCommentDelete.js";
+import handlePostDelete from "../../../shared/lib/handlePostDelete.js";
 import actionGroup from "../../actionGroup/ui/actionGroup.js";
 
 function commentCount(props) {
@@ -32,7 +35,12 @@ function commentCount(props) {
 
   `;
 
-  const actionBtnGroup = actionGroup();
+  const [, route, action, postId] = location.hash.split("/");
+  const actionBtnGroup = actionGroup({
+    type: ContentType.COMMENT,
+    onDelete: () => handleCommentDelete({ postId, props }),
+    onEdit: () => console.log("댓글 수정"),
+  });
 
   const postDetail = container.querySelector(".detail");
   postDetail.appendChild(actionBtnGroup);

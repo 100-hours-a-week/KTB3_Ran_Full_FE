@@ -1,3 +1,7 @@
+import { ContentType } from "../../../../shared/lib/ContentType.js";
+import handlePostDelete from "../../../../shared/lib/handlePostDelete.js";
+import handlePostEdit from "../../../../shared/lib/handlePostEdit.js";
+import { Props } from "../../../../shared/ui/Button/model/Props.js";
 import actionGroup from "../../../../widgets/actionGroup/ui/actionGroup.js";
 
 function postHeader(props) {
@@ -47,7 +51,16 @@ function postHeader(props) {
     
   `;
 
-  const actionBtnGroup = actionGroup();
+  const [, route, action, postId] = location.hash.split("/");
+  const type = {
+    type: ContentType.POST,
+    onDelete: () => handlePostDelete(postId),
+    onEdit: () => handlePostEdit(postId),
+  };
+
+  const btnType = Props(type);
+
+  const actionBtnGroup = actionGroup(btnType);
 
   const postDetail = headerTop.querySelector(".detail");
   postDetail.appendChild(actionBtnGroup);

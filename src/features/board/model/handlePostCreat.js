@@ -10,8 +10,7 @@ async function handlePostCreat() {
   const postCreatEl = postCreatDto(props);
 
   const postCreatData = await postCreatFetch(postCreatEl);
-
-  console.log(postCreatData);
+  location.hash = "/";
 
   return postCreatData;
 }

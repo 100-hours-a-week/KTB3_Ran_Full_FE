@@ -13,10 +13,13 @@ export const Endpoint = {
   POST: {
     POST: path("/posts"),
     GET: path("/posts"),
+    DELETE: (postId) => path(`/posts/${postId}`),
   },
   COMMENT: {
     POST: (postId) => path(`/posts/${postId}/comments`),
     GET: (postId) => path(`/posts/${postId}/comments`),
+    DELETE: ({ postId, commentId }) =>
+      path(`/posts/${postId}/comments/${commentId}`),
   },
   LIKE: {},
 };

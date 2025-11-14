@@ -97,6 +97,8 @@ export function pageCreatBtn() {
 export function confirmBtn() {
   return Button({
     text: "확인",
+    //onClick을 외부에서 바꿀수있도록하는게
+    //확인이 삭제일수도있고 수정일수도있는 것
     onClick: () => console.log("확인 버튼"),
   });
 }
@@ -114,20 +116,20 @@ export function quitBtn(modal) {
   });
 }
 
-///
+///수정 삭제에 따라 받아야하는 버튼 액션이 다름.
 
 ///ActionButton
-export function editBtn() {
+export function editBtn(action) {
   return ActionButton({
     text: "수정",
-    onClick: () => EditModal(),
+    onClick: () => EditModal(action),
     styleProps: {},
   });
 }
 
-export function delBtn() {
+export function delBtn(action) {
   return ActionButton({
     text: "삭제",
-    onClick: () => DeleteModal(),
+    onClick: () => DeleteModal(action),
   });
 }

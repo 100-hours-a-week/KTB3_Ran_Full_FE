@@ -1,5 +1,5 @@
 export const commendProps = (commend) => ({
-  commentId: commend.commentId,
+  commentId: commend.id,
   content: commend.content,
   //   authorId: commend.authorId,
   author: commend.author,

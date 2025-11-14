@@ -9,18 +9,17 @@ async function postCreatFetch(dto) {
       credentials: "include",
     });
 
+    let data = null;
+    try {
+      const data = await response.json();
+      data = data.data;
+    } catch (error) {}
+
     if (!response.ok) {
       throw new Error(data?.messgae);
     }
 
-    if (response.ok) {
-      const data = (await response.json()).data;
-      console.log(data);
-      setTimeout(() => {
-        location.hash = "/home";
-      }, 300);
-      return data;
-    }
+    return data;
   } catch (error) {
     throw error;
   }

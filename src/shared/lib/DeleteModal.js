@@ -1,11 +1,12 @@
 import Modal from "../ui/modal/Modal.js";
+import handlePostDelete from "./handlePostDelete.js";
 
-function DeleteModal() {
+function DeleteModal(action) {
   const modal = Modal({
-    title: "게시글을 삭제하시겠습니까?",
+    title: `${action.type}을 삭제하시겠습니까?`,
     subTitle: "삭제한 내용은 복구할 수 없습니다.",
+    onClick: action.onDelete,
   });
-  console.log("삭제 모달을 클릭하였습니다.");
   //body 자체에 appdend를 해야됨
   document.body.appendChild(modal);
   return modal;

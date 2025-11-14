@@ -1,6 +1,6 @@
 import { confirmBtn, quitBtn } from "../Button/ui/ButtonPresets.js";
 
-function Modal({ title = "제목", subTitle = "내용" } = {}) {
+function Modal({ title = "제목", subTitle = "내용", onClick = null } = {}) {
   const container = document.createElement("div");
   container.className = "modal-wrapper";
 
@@ -63,6 +63,9 @@ function Modal({ title = "제목", subTitle = "내용" } = {}) {
   //버튼 생성
   const confirmButton = confirmBtn();
   const containerWrapper = document.createElement("div");
+  containerWrapper.id = "modal";
+  onClick = onClick !== null ? onClick : () => console.log("클릭함");
+  confirmButton.addEventListener("click", onClick);
 
   //나가기 버튼
   const quitButton = quitBtn(containerWrapper);

@@ -68,6 +68,7 @@ function BoardPostDetailPage({ post, comments }) {
   comments.forEach((commendData) => {
     const props = commendProps(commendData);
     const card = commentCount(props);
+    console.log(props);
     boardPostDetailPage.appendChild(card);
   });
 
