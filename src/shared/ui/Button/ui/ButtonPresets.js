@@ -101,12 +101,9 @@ export function confirmBtn() {
 }
 
 //취소 버튼 : 어떤 모달인지 전송받아야됨
-export function quitBtn(modal) {
+export function quitBtn() {
   return Button({
     text: "취소",
-    onClick: () => {
-      modal.remove();
-    },
     styleProps: {
       background: "#000000ff",
     },

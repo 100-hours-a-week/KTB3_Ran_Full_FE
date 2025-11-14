@@ -72,7 +72,10 @@ function Modal({ title = "제목", subTitle = "내용", onClick = null } = {}) {
   });
 
   //나가기 버튼
-  const quitButton = quitBtn(containerWrapper);
+  const quitButton = quitBtn();
+  quitButton.addEventListener("click", () => {
+    containerWrapper.remove();
+  });
 
   const buttonGroup = container.querySelector(".buttonGroup");
 
