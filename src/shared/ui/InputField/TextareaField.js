@@ -22,6 +22,11 @@ class TextareaField extends HTMLElement {
     return this._value;
   }
 
+  set value(v) {
+    this._value = v;
+    this.render();
+  }
+
   //속성값 반환 setter
   set helperText(message) {
     this.setAttribute("helpertext", message);

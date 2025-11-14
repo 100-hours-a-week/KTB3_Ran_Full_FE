@@ -11,7 +11,6 @@ function BoardPostUpdatePage(props) {
   boardPostUpdatePage.style.display = "flex";
   boardPostUpdatePage.style.flexDirection = "column";
   boardPostUpdatePage.style.gap = "var(--gap-md)";
-  console.log("post props:", props);
   //title
   const pageTitle = Title({
     text: "게시물 수정",
@@ -37,6 +36,9 @@ function BoardPostUpdatePage(props) {
 
   const postTitle = boardPostUpdatePage.querySelector("#post-title");
   const postContent = boardPostUpdatePage.querySelector("#post-content");
+
+  postTitle.value = props?.title ?? "값을 불러오지 못했습니다.";
+  postContent.value = props?.content ?? "값을 불러오지 못했습니다.";
 
   //유효성 검사
   function __updateState() {
