@@ -97,9 +97,6 @@ export function pageCreatBtn() {
 export function confirmBtn() {
   return Button({
     text: "확인",
-    //onClick을 외부에서 바꿀수있도록하는게
-    //확인이 삭제일수도있고 수정일수도있는 것
-    onClick: () => console.log("확인 버튼"),
   });
 }
 
@@ -127,6 +124,7 @@ export function editBtn(action) {
   });
 }
 
+//삭제 -> 삭제 모달
 export function delBtn(action) {
   return ActionButton({
     text: "삭제",

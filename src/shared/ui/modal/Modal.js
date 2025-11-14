@@ -64,8 +64,12 @@ function Modal({ title = "제목", subTitle = "내용", onClick = null } = {}) {
   const confirmButton = confirmBtn();
   const containerWrapper = document.createElement("div");
   containerWrapper.id = "modal";
+
   onClick = onClick !== null ? onClick : () => console.log("클릭함");
-  confirmButton.addEventListener("click", onClick);
+  confirmButton.addEventListener("click", () => {
+    onClick();
+    containerWrapper.remove();
+  });
 
   //나가기 버튼
   const quitButton = quitBtn(containerWrapper);

@@ -7,8 +7,6 @@ function handleCommentDelete({ postId, props }) {
   //모달이 꺼져야됨.
   console.log(props);
   const commentId = props.commentId;
-  const modal = document.getElementById("modal");
-  modal.remove();
   return commentDeleteFetch({ postId, commentId });
 }
 
