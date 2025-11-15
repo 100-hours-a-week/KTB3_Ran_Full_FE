@@ -1,24 +1,36 @@
-function postCountGroup({ likeCount = "", viewCount = "", commentCount = "" }) {
+import handleLikeCreat from "../../../like/lib/handleLikeCreat.js";
+import handleLikeDelete from "../../../like/lib/handleLikeDelete.js";
+
+function postCountGroup(props) {
   const container = document.createElement("div");
   container.className = "post-count-group";
+  console.log("props :", props);
 
   container.innerHTML = /*HTML*/ `
-        <div class="count-content">
-            <div>${likeCount}</div>
+        <div class="count-content" id="likeCount">
+            <div>${props.likeCount}</div>
             <div>좋아요수</div>
         </div>
         <div class="count-content">
-            <div>${viewCount}</div>
+            <div>${props.viewCount}</div>
             <div>조회수</div>
         </div>
         <div class="count-content">
-            <div>${commentCount}</div>
+            <div>${props.commentCount}</div>
             <div>댓글</div>
         </div>
   `;
 
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
+
+    #likeCount:hover{
+        cursor:pointer;
+    }
+
+    #likeCount.enabled{
+        background:var(--color-primary);
+    }
   
     .post-count-group{
         padding : var(--padding-h3);
@@ -38,6 +50,24 @@ function postCountGroup({ likeCount = "", viewCount = "", commentCount = "" }) {
         
     }
   `;
+
+  const like = container.querySelector("#likeCount");
+
+  function __updateState() {
+    if (props.liked) {
+      like.classList.add("enabled");
+      like.addEventListener("click", () => handleLikeDelete(props.postId));
+      //이때 like를 누르면 좋아요 삭제
+    } else {
+      like.classList.remove("enabled");
+      like.addEventListener("click", () => handleLikeCreat(props.postId));
+
+      //이때 like를 누르면 좋아요 생성
+    }
+  }
+
+  //초기화
+  __updateState();
 
   const containerWrapper = document.createElement("div");
   containerWrapper.appendChild(style);

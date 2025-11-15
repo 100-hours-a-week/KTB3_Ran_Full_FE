@@ -9,15 +9,17 @@ async function postDetail(postId) {
     const response = await fetch(`${Endpoint.POST.GET}/${postId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     });
 
     let json = null;
     if (response.ok) {
       json = await response.json();
       const data = json.data;
-      console.log(data);
 
       const postData = boardDetailProps(data);
+      console.log(postData);
+
       const commentsData = data.comments.map(commentDto);
       return { postData, commentsData };
     } else {

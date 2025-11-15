@@ -9,4 +9,5 @@ export const boardDetailProps = (data) => ({
   likeCount: data.count.likeCount || 0,
   viewCount: data.count.viewCount || 0,
   commentCount: data.comments.length || 0,
+  liked: data.liked || false,
 });

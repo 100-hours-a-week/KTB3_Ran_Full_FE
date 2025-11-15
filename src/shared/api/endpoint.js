@@ -24,5 +24,8 @@ export const Endpoint = {
     UPDATE: ({ postId, commentId }) =>
       path(`/posts/${postId}/comments/${commentId}`),
   },
-  LIKE: {},
+  LIKE: {
+    POST: (postId) => path(`/posts/${postId}/likes`),
+    DELETE: (postId) => path(`/posts/${postId}/likes`),
+  },
 };

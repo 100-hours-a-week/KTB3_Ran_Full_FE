@@ -11,6 +11,7 @@ import { postContentProps } from "../model/postContentProps.js";
 import { postCountGroupProps } from "../model/postCountGroupProps.js";
 import handleCreatComment from "../lib/handleCreatComment.js";
 import { creatCommentDto } from "../../../../features/comment/model/creatCommentDto.js";
+import handleLikeCreat from "../../../like/lib/handleLikeCreat.js";
 
 function BoardPostDetailPage({ post, comments }) {
   //id에 해당하는 게시글 데이터 불러오기
@@ -20,7 +21,6 @@ function BoardPostDetailPage({ post, comments }) {
   ///props 변환
   //titleHeader
   const headerProps = postHeaderProps(post);
-  console.log("detailPage", post);
 
   //content:내용
   const contentProps = postContentProps({
@@ -29,15 +29,22 @@ function BoardPostDetailPage({ post, comments }) {
 
   //count
   const countGroupProps = postCountGroupProps({
-    likeCount: `${post.likeCount}`,
-    viewCount: `${post.viewCount}`,
-    commentCount: `${post.commentCount}`,
+    postId: post.id,
+    liked: post.liked,
+    likeCount: post.likeCount,
+    viewCount: post.viewCount,
+    commentCount: post.commentCount,
   });
 
   //컴포넌트 생성
   const header = postHeader(headerProps);
   const content = postContent(contentProps);
   const countGroup = postCountGroup(countGroupProps);
+
+  //좋아요 누르기
+  //아 이거 여기있으면 안될거같은데
+  const like = countGroup.querySelector("#likeCount");
+  like.addEventListener("click", () => handleLikeCreat(post.id));
 
   boardPostDetailPage.appendChild(header);
   boardPostDetailPage.appendChild(document.createElement("hr"));
