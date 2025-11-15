@@ -1,6 +1,6 @@
 import { ContentType } from "../../../../shared/lib/ContentType.js";
 import handlePostDelete from "../../../../shared/lib/handlePostDelete.js";
-import handlePostEdit from "../../../../shared/lib/handlePostEdit.js";
+import handlePostEdit from "../../../../shared/lib/handlePostNavEdit.js";
 import { Props } from "../../../../shared/ui/Button/model/Props.js";
 import actionGroup from "../../../../widgets/actionGroup/ui/actionGroup.js";
 
@@ -51,7 +51,6 @@ function postHeader(props) {
     
   `;
 
-  console.log(props);
   const type = {
     type: ContentType.POST,
     onDelete: () => handlePostDelete(props.postId),

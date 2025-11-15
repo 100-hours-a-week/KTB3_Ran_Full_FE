@@ -1,9 +1,13 @@
 import Title from "../../../../shared/ui/Title/Title.js";
-import { pageCreatBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
+import {
+  pageCreatBtn,
+  pageUpdateBtn,
+} from "../../../../shared/ui/Button/ui/ButtonPresets.js";
 import "../../../../shared/ui/InputField/TextInputField.js";
 import "../../../../shared/ui/InputField/TextareaField.js";
 import validatePostTitle from "../../../../features/board/lib/validatePostTitle.js";
 import validatePostContent from "../../../../features/board/lib/validatePostContent.js";
+import { postCreatDto } from "../../../../features/board/model/postCreatDto.js";
 
 function BoardPostUpdatePage(props) {
   const boardPostUpdatePage = document.createElement("div");
@@ -27,18 +31,26 @@ function BoardPostUpdatePage(props) {
           <textarea-field id="post-content" label = "내용" type="content" placeholder="내용을 입력해주세요."></textarea-field>
   `;
 
-  const createBtn = pageCreatBtn();
-  const button = createBtn.querySelector("button");
-
   boardPostUpdatePage.appendChild(pageTitle);
   boardPostUpdatePage.appendChild(inputField);
-  boardPostUpdatePage.appendChild(createBtn);
 
   const postTitle = boardPostUpdatePage.querySelector("#post-title");
   const postContent = boardPostUpdatePage.querySelector("#post-content");
 
   postTitle.value = props?.title ?? "값을 불러오지 못했습니다.";
   postContent.value = props?.content ?? "값을 불러오지 못했습니다.";
+
+  const updateBtn = pageUpdateBtn({
+    getDto: () =>
+      //getDto 생성 시점
+      postCreatDto({
+        title: postTitle.value,
+        content: postContent.value,
+      }),
+    postId: props.postId,
+  });
+  boardPostUpdatePage.appendChild(updateBtn);
+  const button = updateBtn.querySelector("button");
 
   //유효성 검사
   function __updateState() {

@@ -4,7 +4,8 @@ import BoardPostUpdatePage from "../../pages/board/update/ui/BoardPostUpdatePage
 
 function handlePostEdit(props) {
   const Page = routerPage["/post/update"];
-  Page();
+  Page(props);
+  console.log(props);
   const app = document.querySelector(".container");
   app.innerHTML = "";
   app.appendChild(Page(props));

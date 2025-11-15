@@ -4,7 +4,7 @@ import "../widgets/header/ui/Header.js";
 import session from "../shared/utils/session.js";
 import BoardPostDetailPage from "../pages/board/detail/ui/BoardPostDetailPage.js";
 import handlePostDetail from "../features/board/model/handlePostDetail.js";
-import handlePostEdit from "../shared/lib/handlePostEdit.js";
+import handlePostEdit from "../shared/lib/handlePostNavEdit.js";
 
 function main() {
   const app = document.getElementById("app");

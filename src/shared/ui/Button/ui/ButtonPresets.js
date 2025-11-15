@@ -8,6 +8,8 @@ import EditModal from "../../../lib/EditModal.js";
 import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
 import handleUserUpdate from "../../../../pages/info/lib/handleUserUpdate.js";
 import handleCreatComment from "../../../../pages/board/detail/lib/handleCreatComment.js";
+import handlePostEdit from "../../../lib/handlePostUpdate.js";
+import handlePostUpdate from "../../../lib/handlePostUpdate.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -82,6 +84,22 @@ export function pageCreatBtn() {
   return Button({
     text: "완료",
     onClick: handlePostCreat,
+    styleProps: {
+      radius: 6,
+      margin: "12px 0",
+      width: 70,
+      justifyContent: "center",
+    },
+  });
+}
+
+//페이지 수정하기 버튼
+export function pageUpdateBtn({ getDto, postId }) {
+  return Button({
+    text: "수정하기",
+    onClick: () => {
+      handlePostUpdate({ dto: getDto(), postId });
+    },
     styleProps: {
       radius: 6,
       margin: "12px 0",
