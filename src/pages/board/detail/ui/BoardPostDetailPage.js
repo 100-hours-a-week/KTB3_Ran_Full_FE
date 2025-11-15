@@ -20,6 +20,7 @@ function BoardPostDetailPage({ post, comments }) {
   ///props 변환
   //titleHeader
   const headerProps = postHeaderProps(post);
+  console.log("detailPage", post);
 
   //content:내용
   const contentProps = postContentProps({

@@ -2,6 +2,6 @@ export const postHeaderProps = (props) => ({
   postId: props.id,
   title: props.title,
   author: props.author,
-  date: props.date,
+  date: props.createdAt,
   content: props.content,
 });
