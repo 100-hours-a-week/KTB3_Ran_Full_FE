@@ -11,16 +11,18 @@ async function postDetail(postId) {
       headers: { "Content-Type": "application/json" },
     });
 
-    const data = (await response.json()).data;
-    console.log(data);
+    let json = null;
+    if (response.ok) {
+      json = await response.json();
+      const data = json.data;
+      console.log(data);
 
-    const postData = boardDetailProps(data);
-    const commentsData = data.comments.map(commentDto);
-
-    if (!response.ok) {
+      const postData = boardDetailProps(data);
+      const commentsData = data.comments.map(commentDto);
+      return { postData, commentsData };
+    } else {
       throw new Error(data?.messgae);
     }
-    return { postData, commentsData };
   } catch (error) {
     throw error;
   }
