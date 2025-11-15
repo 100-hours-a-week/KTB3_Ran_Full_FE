@@ -1,4 +1,7 @@
-import { updateBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
+import {
+  updateBtn,
+  updatePasswordBtn,
+} from "../../../shared/ui/Button/ui/ButtonPresets.js";
 import Title from "../../../shared/ui/Title/Title.js";
 import inputFieldUser from "../../../widgets/inputField/ui/inputFieldUser.js";
 import DeleteUserButton from "../../../widgets/profile/ui/DeleteUserButton.js";
@@ -7,6 +10,7 @@ import validateEmail from "../../../features/auth/lib/validateEmail.js";
 import validatePassword from "../../../features/auth/lib/validatePassword.js";
 import { passwordConfirmProps } from "../../auth/model/props.js";
 import validateConfirmPassword from "../../../features/auth/lib/confirmPassword.js";
+import { userPasswordDto } from "../../../features/user/model/userPasswordDto.js";
 
 function PasswordModifyPage() {
   const container = document.createElement("div");
@@ -28,20 +32,19 @@ function PasswordModifyPage() {
         <input-field id="password" type="password" placeholder="비밀번호를 입력하세요">비밀번호</input-field>
         <input-field id="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력하세요">비밀번호 확인</input-field>
     `;
-
-  const deleteUserNavButton = DeleteUserButton();
-  const button = updateBtn();
-
   container.appendChild(inputField);
-
-  //수정하기 버튼
-  container.appendChild(button);
-
-  const modifyButton = button.querySelector("button");
+  const deleteUserNavButton = DeleteUserButton();
 
   //포커싱 blur 이벤트 사용
   const passwordField = container.querySelector("#password");
   const passwordConfirmField = container.querySelector("#passwordConfirm");
+
+  //수정하기 버튼
+  const button = updatePasswordBtn({
+    getDto: () => userPasswordDto({ password: passwordField.value }),
+  });
+  const modifyButton = button.querySelector("button");
+  container.appendChild(button);
 
   function __updateState() {
     const password = passwordField.value;

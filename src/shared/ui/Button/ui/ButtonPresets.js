@@ -11,6 +11,7 @@ import handleCreatComment from "../../../../pages/board/detail/lib/handleCreatCo
 import handlePostEdit from "../../../lib/handlePostUpdate.js";
 import handlePostUpdate from "../../../lib/handlePostUpdate.js";
 import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
+import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPasswordUpdate.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -79,6 +80,21 @@ export function updateBtn({ getDto }) {
     text: "수정하기",
     onClick: () => {
       handleUserUpdate({ dto: getDto() });
+    },
+    styleProps: {
+      radius: 6,
+      padding: "7px 10px",
+      width: "100",
+    },
+  });
+}
+
+//유저비밀번호 수정하기 버튼
+export function updatePasswordBtn({ getDto }) {
+  return Button({
+    text: "수정하기",
+    onClick: () => {
+      handleUserPasswordUpdate({ dto: getDto() });
     },
     styleProps: {
       radius: 6,

@@ -3,10 +3,10 @@ import { Endpoint } from "../../../shared/api/endpoint.js";
 import sessionUser from "../../../shared/utils/session.js";
 import { userInfoDto } from "../model/userInfoDto.js";
 
-async function userUpdateFetch({ dto }) {
+async function userPasswordUpdateFetch({ dto }) {
   console.log(dto);
   try {
-    const response = await fetch(Endpoint.USER.INFO, {
+    const response = await fetch(Endpoint.USER.PASSWORD, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dto),
@@ -30,4 +30,4 @@ async function userUpdateFetch({ dto }) {
   }
 }
 
-export default userUpdateFetch;
+export default userPasswordUpdateFetch;
