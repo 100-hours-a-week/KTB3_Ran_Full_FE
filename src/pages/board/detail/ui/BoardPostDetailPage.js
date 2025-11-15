@@ -41,11 +41,6 @@ function BoardPostDetailPage({ post, comments }) {
   const content = postContent(contentProps);
   const countGroup = postCountGroup(countGroupProps);
 
-  //좋아요 누르기
-  // //아 이거 여기있으면 안될거같은데
-  // const like = countGroup.querySelector("#likeCount");
-  // like.addEventListener("click", () => handleLikeCreat(post.id));
-
   boardPostDetailPage.appendChild(header);
   boardPostDetailPage.appendChild(document.createElement("hr"));
   boardPostDetailPage.appendChild(content);
