@@ -45,12 +45,8 @@ function BoardPostDetailPage({ post, comments }) {
   boardPostDetailPage.appendChild(document.createElement("hr"));
 
   //댓글 작성 컴포넌트
-  const contentCreatCard = commentCreatCard();
-  contentCreatCard.addEventListener("commentSubmit", (e) => {
-    const content = e.detail.value;
-    console.log(content);
-    handleCreatComment(content);
-  });
+  //수정하기 버튼을 클릭 시 해당 카드의 값
+  const contentCreatCard = commentCreatCard(post);
 
   boardPostDetailPage.appendChild(contentCreatCard);
 

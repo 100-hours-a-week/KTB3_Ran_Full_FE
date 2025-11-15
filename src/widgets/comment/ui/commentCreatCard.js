@@ -1,6 +1,11 @@
-import { commentCreatBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
+import { creatCommentDto } from "../../../features/comment/model/creatCommentDto.js";
+import handleCreatComment from "../../../pages/board/detail/lib/handleCreatComment.js";
+import {
+  commentCreatBtn,
+  commentUpdateBtn,
+} from "../../../shared/ui/Button/ui/ButtonPresets.js";
 
-function commentCreatCard() {
+function commentCreatCard(post) {
   const container = document.createElement("div");
   container.className = "comment-creat-card";
 
@@ -38,12 +43,31 @@ function commentCreatCard() {
   //생성 버튼
   const text = container.querySelector("textarea");
   const containerWrapper = document.createElement("div");
-  const button = commentCreatBtn({ text, containerWrapper });
+  const textValue = text.value;
+
+  console.log("commentCared :", post);
+  const creatbutton = commentCreatBtn({
+    getDto: () =>
+      //getDto 생성 시점
+      creatCommentDto({
+        content: text.value,
+      }),
+    postId: post.id,
+  });
 
   const buttonWrapper = document.createElement("div");
   buttonWrapper.className = "buttonWrapper";
-  buttonWrapper.appendChild(button);
+
+  buttonWrapper.appendChild(creatbutton);
+  buttonWrapper.dataset.mode = "create";
+
+  //mode = create / mode = edit
   container.appendChild(buttonWrapper);
+
+  // Object.defineProperty(containerWrapper, "value", {
+  //   get: () => text.value,
+  //   set: (v) => (text.value = v),
+  // });
 
   containerWrapper.appendChild(style);
   containerWrapper.appendChild(container);

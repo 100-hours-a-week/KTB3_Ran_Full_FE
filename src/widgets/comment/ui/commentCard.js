@@ -1,8 +1,10 @@
 import { ContentType } from "../../../shared/lib/ContentType.js";
 import handleCommentDelete from "../../../shared/lib/handleCommentDelete.js";
+import handleCommentNav from "../../../shared/lib/handleCommentNav.js";
 import handlePostDelete from "../../../shared/lib/handlePostDelete.js";
 import actionGroup from "../../actionGroup/ui/actionGroup.js";
 
+//commentId
 function commentCount(props) {
   const container = document.createElement("div");
   container.className = "comment-card";
@@ -39,7 +41,7 @@ function commentCount(props) {
   const actionBtnGroup = actionGroup({
     type: ContentType.COMMENT,
     onDelete: () => handleCommentDelete({ postId, props }),
-    onEdit: () => console.log("댓글 수정"),
+    onEdit: () => handleCommentNav({ postId, props }),
   });
 
   const postDetail = container.querySelector(".detail");

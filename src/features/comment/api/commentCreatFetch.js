@@ -1,13 +1,12 @@
 import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
-async function commentCreatFetch(props) {
-  const [, route, action, postId] = location.hash.replace("#", "").split("/");
+async function commentCreatFetch({ dto, postId }) {
   try {
     const response = await fetch(Endpoint.COMMENT.POST(postId), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(props),
+      body: JSON.stringify(dto),
       credentials: "include",
       cache: "no-store",
     });
