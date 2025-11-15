@@ -1,3 +1,4 @@
+import likeCreateDeleteTogle from "../../../../features/like/model/likeCreateDeleteTogle.js";
 import handleLikeCreat from "../../../like/lib/handleLikeCreat.js";
 import handleLikeDelete from "../../../like/lib/handleLikeDelete.js";
 
@@ -54,18 +55,8 @@ function postCountGroup(props) {
   const like = container.querySelector("#likeCount");
 
   function __updateState() {
-    if (props.liked) {
-      like.classList.add("enabled");
-      like.addEventListener("click", () => handleLikeDelete(props.postId));
-      //이때 like를 누르면 좋아요 삭제
-    } else {
-      like.classList.remove("enabled");
-      like.addEventListener("click", () => handleLikeCreat(props.postId));
-
-      //이때 like를 누르면 좋아요 생성
-    }
+    likeCreateDeleteTogle({ container: like, props });
   }
-
   //초기화
   __updateState();
 
