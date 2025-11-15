@@ -21,7 +21,7 @@ async function login({ email, password }) {
 
     //에러 경고 응답
     if (!response.ok) {
-      throw new Error(data?.message);
+      throw new Error("아이디 또는 비밀번호가 일치하지 않습니다.");
     }
 
     return data;

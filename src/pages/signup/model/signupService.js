@@ -8,14 +8,17 @@ async function SignupService({
   passwordConfirmField,
   usernameField,
 }) {
-  const signupProps = { ...signupDto };
-  signupProps.email = emailField.value;
-  signupProps.password = passwordField.value;
-  signupProps.confirmPassword = passwordConfirmField.value;
-  signupProps.username = usernameField.value;
+  const data = {
+    email: emailField.value,
+    password: passwordField.value,
+    confirmPassword: passwordConfirmField.value,
+    username: usernameField.value,
+  };
+
+  const dto = signupDto(data);
 
   try {
-    const signupAPI = await signup(signupProps);
+    const signupAPI = await signup(dto);
     console.log("signupAPI", signupAPI);
   } catch (error) {
     //중복된 이메일일 경우
