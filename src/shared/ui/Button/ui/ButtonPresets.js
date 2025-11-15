@@ -73,11 +73,13 @@ export function commentUpdateBtn({ getDto, postId, commentId }) {
   });
 }
 
-//수정하기 버튼
-export function updateBtn() {
+//유저정보 수정하기 버튼
+export function updateBtn({ getDto }) {
   return Button({
     text: "수정하기",
-    onClick: handleUserUpdate,
+    onClick: () => {
+      handleUserUpdate({ dto: getDto() });
+    },
     styleProps: {
       radius: 6,
       padding: "7px 10px",

@@ -1,9 +1,8 @@
 import userUpdateFetch from "../../../features/user/api/userUpdateFetch.js";
+import { userInfoDto } from "../../../features/user/model/userInfoDto.js";
 
-function handleUserUpdate() {
-  console.log("수정하기 버튼 클릭용");
-
-  return userUpdateFetch(props);
+function handleUserUpdate({ dto }) {
+  return userUpdateFetch({ dto });
 }
 
 export default handleUserUpdate;

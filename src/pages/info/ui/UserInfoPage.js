@@ -1,4 +1,5 @@
 import validateUsername from "../../../features/auth/lib/validateUsername.js";
+import { userInfoDto } from "../../../features/user/model/userInfoDto.js";
 import { updateBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 import Title from "../../../shared/ui/Title/Title.js";
 import inputFieldUser from "../../../widgets/inputField/ui/inputFieldUser.js";
@@ -15,7 +16,6 @@ function UserInfoPage(user) {
     },
   });
 
-  console.log(user);
   const userEmail = user?.email ?? "로그인 정보를 불러올 수 없습니다.";
   const userName = user?.username ?? "";
 
@@ -34,8 +34,9 @@ function UserInfoPage(user) {
   inputFieldUsername.value = userName;
 
   const deleteUserBtn = DeleteUserButton();
-
-  const button = updateBtn();
+  const button = updateBtn({
+    getDto: () => userInfoDto({ username: inputFieldUsername.value }),
+  });
   const modifyButton = button.querySelector("button");
 
   container.appendChild(pageTitle);
@@ -80,6 +81,7 @@ function UserInfoPage(user) {
   function __updateState() {
     const username = usernameField.value;
 
+    //이것도 모듈화 시킬수있을 것같은데
     if (!validateUsername(username)) {
       modifyButton.disabled = false;
       modifyButton.classList.remove("disabled");

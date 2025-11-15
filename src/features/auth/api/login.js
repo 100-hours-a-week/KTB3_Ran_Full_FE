@@ -11,9 +11,12 @@ async function login({ email, password }) {
       cache: "no-store",
     });
 
+    const json = await response.json();
+    console.log(json);
+
     //세션에 유저 저장
     if (response.ok) {
-      const data = (await response.json()).data;
+      const data = json.data;
       console.log("data :", data);
       sessionUser.setUser(data);
       location.hash = "/home"; //페이지 이동

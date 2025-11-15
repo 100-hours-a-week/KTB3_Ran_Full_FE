@@ -5,6 +5,7 @@ export default function DeleteUserButton() {
 
   button.addEventListener("click", () => {
     console.log("회원탈퇴 클릭됨");
+    location.hash = "/login";
   });
 
   return button;

@@ -8,8 +8,8 @@ export const Endpoint = {
   USER: {
     LOGIN: path("/users/login"),
     SIGNUP: path("/users/signup"),
-    INFO: (userId) => path(`/users/${userId}`),
-    PASSWORD: (userId) => path(`/users/${userId}/password`),
+    INFO: path("/users/userInfo"),
+    PASSWORD: path("/users/userPassword"),
   },
   POST: {
     POST: path("/posts"),
