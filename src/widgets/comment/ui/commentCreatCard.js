@@ -43,9 +43,8 @@ function commentCreatCard(post) {
   //생성 버튼
   const text = container.querySelector("textarea");
   const containerWrapper = document.createElement("div");
-  const textValue = text.value;
 
-  console.log("commentCared :", post);
+  //댓글 생성 버튼
   const creatbutton = commentCreatBtn({
     getDto: () =>
       //getDto 생성 시점
@@ -54,6 +53,27 @@ function commentCreatCard(post) {
       }),
     postId: post.id,
   });
+  const button = creatbutton.querySelector("button");
+
+  let value = text.value;
+
+  function __updateState() {
+    if (value.length == 0) {
+      button.disabled = true;
+      button.classList.add("disabled");
+    } else {
+      button.disabled = false;
+      button.classList.remove("disabled");
+    }
+  }
+  //userEffect
+  text.addEventListener("input", (e) => {
+    value = e.target.value;
+    __updateState();
+  });
+
+  //화면 초기화
+  __updateState();
 
   const buttonWrapper = document.createElement("div");
   buttonWrapper.className = "buttonWrapper";
@@ -63,11 +83,6 @@ function commentCreatCard(post) {
 
   //mode = create / mode = edit
   container.appendChild(buttonWrapper);
-
-  // Object.defineProperty(containerWrapper, "value", {
-  //   get: () => text.value,
-  //   set: (v) => (text.value = v),
-  // });
 
   containerWrapper.appendChild(style);
   containerWrapper.appendChild(container);
