@@ -3,6 +3,8 @@ import {
   userInfoNaviHandler,
 } from "../../../features/navigation/handlerProfileNavi.js";
 import MenuButton from "../../../shared/ui/Button/ui/MenuButton.js";
+import sessionUser from "../../../shared/utils/session.js";
+import logout from "../model/logout.js";
 
 function ProfileMenuModal() {
   const container = document.createElement("div");
@@ -41,7 +43,7 @@ function ProfileMenuModal() {
   });
   const logoutNaviPage = MenuButton({
     text: "로그아웃",
-    onClick: () => console.log("로그아웃 클릭됨"),
+    onClick: () => logout(),
   });
 
   container.appendChild(userInfoNaviBtn);
