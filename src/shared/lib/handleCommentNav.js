@@ -9,15 +9,36 @@ function handleCommentNav({ postId, props }) {
   const commentCaredTextArea = commentCard.querySelector("textarea");
   commentCaredTextArea.value = props.content;
 
-  const button = commentCard.querySelector(".buttonWrapper");
-  button.innerHTML = ""; //초기화
+  const buttonWrapper = commentCard.querySelector(".buttonWrapper");
+  buttonWrapper.innerHTML = ""; //초기화
+
   const updatebutton = commentUpdateBtn({
     getDto: () => creatCommentDto({ content: commentCaredTextArea.value }),
     postId,
     commentId: props.commentId,
   });
-  button.appendChild(updatebutton);
-  button.dataset.mode = "edit";
+  buttonWrapper.appendChild(updatebutton);
+
+  const button = buttonWrapper.querySelector("button");
+
+  let value = commentCaredTextArea.value;
+
+  function __updateState() {
+    if (value.length == 0) {
+      button.disabled = true;
+      button.classList.add("disabled");
+    } else {
+      button.disabled = false;
+      button.classList.remove("disabled");
+    }
+  }
+
+  commentCaredTextArea.addEventListener("input", (e) => {
+    value = e.target.value;
+    __updateState();
+  });
+
+  buttonWrapper.dataset.mode = "edit";
 }
 
 export default handleCommentNav;

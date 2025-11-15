@@ -4,6 +4,11 @@ import { creatCommentDto } from "../../../../features/comment/model/creatComment
 function handleCreatComment({ dto, postId }) {
   //댓글 작성 버튼을 누르면 -> 버튼의 input 값을 props에 넣음 -> dto로 동봉하여 보냄
   //필요한 props : postId
+  console.log(dto.content);
+  if (dto.content === 0) {
+    alert("댓글을 입력해주세요.");
+    return;
+  }
   return commentCreatFetch({ dto, postId });
 }
 

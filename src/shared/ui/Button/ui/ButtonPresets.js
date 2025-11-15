@@ -64,7 +64,7 @@ export function commentUpdateBtn({ getDto, postId, commentId }) {
   return Button({
     text: "댓글 수정",
     onClick: () => {
-      commentUpdateFetch({ dto: getDto(), postId, commentId });
+      commentUpdateFetch({ dto: getDto(), postId, commentId }); //handle추후에 필요.
     },
     styleProps: {
       radius: 16,
