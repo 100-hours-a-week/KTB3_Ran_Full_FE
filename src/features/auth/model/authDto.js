@@ -3,9 +3,9 @@ export const loginDto = {
   password: "",
 };
 
-export const signupDto = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-  username: "",
-};
+export const signupDto = (data) => ({
+  email: data.email,
+  password: data.password,
+  confirmPassword: data.confirmPassword,
+  username: data.username,
+});
