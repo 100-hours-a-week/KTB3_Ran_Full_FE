@@ -3,10 +3,7 @@ import {
   updatePasswordBtn,
 } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 import Title from "../../../shared/ui/Title/Title.js";
-import inputFieldUser from "../../../widgets/inputField/ui/inputFieldUser.js";
-import DeleteUserButton from "../../../widgets/profile/ui/DeleteUserButton.js";
 import "../../../shared/ui/InputField/InputField.js";
-import validateEmail from "../../../features/auth/lib/validateEmail.js";
 import validatePassword from "../../../features/auth/lib/validatePassword.js";
 import { passwordConfirmProps } from "../../auth/model/props.js";
 import validateConfirmPassword from "../../../features/auth/lib/confirmPassword.js";
@@ -33,8 +30,6 @@ function PasswordModifyPage() {
         <input-field id="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력하세요">비밀번호 확인</input-field>
     `;
   container.appendChild(inputField);
-  const deleteUserNavButton = DeleteUserButton();
-
   //포커싱 blur 이벤트 사용
   const passwordField = container.querySelector("#password");
   const passwordConfirmField = container.querySelector("#passwordConfirm");
