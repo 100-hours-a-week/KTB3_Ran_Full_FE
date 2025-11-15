@@ -21,6 +21,8 @@ export const Endpoint = {
     GET: (postId) => path(`/posts/${postId}/comments`),
     DELETE: ({ postId, commentId }) =>
       path(`/posts/${postId}/comments/${commentId}`),
+    UPDATE: ({ postId, commentId }) =>
+      path(`/posts/${postId}/comments/${commentId}`),
   },
   LIKE: {},
 };

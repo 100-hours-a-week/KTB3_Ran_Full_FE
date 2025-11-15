@@ -1,0 +1,33 @@
+import main from "../../../app/main.js";
+import { Endpoint } from "../../../shared/api/endpoint.js";
+
+async function commentUpdateFetch({ dto, postId, commentId }) {
+  console.log(dto);
+  try {
+    const response = await fetch(
+      Endpoint.COMMENT.UPDATE({ postId, commentId }),
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dto),
+        credentials: "include",
+        cache: "no-store",
+      }
+    );
+
+    const data = (await response.json()).data;
+
+    if (response.ok) {
+      console.log(data);
+      main();
+      return data;
+    } else {
+      console.log("data가 없대요");
+      throw error;
+    }
+  } catch (error) {
+    console.log("백엔드 오류");
+  }
+}
+
+export default commentUpdateFetch;

@@ -10,6 +10,7 @@ import handleUserUpdate from "../../../../pages/info/lib/handleUserUpdate.js";
 import handleCreatComment from "../../../../pages/board/detail/lib/handleCreatComment.js";
 import handlePostEdit from "../../../lib/handlePostUpdate.js";
 import handlePostUpdate from "../../../lib/handlePostUpdate.js";
+import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -45,19 +46,25 @@ export function postCreateBtn() {
 }
 
 //댓글 생성 버튼
-export function commentCreatBtn({ text, containerWrapper }) {
+export function commentCreatBtn({ getDto, postId }) {
   return Button({
     text: "댓글 등록",
     onClick: () => {
-      const value = text.value.trim();
-      containerWrapper.dispatchEvent(
-        new CustomEvent("commentSubmit", {
-          detail: { value },
-          bubbles: true,
-        })
-      );
+      handleCreatComment({ dto: getDto(), postId });
+    },
+    styleProps: {
+      radius: 16,
+      padding: "7px 10px",
+    },
+  });
+}
 
-      text.value = ""; //초기화
+//댓글 수정 버튼
+export function commentUpdateBtn({ getDto, postId, commentId }) {
+  return Button({
+    text: "댓글 수정",
+    onClick: () => {
+      commentUpdateFetch({ dto: getDto(), postId, commentId });
     },
     styleProps: {
       radius: 16,
