@@ -10,15 +10,15 @@ async function likeDeleteFetch(postId) {
       cache: "no-store",
     });
 
-    let json = null;
+    const json = await response.json();
     main();
-
+    console.log(json);
     if (response.ok) {
-      json = await response.json();
       const data = json.data ?? null;
+      console.log(data);
       return data;
     } else {
-      console.log("data가 없대요");
+      console.log("data가 없으세요.", data);
       throw error;
     }
   } catch (error) {

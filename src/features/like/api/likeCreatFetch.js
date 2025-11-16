@@ -10,22 +10,18 @@ async function likeCreatFetch(postId) {
       cache: "no-store",
     });
 
-    let json = null;
-    //좋아요가 되든 안되든 새로고침은 항상
+    const json = await response.json();
     main();
-
+    console.log(json);
     if (response.ok) {
-      json = await response.json();
-      console.log(data);
       const data = json.data ?? null;
+      console.log(data);
       return data;
     } else {
-      console.log("data가 없대요");
+      console.log("data가 없으세요.", data);
       throw error;
     }
-  } catch (error) {
-    console.log("백엔드 오류");
-  }
+  } catch (error) {}
 }
 
 export default likeCreatFetch;
