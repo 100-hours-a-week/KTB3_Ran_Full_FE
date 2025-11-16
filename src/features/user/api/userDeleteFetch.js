@@ -17,6 +17,7 @@ async function userDeleteFetch() {
       console.log(data);
       sessionUser.logout();
       main();
+      location.hash("/");
       return data;
     } else {
       console.log("data가 없으세요.", data);
