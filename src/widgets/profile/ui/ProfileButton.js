@@ -34,5 +34,13 @@ export default function ProfileButton() {
   wrapper.appendChild(modal);
   wrapper.appendChild(style);
 
+  wrapper.update = (mode) => {
+    if (!sessionUser.getUser()) {
+      profile.style.visibility = "hidden";
+    } else {
+      profile.style.visibility = "visible";
+    }
+  };
+
   return wrapper;
 }

@@ -25,6 +25,8 @@ function main() {
     header.dataset.mode = "Home";
   } else if (path == "/user/info" || path == "/user/password-modify") {
     header.dataset.mode = "Info";
+  } else if (path == "/signup") {
+    header.dataset.mode = "Signup";
   }
   app.appendChild(header);
 

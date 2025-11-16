@@ -17,21 +17,21 @@ export default function BackButton() {
     window.history.back();
   });
 
-  function __updateState() {
-    if (!sessionUser.getUser()) backButton.style.visibility = "hidden";
-  }
-  __updateState();
-
-  window.addEventListener("hashchange", __updateState);
-
   const wrapper = document.createElement("div");
   wrapper.className = "wrapper";
   wrapper.appendChild(backButton);
   wrapper.appendChild(style);
 
   wrapper.update = (mode) => {
-    backButton.style.visibility =
-      mode === "Home" || mode === "Info" ? "hidden" : "visible";
+    if (mode === "Signup") {
+      backButton.style.visibility = "visible";
+    } else if (!sessionUser.getUser()) {
+      backButton.style.visibility = "hidden";
+    } else if (mode === "Home" || mode === "Info") {
+      backButton.style.visibility = "hidden";
+    } else {
+      backButton.style.visibility = "visible";
+    }
   };
 
   return wrapper; //반환하는 건 wrapper = 이 자체가 외부에선 backbutton

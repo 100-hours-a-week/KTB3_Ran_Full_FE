@@ -91,6 +91,9 @@ class Header extends HTMLElement {
     if (this.backButton && this.backButton.update) {
       this.backButton.update(mode);
     }
+    if (this.profileButton && this.profileButton.update) {
+      this.profileButton.update(mode);
+    }
   }
 }
 
