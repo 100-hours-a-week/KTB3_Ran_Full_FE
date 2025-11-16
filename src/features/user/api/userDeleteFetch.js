@@ -17,7 +17,7 @@ async function userDeleteFetch() {
       console.log(data);
       sessionUser.logout();
       main();
-      location.hash("/");
+      location.hash("/"); //추후 라우터파일에서 관리하는 것으로 개선 필요
       return data;
     } else {
       console.log("data가 없으세요.", data);
