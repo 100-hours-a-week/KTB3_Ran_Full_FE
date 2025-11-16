@@ -10,17 +10,16 @@ async function postCreatFetch(dto) {
       credentials: "include",
     });
 
-    let data = null;
-    try {
-      const data = await response.json();
-      data = data.data;
-    } catch (error) {}
-
-    if (!response.ok) {
-      throw new Error(data?.messgae);
+    const json = await response.json();
+    console.log(json);
+    if (response.ok) {
+      const data = json.data;
+      console.log(data);
+      return data;
+    } else {
+      console.log("data가 없으세요.", data);
+      throw error;
     }
-    main();
-    return data;
   } catch (error) {
     throw error;
   }

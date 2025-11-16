@@ -12,18 +12,19 @@ async function postDetail(postId) {
       credentials: "include",
     });
 
-    let json = null;
+    const json = await response.json();
+    console.log(json);
     if (response.ok) {
-      json = await response.json();
       const data = json.data;
 
       const postData = boardDetailProps(data);
       console.log(postData);
-
       const commentsData = data.comments.map(commentDto);
       return { postData, commentsData };
     } else {
-      throw new Error(data?.messgae);
+      location.hash = "/";
+      console.log("data가 없으세요.", data);
+      throw error;
     }
   } catch (error) {
     throw error;

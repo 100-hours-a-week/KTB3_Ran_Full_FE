@@ -1,3 +1,4 @@
+import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function post() {
@@ -7,16 +8,16 @@ async function post() {
       headers: { "Content-Type": "application/json" },
     });
 
-    const data = (await response.json()).data;
-    console.log("postData:", data);
-
-    if (!response.ok) {
-      throw new Error(data?.messgae);
-    }
-
+    const json = await response.json();
+    console.log(json);
     if (response.ok) {
+      const data = json.data;
+      console.log(data);
+      return data;
+    } else {
+      console.log("data가 없으세요.", data);
+      throw error;
     }
-    return data;
   } catch (error) {
     throw error;
   }

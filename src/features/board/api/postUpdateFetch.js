@@ -11,17 +11,19 @@ async function postUpdateFetch({ dto, postId }) {
       credentials: "include",
     });
 
-    let data = null;
+    const json = await response.json();
+    console.log(json);
     if (response.ok) {
-      data = await response.json();
-      console.log(data);
+      const data = json.data;
       main();
+      console.log(data);
       return data;
     } else {
-      console.log("data 오류");
+      console.log("data가 없으세요.", data);
+      throw error;
     }
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }
 

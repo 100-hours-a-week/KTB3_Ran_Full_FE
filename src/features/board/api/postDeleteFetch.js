@@ -1,5 +1,6 @@
 import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
+import sessionUser from "../../../shared/utils/session.js";
 
 async function postDeleteFetch(postId) {
   try {
@@ -9,15 +10,16 @@ async function postDeleteFetch(postId) {
       credentials: "include",
     });
 
-    let data = null;
+    const json = await response.json();
+    console.log(json);
     if (response.ok) {
-      data = await response.json();
+      const data = json.data;
       console.log(data);
       main();
-      location.hash = "/"; //home으로 돌아가기
       return data;
     } else {
-      console.log("data 오류");
+      console.log("data가 없으세요.", data);
+      throw error;
     }
   } catch (error) {
     console.log(error);
