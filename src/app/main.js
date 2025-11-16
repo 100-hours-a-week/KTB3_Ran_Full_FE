@@ -5,26 +5,17 @@ import session from "../shared/utils/session.js";
 import BoardPostDetailPage from "../pages/board/detail/ui/BoardPostDetailPage.js";
 import handlePostDetail from "../features/board/model/handlePostDetail.js";
 import handlePostEdit from "../shared/lib/handlePostNavEdit.js";
+import initialRedirect from "./router.js/initialRedirect.js";
 
 function main() {
   const app = document.getElementById("app");
   let path = location.hash.replace("#", ""); //해시 제거
 
   //페이지를 innerHTML로 넣어주기
-
-  //리다이렉션 -> 로그인 상태 확인
-  if (path == "" || path == "/") {
-    if (session.isLogout()) {
-      path = "/login";
-      location.hash = "/login";
-    } else {
-      path = "/home";
-      location.hash = "/home";
-    }
-  }
-
-  //초기화 진행
   app.innerHTML = "";
+
+  //초기 상태
+  path = initialRedirect(path);
 
   const header = document.createElement("base-header");
   header.textContent = "아무말 대잔치";
