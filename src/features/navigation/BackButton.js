@@ -34,5 +34,5 @@ export default function BackButton() {
       mode === "Home" || mode === "Info" ? "hidden" : "visible";
   };
 
-  return wrapper;
+  return wrapper; //반환하는 건 wrapper = 이 자체가 외부에선 backbutton
 }
