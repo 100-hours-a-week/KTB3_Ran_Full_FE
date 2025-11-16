@@ -7,13 +7,14 @@ async function userGetFetch(userId) {
       headers: { "Content-Type": "application/json" },
     });
 
-    const data = (await response.json()).data;
-
+    const json = await response.json();
+    console.log(json);
     if (response.ok) {
+      const data = json.data ?? null;
       console.log(data);
       return data;
     } else {
-      console.log("data 오류");
+      console.log("data가 없으세요.", data);
       throw error;
     }
   } catch (error) {
