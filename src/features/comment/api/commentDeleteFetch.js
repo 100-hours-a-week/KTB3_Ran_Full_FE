@@ -9,15 +9,15 @@ async function commentDeleteFetch(Id) {
       credentials: "include",
     });
 
-    let data = null;
-
+    const json = await response.json();
+    console.log(json);
     if (response.ok) {
-      data = await response.json();
+      const data = json.data;
       console.log(data);
       main();
       return data;
     } else {
-      console.log("data가 없대요");
+      console.log("data가 없으세요.", data);
       throw error;
     }
   } catch (error) {
