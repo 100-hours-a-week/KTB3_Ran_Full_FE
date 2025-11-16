@@ -1,7 +1,7 @@
 import sessionUser from "../../../shared/utils/session.js";
 import ProfileMenuModal from "./ProfileMenuModal.js";
 
-export default function ProefileButton() {
+export default function ProfileButton() {
   const profile = document.createElement("div");
   profile.className = "profile-button";
   const style = document.createElement("style");

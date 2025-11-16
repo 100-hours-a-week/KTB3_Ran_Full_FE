@@ -1,11 +1,11 @@
 import BackButton from "../../../features/navigation/BackButton.js";
-import ProefileButton from "../../profile/ui/ProfileButton.js";
+import ProfileButton from "../../profile/ui/ProfileButton.js";
 
 //기본 Shadow DOM 스타일 정의
 const template = document.createElement("template");
 
-const style = document.createElement("style");
-style.textContent = /*CSS*/ `
+template.innerHTML = /*HTML*/ `
+<style>
 :host{
   border-bottom: 1px solid var(--color-secondary);
     display: flex;
@@ -29,6 +29,10 @@ h3 {
     align-items: center;
     justify-content: space-between;
 }
+.logo{
+  cursor:pointer;
+}
+</style>
 `;
 
 //요소 생성
@@ -37,17 +41,11 @@ const wrapper = document.createElement("div");
 wrapper.className = "header-wrapper";
 
 const h3 = document.createElement("h3");
+h3.className = "logo";
+
 const slot = document.createElement("slot");
-const backButton = BackButton();
-const profileButton = ProefileButton();
-
 h3.appendChild(slot);
-h3.style.cursor = "pointer";
-h3.addEventListener("click", () => {
-  location.hash = "/";
-});
 
-template.content.appendChild(style);
 template.content.appendChild(wrapper);
 
 class Header extends HTMLElement {
@@ -56,10 +54,43 @@ class Header extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" }); //shadow DOM 생성
 
     shadow.appendChild(template.content.cloneNode(true)); //위에서 만든 템플릿 복제 후 추가
+  }
 
-    shadow.querySelector(".header-wrapper").appendChild(backButton); //뒤로가기 추가
-    shadow.querySelector(".header-wrapper").appendChild(h3); //헤더 타이틀 추가
-    shadow.querySelector(".header-wrapper").appendChild(profileButton); //프로필 버튼 추가
+  //dom에 붙는 순간 실행됨
+  connectedCallback() {
+    this.backButton = BackButton(); //button 내부 변수명 wrapper
+    this.titleElement = h3;
+    this.profileButton = ProfileButton();
+
+    h3.addEventListener("click", () => {
+      location.hash = "/";
+    });
+
+    const wrapper = this.shadowRoot.querySelector(".header-wrapper");
+    wrapper.appendChild(this.backButton);
+    wrapper.appendChild(this.titleElement);
+    wrapper.appendChild(this.profileButton);
+
+    // UI 업데이트 호출
+    this._updateUI();
+  }
+
+  //변화 추적 감지
+  static get observedAttributes() {
+    return ["data-mode"];
+  }
+
+  //달라지면 실행
+  attributeChangedCallback() {
+    this._updateUI();
+  }
+
+  //현재 헤더의 모드 전달
+  _updateUI() {
+    const mode = this.dataset.mode;
+    if (this.backButton && this.backButton.update) {
+      this.backButton.update(mode);
+    }
   }
 }
 

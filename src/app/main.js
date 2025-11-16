@@ -10,15 +10,22 @@ import initialRedirect from "./router.js/initialRedirect.js";
 function main() {
   const app = document.getElementById("app");
   let path = location.hash.replace("#", ""); //해시 제거
+  console.log(path);
 
   //페이지를 innerHTML로 넣어주기
   app.innerHTML = "";
 
-  //초기 상태
+  //초기 로그인 상태 제어
   path = initialRedirect(path);
 
   const header = document.createElement("base-header");
   header.textContent = "아무말 대잔치";
+
+  if (path == "/home") {
+    header.dataset.mode = "Home";
+  } else if (path == "/user/info" || path == "/user/password-modify") {
+    header.dataset.mode = "Info";
+  }
   app.appendChild(header);
 
   const container = document.createElement("div");
@@ -57,7 +64,7 @@ function main() {
   app.appendChild(container);
 }
 
-window.addEventListener("hashchange", main);
+window.addEventListener("hashchange", main); //주소가 달라질때마다 main 부름
 window.addEventListener("load", main);
 
 export default main;

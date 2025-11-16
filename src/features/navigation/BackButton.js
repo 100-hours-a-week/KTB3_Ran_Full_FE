@@ -18,16 +18,21 @@ export default function BackButton() {
   });
 
   function __updateState() {
-    backButton.style.visibility = sessionUser.getUser() ? "visible" : "hidden";
+    if (!sessionUser.getUser()) backButton.style.visibility = "hidden";
   }
-
   __updateState();
+
   window.addEventListener("hashchange", __updateState);
 
   const wrapper = document.createElement("div");
   wrapper.className = "wrapper";
   wrapper.appendChild(backButton);
   wrapper.appendChild(style);
+
+  wrapper.update = (mode) => {
+    backButton.style.visibility =
+      mode === "Home" || mode === "Info" ? "hidden" : "visible";
+  };
 
   return wrapper;
 }
