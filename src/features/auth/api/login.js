@@ -1,3 +1,4 @@
+import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 import sessionUser from "../../../shared/utils/session.js";
 
@@ -19,7 +20,7 @@ async function login({ email, password }) {
       const data = json.data;
       console.log("data :", data);
       sessionUser.setUser(data);
-      location.hash = "/home"; //페이지 이동
+      main();
     }
 
     //에러 경고 응답

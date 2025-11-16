@@ -1,3 +1,4 @@
+import sessionUser from "../../../shared/utils/session.js";
 import ProfileMenuModal from "./ProfileMenuModal.js";
 
 export default function ProefileButton() {
@@ -20,6 +21,12 @@ export default function ProefileButton() {
   profile.addEventListener("click", () => {
     modal.classList.toggle("active");
   });
+
+  function __updateState() {
+    profile.style.visibility = sessionUser.getUser() ? "visible" : "hidden";
+  }
+  __updateState();
+  window.addEventListener("hashchange", __updateState);
 
   const wrapper = document.createElement("div");
   wrapper.className = "profile-wrapper";

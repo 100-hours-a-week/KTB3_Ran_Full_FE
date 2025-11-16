@@ -21,7 +21,7 @@ h3 {
     text-align: center;
     display: flex;
               
-            }
+ }
 .header-wrapper {
     display: flex;
     width: 100%;

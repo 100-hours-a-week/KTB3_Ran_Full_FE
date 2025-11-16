@@ -1,3 +1,5 @@
+import sessionUser from "../../shared/utils/session.js";
+
 export default function BackButton() {
   const backButton = document.createElement("div");
   backButton.textContent = "<";
@@ -14,6 +16,13 @@ export default function BackButton() {
     console.log("뒤로가기 버튼 클릭됨");
     window.history.back();
   });
+
+  function __updateState() {
+    backButton.style.visibility = sessionUser.getUser() ? "visible" : "hidden";
+  }
+
+  __updateState();
+  window.addEventListener("hashchange", __updateState);
 
   const wrapper = document.createElement("div");
   wrapper.className = "wrapper";
