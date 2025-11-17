@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #aca0eb;
+  --color-secondary: #000000;
+  --color-error: #ff0000; /*경고*/
+  --color-background: #f4f5f7;
+  --color-card: #ffffff;
+  --color-text: #111111;
+  --color-light-gray: #d9d9d9;
+
+  --color-disable: #cccccc;
+  --color-option: #d9d9d9;
+}

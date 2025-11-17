@@ -1,38 +1,72 @@
 //router
-import LoginPage from "../pages/login/ui/loginPage.js";
-import SignUpPage from "../pages/signup/ui/SignUpPage.js";
+import { routerPage } from "./router.js/router.js";
 import "../widgets/header/ui/Header.js";
-
-const routerPage = { "": LoginPage, "/signup": SignUpPage };
+import session from "../shared/utils/session.js";
+import BoardPostDetailPage from "../pages/board/detail/ui/BoardPostDetailPage.js";
+import handlePostDetail from "../features/board/model/handlePostDetail.js";
+import handlePostEdit from "../shared/lib/handlePostNavEdit.js";
+import initialRedirect from "./router.js/initialRedirect.js";
 
 function main() {
   const app = document.getElementById("app");
-  const path = location.hash.replace("#", ""); //해시 제거
-  const Page = routerPage[path]; //현재 내 경로면 어떤 페이지가 나와야하는지
-  //페이지를 innerHTML로 넣어주기
+  let path = location.hash.replace("#", ""); //해시 제거
+  console.log(path);
 
-  //초기화 진행
+  //페이지를 innerHTML로 넣어주기
   app.innerHTML = "";
+
+  //초기 로그인 상태 제어
+  path = initialRedirect(path);
 
   const header = document.createElement("base-header");
   header.textContent = "아무말 대잔치";
+
+  if (path == "/home") {
+    header.dataset.mode = "Home";
+  } else if (path == "/user/info" || path == "/user/password-modify") {
+    header.dataset.mode = "Info";
+  } else if (path == "/signup") {
+    header.dataset.mode = "Signup";
+  }
   app.appendChild(header);
 
   const container = document.createElement("div");
   container.className = "container";
 
-  const pageContent = Page();
-  app.appendChild(pageContent);
+  const [, route, action, id] = path.split("/");
+
+  //이거 따로 빼야할거같은데
+  //게시글 상세 보기
+  //id 있을때와 없을때 분기점
+  if (route === "post" && action === "get" && id) {
+    //id에 해당하는 게시글 데이터 반환
+    handlePostDetail(id).then((post) => {
+      const pageContent = BoardPostDetailPage({
+        post: post.postData,
+        comments: post.commentsData,
+      });
+
+      //header 아래의 container에 페이지 업로드
+      container.appendChild(pageContent);
+    });
+  } else if (route === "post" && action === "update" && id) {
+    handlePostEdit(id);
+  } else {
+    //////일반 경로 처리
+    const Page = routerPage[path];
+    if (Page) {
+      const pageContent = Page();
+      //header 아래의 container에 페이지 업로드
+      container.appendChild(pageContent);
+    } else {
+      container.textContent = "페이지를 찾을 수 없습니다.";
+    }
+  }
+
+  app.appendChild(container);
 }
 
-window.addEventListener("hashchange", main);
-
+window.addEventListener("hashchange", main); //주소가 달라질때마다 main 부름
 window.addEventListener("load", main);
 
-// //history 객체 안에 data, title, url|string 이 들어감
-// history.pushState({}, null, '/home');
-// //html이 로드되면 mainj가 로드되고 제일먼저 /home으로 이동
-
-// document.getElementById('app').innerHTML = //여기에 라우터가 들어가야지 ;
-
-// //첫번째 위치는 현재 /init
+export default main;

@@ -1,0 +1,45 @@
+:root {
+  text-align: center;
+  margin: 0 auto;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+}
+
+.container {
+  margin: 0 auto;
+  background-color: var(--color-background);
+  width: 100%;
+  max-width: var(--layout-max-width);
+}
+
+.wrapper {
+  width: 100%;
+}
+
+button {
+  border: none;
+  /* display: flex; */
+  background: none;
+}
+
+.primaryBtn {
+  padding: 12px 30px;
+  color: #ffffff;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primaryBtn:disabled {
+  background-color: var(--color-disable);
+  cursor: default;
+}

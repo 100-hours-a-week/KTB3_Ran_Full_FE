@@ -1,0 +1,22 @@
+:root {
+  --font-family-base: "Pretendard", Arial, sans-serif;
+
+  /*font size*/
+  --font-size-header: 32px;
+  --font-size-h1: 32px;
+  --font-size-h2: 28px;
+  --font-size-h3: 24px;
+
+  --font-size-title: 24px;
+  --font-size-action: 15px;
+
+  --font-size-h4: 20px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-sm: 14px;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --line-height-base: 1.5;
+}
