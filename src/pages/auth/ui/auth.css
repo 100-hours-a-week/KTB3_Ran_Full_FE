@@ -9,5 +9,37 @@
 
   background-color: var(--color-background);
   max-width: var(--auth-max-width);
-  gap: var(--gap-md);
+  gap: var(--gap-lg);
+}
+
+.auth-container .logo {
+  margin-top: auto;
+}
+
+.auth-container-wrapper {
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container .desc {
+  font-size: var(--font-size-xlg);
+  color: var(--color-text);
+  font-weight: var(--font-weigth-md);
+  margin: 0 0 50px 0;
+}
+
+.desc span {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.signup-nav-des {
+  color: var(--color-text);
+}
+
+.signup-nav-btn-wrapper {
+  margin-top: auto;
+  padding: 30px;
+  display: flex;
 }

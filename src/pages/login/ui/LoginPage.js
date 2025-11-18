@@ -12,17 +12,29 @@ export default function LoginPage() {
 
   loginPage.innerHTML = /*HTML*/ `
         <div class="auth-container">
-                <h2>로그인</h2>
-                <input-field id="email" type="text" placeholder="이메일을 입력하세요" >이메일</input-field>
-                <input-field id="password" type="password" placeholder="비밀번호를 입력하세요">비밀번호</input-field>
+             <img class="logo" src="public/logo.svg"/>  
+                <div class="desc">새로운 지식은 <span>한 줄</span>에서 시작됩니다. </div>
+                <div class="auth-container-wrapper">
+                    <input-field id="email" type="text" placeholder="" helperText="">이메일</input-field>
+                    <input-field id="password" type="password" placeholder="">비밀번호</input-field>
+                </div>
         </div>`;
 
+  const signupNavDes = document.createElement("div");
+  signupNavDes.textContent = "당신의 한 줄을 기록해보세요.";
+  signupNavDes.className = "signup-nav-des";
   const signupNavButton = SignupButton();
+  const signupNavButtonWrapper = document.createElement("div");
+  signupNavButtonWrapper.className = "signup-nav-btn-wrapper";
+
   const container = loginPage.querySelector(".auth-container");
+  const containerWrapper = loginPage.querySelector(".auth-container-wrapper");
   const loginButton = loginBtn();
 
-  container.appendChild(loginButton);
-  container.appendChild(signupNavButton);
+  containerWrapper.appendChild(loginButton);
+  signupNavButtonWrapper.appendChild(signupNavDes);
+  signupNavButtonWrapper.appendChild(signupNavButton);
+  container.appendChild(signupNavButtonWrapper);
 
   //포커싱 blur 이벤트 사용
   const emailField = loginPage.querySelector("#email");

@@ -18,17 +18,19 @@ function main() {
   //초기 로그인 상태 제어
   path = initialRedirect(path);
 
-  const header = document.createElement("base-header");
-  header.textContent = "아무말 대잔치";
+  if (path !== "/login") {
+    const header = document.createElement("base-header");
+    header.textContent = "아무말 대잔치";
 
-  if (path == "/home") {
-    header.dataset.mode = "Home";
-  } else if (path == "/user/info" || path == "/user/password-modify") {
-    header.dataset.mode = "Info";
-  } else if (path == "/signup") {
-    header.dataset.mode = "Signup";
+    if (path == "/home") {
+      header.dataset.mode = "Home";
+    } else if (path == "/user/info" || path == "/user/password-modify") {
+      header.dataset.mode = "Info";
+    } else if (path == "/signup") {
+      header.dataset.mode = "Signup";
+    }
+    app.appendChild(header);
   }
-  app.appendChild(header);
 
   const container = document.createElement("div");
   container.className = "container";

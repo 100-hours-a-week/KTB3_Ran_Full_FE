@@ -1,13 +1,15 @@
 export default function SignupButton() {
   const button = document.createElement("button");
   button.className = "signupBtn";
-  button.textContent = "회원가입";
+  button.textContent = "가입하기";
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
     .signupBtn{
                 border:none;
                 cursor:pointer;
                 background:none;
+                font-size:var(--font-size-sm);
+                font-weight:var(--font-weight-bold);
             }`;
 
   //   const signupBtn = document.querySelector(".signupBtn");

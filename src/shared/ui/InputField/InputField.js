@@ -51,27 +51,37 @@ class InputField extends HTMLElement {
         .input-field-container .title {
           margin-bottom: 8px;
           display: flex;
-          font-weight: 700;
-          font-size: 16px;
+          font-weight: var(--font-weight-bold);
+          font-size: var(--font-size-base);
+          color:var(--color-text);
         }
         .input-field-container input {
-          width: 380px;
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          font-size: 16px;
+        width: 380px;
+            border: none;
+            font-size: var(--font-size-base);
+            background: none;
+        }
+        .inputWrapper{
+          padding:10px;
+          border-bottom:2px solid var(--color-text);
+        }
+        input:focus{
+          outline:none;
         }
         .helper {
           color: var(--color-error, red);
           display:flex;
           margin-top: 8px;
           min-height: 14px;
+         font-size:var(--font-size-sm);
           text-align: left;
+
         }
+
       </style>
       <div class="input-field-container">
           <div class="title">${label}</div>
-          <input type="${type}" placeholder="${placeholder}" />
+          <div class="inputWrapper"><input type="${type}" placeholder="${placeholder}" /></div>
           <div class="helper">${helperText}</div>
       </div>
     `;

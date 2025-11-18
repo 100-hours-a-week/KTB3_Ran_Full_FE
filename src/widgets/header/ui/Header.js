@@ -7,7 +7,6 @@ const template = document.createElement("template");
 template.innerHTML = /*HTML*/ `
 <style>
 :host{
-  border-bottom: 1px solid var(--color-secondary);
     display: flex;
     justify-content: center;
 
