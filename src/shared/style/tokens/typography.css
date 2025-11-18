@@ -11,11 +11,14 @@
   --font-size-action: 15px;
 
   --font-size-h4: 20px;
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-sm: 14px;
-
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xlg: 22px;
+  --font-size-sm: 16px;
+  --font-size-xsm: 14px;
+  /* 폰크 굵기 */
   --font-weight-normal: 400;
+  --font-weigth-md: 500;
   --font-weight-bold: 700;
 
   --line-height-base: 1.5;

@@ -8,14 +8,17 @@
   --auth-max-width: 400px;
   --max-width-md: 400px;
 
+  --gap-lg: 40px;
   --gap-md: 20px;
   --gap-mn: 10px;
 
   --padding-h3: 24px;
 
   --radius-md: 16px;
-  --radius-button: 8px;
 
+  --radius-button: 8px;
+  --radius-button-lg: 30px;
+  --radius-button-md: 20px;
   --card-height: 170px;
   --card-top-height: 80px;
   --card-bottom-height: 70px;

@@ -35,8 +35,9 @@ button {
   color: #ffffff;
   justify-content: center;
   background-color: var(--color-primary);
-  border-radius: 4px;
+  border-radius: var(--radius-button-lg);
   cursor: pointer;
+  font-size: var(--font-size-lg);
 }
 
 .primaryBtn:disabled {

@@ -1,10 +1,10 @@
 :root {
-  --color-primary: #aca0eb;
+  --color-primary: #1dbfe0;
   --color-secondary: #000000;
-  --color-error: #ff0000; /*경고*/
-  --color-background: #f4f5f7;
+  --color-error: #fc5e5e; /*경고*/
+  --color-background: #faf9f9;
   --color-card: #ffffff;
-  --color-text: #111111;
+  --color-text: #6d6d6d;
   --color-light-gray: #d9d9d9;
 
   --color-disable: #cccccc;
