@@ -11,10 +11,10 @@ template.innerHTML = /*HTML*/ `
     justify-content: center;
 
 }
-h3 {
+.logo {
     font-size: var(--font-size-header);
     font-weight : 400;
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
     color: var(--color-text);
     text-align: center;
@@ -39,11 +39,13 @@ h3 {
 const wrapper = document.createElement("div");
 wrapper.className = "header-wrapper";
 
-const h3 = document.createElement("h3");
-h3.className = "logo";
+const logo = document.createElement("img");
+logo.src = "public/logo.svg";
+logo.alt = "서비스 로고";
+logo.className = "logo";
 
 const slot = document.createElement("slot");
-h3.appendChild(slot);
+logo.appendChild(slot);
 
 template.content.appendChild(wrapper);
 
@@ -58,10 +60,10 @@ class Header extends HTMLElement {
   //dom에 붙는 순간 실행됨
   connectedCallback() {
     this.backButton = BackButton(); //button 내부 변수명 wrapper
-    this.titleElement = h3;
+    this.titleElement = logo;
     this.profileButton = ProfileButton();
 
-    h3.addEventListener("click", () => {
+    logo.addEventListener("click", () => {
       location.hash = "/";
     });
 

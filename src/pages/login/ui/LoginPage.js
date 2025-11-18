@@ -20,21 +20,21 @@ export default function LoginPage() {
                 </div>
         </div>`;
 
-  const signupNavDes = document.createElement("div");
-  signupNavDes.textContent = "당신의 한 줄을 기록해보세요.";
-  signupNavDes.className = "signup-nav-des";
+  const navDes = document.createElement("div");
+  navDes.textContent = "당신의 한 줄을 기록해보세요.";
+  navDes.className = "nav-des";
   const signupNavButton = SignupButton();
-  const signupNavButtonWrapper = document.createElement("div");
-  signupNavButtonWrapper.className = "signup-nav-btn-wrapper";
+  const navButtonWrapper = document.createElement("div");
+  navButtonWrapper.className = "nav-btn-wrapper";
 
   const container = loginPage.querySelector(".auth-container");
   const containerWrapper = loginPage.querySelector(".auth-container-wrapper");
   const loginButton = loginBtn();
 
   containerWrapper.appendChild(loginButton);
-  signupNavButtonWrapper.appendChild(signupNavDes);
-  signupNavButtonWrapper.appendChild(signupNavButton);
-  container.appendChild(signupNavButtonWrapper);
+  navButtonWrapper.appendChild(navDes);
+  navButtonWrapper.appendChild(signupNavButton);
+  container.appendChild(navButtonWrapper);
 
   //포커싱 blur 이벤트 사용
   const emailField = loginPage.querySelector("#email");

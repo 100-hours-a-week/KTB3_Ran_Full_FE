@@ -12,12 +12,15 @@ export default function SignUpPage() {
   const signupPage = document.createElement("div");
   signupPage.className = "signup-page";
   signupPage.innerHTML = /*HTML*/ `
+      <div class="gap"></div>
       <div class="auth-container">
-        <h2>회원가입</h2>
-        <input-field id="email" type="text" placeholder="이메일을 입력하세요">이메일*</input-field>
-        <input-field id="password" type="password" placeholder="비밀번호를 입력하세요">비밀번호*</input-field>
-        <input-field id="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력하세요">비밀번호 확인*</input-field>
-        <input-field id="username" type="text" placeholder="닉네임을 입력하세요">닉네임*</input-field>
+        <div class="desc">당신의 첫 번째 한 줄을 <br/><span>기록할 준비</span>가 되셨나요?</div>
+          <div class="auth-container-wrapper">
+              <input-field id="email" type="text" placeholder="">이메일</input-field>
+              <input-field id="password" type="password" placeholder="">비밀번호</input-field>
+              <input-field id="passwordConfirm" type="password" placeholder="">비밀번호 확인</input-field>
+              <input-field id="username" type="text" placeholder="">닉네임</input-field>
+          </div>
         </div>
 
   `;
@@ -25,8 +28,20 @@ export default function SignUpPage() {
   const loginNavButton = LoginButton();
   const signupButton = signupBtn();
   const container = signupPage.querySelector(".auth-container");
-  container.appendChild(signupButton);
+  const containerWrapper = signupPage.querySelector(".auth-container-wrapper");
+  containerWrapper.appendChild(signupButton);
   container.appendChild(loginNavButton);
+
+  const navDes = document.createElement("div");
+  navDes.textContent = "회원 정보가 있나요?";
+  navDes.className = "nav-des";
+
+  const navButtonWrapper = document.createElement("div");
+  navButtonWrapper.className = "nav-btn-wrapper";
+
+  navButtonWrapper.appendChild(navDes);
+  navButtonWrapper.appendChild(loginNavButton);
+  container.appendChild(navButtonWrapper);
 
   //포커싱 blur 이벤트 사용
   const emailField = container.querySelector("#email");
