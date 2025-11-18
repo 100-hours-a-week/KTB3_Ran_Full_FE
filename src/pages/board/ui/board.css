@@ -7,6 +7,7 @@
 .boardTitle {
   text-align: left;
   color: var(--color-text);
+  padding: 60px 0;
 }
 
 .post-create-button {

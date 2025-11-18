@@ -1,3 +1,5 @@
+import postCountGroup from "../../../pages/board/detail/ui/postCountGroup.js";
+
 function boardCard(props) {
   const container = document.createElement("div");
   container.className = "board-card";
@@ -46,11 +48,6 @@ function boardCard(props) {
         display:flex;
         justify-content: end;
     }
-    .count{
-        display:flex;
-        gap:var(--gap-md);
-        align-items: center;
-    }
     .card-header div{
         color:var(--color-card-text);
         text-align: start;
@@ -59,10 +56,6 @@ function boardCard(props) {
         display: flex;
         gap: 4px;
         flex-direction: column;
-    }
-    .count div{
-        display:flex;
-        color:var(--color-meta);
     }
     .log div div{
         font-size:var(--font-size-sm);
@@ -100,16 +93,15 @@ function boardCard(props) {
                     <div class="card-title">${props.title}</div>
                     <div class="card-content">${props.content}</div>
                 </div>
-                <div class="log">
-                        <div class="count">
-                            <div><img src="public/icon/unliked_icon.svg" alt="좋아요"><div>${props.likeCount}</div></div>
-                            <div><img src="public/icon/comment_icon.svg" alt="댓글"><div>${props.commentCount}</div></div>
-                            <div><img src="public/icon/view_icon.svg" alt="조회수"><div>${props.viewCount}</div></div>
-                        </div>
-                </div>
             </div>
         </div>
     `;
+
+  const card = container.querySelector(".card-wrapper");
+  const countGroup = postCountGroup(props);
+  card.appendChild(countGroup);
+  countGroup.style.display = "flex";
+  countGroup.style.justifyContent = "flex-end";
 
   //클릭 이벤트
   container.addEventListener("click", () => {
