@@ -3,18 +3,21 @@ import boardCard from "../../../../widgets/post/ui/boardCard.js";
 import handleBoardGet from "../../../../features/board/model/handleBoardGet.js";
 import { postCreateBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
 import { boardPostDataDto } from "../../model/boardPostDto.js";
+import sessionUser from "../../../../shared/utils/session.js";
 
 function BoardHomePage() {
   const boardHomePage = document.createElement("div");
   boardHomePage.className = "board-home-page";
+  const user = sessionUser.getUser();
 
   const title = Title({
-    text: "안녕하세요, <br>아무 말 대잔치 <strong>게시판</strong>입니다.",
+    text: `<strong>${user.username}</strong>님, <br>오늘은 어떤 개념을 요약해볼까요?`,
   });
 
   title.className = "boardTitle";
 
   const postCreateButton = postCreateBtn();
+  postCreateButton.className = "post-create-button";
 
   const cardContainer = document.createElement("div");
   cardContainer.className = "card-container";

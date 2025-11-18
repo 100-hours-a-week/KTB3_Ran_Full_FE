@@ -12,6 +12,7 @@ import handlePostEdit from "../../../lib/handlePostUpdate.js";
 import handlePostUpdate from "../../../lib/handlePostUpdate.js";
 import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
 import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPasswordUpdate.js";
+import imgButton from "../../../../widgets/imgButton.js/ui/imgButton.js";
 
 // PrimaryButton
 export function loginBtn() {
@@ -36,12 +37,16 @@ export function signupBtn() {
 
 //게시글 생성 버튼
 export function postCreateBtn() {
-  return Button({
-    text: "게시물 생성",
+  return imgButton({
+    src: "public/icon/boardCreat_icon.svg",
+    alt: "글 생성 버튼",
     onClick: handlerPostCreat,
     styleProps: {
-      radius: 16,
-      margin: "12px 0",
+      radius: 50,
+      width: 60,
+      height: 60,
+      margin: "12px",
+      background: "var(--color-primary)",
     },
   });
 }

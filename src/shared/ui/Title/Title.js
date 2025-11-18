@@ -9,7 +9,7 @@ function Title({ text = "제목", styleProps = {} } = {}) {
 
   style.textContent = /*CSS*/ `
     .title{
-        font-size:var(--font-size-title);
+        font-size: var(--font-size-xtitle);
         padding:40px;
     }
   `;
