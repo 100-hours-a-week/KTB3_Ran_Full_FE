@@ -2,7 +2,11 @@ import sessionUser from "../../shared/utils/session.js";
 
 export default function BackButton() {
   const backButton = document.createElement("div");
-  backButton.textContent = "<";
+  const backIcon = document.createElement("img");
+  backIcon.src = "public/icon/back_icon.svg";
+  backIcon.alt = "뒤로가기";
+  backIcon.className = "back-icon";
+
   backButton.className = "back-button";
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
@@ -11,6 +15,7 @@ export default function BackButton() {
       width:var(--header-side-width);
     }
   `;
+  backButton.appendChild(backIcon);
 
   backButton.addEventListener("click", () => {
     console.log("뒤로가기 버튼 클릭됨");
