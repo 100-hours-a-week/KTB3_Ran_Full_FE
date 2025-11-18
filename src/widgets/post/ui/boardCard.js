@@ -3,6 +3,12 @@ function boardCard(props) {
   container.className = "board-card";
   const style = document.createElement("style");
   style.innerHTML = /*CSS*/ `
+    .userImg{
+        width:10%;
+        background:var(--color-meta);
+        aspect-ratio:1;
+        border-radius:50px;
+    }
     .board-card{
         cursor:pointer;
     }
@@ -11,37 +17,69 @@ function boardCard(props) {
     }
     .card-wrapper{
         background-color:var(--color-card);
-        padding:var(--padding-h3);
+        padding:var(--padding-card);
         display:flex;
         flex-direction:column;
         gap:10px;
+        border-radius:var(--radius-button-lg);
+        border:1px solid #dadadaff;
+        box-shadow: 0 4px 14px rgba(137, 137, 137, 0.1);
+
+
     }
-    .top{
-        border-radius:var(--radius-md) var(--radius-md) 0 0;
+    .createdAt{
+        font-size:var(--font-size-sm);
+        display: flex;
     }
-    .bottom{
-        border-radius:0 0 var(--radius-md) var(--radius-md);
+    .card-meta{
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        margin : 0 0 10px 0
     }
     .card-title{
         display:flex;
-        font-size:var(--font-size-title);
+        font-size:var(--font-size-lg);
         font-weight:var(--font-weight-bold);
     }
     .log{
         display:flex;
-        justify-content: space-between;
+        justify-content: end;
     }
     .count{
         display:flex;
-        gap:var(--gap-mn);
+        gap:var(--gap-md);
+        align-items: center;
+    }
+    .card-header div{
+        color:var(--color-card-text);
+        text-align: start;
+    }
+    .card-header {
+        display: flex;
+        gap: 4px;
+        flex-direction: column;
+    }
+    .count div{
+        display:flex;
+        color:var(--color-meta);
     }
     .log div div{
         font-size:var(--font-size-sm);
+        display:flex;
+        align-items: center;
+        gap: 7px;
+        font-weight:var(--font-weight-bold);
+    }
+    .createdAt{
+        font-size:var(--font-size-content);
+        color:var(--color-meta);
     }
     .author{
         display:flex;
         font-weight: var(--font-weight-bold);
-        font-size:var(--font-size-base);
+        font-size:var(--font-size-mtitle);
+        color:var(--color-primary);
     }
     hr{
         color:var(--color-background);
@@ -50,21 +88,25 @@ function boardCard(props) {
 
   container.innerHTML = /*HTML */ `
         <div class="card-background">
-            <div class="card-wrapper top">
-                <div class="card-title">${props.title}</div>
-                <div class="log">
-                    <div class="count">
-                        <div>좋아요 ${props.likeCount}</div>
-                        <div>댓글 ${props.commentCount}</div>
-                        <div>조회수 ${props.viewCount}</div>
+            <div class="card-wrapper">
+                <div class="card-meta">
+                    <div class="userImg"></div>
+                    <div class="card-meta-text">
+                        <div class="author">${props.author}</div>
+                        <div class="createdAt">${props.createAt}</div>
                     </div>
-                    <div class="createdAt">${props.createAt}</div>
                 </div>
-            
-            </div>
-            <hr/>
-            <div class="card-wrapper bottom">
-                <div class="author">${props.author}</div>
+                <div class="card-header">
+                    <div class="card-title">${props.title}</div>
+                    <div class="card-content">${props.content}</div>
+                </div>
+                <div class="log">
+                        <div class="count">
+                            <div><img src="public/icon/unliked_icon.svg" alt="좋아요"><div>${props.likeCount}</div></div>
+                            <div><img src="public/icon/comment_icon.svg" alt="댓글"><div>${props.commentCount}</div></div>
+                            <div><img src="public/icon/view_icon.svg" alt="조회수"><div>${props.viewCount}</div></div>
+                        </div>
+                </div>
             </div>
         </div>
     `;

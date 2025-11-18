@@ -19,6 +19,7 @@ function ProfileMenuModal() {
     }
     #profile-modal-container-wrapper.active{
       display:block;
+      z-index:10;
     }
 
 
