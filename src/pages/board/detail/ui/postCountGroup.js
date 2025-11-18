@@ -9,16 +9,16 @@ function postCountGroup(props) {
 
   container.innerHTML = /*HTML*/ `
         <div class="count-content" id="likeCount">
+            <img src="public/icon/unliked_icon.svg" alt="좋아요">
             <div>${props.likeCount}</div>
-            <div>좋아요수</div>
         </div>
         <div class="count-content">
+            <img src="public/icon/comment_icon.svg" alt="댓글">
             <div>${props.viewCount}</div>
-            <div>조회수</div>
         </div>
         <div class="count-content">
+            <img src="public/icon/view_icon.svg" alt="조회수">
             <div>${props.commentCount}</div>
-            <div>댓글</div>
         </div>
   `;
 
@@ -34,21 +34,21 @@ function postCountGroup(props) {
     }
   
     .post-count-group{
-        padding : var(--padding-h3);
         display:flex;
-        gap:var(--gap-mn);
+        gap:var(--gap-mdn);
         justify-content: center;
     }
     .count-content{
-        background:var(--color-option);
-        padding:var(--gap-mn);
-        border-radius:var(--radius-md);
-        width:76px;
-        font-size:var(--font-size-base);
+        display:flex;
+        gap:7px;
+        align-items: center;
+        font-size:var(--font-size-sm);
+        font-weight:var(--font-weight-bold);
       
     }
     .count-content div{
-        
+         display:flex;
+        color:var(--color-meta);
     }
   `;
 
