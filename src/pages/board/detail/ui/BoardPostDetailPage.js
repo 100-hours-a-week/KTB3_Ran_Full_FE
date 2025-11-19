@@ -17,7 +17,7 @@ function BoardPostDetailPage({ post, comments }) {
   //id에 해당하는 게시글 데이터 불러오기
   const boardPostDetailPage = document.createElement("div");
   boardPostDetailPage.className = "board-post-detail-page";
-  boardPostDetailPage.style.padding = "var(--padding-card)";
+  boardPostDetailPage.style.padding = "var(--padding-card-hori)";
 
   ///props 변환
   //titleHeader

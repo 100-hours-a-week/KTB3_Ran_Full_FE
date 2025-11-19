@@ -7,7 +7,7 @@ function postCountGroup(props) {
   container.innerHTML = /*HTML*/ `
         <div class="count-content" id="likeCount">
             <img class="like-icon" src="public/icon/unliked_icon.svg" alt="좋아요">
-            <div>${props.likeCount}</div>
+            <div class="count">${props.likeCount}</div>
         </div>
         <div class="count-content">
             <img src="public/icon/comment_icon.svg" alt="댓글">
@@ -40,6 +40,9 @@ function postCountGroup(props) {
     .count-content div{
         display:flex;
         color:var(--color-meta);
+    }
+    .count-content .count{
+      min-width:13px;
     }
   `;
 
