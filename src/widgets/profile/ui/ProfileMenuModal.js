@@ -15,11 +15,21 @@ function ProfileMenuModal() {
     #profile-modal-container-wrapper{
       display:none;
         position:absolute;
-        transform: translate(-64%, 10%);
+        transform: translate(-70%, 10%);
     }
     #profile-modal-container-wrapper.active{
       display:block;
       z-index:10;
+    }
+
+    .profile-modal-wrapper > :first-child div{
+      border-bottom:none;
+      border-radius: 20px 20px 0 0
+    }
+
+    .profile-modal-wrapper > :last-child div{
+      border-top:none;
+      border-radius: 0 0 20px 20px
     }
 
 

@@ -6,9 +6,14 @@ function MenuButton({ text = "메뉴 버튼", onClick = null } = {}) {
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
     .menu-button{
-      padding:10px 20px;
-      background-color:var(--color-light-gray);
+      padding:13px 25px;
+      background-color:white;
       cursor:pointer;
+      border:1px solid var(--color-meta);
+    }
+
+    .menu-button{
+      color:var(--color-meta);
     }
   `;
 
