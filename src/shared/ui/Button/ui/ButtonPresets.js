@@ -89,7 +89,7 @@ export function updateBtn({ getDto }) {
       handleUserUpdate({ dto: getDto() });
     },
     styleProps: {
-      radius: 6,
+      radius: 30,
       padding: "7px 10px",
       width: "100",
     },
@@ -104,7 +104,7 @@ export function updatePasswordBtn({ getDto }) {
       handleUserPasswordUpdate({ dto: getDto() });
     },
     styleProps: {
-      radius: 6,
+      radius: 30,
       padding: "7px 10px",
       width: "100",
     },
@@ -134,7 +134,8 @@ export function pageUpdateBtn({ getDto, postId }) {
       handlePostUpdate({ dto: getDto(), postId });
     },
     styleProps: {
-      radius: 6,
+      margin: "10px 0",
+      radius: 30,
       margin: "12px 0",
       width: 70,
       justifyContent: "center",

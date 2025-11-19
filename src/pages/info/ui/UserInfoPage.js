@@ -8,6 +8,7 @@ import DeleteUserButton from "../../../widgets/profile/ui/DeleteUserButton.js";
 function UserInfoPage(user) {
   const container = document.createElement("div");
   container.className = "user-page";
+  container.style.color = "var(--color-card-text)";
 
   const pageTitle = Title({
     text: "회원정보수정",
@@ -56,7 +57,7 @@ function UserInfoPage(user) {
             height: 100vh;
             background-color: var(--color-background);
             max-width: var(--auth-max-width);
-            gap: var(--gap-md);
+            gap: var(--gap-xmd);
     }
         .input-field-container{
             display: flex;
@@ -65,8 +66,13 @@ function UserInfoPage(user) {
             align-items: flex-start;
         }
 
+        .input-field-container div{
+          font-size:var(--font-size-base);
+
+        }
+
         .text-info-container{
-            gap: 20px;
+            gap: var(--gap-xmd);
             display: flex;
             flex-direction: column;
         }

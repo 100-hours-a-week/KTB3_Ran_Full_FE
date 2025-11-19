@@ -50,6 +50,7 @@
   background: none;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
+  color: var(--color-card-text);
 }
 .signup-page,
 .login-page {
