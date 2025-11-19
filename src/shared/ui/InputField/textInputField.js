@@ -55,14 +55,17 @@ class PostInputField extends HTMLElement {
   }
   :host div{
     display:flex;
+    color:var(--color-text);
   }
   .input-title{
     font-weight:var(  --font-weight-bold);
     margin:15px 0;
+    font-size:var(--font-size-mtitle);
   }
   .input-line{
-    border-top:1px solid #ccc;
-    border-bottom:1px solid #ccc;
+    border:1px solid #d9d9d9;
+    background : #ffffff;
+    border-radius : var(--radius-button-lg);
   }
     .createInput{
         background:none;
@@ -96,7 +99,7 @@ class PostInputField extends HTMLElement {
         }
     
       </style>
-          <div class="input-title">${label}*</div>
+          <div class="input-title">${label}</div>
           <div class="input-line">
               <input class="createInput" type="${type}" placeholder="${placeholder}"/>
           </div>

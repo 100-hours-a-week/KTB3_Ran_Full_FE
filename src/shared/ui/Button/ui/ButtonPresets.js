@@ -114,13 +114,14 @@ export function updatePasswordBtn({ getDto }) {
 //페이지 생성 버튼
 export function pageCreatBtn() {
   return Button({
-    text: "완료",
+    text: "작성",
     onClick: handlePostCreat,
     styleProps: {
-      radius: 6,
-      margin: "12px 0",
-      width: 70,
+      radius: "30",
+      margin: "10px 0",
+      width: 80,
       justifyContent: "center",
+      fontWeight: "500",
     },
   });
 }

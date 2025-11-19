@@ -55,14 +55,17 @@ class TextareaField extends HTMLElement {
   }
   :host div{
     display:flex;
+    color:var(--color-text);
   }
   .input-title{
     font-weight:var(  --font-weight-bold);
     margin:15px 0;
+    font-size:var(--font-size-mtitle);
   }
   .input-line{
-    border-top:1px solid #ccc;
-    border-bottom:1px solid #ccc;
+    border:1px solid #d9d9d9;
+    background : #ffffff;
+    border-radius : var(--radius-button-lg);
   }
     .createInput{
         background:none;
@@ -72,7 +75,7 @@ class TextareaField extends HTMLElement {
         font-size: 16px;
     }
     .createInput.content{
-      height:300px;
+      height:100px;
     }
     .createInput:focus{
         outline:none;
@@ -96,7 +99,7 @@ class TextareaField extends HTMLElement {
         }
     
       </style>
-          <div class="input-title">${label}*</div>
+          <div class="input-title">${label}</div>
           <div class="input-line">
               <textarea class="createInput ${type}" type="${type}" placeholder="${placeholder}"></textarea>
           </div>

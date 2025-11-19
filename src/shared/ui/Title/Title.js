@@ -18,6 +18,8 @@ function Title({ text = "제목", styleProps = {} } = {}) {
   if (styleProps.padding) title.style.padding = `${styleProps.padding}px`;
   if (styleProps.fontWeight)
     title.style.fontWeight = `${styleProps.fontWeight}`;
+  if (styleProps.color) title.style.color = `${styleProps.color}`;
+  if (styleProps.fontSize) title.style.fontSize = `${styleProps.fontSize}`;
 
   const Title = document.createElement("div");
   Title.appendChild(container);

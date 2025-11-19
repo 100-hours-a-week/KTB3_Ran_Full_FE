@@ -11,12 +11,14 @@ function BoardPostCreatPage() {
   boardPostCreatPage.style.display = "flex";
   boardPostCreatPage.style.flexDirection = "column";
   boardPostCreatPage.style.gap = "var(--gap-md)";
+  boardPostCreatPage.style.padding = "var(--padding-card)";
 
   //title
   const pageTitle = Title({
-    text: "페이지 생성",
+    text: "한 줄 작성하기",
     styleProps: {
       fontWeight: "var(--font-weight-bold)",
+      color: "var(--color-card-text)",
     },
   });
 
@@ -24,8 +26,8 @@ function BoardPostCreatPage() {
   inputField.className = "post-create-input-field";
 
   inputField.innerHTML = /*HTML*/ `
-          <text-input-field id="post-title" label = "제목" type="title" placeholder="제목을 입력해주세요. (최대 26글자)" ></text-input-field>
-          <textarea-field id="post-content" label = "내용" type="content" placeholder="내용을 입력해주세요."></textarea-field>
+          <text-input-field id="post-title" label = "제목" type="title" placeholder="" ></text-input-field>
+          <textarea-field id="post-content" label = "내용" type="content" placeholder=""></textarea-field>
   `;
 
   const createBtn = pageCreatBtn();
