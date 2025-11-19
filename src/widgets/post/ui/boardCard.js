@@ -54,7 +54,7 @@ function boardCard(props) {
     }
     .card-header {
         display: flex;
-        gap: 4px;
+        gap: 10px;
         flex-direction: column;
     }
     .log div div{

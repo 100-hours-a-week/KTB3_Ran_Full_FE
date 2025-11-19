@@ -24,6 +24,11 @@ export default function imgButton({
     justify-content: flex-end;
     cursor:pointer;
   }
+  .imgBtn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
         `;
 
   if (styleProps.width) button.style.width = `${styleProps.width}px`;

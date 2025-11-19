@@ -26,6 +26,9 @@ export default function Button({
     button.style.background = `${styleProps.background}`;
   if (styleProps.justifyContent)
     Button.style.justifyContent = `${styleProps.justifyContent}`;
+  if (styleProps.fontSize) button.style.fontSize = `${styleProps.fontSize}px`;
+  if (styleProps.fontWeight)
+    button.style.fontWeight = `${styleProps.fontWeight}px`;
 
   const handleClick =
     onClick != null ? onClick : () => console.log("버튼을 클릭하였습니다.");

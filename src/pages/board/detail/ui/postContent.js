@@ -9,6 +9,8 @@ function postContent(props) {
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
     .post-content{
+      min-height: 60px;
+      text-align: start;
       word-break: break-all;
       font-size:var(--font-size-base);
     }

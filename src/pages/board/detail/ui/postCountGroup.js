@@ -1,38 +1,30 @@
 import likeCreateDeleteTogle from "../../../../features/like/model/likeCreateDeleteTogle.js";
-import handleLikeCreat from "../../../like/lib/handleLikeCreat.js";
-import handleLikeDelete from "../../../like/lib/handleLikeDelete.js";
 
 function postCountGroup(props) {
   const container = document.createElement("div");
   container.className = "post-count-group";
-  console.log("props :", props);
 
   container.innerHTML = /*HTML*/ `
         <div class="count-content" id="likeCount">
-            <img src="public/icon/unliked_icon.svg" alt="좋아요">
+            <img class="like-icon" src="public/icon/unliked_icon.svg" alt="좋아요">
             <div>${props.likeCount}</div>
         </div>
         <div class="count-content">
             <img src="public/icon/comment_icon.svg" alt="댓글">
-            <div>${props.viewCount}</div>
+            <div>${props.commentCount}</div>
         </div>
         <div class="count-content">
             <img src="public/icon/view_icon.svg" alt="조회수">
-            <div>${props.commentCount}</div>
+            <div>${props.viewCount}</div>
         </div>
   `;
 
   const style = document.createElement("style");
   style.textContent = /*CSS*/ `
-
     #likeCount:hover{
         cursor:pointer;
     }
 
-    #likeCount.enabled{
-        background:var(--color-primary);
-    }
-  
     .post-count-group{
         display:flex;
         gap:var(--gap-mdn);
@@ -44,27 +36,41 @@ function postCountGroup(props) {
         align-items: center;
         font-size:var(--font-size-sm);
         font-weight:var(--font-weight-bold);
-      
     }
     .count-content div{
-         display:flex;
+        display:flex;
         color:var(--color-meta);
     }
   `;
 
   const like = container.querySelector("#likeCount");
+  const likeImg = like.querySelector(".like-icon");
+
+  function updateLikeIcon() {
+    if (like.classList.contains("enabled")) {
+      likeImg.src = "public/icon/liked_icon.svg";
+    } else {
+      likeImg.src = "public/icon/unliked_icon.svg";
+    }
+  }
 
   function __updateState() {
     likeCreateDeleteTogle({ container: like, props });
+    updateLikeIcon();
   }
-  //초기화
+
   __updateState();
 
-  const containerWrapper = document.createElement("div");
-  containerWrapper.appendChild(style);
-  containerWrapper.appendChild(container);
+  like.addEventListener("click", () => {
+    likeCreateDeleteTogle({ container: like, props });
+    updateLikeIcon();
+  });
 
-  return containerWrapper;
+  const wrapper = document.createElement("div");
+  wrapper.appendChild(style);
+  wrapper.appendChild(container);
+
+  return wrapper;
 }
 
 export default postCountGroup;

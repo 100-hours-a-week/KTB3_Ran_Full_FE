@@ -59,8 +59,10 @@ export function commentCreatBtn({ getDto, postId }) {
       handleCreatComment({ dto: getDto(), postId });
     },
     styleProps: {
-      radius: 16,
+      radius: 30,
       padding: "7px 10px",
+      fontSize: "18",
+      fontWeight: "700",
     },
   });
 }
@@ -162,17 +164,28 @@ export function quitBtn() {
 
 ///ActionButton
 export function editBtn(action) {
-  return ActionButton({
-    text: "수정",
+  return imgButton({
+    src: "public/icon/edit_icon.svg",
+    alt: "편집버튼",
     onClick: () => EditModal(action),
-    styleProps: {},
+    styleProps: {
+      width: 50,
+      height: 50,
+      margin: "5px",
+    },
   });
 }
 
 //삭제 -> 삭제 모달
 export function delBtn(action) {
-  return ActionButton({
-    text: "삭제",
+  return imgButton({
+    src: "public/icon/delete_icon.svg",
+    alt: "삭제버튼",
     onClick: () => DeleteModal(action),
+    styleProps: {
+      width: 50,
+      height: 50,
+      margin: "5px",
+    },
   });
 }

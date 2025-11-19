@@ -24,19 +24,22 @@ function commentCreatCard(post) {
 
     .comment-creat-card textarea{
             border: none;
-            border-bottom: 1px solid var(--color-disable);
-            border-radius: 10px 10px 0 0;
+            border-radius: 20px 20px 0 0;
             height: 60px;
-            padding:var(--padding-h3);
+            padding: 30px 30px 0 30px;
             resize:none;
+            font-size:var(--font-size-base);
+    }
+    .comment-creat-card textarea::placeholder{
+        color:var(--color-meta);
     }
     .comment-creat-card textarea:focus{
         outline:none;
     }
     .buttonWrapper{
         background: #fff;
-    border-radius: 0 0 10px 10px;
-    padding: 5px;
+        border-radius: 0 0 20px 20px;
+        padding: 0 20px 20px 20px;
     }
   `;
 
