@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postUpdateFetch({ dto, postId }) {
@@ -15,7 +14,6 @@ async function postUpdateFetch({ dto, postId }) {
     console.log(json);
     if (response.ok) {
       const data = json.data;
-      main();
       console.log(data);
       return data;
     } else {

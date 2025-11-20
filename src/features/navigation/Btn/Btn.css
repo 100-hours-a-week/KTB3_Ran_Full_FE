@@ -1,0 +1,7 @@
+.signup-btn {
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}

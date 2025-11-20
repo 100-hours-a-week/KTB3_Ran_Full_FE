@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function commentCreatFetch({ dto, postId }) {
@@ -16,7 +15,7 @@ async function commentCreatFetch({ dto, postId }) {
     if (response.ok) {
       const data = json.data;
       console.log(data);
-      main();
+
       return data;
     } else {
       console.log("data가 없으세요.", data);

@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 import sessionUser from "../../../shared/utils/session.js";
 import { userInfoDto } from "../model/userInfoDto.js";
@@ -19,7 +18,7 @@ async function userUpdateFetch({ dto }) {
       const data = json.data;
       console.log(data);
       sessionUser.setUser(data);
-      main();
+
       return data;
     } else {
       console.log("data가 없으세요.", data);

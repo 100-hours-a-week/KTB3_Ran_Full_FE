@@ -1,5 +1,4 @@
 import sessionUser from "../../shared/utils/session.js";
-import main from "../main.js";
 
 function initialRedirect(path) {
   //리다이렉션 -> 로그인 상태 확인

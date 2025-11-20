@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function likeDeleteFetch(postId) {
@@ -11,7 +10,7 @@ async function likeDeleteFetch(postId) {
     });
 
     const json = await response.json();
-    main();
+
     console.log(json);
     if (response.ok) {
       const data = json.data ?? null;

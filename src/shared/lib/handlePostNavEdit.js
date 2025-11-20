@@ -1,4 +1,3 @@
-import main from "../../app/main.js";
 import { routerPage } from "../../app/router.js/router.js";
 import BoardPostUpdatePage from "../../pages/board/update/ui/BoardPostUpdatePage.js";
 

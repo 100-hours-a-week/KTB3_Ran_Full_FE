@@ -8,9 +8,12 @@ import PasswordModifyPage from "../../pages/passwordModify/ui/PasswordModifyPage
 import handleUserInfo from "../../pages/info/lib/handleUserInfo.js";
 import handlePasswordModify from "../../pages/passwordModify/lib/handlePasswordModify.js";
 import BoardPostUpdatePage from "../../pages/board/update/ui/BoardPostUpdatePage.js";
+import LoginPageVDOM from "../../pages/login/ui/LoginPageVDOM.js";
+import loginEffects from "../../pages/login/model/LoginPageEffect.js";
+import LoginState from "../../pages/login/model/LoginState.js";
 
 export const routerPage = {
-  "/login": LoginPage,
+  "/login": { page: LoginPageVDOM, effect: loginEffects, state: LoginState },
   "/signup": SignUpPage,
   "/home": BoardHomePage,
   "/post": BoardPostCreatPage,

@@ -1,13 +1,12 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 import sessionUser from "../../../shared/utils/session.js";
 
-async function login({ email, password }) {
+async function login(dto) {
   try {
     const response = await fetch(Endpoint.USER.LOGIN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(dto),
       credentials: "include",
       cache: "no-store",
     });
@@ -20,7 +19,6 @@ async function login({ email, password }) {
       const data = json.data;
       console.log("data :", data);
       sessionUser.setUser(data);
-      main();
     }
 
     //에러 경고 응답

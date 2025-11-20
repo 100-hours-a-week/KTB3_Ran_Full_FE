@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function commentDeleteFetch(Id) {
@@ -14,7 +13,7 @@ async function commentDeleteFetch(Id) {
     if (response.ok) {
       const data = json.data;
       console.log(data);
-      main();
+
       return data;
     } else {
       console.log("data가 없으세요.", data);

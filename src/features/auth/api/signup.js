@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { routerPage } from "../../../app/router.js/router.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 

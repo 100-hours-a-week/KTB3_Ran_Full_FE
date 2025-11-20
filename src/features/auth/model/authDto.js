@@ -1,7 +1,7 @@
-export const loginDto = {
-  email: "",
-  password: "",
-};
+export const loginDto = (props) => ({
+  email: props.email,
+  password: props.password,
+});
 
 export const signupDto = (data) => ({
   email: data.email,

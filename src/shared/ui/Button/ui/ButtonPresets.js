@@ -13,10 +13,11 @@ import handlePostUpdate from "../../../lib/handlePostUpdate.js";
 import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
 import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPasswordUpdate.js";
 import imgButton from "../../../../widgets/imgButton.js/ui/imgButton.js";
+import ButtonVDOM from "./VDOM/PrimaryButton.js";
 
 // PrimaryButton
 export function loginBtn() {
-  return Button({
+  return ButtonVDOM({
     text: "로그인",
     onClick: handleLoginClick,
     styleProps: {

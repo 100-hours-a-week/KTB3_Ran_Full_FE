@@ -1,0 +1,33 @@
+.input-field-container {
+  width: 100%;
+}
+
+.input-field-container div {
+  color: var(--color-text);
+}
+.input-field-container .title {
+  margin-bottom: 8px;
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+.input-field-container .inputWrapper {
+  padding: 10px;
+  border-bottom: 2px solid var(--color-text);
+}
+.input-field-container input {
+  width: 380px;
+  border: none;
+  background: none;
+  font-size: var(--font-size-base);
+}
+.input-field-container input:focus {
+  outline: none;
+}
+.input-field-container .helper {
+  /* color: var(--color-error, red); */
+  margin-top: 8px;
+  min-height: 14px;
+  font-size: var(--font-size-sm);
+}

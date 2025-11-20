@@ -1,4 +1,3 @@
-import main from "../../../app/main.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 import sessionUser from "../../../shared/utils/session.js";
 
@@ -16,7 +15,6 @@ async function userDeleteFetch() {
       const data = json.data;
       console.log(data);
       sessionUser.logout();
-      main();
       location.hash("/"); //추후 라우터파일에서 관리하는 것으로 개선 필요
       return data;
     } else {

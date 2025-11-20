@@ -1,5 +1,3 @@
-import main from "../../../app/main.js";
-import BoardPostDetailPage from "../../../pages/board/detail/ui/BoardPostDetailPage.js";
 import { boardDetailProps } from "../../../pages/board/model/boardDto.js";
 import { commentDto } from "../../../pages/board/model/commentDto.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
