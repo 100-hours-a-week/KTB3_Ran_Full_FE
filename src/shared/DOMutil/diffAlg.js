@@ -57,8 +57,6 @@ export function updateElement(parent, newNode, oldNode, index = 0) {
     return;
   }
 
-  updateProps(element, newNode.props, oldNode.props);
-
   // 7) children diff
   const max = Math.max(newNode.children.length, oldNode.children.length);
 

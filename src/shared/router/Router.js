@@ -1,5 +1,5 @@
 import { routerPage } from "../../app/router.js/router.js";
-import rerender from "../DOMutil/rerender.js";
+import rerender, { resetVDOM } from "../DOMutil/rerender.js";
 import { setCurrentState } from "../state/currentState.js";
 import { setCurrentEffect } from "../state/currentEffect.js";
 import { setCurrentPage } from "../state/currentPage.js";
@@ -22,6 +22,8 @@ export function navigateTo(path) {
   if (page.state) {
     setCurrentState(page.state);
   }
+
+  resetVDOM();
   setCurrentEffect(page.effect);
   setCurrentPage(page.page);
 

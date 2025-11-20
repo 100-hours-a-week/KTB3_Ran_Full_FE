@@ -27,7 +27,13 @@ export function render(vnode) {
 
   //##children
   //2. 해당 부분에서 재귀함수로 돌며 text가 string으로 나올때까지 순회한다.
-  vnode.children.forEach((child) => {
+  const children = Array.isArray(vnode.children)
+    ? vnode.children
+    : vnode.children != null
+      ? [vnode.children]
+      : [];
+
+  children.forEach((child) => {
     //돔트리에 생성한 노드를 붙인다. (attach)
     element.appendChild(render(child));
   });

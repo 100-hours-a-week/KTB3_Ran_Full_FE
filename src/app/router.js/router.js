@@ -11,10 +11,17 @@ import BoardPostUpdatePage from "../../pages/board/update/ui/BoardPostUpdatePage
 import LoginPageVDOM from "../../pages/login/ui/LoginPageVDOM.js";
 import loginEffects from "../../pages/login/model/LoginPageEffect.js";
 import LoginState from "../../pages/login/model/LoginState.js";
+import SignupPageVDOM from "../../pages/signup/ui/SignUpPageVDOM.js";
+import signupState from "../../pages/signup/model/signupState.js";
+import signupEffects from "../../pages/signup/model/signupEffects.js";
 
 export const routerPage = {
   "/login": { page: LoginPageVDOM, effect: loginEffects, state: LoginState },
-  "/signup": SignUpPage,
+  "/signup": {
+    page: SignupPageVDOM,
+    effect: signupEffects,
+    state: signupState,
+  },
   "/home": BoardHomePage,
   "/post": BoardPostCreatPage,
   "/user/info": handleUserInfo,

@@ -10,6 +10,7 @@ const root = document.querySelector("#app");
 
 export function resetVDOM() {
   oldVDOM = null;
+  root.innerHTML = "";
 }
 
 //아 타입스크립트가 아니라 타입을 정의할수없어서 너무 헷갈림...
