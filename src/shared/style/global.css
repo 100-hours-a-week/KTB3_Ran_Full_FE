@@ -10,7 +10,7 @@ body {
 }
 
 #app {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +54,22 @@ button {
   font-size: var(--font-size-lg);
 }
 
-.primaryBtn:disabled {
+.primaryBtn:disabled,
+.primaryBtn.disabled {
   background-color: var(--color-disable);
   cursor: default;
+}
+
+.header-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: var(--layout-max-width);
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: var(--font-size-header);
+  cursor: pointer;
+  /* padding: 10px; */
+  /* margin: 20px; */
 }
