@@ -110,6 +110,7 @@ import h from "../../DOMutil/virtualDOM.js";
 // customElements.define("input-field", InputField);
 
 export function InputField({
+  id = "",
   label = "",
   value = "",
   type = "text",
@@ -122,6 +123,7 @@ export function InputField({
     h("div", { className: "title" }, [label]),
     h("div", { className: "inputWrapper" }, [
       h("input", {
+        id,
         type,
         value,
         placeholder,
