@@ -10,6 +10,8 @@ const signupState = {
 
   username: "",
   usernameError: "",
+
+  canSubmit: false,
 };
 
 export default signupState;
