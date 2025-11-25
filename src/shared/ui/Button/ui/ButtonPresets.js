@@ -16,20 +16,22 @@ import imgButton from "../../../../widgets/imgButton.js/ui/imgButton.js";
 import ButtonVDOM from "./VDOM/PrimaryButton.js";
 
 // PrimaryButton
-export function loginBtn() {
+export function loginBtn(state) {
   return ButtonVDOM({
     text: "로그인",
     onClick: handleLoginClick,
+    state: state,
     styleProps: {
       width: 100,
     },
   });
 }
 
-export function signupBtn() {
-  return Button({
+export function signupBtn(state) {
+  return ButtonVDOM({
     text: "회원가입",
     onClick: handleSignupClick,
+    state: state,
     styleProps: {
       width: 100,
     },

@@ -8,6 +8,7 @@ export default function loginEffects() {
 
   function onInput(e) {
     //로그인 페이지가 아닌 다른 페이지 일 경우 작동하지 않음.
+
     if (!document.querySelector(".login-page")) return;
 
     const { id, value } = e.target;

@@ -8,13 +8,14 @@ import { loginBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 
 export default function LoginPageVDOM(state) {
   //헐 설마 return 에 두는게 react도 같은 이유로 return 에 두는건가?
-
+  console.log("loginPageVDOM");
   return h(
     "div",
     { className: "login-page" },
     h(
       "div",
       { className: "auth-container" },
+      h("div", { className: "gap" }),
       h("img", { className: "logo", src: "public/logo.svg" }),
       h(
         "div",
@@ -27,18 +28,12 @@ export default function LoginPageVDOM(state) {
         "div",
         { className: "auth-container-wrapper" },
         InputField({
+          id: "email",
           label: "이메일",
           value: state.email,
           placeholder: "",
           helperText: state.emailError,
           type: "text",
-          onInput: (e) => {
-            const value = e.target.value;
-            setState({
-              email: value,
-              emailError: validateEmail(value),
-            });
-          },
           onBlur: (e) => {
             const value = e.target.value;
             setState({
@@ -47,17 +42,11 @@ export default function LoginPageVDOM(state) {
           },
         }),
         InputField({
+          id: "password",
           label: "비밀번호",
           type: "password",
           value: state.password,
           helperText: state.passwordError,
-          onInput: (e) => {
-            const value = e.target.value;
-            setState({
-              password: value,
-              passwordError: validatePassword(value),
-            });
-          },
           onBlur: (e) => {
             const value = e.target.value;
             setState({
@@ -65,7 +54,7 @@ export default function LoginPageVDOM(state) {
             });
           },
         }),
-        loginBtn()
+        loginBtn(state)
       ),
       h("div", { className: "nav-btn-wrapper" }, [
         h("div", { className: "nav-des" }, "당신의 한 줄을 기록해보세요."),
