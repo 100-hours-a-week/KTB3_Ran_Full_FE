@@ -1,6 +1,12 @@
 import h from "../../../../DOMutil/virtualDOM.js";
 
-function ButtonVDOM({ text = "버튼", onClick = null, styleProps = {} } = {}) {
+function ButtonVDOM({
+  text = "버튼",
+  onClick = null,
+  state = "",
+  styleProps = {},
+} = {}) {
+  console.log("state.canSubmit:", state.canSubmit);
   return h(
     "div",
     { className: "btn-wrapper", style: StyleWrapper(styleProps) },
@@ -8,7 +14,8 @@ function ButtonVDOM({ text = "버튼", onClick = null, styleProps = {} } = {}) {
       h(
         "button",
         {
-          className: "primaryBtn",
+          className: state.canSubmit ? "primaryBtn" : "primaryBtn disabled",
+          disabled: !state.canSubmit,
           onclick: onClick,
           style: StyleButton(styleProps),
         },
@@ -21,19 +28,19 @@ function ButtonVDOM({ text = "버튼", onClick = null, styleProps = {} } = {}) {
 function StyleWrapper(styleProps) {
   return `
     display: flex;
-    justify-content: ${styleProps.justifyContent || "flex-end"};
+    justify-content: ${styleProps.justifyContent};
   `;
 }
 
 function StyleButton(styleProps) {
   return `
-    width: ${styleProps.width || 100}%;
-    border-radius: ${styleProps.radius || 8}px;
-    margin: ${styleProps.margin || 0}px;
-    padding: ${styleProps.padding || 12}px;
-    background: ${styleProps.background || "var(--color-primary)"};
-    font-size: ${styleProps.fontSize || 16}px;
-    font-weight: ${styleProps.fontWeight || "bold"};
+    width: ${styleProps.width}%;
+    border-radius: ${styleProps.radius}px;
+    margin: ${styleProps.margin}px;
+    padding: ${styleProps.padding}px;
+    background: ${styleProps.background};
+    font-size: ${styleProps.fontSize}px;
+    font-weight: ${styleProps.fontWeight};
   `;
 }
 
