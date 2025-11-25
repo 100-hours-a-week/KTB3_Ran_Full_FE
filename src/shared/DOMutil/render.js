@@ -2,39 +2,40 @@ export function render(vnode) {
   console.log("render node:", vnode);
   //vnode = children ={type, props , children }
 
-  //재귀함수여서 text 또는 아무것도 없을 때까지 재귀하기 때문에 해당 구문이 꼭 필요함.
+  //1 : Vnode의 돔 종류에 따른 처리
+  //1-1. textNode처리
   if (typeof vnode === "string") {
     return document.createTextNode(vnode);
   }
 
-  //1. VDOM으로 그린 객체를 실제 DOM을 생성한다.
+  //1-2. ElementNode 처리
   const element = document.createElement(vnode.type);
 
-  //##props
-  //element[k] = v는 js dom 객체의 프로퍼티를 설정하는 것
+  //2. props
+  //vnode의 props는 여러개일 수 있기 때문에 for문으로 받는다.
   for (let key in vnode.props) {
     const value = vnode.props[key];
 
+    //2-1. 이벤트 처리
     if (key.startsWith("on") && typeof value === "function") {
-      // oninput → input
-      const eventName = key.slice(2); // input, blur
-      element.addEventListener(eventName, value);
+      const eventName = key.slice(2).toLowerCase(); // input, blur
+      element.addEventListener(eventName, value); //Input, value
     } else {
       // 일반 속성
       element[key] = value;
     }
   }
 
-  //##children
-  //2. 해당 부분에서 재귀함수로 돌며 text가 string으로 나올때까지 순회한다.
+  //3. children
+  //배열의 형태로 통일 시키기 위해 배열로 변경
   const children = Array.isArray(vnode.children)
     ? vnode.children
     : vnode.children != null
       ? [vnode.children]
       : [];
 
+  //4. 돔트리에 생성한 노드를 붙인다. (attach)
   children.forEach((child) => {
-    //돔트리에 생성한 노드를 붙인다. (attach)
     element.appendChild(render(child));
   });
 

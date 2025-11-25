@@ -14,7 +14,5 @@ export function getState() {
 
 export default function setState(addState) {
   currentState = { ...currentState, ...addState };
-  console.log(currentState);
-  // runRerender();
   rerender();
 }

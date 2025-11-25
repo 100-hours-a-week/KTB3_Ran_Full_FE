@@ -26,13 +26,4 @@ export function navigateTo(path) {
   resetVDOM();
   setCurrentEffect(page.effect);
   setCurrentPage(page.page);
-
-  // //일단 안씀
-  // // 이전 페이지 effect cleanup
-  // cleanupFn?.();
-
-  // // 상태 업데이트
-  // setCurrentPage(pageName);
-  // // effect 등록
-  // cleanupFn = page.effects?.();
 }
