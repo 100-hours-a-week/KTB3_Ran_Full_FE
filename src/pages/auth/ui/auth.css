@@ -12,14 +12,19 @@
   gap: var(--gap-xlg);
 }
 
+.gap {
+  height: 50px;
+}
+
 .auth-container .logo {
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 
 .auth-container-wrapper {
   gap: var(--gap-md);
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
 
 .auth-container .desc {
