@@ -20,7 +20,6 @@ export default function rerender() {
   const page = getCurrentPage();
 
   if (!page) return;
-  //현재 페이지의 가상 DOM
   const newVDOM = page(getState()); //상태가 반영된 loginPageVDOM이 아니라 전역적으로 반영받을수있도록하기
 
   if (oldVDOM == null) {
