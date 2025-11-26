@@ -27,6 +27,5 @@ export function navigateTo(path) {
   setCurrentEffect(page.effect);
   setCurrentPage(page.page);
 
-  resetVDOM(); //페이지가 바뀌면 oldVDOM 초기화
-  rerender(); //oldVDOM 해당 페이지껄로 받아옴
+  rerender();
 }

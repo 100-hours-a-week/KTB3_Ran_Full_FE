@@ -31,15 +31,8 @@ export default function LoginPageVDOM(state) {
           id: "email",
           label: "이메일",
           value: state.email,
-          placeholder: "",
           helperText: state.emailError,
           type: "text",
-          onBlur: (e) => {
-            const value = e.target.value;
-            setState({
-              emailError: validateEmail(value),
-            });
-          },
         }),
         InputField({
           id: "password",
@@ -47,12 +40,6 @@ export default function LoginPageVDOM(state) {
           type: "password",
           value: state.password,
           helperText: state.passwordError,
-          onBlur: (e) => {
-            const value = e.target.value;
-            setState({
-              passwordError: validatePassword(value),
-            });
-          },
         }),
         loginBtn(state)
       ),

@@ -75,6 +75,8 @@ function signupEffects() {
           !validateUsername(value),
       });
     }
+
+    console.log(state);
   }
 
   document.addEventListener("blur", onBlur, true);

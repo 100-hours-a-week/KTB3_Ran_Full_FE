@@ -116,7 +116,6 @@ export function InputField({
   type = "text",
   placeholder = "",
   helperText = "",
-  onBlur = null,
 }) {
   return h("div", { className: "input-field-container" }, [
     h("div", { className: "title" }, [label]),
@@ -126,7 +125,6 @@ export function InputField({
         type,
         value,
         placeholder,
-        onblur: onBlur,
       }),
     ]),
     h("div", { className: "helper" }, [helperText]),

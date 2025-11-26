@@ -15,15 +15,7 @@ export function render(vnode) {
   //vnode의 props는 여러개일 수 있기 때문에 for문으로 받는다.
   for (let key in vnode.props) {
     const value = vnode.props[key];
-
-    //2-1. 이벤트 처리
-    if (key.startsWith("on") && typeof value === "function") {
-      const eventName = key.slice(2).toLowerCase(); // input, blur
-      element.addEventListener(eventName, value); //Input, value
-    } else {
-      // 일반 속성
-      element[key] = value;
-    }
+    element[key] = value;
   }
 
   //3. children

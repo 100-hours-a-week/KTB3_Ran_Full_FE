@@ -40,13 +40,6 @@ function SignupPageVDOM(state) {
           type: "text",
           value: state.email,
           helperText: state.emailError,
-
-          onBlur: (e) => {
-            const v = e.target.value;
-            setState({
-              emailError: validateEmail(v),
-            });
-          },
         }),
 
         // 비밀번호
@@ -56,12 +49,6 @@ function SignupPageVDOM(state) {
           type: "password",
           value: state.password,
           helperText: state.passwordError,
-          onBlur: (e) => {
-            const v = e.target.value;
-            setState({
-              passwordError: validatePassword(v),
-            });
-          },
         }),
 
         // 비밀번호 확인
@@ -71,18 +58,6 @@ function SignupPageVDOM(state) {
           type: "password",
           value: state.passwordConfirm,
           helperText: state.passwordConfirmError,
-          onBlur: (e) => {
-            const v = e.target.value;
-
-            const passwordState = getState();
-
-            setState({
-              passwordConfirmError: validateConfirmPassword({
-                password: passwordState.password,
-                confirmPassword: v,
-              }),
-            });
-          },
         }),
 
         // 닉네임
@@ -92,13 +67,6 @@ function SignupPageVDOM(state) {
           type: "text",
           value: state.username,
           helperText: state.usernameError,
-
-          onBlur: (e) => {
-            const v = e.target.value;
-            setState({
-              usernameError: validateUsername(v),
-            });
-          },
         }),
 
         // 회원가입 버튼
