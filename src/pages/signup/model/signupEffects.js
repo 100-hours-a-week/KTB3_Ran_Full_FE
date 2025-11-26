@@ -7,7 +7,7 @@ import setState, { getState } from "../../../shared/state/currentState.js";
 function signupEffects() {
   console.log("signupEffect 등록됨");
 
-  function onInput(e) {
+  function onBlur(e) {
     if (!document.querySelector(".signup-page")) return;
 
     const { id, value } = e.target;
@@ -77,7 +77,7 @@ function signupEffects() {
     }
   }
 
-  document.addEventListener("input", onInput);
+  document.addEventListener("blur", onBlur, true);
 
   document.addEventListener("click", (e) => {
     if (e.target.id === "login-nav-button") {
@@ -88,7 +88,7 @@ function signupEffects() {
   });
 
   return () => {
-    document.removeEventListener("input", onInput);
+    document.removeEventListener("blur", onBlur);
   };
 }
 
