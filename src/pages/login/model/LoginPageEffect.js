@@ -42,6 +42,7 @@ export default function loginEffects() {
   });
 
   return () => {
-    document.addEventListener("blur", onBlur, true);
+    document.removeEventListener("blur", onBlur, true);
+    document.removeEventListener("click", onclick);
   };
 }

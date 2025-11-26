@@ -90,7 +90,8 @@ function signupEffects() {
   });
 
   return () => {
-    document.removeEventListener("blur", onBlur);
+    document.removeEventListener("blur", onBlur, true);
+    document.removeEventListener("click", onclick);
   };
 }
 
