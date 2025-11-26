@@ -2,6 +2,7 @@ import { routerPage } from "../../../app/router.js/router.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function signup(dto) {
+  console.log("signup:", dto);
   try {
     const response = await fetch(Endpoint.USER.SIGNUP, {
       method: "POST",

@@ -6,6 +6,6 @@ export const loginDto = (props) => ({
 export const signupDto = (data) => ({
   email: data.email,
   password: data.password,
-  confirmPassword: data.confirmPassword,
+  confirmPassword: data.passwordConfirm,
   username: data.username,
 });

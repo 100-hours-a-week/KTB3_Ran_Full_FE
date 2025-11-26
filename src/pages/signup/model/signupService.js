@@ -1,5 +1,6 @@
 import signup from "../../../features/auth/api/signup.js";
 import { signupDto } from "../../../features/auth/model/authDto.js";
+import { getState } from "../../../shared/state/currentState.js";
 import { passwordConfirmProps } from "../../auth/model/props.js";
 
 async function SignupService({
@@ -8,14 +9,8 @@ async function SignupService({
   passwordConfirmField,
   usernameField,
 }) {
-  const data = {
-    email: emailField.value,
-    password: passwordField.value,
-    confirmPassword: passwordConfirmField.value,
-    username: usernameField.value,
-  };
-
-  const dto = signupDto(data);
+  const state = getState();
+  const dto = signupDto(state);
 
   try {
     const signupAPI = await signup(dto);

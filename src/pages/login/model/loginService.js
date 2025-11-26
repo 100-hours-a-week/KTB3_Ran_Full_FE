@@ -9,6 +9,7 @@ async function loginService() {
 
   const state = getState();
   const dto = loginDto(state);
+  console.log("loginState", dto);
 
   try {
     const loginAPI = await login(dto);

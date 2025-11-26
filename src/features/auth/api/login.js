@@ -3,6 +3,7 @@ import { navigateTo } from "../../../shared/router/Router.js";
 import sessionUser from "../../../shared/utils/session.js";
 
 async function login(dto) {
+  console.log("login dto", dto);
   try {
     const response = await fetch(Endpoint.USER.LOGIN, {
       method: "POST",
@@ -17,9 +18,11 @@ async function login(dto) {
 
     //세션에 유저 저장
     if (response.ok) {
-      const data = json.data || "data";
-      console.log("data :", data);
-      sessionUser.setUser(data);
+      const token = json.data.jwt;
+      console.log("token :", token);
+
+      // persist the JWT so other modules can read it later
+      sessionStorage.setItem("token", token);
       navigateTo("/home");
       console.log("이동완료");
       return;
