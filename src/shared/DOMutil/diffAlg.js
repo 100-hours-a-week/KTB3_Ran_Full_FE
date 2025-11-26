@@ -52,11 +52,6 @@ export function updateElement(parent, newNode, oldNode, index = 0) {
     return;
   }
 
-  if (newNode.type === "input") {
-    updateProps(element, newNode.props, oldNode.props);
-    return;
-  }
-
   updateProps(element, newNode.props, oldNode.props);
 
   // 7) children diff
@@ -70,27 +65,15 @@ export function updateElement(parent, newNode, oldNode, index = 0) {
 //props를 업데이트
 function updateProps(element, newProps, oldProps) {
   for (let k in newProps) {
-    if (k.startsWith("on")) {
-      const eventName = k.slice(2).toLowerCase();
-      element[eventName] = newProps[k] || null;
-      continue;
-    }
-
     if (element[k] !== newProps[k]) {
       element[k] = newProps[k];
     }
   }
 
-  //제거된 props 적용 -> 삭제된 props 속성 제거
-  // for (let k in oldProps) {
-  //   if (!(k in newProps)) {
-  //     if (k.startsWith("on")) {
-  //       const eventName = k.slice(2).toLowerCase();
-  //       element[eventName] = null;
-  //       continue;
-  //     }
-
-  //     element[k] = "";
-  //   }
-  // }
+  // 제거된 props 적용 -> 삭제된 props 속성 제거
+  for (let k in oldProps) {
+    if (!(k in newProps)) {
+      element[k] = "";
+    }
+  }
 }
