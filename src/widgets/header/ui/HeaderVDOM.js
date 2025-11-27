@@ -19,12 +19,13 @@ export default function HeaderVDOM({ mode }) {
         src: "public/logo.svg",
         alt: "서비스 로고",
         onclick: () => {
+          console.log("home");
           location.hash = "/home";
         },
       }),
 
       // 프로필 버튼
-      ProfileButtonVDOM(mode),
+      ProfileButtonVDOM(),
     ]
   );
 }
