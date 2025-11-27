@@ -19,7 +19,6 @@ export default function ProfileMenuModalVDOM({
       `,
     },
     [
-      // 메뉴 버튼들 (각각 VDOM 컴포넌트로 분리하는 것도 가능)
       h(
         "div",
         {

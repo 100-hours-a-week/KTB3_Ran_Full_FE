@@ -1,8 +1,12 @@
 import h from "../../shared/DOMutil/virtualDOM.js";
-import setState from "../../shared/state/currentState.js";
+import setState, { getState } from "../../shared/state/currentState.js";
+import { navigateTo } from "../../shared/router/Router.js";
+import logout from "./model/logout.js";
 import ProfileMenuModalVDOM from "./ui/ProfileMenuModalVDOM.js";
 
-function ProfileButtonVDOM(mode) {
+function ProfileButtonVDOM() {
+  const state = getState();
+  const profileModalVisible = state.ui?.profileModalVisible ?? false;
   const user = sessionStorage.getItem("accessToken");
   const visible = !!user;
 
@@ -10,6 +14,7 @@ function ProfileButtonVDOM(mode) {
     h(
       "div",
       {
+        id: "profile-btn",
         className: "profile-button",
         style: `
           visibility: ${visible ? "visible" : "hidden"};
@@ -21,8 +26,12 @@ function ProfileButtonVDOM(mode) {
           overflow: hidden;
         `,
         onclick: () => {
+          const state = getState();
+
           setState({
-            profileModalVisible: !mode.profileModalVisible,
+            ui: {
+              profileModalVisible: !state.ui.profileModalVisible, //해당 부분만 덮어쓰기
+            },
           });
         },
       },
@@ -31,7 +40,10 @@ function ProfileButtonVDOM(mode) {
 
     // 모달을 VDOM 형태로 렌더링
     ProfileMenuModalVDOM({
-      visible: mode.profileModalVisible,
+      visible: profileModalVisible,
+      onUserInfo: () => (location.hash = "/user/info"),
+      onPassword: () => (location.hash = "/user/password-modify"),
+      onLogout: () => logout(),
     }),
   ]);
 }
