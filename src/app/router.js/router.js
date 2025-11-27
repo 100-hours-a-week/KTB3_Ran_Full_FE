@@ -30,6 +30,11 @@ export const routerPage = {
     effect: BoardHomeEffect,
     state: BoardHomeState,
   },
+  "/post/get": {
+    page: () => h("div", {}, "loading..."),
+    effect: null,
+    state: {},
+  },
   "/post": BoardPostCreatPage,
   "/user/info": handleUserInfo,
   "/user/password-modify": handlePasswordModify,

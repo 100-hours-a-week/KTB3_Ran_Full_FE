@@ -18,7 +18,7 @@ async function post() {
       console.log(data);
       return data;
     } else {
-      console.log("data가 없으세요.", data);
+      console.log("data가 없으세요.");
       throw new Error("POST_FETCH_FAILED");
     }
   } catch (error) {

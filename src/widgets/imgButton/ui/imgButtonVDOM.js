@@ -4,6 +4,7 @@ export default function ImgButtonVDOM({
   id = "", //각각의 다른 인스턴스로분리하기 위해서
   src = "",
   alt = "",
+  onClick = null,
   styleProps = {},
 } = {}) {
   return h(
@@ -22,6 +23,7 @@ export default function ImgButtonVDOM({
         {
           className: "imgBtn",
           id,
+          onClick: onClick,
           style: `
             width: ${styleProps.width || 32}px;
             height: ${styleProps.height || 32}px;

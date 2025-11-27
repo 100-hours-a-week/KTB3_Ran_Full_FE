@@ -3,10 +3,11 @@ import { commentDto } from "../../../pages/board/model/commentDto.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postDetail(postId) {
+    const token = sessionStorage.getItem("accessToken");
   try {
     const response = await fetch(`${Endpoint.POST.GET}/${postId}`, {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",Authorization : `Bearer ${token}` },
       credentials: "include",
     });
 
@@ -21,8 +22,7 @@ async function postDetail(postId) {
       return { postData, commentsData };
     } else {
       location.hash = "/";
-      console.log("data가 없으세요.", data);
-      throw error;
+      throw new Error("error");
     }
   } catch (error) {
     throw error;

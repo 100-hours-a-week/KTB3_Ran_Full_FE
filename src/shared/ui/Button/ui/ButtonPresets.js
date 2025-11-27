@@ -57,7 +57,7 @@ export function postCreateBtnVDOM() {
 
 //댓글 생성 버튼
 export function commentCreatBtn({ getDto, postId }) {
-  return Button({
+  return ButtonVDOM({
     text: "댓글 등록",
     onClick: () => {
       handleCreatComment({ dto: getDto(), postId });
@@ -73,7 +73,7 @@ export function commentCreatBtn({ getDto, postId }) {
 
 //댓글 수정 버튼
 export function commentUpdateBtn({ getDto, postId, commentId }) {
-  return Button({
+  return ButtonVDOM({
     text: "댓글 수정",
     onClick: () => {
       commentUpdateFetch({ dto: getDto(), postId, commentId }); //handle추후에 필요.
@@ -87,7 +87,7 @@ export function commentUpdateBtn({ getDto, postId, commentId }) {
 
 //유저정보 수정하기 버튼
 export function updateBtn({ getDto }) {
-  return Button({
+  return ButtonVDOM({
     text: "수정하기",
     onClick: () => {
       handleUserUpdate({ dto: getDto() });
@@ -102,7 +102,7 @@ export function updateBtn({ getDto }) {
 
 //유저비밀번호 수정하기 버튼
 export function updatePasswordBtn({ getDto }) {
-  return Button({
+  return ButtonVDOM({
     text: "수정하기",
     onClick: () => {
       handleUserPasswordUpdate({ dto: getDto() });
@@ -117,7 +117,7 @@ export function updatePasswordBtn({ getDto }) {
 
 //페이지 생성 버튼
 export function pageCreatBtn() {
-  return Button({
+  return ButtonVDOM({
     text: "작성",
     onClick: handlePostCreat,
     styleProps: {
@@ -132,7 +132,7 @@ export function pageCreatBtn() {
 
 //페이지 수정하기 버튼
 export function pageUpdateBtn({ getDto, postId }) {
-  return Button({
+  return ButtonVDOM({
     text: "수정하기",
     onClick: () => {
       handlePostUpdate({ dto: getDto(), postId });
@@ -151,14 +151,14 @@ export function pageUpdateBtn({ getDto, postId }) {
 
 //확인 버튼
 export function confirmBtn() {
-  return Button({
+  return ButtonVDOM({
     text: "확인",
   });
 }
 
 //취소 버튼 : 어떤 모달인지 전송받아야됨
 export function quitBtn() {
-  return Button({
+  return ButtonVDOM({
     text: "취소",
     styleProps: {
       background: "#000000ff",
@@ -170,7 +170,7 @@ export function quitBtn() {
 
 ///ActionButton
 export function editBtn(action) {
-  return imgButton({
+  return ImgButtonVDOM({
     src: "public/icon/edit_icon.svg",
     alt: "편집버튼",
     onClick: () => EditModal(action),
@@ -184,7 +184,7 @@ export function editBtn(action) {
 
 //삭제 -> 삭제 모달
 export function delBtn(action) {
-  return imgButton({
+  return ImgButtonVDOM({
     src: "public/icon/delete_icon.svg",
     alt: "삭제버튼",
     onClick: () => DeleteModal(action),
