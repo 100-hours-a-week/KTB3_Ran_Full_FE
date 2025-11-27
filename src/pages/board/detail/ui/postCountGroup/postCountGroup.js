@@ -1,4 +1,4 @@
-import likeCreateDeleteTogle from "../../../../features/like/model/likeCreateDeleteTogle.js";
+import likeCreateDeleteTogle from "../../../../../features/like/model/likeCreateDeleteTogle.js";
 
 function postCountGroup(props) {
   const container = document.createElement("div");

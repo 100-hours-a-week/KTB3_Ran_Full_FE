@@ -1,7 +1,7 @@
 import Title from "../../../../shared/ui/Title/Title.js";
 import boardCard from "../../../../widgets/post/ui/boardCard.js";
 import handleBoardGet from "../../../../features/board/model/handleBoardGet.js";
-import { postCreateBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
+// import { postCreateBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js";
 import { boardPostDataDto } from "../../model/boardPostDto.js";
 import sessionUser from "../../../../shared/utils/session.js";
 

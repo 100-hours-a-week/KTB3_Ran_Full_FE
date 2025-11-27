@@ -12,8 +12,9 @@ import handlePostEdit from "../../../lib/handlePostUpdate.js";
 import handlePostUpdate from "../../../lib/handlePostUpdate.js";
 import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
 import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPasswordUpdate.js";
-import imgButton from "../../../../widgets/imgButton.js/ui/imgButton.js";
+import imgButton from "../../../../widgets/imgButton/ui/imgButton.js";
 import ButtonVDOM from "./VDOM/PrimaryButton.js";
+import ImgButtonVDOM from "../../../../widgets/imgButton/ui/imgButtonVDOM.js";
 
 // PrimaryButton
 export function loginBtn(state) {
@@ -39,11 +40,11 @@ export function signupBtn(state) {
 }
 
 //게시글 생성 버튼
-export function postCreateBtn() {
-  return imgButton({
+export function postCreateBtnVDOM() {
+  return ImgButtonVDOM({
+    id: "creat-post-btn",
     src: "public/icon/boardCreat_icon.svg",
     alt: "글 생성 버튼",
-    onClick: handlerPostCreat,
     styleProps: {
       radius: 50,
       width: 60,

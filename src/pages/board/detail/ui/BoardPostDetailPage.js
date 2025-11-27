@@ -1,6 +1,6 @@
 import postContent from "./postContent.js";
 import postHeader from "./postHeader.js";
-import postCountGroup from "./postCountGroup.js";
+import postCountGroup from "./postCountGroup/postCountGroup.js";
 import commentCount from "../../../../widgets/comment/ui/commentCard.js";
 import commentCreatCard from "../../../../widgets/comment/ui/commentCreatCard.js";
 import { commendProps } from "../../../../widgets/comment/model/commendProps.js";

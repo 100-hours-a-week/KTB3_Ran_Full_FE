@@ -15,7 +15,7 @@ template.innerHTML = /*HTML*/ `
     font-size: var(--font-size-header);
     font-weight : 400;
     margin: 20px;
-    padding: 10px;
+    padding: 10px;ㄴ
     color: var(--color-text);
     text-align: center;
     display: flex;

@@ -2,9 +2,13 @@ import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function post() {
   try {
+    const token = sessionStorage.getItem("accessToken");
     const response = await fetch(Endpoint.POST.POST, {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const json = await response.json();
@@ -15,7 +19,7 @@ async function post() {
       return data;
     } else {
       console.log("data가 없으세요.", data);
-      throw error;
+      throw new Error("POST_FETCH_FAILED");
     }
   } catch (error) {
     throw error;
