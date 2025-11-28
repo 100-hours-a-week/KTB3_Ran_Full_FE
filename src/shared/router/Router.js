@@ -17,7 +17,7 @@ import TextareaFieldEffect from "../ui/TextareaField/TextareaFieldEffect.js";
 import actionGroupItemEffect from "../../widgets/actionGroup/model/actionGroupItemEffect.js";
 import actionGroupToggleEffect from "../../widgets/actionGroup/model/actionGroupToggleEffect.js";
 import commentCardEffect from "../../widgets/comment/model/commentCardEffect.js";
-import postCountGroupEffet from "../../pages/board/detail/ui/postCountGroup/model/postCountGroupEffect.js";
+// import postCountGroupEffet from "../../pages/board/detail/ui/postCountGroup/model/postCountGroupEffect.js";
 import likeCreateDeleteTogle from "../../features/like/model/likeCreateDeleteTogle.js";
 
 let cleanupFn = null;
@@ -44,7 +44,6 @@ export function navigateTo(path) {
       actionGroupItemEffect,
       actionGroupToggleEffect,
       commentCardEffect,
-      postCountGroupEffet,
       likeCreateDeleteTogle,
     ]);
 

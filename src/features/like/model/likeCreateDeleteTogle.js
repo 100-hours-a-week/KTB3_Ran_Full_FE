@@ -38,8 +38,6 @@ function likeCreateDeleteTogle() {
     } else {
       await handleLikeDelete(postId);
     }
-
-    updateLikeIcon();
   }
 
   //mount시 초기 렌더링
