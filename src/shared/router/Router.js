@@ -25,10 +25,8 @@ export function navigateTo(path) {
     setCurrentState({ ...postDetailState });
     //페이지 등록
     setCurrentPage(BoardPostDetailPageVDOM);
-    setCurrentEffect(() => {
-      BoardPostDetailEffect(id);
-      return commentCreatCardEffect();
-    });
+    //effect 등록
+    setCurrentEffect([() => BoardPostDetailEffect(id), commentCreatCardEffect]);
 
     rerender();
     return;
