@@ -3,8 +3,6 @@ import handleLoginClick from "../../../../pages/login/lib/handleLoginClick.js";
 import handleSignupClick from "../../../../pages/signup/lib/handleSignupClick.js";
 import handlerPostCreat from "../../../../features/navigation/handlerPostCreat.js";
 import ActionButton from "./ActionButton.js";
-import DeleteModal from "../../../lib/DeleteModal.js";
-import EditModal from "../../../lib/EditModal.js";
 import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
 import handleUserUpdate from "../../../../pages/info/lib/handleUserUpdate.js";
 import handlePostEdit from "../../../lib/handlePostUpdate.js";
@@ -14,8 +12,6 @@ import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPassw
 import imgButton from "../../../../widgets/imgButton/ui/imgButton.js";
 import ButtonVDOM from "./VDOM/PrimaryButton.js";
 import ImgButtonVDOM from "../../../../widgets/imgButton/ui/imgButtonVDOM.js";
-import EditModalVDOM from "../../../lib/EditModalVDOM.js";
-import DeleteModalVDOM from "../../../lib/DeleteModalDOM.js";
 
 // PrimaryButton
 export function loginBtn(state) {
@@ -32,7 +28,9 @@ export function loginBtn(state) {
 export function signupBtn(state) {
   return ButtonVDOM({
     text: "회원가입",
-    onClick: handleSignupClick,
+    buttonProps: {
+      onclick: handleSignupClick,
+    },
     state: state,
     styleProps: {
       width: 100,
@@ -77,8 +75,10 @@ export function commentCreatBtn({ id = "", postId }) {
 export function commentUpdateBtn({ getDto, postId, commentId }) {
   return ButtonVDOM({
     text: "댓글 수정",
-    onClick: () => {
-      commentUpdateFetch({ dto: getDto(), postId, commentId }); //handle추후에 필요.
+    buttonProps: {
+      onclick: () => {
+        commentUpdateFetch({ dto: getDto(), postId, commentId });
+      },
     },
     styleProps: {
       radius: 16,
@@ -91,8 +91,10 @@ export function commentUpdateBtn({ getDto, postId, commentId }) {
 export function updateBtn({ getDto }) {
   return ButtonVDOM({
     text: "수정하기",
-    onClick: () => {
-      handleUserUpdate({ dto: getDto() });
+    buttonProps: {
+      onclick: () => {
+        handleUserUpdate({ dto: getDto() });
+      },
     },
     styleProps: {
       radius: 30,
@@ -106,8 +108,10 @@ export function updateBtn({ getDto }) {
 export function updatePasswordBtn({ getDto }) {
   return ButtonVDOM({
     text: "수정하기",
-    onClick: () => {
-      handleUserPasswordUpdate({ dto: getDto() });
+    buttonProps: {
+      onclick: () => {
+        handleUserPasswordUpdate({ dto: getDto() });
+      },
     },
     styleProps: {
       radius: 30,
@@ -138,8 +142,10 @@ export function pageCreatBtn({ id, state }) {
 export function pageUpdateBtn({ getDto, postId }) {
   return ButtonVDOM({
     text: "수정하기",
-    onClick: () => {
-      handlePostUpdate({ dto: getDto(), postId });
+    buttonProps: {
+      onclick: () => {
+        handlePostUpdate({ dto: getDto(), postId });
+      },
     },
     styleProps: {
       margin: "10px 0",
@@ -154,18 +160,38 @@ export function pageUpdateBtn({ getDto, postId }) {
 /////모달의 확인 취소
 
 //확인 버튼
-export function confirmBtn() {
+export function confirmBtn({
+  text = "확인",
+  id = "",
+  buttonProps = {},
+  wrapperProps = {},
+} = {}) {
   return ButtonVDOM({
-    text: "확인",
+    text,
+    id,
+    state: { canSubmit: true },
+    buttonProps,
+    wrapperProps,
   });
 }
 
 //취소 버튼 : 어떤 모달인지 전송받아야됨
-export function quitBtn() {
+export function quitBtn({
+  text = "취소",
+  id = "",
+  buttonProps = {},
+  wrapperProps = {},
+  styleProps = {},
+} = {}) {
   return ButtonVDOM({
-    text: "취소",
+    text,
+    id,
+    state: { canSubmit: true },
+    buttonProps,
+    wrapperProps,
     styleProps: {
       background: "#000000ff",
+      ...styleProps,
     },
   });
 }
@@ -177,7 +203,12 @@ export function editBtn(action) {
   return ImgButtonVDOM({
     src: "public/icon/edit_icon.svg",
     alt: "편집버튼",
-    onClick: () => EditModalVDOM(action),
+    buttonProps: {
+      dataset: {
+        actionType: "edit",
+      },
+      actionPayload: action,
+    },
     styleProps: {
       width: 50,
       height: 50,
@@ -191,7 +222,12 @@ export function delBtn(action) {
   return ImgButtonVDOM({
     src: "public/icon/delete_icon.svg",
     alt: "삭제버튼",
-    onClick: () => DeleteModalVDOM(action),
+    buttonProps: {
+      dataset: {
+        actionType: "delete",
+      },
+      actionPayload: action,
+    },
     styleProps: {
       width: 50,
       height: 50,

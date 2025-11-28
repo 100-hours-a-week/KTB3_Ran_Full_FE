@@ -1,9 +1,9 @@
 import ModalVDOM from "../ui/modal/ModalVDOM.js";
 
-export default function EditModalVDOM({ type, onEdit }) {
+export default function EditModalVDOM({ type }) {
   return ModalVDOM({
     title: `${type}을 수정하시겠습니까?`,
     subTitle: "",
-    onClick: onEdit,
+    confirmText: "수정",
   });
 }
