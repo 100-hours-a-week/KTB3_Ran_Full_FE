@@ -14,6 +14,8 @@ import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPassw
 import imgButton from "../../../../widgets/imgButton/ui/imgButton.js";
 import ButtonVDOM from "./VDOM/PrimaryButton.js";
 import ImgButtonVDOM from "../../../../widgets/imgButton/ui/imgButtonVDOM.js";
+import EditModalVDOM from "../../../lib/EditModalVDOM.js";
+import DeleteModalVDOM from "../../../lib/DeleteModalDOM.js";
 
 // PrimaryButton
 export function loginBtn(state) {
@@ -175,7 +177,7 @@ export function editBtn(action) {
   return ImgButtonVDOM({
     src: "public/icon/edit_icon.svg",
     alt: "편집버튼",
-    onClick: () => EditModal(action),
+    onClick: () => EditModalVDOM(action),
     styleProps: {
       width: 50,
       height: 50,
@@ -189,7 +191,7 @@ export function delBtn(action) {
   return ImgButtonVDOM({
     src: "public/icon/delete_icon.svg",
     alt: "삭제버튼",
-    onClick: () => DeleteModal(action),
+    onClick: () => DeleteModalVDOM(action),
     styleProps: {
       width: 50,
       height: 50,
