@@ -15,6 +15,24 @@ export function render(vnode) {
   //vnode의 props는 여러개일 수 있기 때문에 for문으로 받는다.
   for (let key in vnode.props) {
     const value = vnode.props[key];
+
+    if (key && key.startsWith("data-")) {
+      element.setAttribute(key, value);
+      continue;
+    }
+
+    if (key === "style" && typeof value === "string") {
+      element.setAttribute("style", value);
+      continue;
+    }
+
+    if (key === "dataset" && typeof value === "object" && value !== null) {
+      Object.entries(value).forEach(([dataKey, dataValue]) => {
+        element.dataset[dataKey] = dataValue;
+      });
+      continue;
+    }
+
     element[key] = value;
   }
 

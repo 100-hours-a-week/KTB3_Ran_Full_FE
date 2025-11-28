@@ -3,11 +3,14 @@ import { commentDto } from "../../../pages/board/model/commentDto.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postDetail(postId) {
-    const token = sessionStorage.getItem("accessToken");
+  const token = sessionStorage.getItem("accessToken");
   try {
     const response = await fetch(`${Endpoint.POST.GET}/${postId}`, {
       method: "GET",
-      headers: { "Content-Type": "application/json",Authorization : `Bearer ${token}` },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       credentials: "include",
     });
 

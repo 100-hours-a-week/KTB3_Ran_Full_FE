@@ -18,6 +18,7 @@ export default function rerender() {
   //state,page,effect 3개의 요소를 모두 전역적으로 연결
   console.log("rerender");
   const page = getCurrentPage();
+  const currentEffect = getCurrentEffect();
 
   if (!page) return;
   const newVDOM = page(getState()); //상태가 반영된 loginPageVDOM이 아니라 전역적으로 반영받을수있도록하기

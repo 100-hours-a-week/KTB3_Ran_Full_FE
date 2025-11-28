@@ -6,89 +6,89 @@ import {
 } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 
 function commentCreatCard(post) {
-  const container = document.createElement("div");
-  container.className = "comment-creat-card";
+  // const container = document.createElement("div");
+  // container.className = "comment-creat-card";
 
-  container.innerHTML = /*HTML*/ `
-        <textarea placeholder="댓글을 남겨주세요!"></textarea>
-  `;
+  // container.innerHTML = /*HTML*/ `
+  //       <textarea placeholder="댓글을 남겨주세요!"></textarea>
+  // `;
 
-  const style = document.createElement("style");
-  style.textContent = /*CSS*/ `
-    .comment-creat-card{
-        display: flex;
-        flex-direction: column;
-        margin: 10px 0;
-        border-radius: 10px;
-    }
+  // const style = document.createElement("style");
+  // style.textContent = /*CSS*/ `
+  //   .comment-creat-card{
+  //       display: flex;
+  //       flex-direction: column;
+  //       margin: 10px 0;
+  //       border-radius: 10px;
+  //   }
 
-    .comment-creat-card textarea{
-            border: none;
-            border-radius: 20px 20px 0 0;
-            height: 60px;
-            padding: 30px 30px 0 30px;
-            resize:none;
-            font-size:var(--font-size-base);
-    }
-    .comment-creat-card textarea::placeholder{
-        color:var(--color-meta);
-    }
-    .comment-creat-card textarea:focus{
-        outline:none;
-    }
-    .buttonWrapper{
-        background: #fff;
-        border-radius: 0 0 20px 20px;
-        padding: 0 20px 20px 20px;
-    }
-  `;
+  //   .comment-creat-card textarea{
+  //           border: none;
+  //           border-radius: 20px 20px 0 0;
+  //           height: 60px;
+  //           padding: 30px 30px 0 30px;
+  //           resize:none;
+  //           font-size:var(--font-size-base);
+  //   }
+  //   .comment-creat-card textarea::placeholder{
+  //       color:var(--color-meta);
+  //   }
+  //   .comment-creat-card textarea:focus{
+  //       outline:none;
+  //   }
+  //   .buttonWrapper{
+  //       background: #fff;
+  //       border-radius: 0 0 20px 20px;
+  //       padding: 0 20px 20px 20px;
+  //   }
+  // `;
 
-  //생성 버튼
-  const text = container.querySelector("textarea");
-  const containerWrapper = document.createElement("div");
+  // //생성 버튼
+  // const text = container.querySelector("textarea");
+  // const containerWrapper = document.createElement("div");
 
-  //댓글 생성 버튼
-  const creatbutton = commentCreatBtn({
-    getDto: () =>
-      //getDto 생성 시점
-      creatCommentDto({
-        content: text.value,
-      }),
-    postId: post.id,
-  });
-  const button = creatbutton.querySelector("button");
+  // //댓글 생성 버튼
+  // const creatbutton = commentCreatBtn({
+  //   getDto: () =>
+  //     //getDto 생성 시점
+  //     creatCommentDto({
+  //       content: text.value,
+  //     }),
+  //   postId: post.id,
+  // });
+  // const button = creatbutton.querySelector("button");
 
-  let value = text.value;
+  // let value = text.value;
 
-  function __updateState() {
-    if (value.length == 0) {
-      button.disabled = true;
-      button.classList.add("disabled");
-    } else {
-      button.disabled = false;
-      button.classList.remove("disabled");
-    }
-  }
-  //userEffect
-  text.addEventListener("input", (e) => {
-    value = e.target.value;
-    __updateState();
-  });
+  // function __updateState() {
+  //   if (value.length == 0) {
+  //     button.disabled = true;
+  //     button.classList.add("disabled");
+  //   } else {
+  //     button.disabled = false;
+  //     button.classList.remove("disabled");
+  //   }
+  // }
+  // //userEffect
+  // text.addEventListener("input", (e) => {
+  //   value = e.target.value;
+  //   __updateState();
+  // });
 
-  //화면 초기화
-  __updateState();
+  // //화면 초기화
+  // __updateState();
 
-  const buttonWrapper = document.createElement("div");
-  buttonWrapper.className = "buttonWrapper";
+  // const buttonWrapper = document.createElement("div");
+  // buttonWrapper.className = "buttonWrapper";
 
-  buttonWrapper.appendChild(creatbutton);
-  buttonWrapper.dataset.mode = "create";
+  // buttonWrapper.appendChild(creatbutton);
+  // buttonWrapper.dataset.mode = "create";
 
-  //mode = create / mode = edit
-  container.appendChild(buttonWrapper);
+  // //mode = create / mode = edit
+  // container.appendChild(buttonWrapper);
 
-  containerWrapper.appendChild(style);
-  containerWrapper.appendChild(container);
+  // containerWrapper.appendChild(style);
+  // containerWrapper.appendChild(container);
 
   return containerWrapper;
 }

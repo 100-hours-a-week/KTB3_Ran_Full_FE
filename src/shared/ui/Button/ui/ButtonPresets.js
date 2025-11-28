@@ -7,7 +7,6 @@ import DeleteModal from "../../../lib/DeleteModal.js";
 import EditModal from "../../../lib/EditModal.js";
 import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
 import handleUserUpdate from "../../../../pages/info/lib/handleUserUpdate.js";
-import handleCreatComment from "../../../../pages/board/detail/lib/handleCreatComment.js";
 import handlePostEdit from "../../../lib/handlePostUpdate.js";
 import handlePostUpdate from "../../../lib/handlePostUpdate.js";
 import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
@@ -20,7 +19,7 @@ import ImgButtonVDOM from "../../../../widgets/imgButton/ui/imgButtonVDOM.js";
 export function loginBtn(state) {
   return ButtonVDOM({
     text: "로그인",
-    onClick: handleLoginClick,
+    id: "login-button",
     state: state,
     styleProps: {
       width: 100,
@@ -56,11 +55,12 @@ export function postCreateBtnVDOM() {
 }
 
 //댓글 생성 버튼
-export function commentCreatBtn({ getDto, postId }) {
+export function commentCreatBtn({ id = "", postId }) {
   return ButtonVDOM({
+    id,
     text: "댓글 등록",
-    onClick: () => {
-      handleCreatComment({ dto: getDto(), postId });
+    buttonProps: {
+      "data-post-id": postId ?? "",
     },
     styleProps: {
       radius: 30,

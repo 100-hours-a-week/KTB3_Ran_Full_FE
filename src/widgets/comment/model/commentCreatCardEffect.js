@@ -2,47 +2,49 @@ import { creatCommentDto } from "../../../features/comment/model/creatCommentDto
 import handleCreatComment from "../../../pages/board/detail/lib/handleCreatComment.js";
 
 export default function commentCreatCardEffect() {
-    const textarea = document.querySelector("#comment-textarea");
-    const btn = document.querySelector("#comment-create-btn button");
+  console.log("commentCreatCardEffect 등록됨");
+  const btnWrapper = document.getElementById("comment-create-btn");
+  if (!btnWrapper) return;
 
-    if (!textarea || !btn) return;
+  const btn = btnWrapper.querySelector("button");
+  const textarea = document.getElementById("comment-textarea");
 
-    // 1) textarea 입력 시 버튼 활성화
-    function onInput() {
-        const value = textarea.value.trim();
-        if (value.length === 0) {
-            btn.disabled = true;
-            btn.classList.add("disabled");
-        } else {
-            btn.disabled = false;
-            btn.classList.remove("disabled");
-        }
+  if (!textarea || !btn) return console.log("textarea, btn X");
+
+  //textarea 버튼 활성화 감지
+  function onInput() {
+    const value = textarea.value.trim();
+
+    if (value.length === 0) {
+      btn.disabled = true;
+      btn.classList.add("disabled");
+    } else {
+      btn.disabled = false;
+      btn.classList.remove("disabled");
     }
+  }
 
-    textarea.addEventListener("input", onInput);
+  onInput();
 
-    // 초기 UI 상태 동기화
+  //댓글 생성 버튼 클릭
+  async function onClick() {
+    const content = textarea.value.trim();
+    const dto = creatCommentDto({ content });
+    const postId = btn.dataset.postId;
+
+    //handle
+    await handleCreatComment({ dto, postId });
+
+    textarea.value = "";
     onInput();
+  }
 
-    // 2) 버튼 클릭 → 댓글 등록
-    async function onClick() {
-        const content = textarea.value.trim();
-        if (content === "") return;
+  textarea.addEventListener("input", onInput);
+  btn.addEventListener("click", onClick);
 
-        const dto = creatCommentDto({ content });
-
-        const postId = btn.dataset.postId;
-        await handleCreatComment({ postId, dto });
-
-        textarea.value = "";
-        onInput(); // 초기화 후 다시 버튼 상태 갱신
-    }
-
-    btn.addEventListener("click", onClick);
-
-    // cleanup
-    return () => {
-        textarea.removeEventListener("input", onInput);
-        btn.removeEventListener("click", onClick);
-    };
+  // cleanup
+  return () => {
+    textarea.removeEventListener("input", onInput);
+    btn.removeEventListener("click", onClick);
+  };
 }

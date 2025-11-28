@@ -1,5 +1,4 @@
 import commentCreatFetch from "../../../../features/comment/api/commentCreatFetch.js";
-import { creatCommentDto } from "../../../../features/comment/model/creatCommentDto.js";
 
 function handleCreatComment({ dto, postId }) {
   //댓글 작성 버튼을 누르면 -> 버튼의 input 값을 props에 넣음 -> dto로 동봉하여 보냄
@@ -9,6 +8,7 @@ function handleCreatComment({ dto, postId }) {
     alert("댓글을 입력해주세요.");
     return;
   }
+  console.log(postId);
   return commentCreatFetch({ dto, postId });
 }
 

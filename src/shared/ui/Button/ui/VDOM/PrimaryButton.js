@@ -1,27 +1,33 @@
 import h from "../../../../DOMutil/virtualDOM.js";
 
 function ButtonVDOM({
+  id = "",
   text = "버튼",
-  onClick = null,
-  state = "",
+  state = { canSubmit: true },
   styleProps = {},
+  buttonProps = {},
+  wrapperProps = {},
 } = {}) {
-  console.log("state.canSubmit:", state.canSubmit);
   return h(
     "div",
-    { className: "btn-wrapper", style: StyleWrapper(styleProps) },
+    {
+      className: "btn-wrapper",
+      id,
+      style: StyleWrapper(styleProps),
+      ...wrapperProps,
+    },
     [
       h(
         "button",
         {
           className: state.canSubmit ? "primaryBtn" : "primaryBtn disabled",
           disabled: !state.canSubmit,
-          onclick: onClick,
           style: StyleButton(styleProps),
+          ...buttonProps,
         },
-        text
+        text,
       ),
-    ]
+    ],
   );
 }
 
