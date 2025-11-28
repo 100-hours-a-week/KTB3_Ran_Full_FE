@@ -3,6 +3,7 @@ import handlePostDelete from "../../../../shared/lib/handlePostDelete.js";
 import handlePostEdit from "../../../../shared/lib/handlePostNavEdit.js";
 import { Props } from "../../../../shared/ui/Button/model/Props.js";
 import actionGroup from "../../../../widgets/actionGroup/ui/actionGroup.js";
+import actionGroupVDOM from "../../../../widgets/actionGroup/ui/actionGroupVDOM.js";
 import actionGroupBtn from "../../../../widgets/actionGroupBtn/ui/actionGroupBtn.js";
 
 function postHeader(props) {
@@ -95,7 +96,7 @@ function postHeader(props) {
   //   const actionBtnGroup = actionGroup(btnType);
 
   //   const postDetail = headerTop.querySelector(".detail");
-  const modal = actionGroup(btnType);
+  const modal = actionGroupVDOM(btnType);
   actionGroupBtnWrapper.addEventListener("click", () => {
     modal.classList.toggle("active");
   });

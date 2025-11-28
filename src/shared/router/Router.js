@@ -7,6 +7,7 @@ import BoardPostDetailPageVDOM from "../../pages/board/detail/ui/BoardPostDetail
 import BoardPostDetailEffect from "../../pages/board/detail/model/BoardPostDetailEffect.js";
 import postDetailState from "../../pages/board/detail/model/BoardPostDetailState.js";
 import commentCreatCardEffect from "../../widgets/comment/model/commentCreatCardEffect.js";
+import postHeaderEffect from "../../pages/board/detail/model/postHeaderEffect.js";
 import BoardPostCreatPageVDOM from "../../pages/board/create/ui/BoardPostCreatPageVDOM.js";
 import BoardPostCreatEffect from "../../pages/board/create/model/BoardPostCreatEffect.js";
 import { BoardPostCreateState } from "../../pages/board/create/model/BoardPostCreatState.js";
@@ -32,7 +33,11 @@ export function navigateTo(path) {
     //페이지 등록
     setCurrentPage(BoardPostDetailPageVDOM);
     //effect 등록
-    setCurrentEffect([() => BoardPostDetailEffect(id), commentCreatCardEffect]);
+    setCurrentEffect([
+      () => BoardPostDetailEffect(id),
+      commentCreatCardEffect,
+      () => postHeaderEffect(id),
+    ]);
 
     rerender();
     return;

@@ -7,26 +7,12 @@ export default function actionGroupVDOM({ type, onDelete, onEdit, id }) {
     {
       id: id || "action-group-wrapper",
       className: "action-group-wrapper",
-      style: `
-        position: absolute;
-        transform: translate(-64%, 10%);
-        background: #ffffff;
-        border-radius: 10px;
-        border: 1px solid var(--color-light-gray);
-        display: none;
-        z-index: 10;
-      `,
     },
     [
       h(
         "div",
         {
           className: "action-group",
-          style: `
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-          `,
         },
         [
           // 수정 버튼

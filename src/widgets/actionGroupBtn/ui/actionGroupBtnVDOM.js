@@ -1,6 +1,7 @@
 import h from "../../../shared/DOMutil/virtualDOM.js";
 
 export default function actionGroupBtnVDOM({ id = "" } = {}) {
+  console.log("actionGroup");
   return h("img", {
     id,
     className: "action-group-btn",
