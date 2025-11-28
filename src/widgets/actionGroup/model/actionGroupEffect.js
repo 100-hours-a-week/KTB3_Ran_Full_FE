@@ -8,27 +8,32 @@ export default function actionGroupEffect() {
 
   const cleanups = [];
 
-  const toggleModal = (button, modal) => {
-    const toggle = (event) => {
-      event.stopPropagation();
-      modal.classList.toggle("active");
-      modal.style.display = modal.classList.contains("active")
-        ? "block"
-        : "none";
-    };
-
-    button.addEventListener("click", toggle);
-    cleanups.push(() => button.removeEventListener("click", toggle));
+  // 스크롤 락 헬퍼
+  const lockScroll = () => {
+    const prev = document.body.style.overflow; //현재꺼
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = prev);
   };
 
   const openModal = (Component, payload, confirmKey) => {
+    const unlockScroll = lockScroll(); //스크롤 락 등록
+
+    // VDOM -> DOM 생성
     const modalEl = render(Component(payload));
+    document.body.appendChild(modalEl);
+
+    // 버튼 검색
+    const confirmButton = modalEl.querySelector('[data-role="modal-confirm"]');
+    const cancelButtons = Array.from(
+      modalEl.querySelectorAll('[data-role="modal-cancel"]')
+    );
 
     const close = () => {
-      confirmButton.removeEventListener("click", onConfirm);
-      cancelTargets.forEach((target) =>
-        target.removeEventListener("click", close)
-      );
+      confirmButton?.removeEventListener("click", onConfirm);
+      cancelButtons.forEach((btn) => btn.removeEventListener("click", close));
+
+      unlockScroll();
+
       modalEl.remove();
     };
 
@@ -37,56 +42,57 @@ export default function actionGroupEffect() {
       close();
     };
 
-    document.body.appendChild(modalEl);
-
-    const confirmButton = modalEl.querySelector('[data-role="modal-confirm"]');
     confirmButton?.addEventListener("click", onConfirm);
+    cancelButtons.forEach((btn) => btn.addEventListener("click", close));
 
-    const cancelTargets = Array.from(
-      modalEl.querySelectorAll('[data-role="modal-cancel"]')
-    );
-    cancelTargets.forEach((target) => target.addEventListener("click", close));
-
+    // cleanup 등록
     cleanups.push(() => {
       confirmButton?.removeEventListener("click", onConfirm);
-      cancelTargets.forEach((target) =>
-        target.removeEventListener("click", close)
-      );
-      if (modalEl.parentNode) {
-        modalEl.remove();
-      }
+      cancelButtons.forEach((btn) => btn.removeEventListener("click", close));
+      unlockScroll(); //스크롤 락 클린업 등록
+      modalEl.remove(); //모달 삭제
     });
   };
 
+  // action-group 버튼별 토글
   buttons.forEach((button) => {
-    const modal = button.nextElementSibling;
-    if (!modal || !modal.classList.contains("action-group-wrapper")) return;
+    const wrapper = button.nextElementSibling;
+    if (!wrapper || !wrapper.classList.contains("action-group-wrapper")) return;
 
-    toggleModal(button, modal);
+    const toggle = (e) => {
+      e.stopPropagation();
+      wrapper.classList.toggle("active");
+      wrapper.style.display = wrapper.classList.contains("active")
+        ? "block"
+        : "none";
+    };
 
-    modal.querySelectorAll(".imgBtn").forEach((actionButton) => {
-      const handler = (event) => {
-        event.stopPropagation();
-        const { actionType } = actionButton.dataset;
-        const payload = actionButton.actionPayload;
+    button.addEventListener("click", toggle);
+    cleanups.push(() => button.removeEventListener("click", toggle));
+
+    wrapper.querySelectorAll(".imgBtn").forEach((item) => {
+      const handler = (e) => {
+        e.stopPropagation();
+        const { actionType } = item.dataset;
+        const payload = item.actionPayload;
         if (!payload) return;
+
+        wrapper.classList.remove("active");
+        wrapper.style.display = "none";
 
         if (actionType === "edit") {
           openModal(EditModalVDOM, payload, "onEdit");
         } else if (actionType === "delete") {
           openModal(DeleteModalVDOM, payload, "onDelete");
         }
-
-        modal.classList.remove("active");
-        modal.style.display = "none";
       };
 
-      actionButton.addEventListener("click", handler);
-      cleanups.push(() => actionButton.removeEventListener("click", handler));
+      item.addEventListener("click", handler);
+      cleanups.push(() => item.removeEventListener("click", handler));
     });
   });
 
   return () => {
-    cleanups.forEach((cleanup) => cleanup());
+    cleanups.forEach((c) => c());
   };
 }
