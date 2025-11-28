@@ -7,43 +7,48 @@ import handleLoginClick from "../lib/handleLoginClick.js";
 export default function loginEffects() {
   console.log("loginEffects 등록됨");
 
-  function onBlur(e) {
-    if (!document.querySelector(".login-page")) return;
+  const root = document.querySelector(".login-page");
+  if (!root) return;
 
-    const { id, value } = e.target;
+  const emailInput = root.querySelector("#email");
+  const passwordInput = root.querySelector("#password");
+  const loginButton = root.querySelector("#login-button button");
+  const signupButton = root.querySelector("#signup-nav-button");
+
+  if (!emailInput || !passwordInput || !loginButton) return;
+
+  const updateEmail = (value) => {
     const state = getState();
+    setState({
+      email: value,
+      emailError: validateEmail(value),
+      canSubmit: !validateEmail(value) && !validatePassword(state.password),
+    });
+  };
 
-    if (id === "email") {
-      setState({
-        email: value,
-        emailError: validateEmail(value),
-        canSubmit: !validateEmail(value) && !validatePassword(state.password),
-      });
-    }
+  const updatePassword = (value) => {
+    const state = getState();
+    setState({
+      password: value,
+      passwordError: validatePassword(value),
+      canSubmit: !validateEmail(state.email) && !validatePassword(value),
+    });
+  };
 
-    if (id === "password") {
-      setState({
-        password: value,
-        passwordError: validatePassword(value),
-        canSubmit: !validateEmail(state.email) && !validatePassword(value),
-      });
-    }
-  }
+  const onEmailBlur = (e) => updateEmail(e.target.value);
+  const onPasswordBlur = (e) => updatePassword(e.target.value);
+  const onLoginClick = () => handleLoginClick();
+  const onSignupClick = () => navigateTo("/signup");
 
-  document.addEventListener("blur", onBlur, true);
-
-  document.addEventListener("click", (e) => {
-    if (e.target.id === "signup-nav-button") {
-      console.log("회원가입 버튼 클릭됨");
-      location.hash = "/signup";
-      navigateTo("/signup");
-    }
-  });
-  document.addEventListener("click", handleLoginClick);
+  emailInput.addEventListener("blur", onEmailBlur);
+  passwordInput.addEventListener("blur", onPasswordBlur);
+  loginButton.addEventListener("click", onLoginClick);
+  signupButton?.addEventListener("click", onSignupClick);
 
   return () => {
-    document.removeEventListener("blur", onBlur, true);
-    // document.removeEventListener("click", onclick);
-    document.removeEventListener("click", handleLoginClick);
+    emailInput.removeEventListener("blur", onEmailBlur);
+    passwordInput.removeEventListener("blur", onPasswordBlur);
+    loginButton.removeEventListener("click", onLoginClick);
+    signupButton?.removeEventListener("click", onSignupClick);
   };
 }
