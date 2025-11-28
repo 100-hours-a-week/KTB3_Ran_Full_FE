@@ -1,36 +1,27 @@
-import setState from "../../../shared/state/currentState.js";
+import setState, { getState } from "../../../shared/state/currentState.js";
 import validatePostTitle from "../../../features/board/lib/validatePostTitle.js";
 import validatePostContent from "../../../features/board/lib/validatePostContent.js";
 
 export default function PostInputFieldEffect() {
-  const inputs = document.querySelectorAll(".post-input");
-  if (!inputs || inputs.length === 0) return;
+  const titleInput = document.getElementById("post-title");
+  if (!titleInput) return;
 
-  const validators = {
-    title: validatePostTitle,
-    content: validatePostContent,
-  };
-
-  function onBlur(e) {
-    const field = e.target.dataset.fieldId;
+  const onBlur = (e) => {
     const value = e.target.value;
-
-    const validator = validators[field];
-    const error = validator ? validator(value) : "";
+    const state = getState() || {};
+    const titleError = validatePostTitle(value);
+    const contentValid = !validatePostContent(state.content || "");
 
     setState({
-      [field]: value,
-      [field + "Error"]: error,
+      title: value,
+      titleError,
+      canSubmit: !titleError && contentValid,
     });
-  }
+  };
 
-  inputs.forEach((input) => {
-    input.addEventListener("blur", onBlur);
-  });
+  titleInput.addEventListener("blur", onBlur);
 
   return () => {
-    inputs.forEach((input) => {
-      input.removeEventListener("blur", onBlur);
-    });
+    titleInput.removeEventListener("blur", onBlur);
   };
 }

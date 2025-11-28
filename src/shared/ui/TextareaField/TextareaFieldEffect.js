@@ -1,39 +1,27 @@
-import setState from "../../../shared/state/currentState.js";
+import setState, { getState } from "../../../shared/state/currentState.js";
 import validatePostContent from "../../../features/board/lib/validatePostContent.js";
+import validatePostTitle from "../../../features/board/lib/validatePostTitle.js";
 
 export default function TextareaFieldEffect() {
-  const textareas = document.querySelectorAll("textarea[data-field-id]");
-  if (!textareas.length) return;
-
-  const onInput = (e) => {
-    const field = e.target.dataset.fieldId;
-    const value = e.target.value;
-
-    setState({
-      [field]: value,
-    });
-  };
+  const contentInput = document.getElementById("post-content");
+  if (!contentInput) return;
 
   const onBlur = (e) => {
-    const field = e.target.dataset.fieldId;
     const value = e.target.value;
-
-    const error = validatePostContent(value) || "";
+    const state = getState() || {};
+    const contentError = validatePostContent(value);
+    const titleValid = !validatePostTitle(state.title || "");
 
     setState({
-      [field + "Error"]: error,
+      content: value,
+      contentError,
+      canSubmit: !contentError && titleValid,
     });
   };
 
-  textareas.forEach((t) => {
-    t.addEventListener("input", onInput);
-    t.addEventListener("blur", onBlur);
-  });
+  contentInput.addEventListener("blur", onBlur);
 
   return () => {
-    textareas.forEach((t) => {
-      t.removeEventListener("input", onInput);
-      t.removeEventListener("blur", onBlur);
-    });
+    contentInput.removeEventListener("blur", onBlur);
   };
 }
