@@ -1,10 +1,14 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postCreatFetch(dto) {
+  const token = sessionStorage.getItem("accessToken");
   try {
     const response = await fetch(`${Endpoint.POST.POST}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(dto),
       credentials: "include",
     });

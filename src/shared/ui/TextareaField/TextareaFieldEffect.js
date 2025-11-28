@@ -1,4 +1,4 @@
-import setState, { getState } from "../../../shared/state/currentState.js";
+import setState from "../../../shared/state/currentState.js";
 import validatePostContent from "../../../features/board/lib/validatePostContent.js";
 
 export default function TextareaFieldEffect() {
@@ -25,13 +25,11 @@ export default function TextareaFieldEffect() {
     });
   };
 
-  // 이벤트 등록
   textareas.forEach((t) => {
     t.addEventListener("input", onInput);
     t.addEventListener("blur", onBlur);
   });
 
-  // cleanup
   return () => {
     textareas.forEach((t) => {
       t.removeEventListener("input", onInput);

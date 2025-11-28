@@ -1,38 +1,57 @@
+import validatePostTitle from "../../../../features/board/lib/validatePostTitle.js";
+import validatePostContent from "../../../../features/board/lib/validatePostContent.js";
+import setState, { getState } from "../../../../shared/state/currentState.js";
+import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
+
 export default function BoardPostCreatEffect() {
-  const fields = document.querySelectorAll(".post-input");
-  const createBtn = document
-    .getElementById("post-create-button")
-    ?.querySelector("button");
+  const root = document.querySelector(".board-post-creat-page");
+  if (!root) return;
 
-  if (fields.length === 0 || !createBtn) return;
+  const titleInput = root.querySelector("#post-title");
+  const contentInput = root.querySelector("#post-content");
+  const createButton = root.querySelector("#post-create-button button");
 
-  function validateAll() {
-    const state = getState();
-    const titleError = validatePostTitle(state.title);
-    const contentError = validatePostContent(state.content);
+  if (!titleInput || !contentInput || !createButton) return;
+
+  const updateTitle = (value) => {
+    const state = getState() || {};
+    const titleError = validatePostTitle(value);
+    const contentValid = !validatePostContent(state.content || "");
 
     setState({
+      title: value,
       titleError,
-      contentError,
-      canSubmit: !titleError && !contentError,
+      canSubmit: !titleError && contentValid,
     });
-  }
-
-  const onBlur = (e) => {
-    const key = e.target.dataset.fieldId;
-    setState({ [key]: e.target.value });
-    validateAll();
   };
 
+  const updateContent = (value) => {
+    const state = getState() || {};
+    const contentError = validatePostContent(value);
+    const titleValid = !validatePostTitle(state.title || "");
+
+    setState({
+      content: value,
+      contentError,
+      canSubmit: !contentError && titleValid,
+    });
+  };
+
+  const onTitleBlur = (e) => updateTitle(e.target.value);
+  const onContentBlur = (e) => updateContent(e.target.value);
+
   const onClick = async () => {
+    const state = getState();
     await handlePostCreat();
   };
 
-  fields.forEach((f) => f.addEventListener("blur", onBlur));
-  createBtn.addEventListener("click", onClick);
+  titleInput.addEventListener("blur", onTitleBlur);
+  contentInput.addEventListener("blur", onContentBlur);
+  createButton.addEventListener("click", onClick);
 
   return () => {
-    fields.forEach((f) => f.removeEventListener("blur", onBlur));
-    createBtn.removeEventListener("click", onClick);
+    titleInput.removeEventListener("blur", onTitleBlur);
+    contentInput.removeEventListener("blur", onContentBlur);
+    createButton.removeEventListener("click", onClick);
   };
 }

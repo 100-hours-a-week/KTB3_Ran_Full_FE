@@ -116,9 +116,11 @@ export function updatePasswordBtn({ getDto }) {
 }
 
 //페이지 생성 버튼
-export function pageCreatBtn() {
+export function pageCreatBtn({ id, state }) {
   console.log("pageCreatBtn");
   return ButtonVDOM({
+    id: id,
+    state: state,
     text: "작성",
     styleProps: {
       radius: "30",

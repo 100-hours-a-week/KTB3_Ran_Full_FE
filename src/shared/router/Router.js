@@ -11,8 +11,6 @@ import BoardPostCreatPageVDOM from "../../pages/board/create/ui/BoardPostCreatPa
 import BoardPostCreatEffect from "../../pages/board/create/model/BoardPostCreatEffect.js";
 import { BoardPostCreateState } from "../../pages/board/create/model/BoardPostCreatState.js";
 import imgButtonEffect from "../../widgets/imgButton/model/imgButtonEffect.js";
-import PostInputFieldEffect from "../ui/PostInputField/PostInputFieldEffect.js";
-import TextareaFieldEffect from "../ui/TextareaField/TextareaFieldEffect.js";
 
 let cleanupFn = null;
 
@@ -43,12 +41,7 @@ export function navigateTo(path) {
     setCurrentState({ ...BoardPostCreateState });
     setCurrentPage(BoardPostCreatPageVDOM);
 
-    setCurrentEffect([
-      BoardPostCreatEffect,
-      imgButtonEffect,
-      PostInputFieldEffect,
-      TextareaFieldEffect,
-    ]);
+    setCurrentEffect([BoardPostCreatEffect, imgButtonEffect]);
 
     rerender();
     return;

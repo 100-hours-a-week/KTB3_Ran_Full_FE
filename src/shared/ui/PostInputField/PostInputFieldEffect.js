@@ -1,5 +1,4 @@
-// PostInputFieldEffect.js
-import setState, { getState } from "../../../shared/state/currentState.js";
+import setState from "../../../shared/state/currentState.js";
 import validatePostTitle from "../../../features/board/lib/validatePostTitle.js";
 import validatePostContent from "../../../features/board/lib/validatePostContent.js";
 
@@ -13,7 +12,7 @@ export default function PostInputFieldEffect() {
   };
 
   function onBlur(e) {
-    const field = e.target.dataset.fieldId; //어떤 target일까용
+    const field = e.target.dataset.fieldId;
     const value = e.target.value;
 
     const validator = validators[field];
