@@ -218,7 +218,7 @@ export function editBtn(action) {
 }
 
 //삭제 -> 삭제 모달
-export function delBtn(action) {
+export function delBtn({ type, onDelete }) {
   return ImgButtonVDOM({
     src: "public/icon/delete_icon.svg",
     alt: "삭제버튼",
@@ -226,7 +226,7 @@ export function delBtn(action) {
       dataset: {
         actionType: "delete",
       },
-      actionPayload: action,
+      actionPayload: onDelete,
     },
     styleProps: {
       width: 50,

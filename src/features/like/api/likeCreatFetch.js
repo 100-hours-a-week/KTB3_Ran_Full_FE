@@ -1,10 +1,14 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function likeCreatFetch(postId) {
+  const token = sessionStorage.getItem("accessToken");
   try {
     const response = await fetch(Endpoint.LIKE.POST(postId), {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       credentials: "include",
       cache: "no-store",
     });

@@ -1,27 +1,29 @@
 import h from "../../../shared/DOMutil/virtualDOM.js";
 import { delBtn, editBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 
-export default function actionGroupVDOM({ type, onDelete, onEdit, id }) {
+export default function actionGroupVDOM({ id, type, payload, payloadId }) {
   return h(
     "div",
     {
       id: id || "action-group-wrapper",
       className: "action-group-wrapper",
+      "data-type": type, // post / comment
+      "data-payload-id": payloadId, // commentId or postId
     },
     [
-      h(
-        "div",
-        {
-          className: "action-group",
-        },
-        [
-          // 수정 버튼
-          editBtn({ type, onClick: onEdit }),
+      h("div", { className: "action-group" }, [
+        editBtn({
+          type,
+          "data-action-type": "edit",
+          "data-payload-id": payloadId,
+        }),
 
-          // 삭제 버튼
-          delBtn({ type, onClick: onDelete }),
-        ]
-      ),
-    ]
+        delBtn({
+          type,
+          "data-action-type": "delete",
+          "data-payload-id": payloadId,
+        }),
+      ]),
+    ],
   );
 }

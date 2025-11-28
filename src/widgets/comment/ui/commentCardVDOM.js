@@ -10,11 +10,11 @@ export default function commentCardVDOM(props) {
   const [, , , postId] = location.hash.split("/");
 
   // action button type 구성
-  const actionType = Props({
+  const actionType = {
     type: ContentType.COMMENT,
     onDelete: () => handleCommentDelete({ postId, props }),
     onEdit: () => handleCommentNav({ postId, props }),
-  });
+  };
 
   return h("div", { className: "comment-card" }, [
     h("div", { className: "top-area" }, [
@@ -27,7 +27,14 @@ export default function commentCardVDOM(props) {
 
       h("div", { className: "action-wrapper" }, [
         actionGroupBtnVDOM(),
-        actionGroupVDOM(actionType),
+        actionGroupVDOM({
+          type: "comment",
+          payloadId: props.commentId,
+          payload: {
+            onEdit: () => handleCommentNav({ postId, props }),
+            onDelete: () => handleCommentDelete({ postId, props }),
+          },
+        }),
       ]),
     ]),
 

@@ -1,14 +1,9 @@
-import likeCreateDeleteTogle from "../../../../../../features/like/model/likeCreateDeleteTogle";
+import likeCreateDeleteTogle from "../../../../../../features/like/model/likeCreateDeleteTogle.js";
 
 function postCountGroupEffet() {
-  function onClick(e) {
-    //예외처리
-    const like = e.target.closet(".count-content.like");
-    if (!like) return;
-
-    const postId = e.target.id;
-
-    likeCreateDeleteTogle({ container: like, props });
+  function onClick() {
+    console.log("postCountGroupEffect");
+    likeCreateDeleteTogle();
   }
 
   document.addEventListener("click", onClick);

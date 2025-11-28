@@ -12,11 +12,11 @@ export default function postHeaderVDOM({
   onDelete,
   onEdit,
 } = {}) {
-  const btnType = Props({
+  const btnType = {
     type: ContentType.POST,
     onDelete: () => onDelete?.(postId),
     onEdit: () => onEdit?.({ title, author, date, postId }),
-  });
+  };
 
   return h(
     "div",
@@ -36,7 +36,7 @@ export default function postHeaderVDOM({
         ]),
         h("div", { className: "action-group-button-wrapper" }, [
           actionGroupBtnVDOM({ id: `action-btn-${postId}` }),
-          actionGroupVDOM({ id: `action-modal-${postId}`, btnType }),
+          actionGroupVDOM({ id: `action-modal-${postId}`, ...btnType }),
         ]),
       ]
     )

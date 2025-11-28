@@ -7,13 +7,18 @@ import BoardPostDetailPageVDOM from "../../pages/board/detail/ui/BoardPostDetail
 import BoardPostDetailEffect from "../../pages/board/detail/model/BoardPostDetailEffect.js";
 import postDetailState from "../../pages/board/detail/model/BoardPostDetailState.js";
 import commentCreatCardEffect from "../../widgets/comment/model/commentCreatCardEffect.js";
-import actionGroupEffect from "../../widgets/actionGroup/model/actionGroupEffect.js";
+// import actionGroupEffect from "../../widgets/actionGroup/model/actionGroupEffect.js";
 import BoardPostCreatPageVDOM from "../../pages/board/create/ui/BoardPostCreatPageVDOM.js";
 import BoardPostCreatEffect from "../../pages/board/create/model/BoardPostCreatEffect.js";
 import { BoardPostCreateState } from "../../pages/board/create/model/BoardPostCreatState.js";
 import imgButtonEffect from "../../widgets/imgButton/model/imgButtonEffect.js";
 import PostInputFieldEffect from "../ui/PostInputField/PostInputFieldEffect.js";
 import TextareaFieldEffect from "../ui/TextareaField/TextareaFieldEffect.js";
+import actionGroupItemEffect from "../../widgets/actionGroup/model/actionGroupItemEffect.js";
+import actionGroupToggleEffect from "../../widgets/actionGroup/model/actionGroupToggleEffect.js";
+import commentCardEffect from "../../widgets/comment/model/commentCardEffect.js";
+import postCountGroupEffet from "../../pages/board/detail/ui/postCountGroup/model/postCountGroupEffect.js";
+import likeCreateDeleteTogle from "../../features/like/model/likeCreateDeleteTogle.js";
 
 let cleanupFn = null;
 
@@ -36,7 +41,11 @@ export function navigateTo(path) {
     setCurrentEffect([
       () => BoardPostDetailEffect(id),
       commentCreatCardEffect,
-      actionGroupEffect,
+      actionGroupItemEffect,
+      actionGroupToggleEffect,
+      commentCardEffect,
+      postCountGroupEffet,
+      likeCreateDeleteTogle,
     ]);
 
     rerender();

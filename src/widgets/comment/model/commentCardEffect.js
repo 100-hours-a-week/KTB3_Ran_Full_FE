@@ -1,19 +1,11 @@
-export function commentCardEffect() {
-  const buttons = document.querySelectorAll(".action-group-btn");
-  const modals = document.querySelectorAll(".action-group-modal");
+export default function commentCardEffect() {
+  const cards = document.querySelectorAll(".comment-card");
+  if (!cards.length) return;
 
-  buttons.forEach((btn, idx) => {
-    const modal = modals[idx];
+  cards.forEach((card) => {
+    const payload = card.dataset.payload;
+    const wrapper = card.querySelector(".action-group-wrapper");
 
-    const toggle = (e) => {
-      e.stopPropagation();
-      modal.classList.toggle("active");
-    };
-
-    btn.addEventListener("click", toggle);
-
-    return () => {
-      btn.removeEventListener("click", toggle);
-    };
+    wrapper.actionPayload = payload;
   });
 }

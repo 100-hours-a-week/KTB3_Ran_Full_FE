@@ -1,15 +1,15 @@
-export default function actionGroupEffect({ wrapperId, btnId }) {
-  const wrapper = document.getElementById(wrapperId);
-  const btn = document.getElementById(btnId);
+// export default function actionGroupEffect({ wrapperId, btnId }) {
+//   const wrapper = document.getElementById(wrapperId);
+//   const btn = document.getElementById(btnId);
 
-  if (!wrapper || !btn) return;
+//   if (!wrapper || !btn) return;
 
-  function toggle() {
-    wrapper.style.display =
-      wrapper.style.display === "block" ? "none" : "block";
-  }
+//   function toggle() {
+//     wrapper.style.display =
+//       wrapper.style.display === "block" ? "none" : "block";
+//   }
 
-  btn.addEventListener("click", toggle);
+//   btn.addEventListener("click", toggle);
 
-  return () => btn.removeEventListener("click", toggle);
-}
+//   return () => btn.removeEventListener("click", toggle);
+// }
