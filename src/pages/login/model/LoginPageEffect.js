@@ -42,9 +42,8 @@ export default function loginEffects() {
   document.addEventListener("click", handleLoginClick);
 
   return () => {
-    //라이프 사이클과 같이 등록 후 해제가 꼭 필요함.
     document.removeEventListener("blur", onBlur, true);
-    document.removeEventListener("click", onclick);
+    // document.removeEventListener("click", onclick);
     document.removeEventListener("click", handleLoginClick);
   };
 }

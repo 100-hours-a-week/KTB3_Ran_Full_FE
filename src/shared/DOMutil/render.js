@@ -8,6 +8,10 @@ export function render(vnode) {
     return document.createTextNode(vnode);
   }
 
+  if (vnode == null || typeof vnode !== "object") {
+    return document.createTextNode("");
+  }
+
   //1-2. ElementNode 처리
   const element = document.createElement(vnode.type);
 

@@ -35,6 +35,9 @@ export default function rerender() {
     cleanupList = [];
   }
 
+  //4. effect 실행 : 새로운 리스너 등록
+  const effects = getCurrentEffect();
+
   //3. commit phase : diff : DOM 패치
   if (oldVDOM == null) {
     root.appendChild(render(newVDOM));
@@ -42,9 +45,6 @@ export default function rerender() {
     updateElement(root, newVDOM, oldVDOM);
   }
   oldVDOM = newVDOM;
-
-  //4. effect 실행 : 새로운 리스너 등록
-  const effects = getCurrentEffect();
 
   //5. cleanupList 갱신
   if (Array.isArray(effects)) {

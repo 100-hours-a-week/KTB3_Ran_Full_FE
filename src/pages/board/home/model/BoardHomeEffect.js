@@ -1,20 +1,21 @@
 import handleBoardGet from "../../../../features/board/model/handleBoardGet.js";
-import setState from "../../../../shared/state/currentState.js";
-
-let initialized = false;
+import setState, {
+  getState,
+} from "../../../../shared/state/currentState.js";
 
 function BoardHomeEffect() {
-  if (initialized) return; //effect시 한번만 실행
-  initialized = true;
-  console.log(initialized);
+  const state = getState();
+  if (state && Array.isArray(state.posts) && state.posts.length > 0) {
+    return;
+  }
 
   handleBoardGet()
     .then((posts) => {
-      setState({ posts }); //여기서 setSTate->rerender 무한 루프
+      if (Array.isArray(posts)) {
+        setState({ posts });
+      }
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(console.error);
 }
 
 export default BoardHomeEffect;

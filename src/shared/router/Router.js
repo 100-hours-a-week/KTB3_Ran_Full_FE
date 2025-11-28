@@ -7,6 +7,12 @@ import BoardPostDetailPageVDOM from "../../pages/board/detail/ui/BoardPostDetail
 import BoardPostDetailEffect from "../../pages/board/detail/model/BoardPostDetailEffect.js";
 import postDetailState from "../../pages/board/detail/model/BoardPostDetailState.js";
 import commentCreatCardEffect from "../../widgets/comment/model/commentCreatCardEffect.js";
+import BoardPostCreatPageVDOM from "../../pages/board/create/ui/BoardPostCreatPageVDOM.js";
+import BoardPostCreatEffect from "../../pages/board/create/model/BoardPostCreatEffect.js";
+import { BoardPostCreateState } from "../../pages/board/create/model/BoardPostCreatState.js";
+import imgButtonEffect from "../../widgets/imgButton/model/imgButtonEffect.js";
+import PostInputFieldEffect from "../ui/PostInputField/PostInputFieldEffect.js";
+import TextareaFieldEffect from "../ui/TextareaField/TextareaFieldEffect.js";
 
 let cleanupFn = null;
 
@@ -27,6 +33,22 @@ export function navigateTo(path) {
     setCurrentPage(BoardPostDetailPageVDOM);
     //effect 등록
     setCurrentEffect([() => BoardPostDetailEffect(id), commentCreatCardEffect]);
+
+    rerender();
+    return;
+  }
+  //게시글 생성
+  if (route === "post" && action === "create") {
+    resetVDOM();
+    setCurrentState({ ...BoardPostCreateState });
+    setCurrentPage(BoardPostCreatPageVDOM);
+
+    setCurrentEffect([
+      BoardPostCreatEffect,
+      imgButtonEffect,
+      PostInputFieldEffect,
+      TextareaFieldEffect,
+    ]);
 
     rerender();
     return;

@@ -36,7 +36,7 @@ export default function BoardPostDetailPageVDOM() {
               font-size: var(--font-size-base);
             `,
             },
-            "등록된 댓글이 없습니다.",
+            "등록된 댓글이 없습니다."
           ),
         ]
       : comments.map((c) => commentCardVDOM(commendProps(c)));
@@ -62,9 +62,9 @@ export default function BoardPostDetailPageVDOM() {
               h(
                 "div",
                 { style: "display: flex; justify-content: flex-start;" },
-                postCountGroupVDOM(countGroupProps),
+                postCountGroupVDOM(countGroupProps)
               ),
-            ],
+            ]
           ),
 
           // 댓글 작성 카드
@@ -72,7 +72,7 @@ export default function BoardPostDetailPageVDOM() {
 
           // 댓글 리스트
           ...commentListVDOM,
-        ],
+        ]
       ),
     ],
   });

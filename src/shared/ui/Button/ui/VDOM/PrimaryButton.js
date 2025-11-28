@@ -3,7 +3,7 @@ import h from "../../../../DOMutil/virtualDOM.js";
 function ButtonVDOM({
   id = "",
   text = "버튼",
-  state = { canSubmit: true },
+  state = { canSubmit: false },
   styleProps = {},
   buttonProps = {},
   wrapperProps = {},
@@ -25,9 +25,9 @@ function ButtonVDOM({
           style: StyleButton(styleProps),
           ...buttonProps,
         },
-        text,
+        text
       ),
-    ],
+    ]
   );
 }
 

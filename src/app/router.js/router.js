@@ -17,6 +17,7 @@ import signupEffects from "../../pages/signup/model/signupEffects.js";
 import BoardHomePageVDOM from "../../pages/board/home/ui/BoardHomePageVDOM.js";
 import BoardHomeEffect from "../../pages/board/home/model/BoardHomeEffect.js";
 import BoardHomeState from "../../pages/board/home/model/BoardHomeState.js";
+import imgButtonEffect from "../../widgets/imgButton/model/imgButtonEffect.js";
 
 export const routerPage = {
   "/login": { page: LoginPageVDOM, effect: loginEffects, state: LoginState },
@@ -27,7 +28,7 @@ export const routerPage = {
   },
   "/home": {
     page: BoardHomePageVDOM,
-    effect: BoardHomeEffect,
+    effect: [BoardHomeEffect, imgButtonEffect],
     state: BoardHomeState,
   },
   "/post/get": {
@@ -35,7 +36,6 @@ export const routerPage = {
     effect: null,
     state: {},
   },
-  "/post": BoardPostCreatPage,
   "/user/info": handleUserInfo,
   "/user/password-modify": handlePasswordModify,
   "/post/update": BoardPostUpdatePage,

@@ -2,7 +2,7 @@ function handlerPostCreat() {
   //누르면 이동해야됨
 
   console.log("이동");
-  location.hash = "/post";
+  location.hash = "/post/create";
 }
 
 export default handlerPostCreat;

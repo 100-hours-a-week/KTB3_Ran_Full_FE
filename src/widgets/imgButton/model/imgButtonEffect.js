@@ -1,4 +1,4 @@
-import handlerPostCreat from "../../../features/navigation/handlerPostCreat";
+import handlerPostCreat from "../../../features/navigation/handlerPostCreat.js";
 
 function imgButtonEffect() {
   console.log("imgButtonEffect 실행됨");

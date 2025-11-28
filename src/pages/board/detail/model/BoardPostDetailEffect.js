@@ -1,18 +1,26 @@
 import handlePostDetail from "../../../../features/board/model/handlePostDetail.js";
-import setState, {getState} from "../../../../shared/state/currentState.js";
+import setState, { getState } from "../../../../shared/state/currentState.js";
 
-let initialized = false;
+let updatePostId = null;
 
+//useEffect(()=>,[postId])
 function BoardPostDetailEffect(postId) {
-    if (initialized) return; //effect시 한번만 실행
-    initialized = true;
+  if (updatePostId === postId) return; //같으면 반환
+  updatePostId = postId; //다르면 갱신
+  let hasFetched = false;
+
   handlePostDetail(postId).then((data) => {
+    if (hasFetched) return;
+
     setState({
-        post: data.postData,
-        comments: data.commentsData,
+      post: data.postData,
+      comments: data.commentsData,
     });
   });
-  console.log("state:",getState());
+  console.log("state:", getState());
+  return () => {
+    hasFetched = true;
+  };
 }
 
 export default BoardPostDetailEffect;

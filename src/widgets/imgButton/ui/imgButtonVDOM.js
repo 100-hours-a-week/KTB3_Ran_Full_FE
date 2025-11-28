@@ -11,7 +11,6 @@ export default function ImgButtonVDOM({
     "div",
     {
       className: "imgWrapper",
-      id: `${id}`,
       style: `
         display: flex;
         justify-content: ${styleProps.justifyContent || "flex-start"};
@@ -22,7 +21,7 @@ export default function ImgButtonVDOM({
         "button",
         {
           className: "imgBtn",
-          id,
+          id: `${id}`,
           onClick: onClick,
           style: `
             width: ${styleProps.width || 32}px;
@@ -42,8 +41,8 @@ export default function ImgButtonVDOM({
             src,
             alt,
           }),
-        ]
+        ],
       ),
-    ]
+    ],
   );
 }
