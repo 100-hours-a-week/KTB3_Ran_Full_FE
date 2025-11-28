@@ -8,6 +8,7 @@ export default function actionGroupItemEffect() {
 
   //모든 className이 actionGroupWrapper를 불러옴.
   wrappers.forEach((wrapper) => {
+    //imgBTn찾기
     const buttons = wrapper.querySelectorAll(".imgBtn");
 
     buttons.forEach((btn) => {
@@ -15,8 +16,9 @@ export default function actionGroupItemEffect() {
         e.stopPropagation();
 
         const action = btn.dataset.actionType; // "edit" | "delete"
-        const payload = btn.actionPayload; // { type, onEdit, onDelete }
+        const payload = btn.dataset.actionPayload; // { type, onEdit, onDelete }
 
+        console.log(payload);
         if (!action || !payload) return;
 
         // action 그룹 닫기

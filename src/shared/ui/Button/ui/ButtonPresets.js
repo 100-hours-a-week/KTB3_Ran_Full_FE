@@ -199,15 +199,15 @@ export function quitBtn({
 ///수정 삭제에 따라 받아야하는 버튼 액션이 다름.
 
 ///ActionButton
-export function editBtn(action) {
+export function editBtn({ action }) {
   return ImgButtonVDOM({
     src: "public/icon/edit_icon.svg",
     alt: "편집버튼",
     buttonProps: {
       dataset: {
         actionType: "edit",
+        actionPayload: action,
       },
-      actionPayload: action,
     },
     styleProps: {
       width: 50,
@@ -218,15 +218,15 @@ export function editBtn(action) {
 }
 
 //삭제 -> 삭제 모달
-export function delBtn({ type, onDelete }) {
+export function delBtn({ action }) {
   return ImgButtonVDOM({
     src: "public/icon/delete_icon.svg",
     alt: "삭제버튼",
     buttonProps: {
       dataset: {
         actionType: "delete",
+        actionPayload: action,
       },
-      actionPayload: onDelete,
     },
     styleProps: {
       width: 50,

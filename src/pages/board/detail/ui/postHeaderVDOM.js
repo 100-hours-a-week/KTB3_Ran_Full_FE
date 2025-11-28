@@ -3,21 +3,10 @@ import { ContentType } from "../../../../shared/lib/ContentType.js";
 import { Props } from "../../../../shared/ui/Button/model/Props.js";
 import actionGroupBtnVDOM from "../../../../widgets/actionGroupBtn/ui/actionGroupBtnVDOM.js";
 import actionGroupVDOM from "../../../../widgets/actionGroup/ui/actionGroupVDOM.js";
+import handlePostDelete from "../../../../shared/lib/handlePostDelete.js";
+import handlePostEdit from "../../../../shared/lib/handlePostNavEdit.js";
 
-export default function postHeaderVDOM({
-  title,
-  author,
-  date,
-  postId,
-  onDelete,
-  onEdit,
-} = {}) {
-  const btnType = {
-    type: ContentType.POST,
-    onDelete: () => onDelete?.(postId),
-    onEdit: () => onEdit?.({ title, author, date, postId }),
-  };
-
+export default function postHeaderVDOM({ title, author, date, postId } = {}) {
   return h(
     "div",
     { className: "post-header-wrapper" },
@@ -36,7 +25,15 @@ export default function postHeaderVDOM({
         ]),
         h("div", { className: "action-group-button-wrapper" }, [
           actionGroupBtnVDOM({ id: `action-btn-${postId}` }),
-          actionGroupVDOM({ id: `action-modal-${postId}`, ...btnType }),
+          actionGroupVDOM({
+            type: "post",
+            payloadId: postId,
+            payload: {
+              type: ContentType.POST,
+              onDelete: () => handlePostDelete(postId),
+              onEdit: () => handlePostEdit(),
+            },
+          }),
         ]),
       ]
     )

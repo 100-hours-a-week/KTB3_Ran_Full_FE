@@ -1,7 +1,6 @@
 import h from "../../../shared/DOMutil/virtualDOM.js";
 
 export default function ImgButtonVDOM({
-  id = "",
   src = "",
   alt = "",
   styleProps = {},
@@ -9,7 +8,6 @@ export default function ImgButtonVDOM({
 } = {}) {
   const buttonAttributes = {
     className: "imgBtn",
-    id: `${id}`,
     style: `
             width: ${styleProps.width || 32}px;
             height: ${styleProps.height || 32}px;
@@ -35,16 +33,12 @@ export default function ImgButtonVDOM({
       `,
     },
     [
-      h(
-        "button",
-        buttonAttributes,
-        [
-          h("img", {
-            src,
-            alt,
-          }),
-        ]
-      ),
+      h("button", buttonAttributes, [
+        h("img", {
+          src,
+          alt,
+        }),
+      ]),
     ]
   );
 }

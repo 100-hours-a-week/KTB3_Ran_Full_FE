@@ -7,15 +7,6 @@ import handleCommentNav from "../../../shared/lib/handleCommentNav.js";
 import { Props } from "../../../shared/ui/Button/model/Props.js";
 
 export default function commentCardVDOM(props) {
-  const [, , , postId] = location.hash.split("/");
-
-  // action button type 구성
-  const actionType = {
-    type: ContentType.COMMENT,
-    onDelete: () => handleCommentDelete({ postId, props }),
-    onEdit: () => handleCommentNav({ postId, props }),
-  };
-
   return h("div", { className: "comment-card" }, [
     h("div", { className: "top-area" }, [
       h("div", { className: "left" }, [
@@ -31,6 +22,7 @@ export default function commentCardVDOM(props) {
           type: "comment",
           payloadId: props.commentId,
           payload: {
+            type: ContentType.COMMENT,
             onEdit: () => handleCommentNav({ postId, props }),
             onDelete: () => handleCommentDelete({ postId, props }),
           },

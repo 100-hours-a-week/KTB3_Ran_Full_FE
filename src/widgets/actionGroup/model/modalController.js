@@ -4,7 +4,9 @@ import DeleteModalVDOM from "../../../shared/lib/DeleteModalDOM.js";
 
 //모달 생성
 const modalController = {
+  //type : "edit", payload :payload
   open(type, payload) {
+    //모달 컴포넌트
     const Component = type === "edit" ? EditModalVDOM : DeleteModalVDOM;
 
     const unlockScroll = lockScroll();
@@ -14,17 +16,19 @@ const modalController = {
     const confirmBtn = modalEl.querySelector('[data-role="modal-confirm"]');
     const cancelBtns = modalEl.querySelectorAll('[data-role="modal-cancel"]');
 
-    const onConfirm = () => {
-      const handler = type === "edit" ? payload.onEdit : payload.onDelete;
-      handler?.();
-      close();
-    };
-
+    //클린업
     const close = () => {
       confirmBtn?.removeEventListener("click", onConfirm);
       cancelBtns.forEach((btn) => btn.removeEventListener("click", close));
       unlockScroll();
       modalEl.remove();
+    };
+
+    //클릭시 함수 적용
+    const onConfirm = () => {
+      const handler = type === "edit" ? payload.onEdit : payload.onDelete;
+      handler?.();
+      close();
     };
 
     confirmBtn?.addEventListener("click", onConfirm);
