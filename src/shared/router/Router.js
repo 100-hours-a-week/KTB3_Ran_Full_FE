@@ -7,7 +7,7 @@ import BoardPostDetailPageVDOM from "../../pages/board/detail/ui/BoardPostDetail
 import BoardPostDetailEffect from "../../pages/board/detail/model/BoardPostDetailEffect.js";
 import postDetailState from "../../pages/board/detail/model/BoardPostDetailState.js";
 import commentCreatCardEffect from "../../widgets/comment/model/commentCreatCardEffect.js";
-import postHeaderEffect from "../../pages/board/detail/model/postHeaderEffect.js";
+import actionGroupEffect from "../../widgets/actionGroup/model/actionGroupEffect.js";
 import BoardPostCreatPageVDOM from "../../pages/board/create/ui/BoardPostCreatPageVDOM.js";
 import BoardPostCreatEffect from "../../pages/board/create/model/BoardPostCreatEffect.js";
 import { BoardPostCreateState } from "../../pages/board/create/model/BoardPostCreatState.js";
@@ -36,7 +36,7 @@ export function navigateTo(path) {
     setCurrentEffect([
       () => BoardPostDetailEffect(id),
       commentCreatCardEffect,
-      () => postHeaderEffect(id),
+      actionGroupEffect,
     ]);
 
     rerender();
