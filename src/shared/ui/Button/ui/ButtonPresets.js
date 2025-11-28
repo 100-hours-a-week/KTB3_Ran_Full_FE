@@ -206,7 +206,7 @@ export function editBtn({ action }) {
     buttonProps: {
       dataset: {
         actionType: "edit",
-        actionPayload: action,
+        actionPayload: JSON.stringify(action),
       },
     },
     styleProps: {
@@ -225,7 +225,7 @@ export function delBtn({ action }) {
     buttonProps: {
       dataset: {
         actionType: "delete",
-        actionPayload: action,
+        actionPayload: JSON.stringify(action),
       },
     },
     styleProps: {

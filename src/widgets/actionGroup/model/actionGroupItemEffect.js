@@ -16,7 +16,7 @@ export default function actionGroupItemEffect() {
         e.stopPropagation();
 
         const action = btn.dataset.actionType; // "edit" | "delete"
-        const payload = btn.dataset.actionPayload; // { type, onEdit, onDelete }
+        const payload = JSON.parse(btn.dataset.actionPayload); // { type, onEdit, onDelete }
 
         console.log(payload);
         if (!action || !payload) return;
@@ -26,6 +26,7 @@ export default function actionGroupItemEffect() {
         wrapper.style.display = "none";
 
         // 액션별로 그냥 payload에 있는 함수만 실행
+        console.log(payload);
         if (action === "edit") modalController.open("edit", payload);
         if (action === "delete") modalController.open("delete", payload);
       };

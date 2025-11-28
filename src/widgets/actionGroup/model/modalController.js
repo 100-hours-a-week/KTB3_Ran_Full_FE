@@ -9,6 +9,7 @@ const modalController = {
     //모달 컴포넌트
     const Component = type === "edit" ? EditModalVDOM : DeleteModalVDOM;
 
+    console.log(payload);
     const unlockScroll = lockScroll();
     const modalEl = render(Component(payload));
     document.body.appendChild(modalEl);
