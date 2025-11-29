@@ -72,17 +72,22 @@ export function commentCreatBtn({ id = "", postId }) {
 }
 
 //댓글 수정 버튼
-export function commentUpdateBtn({ getDto, postId, commentId }) {
+export function commentUpdateBtn({ id = "", postId, commentId }) {
   return ButtonVDOM({
+    id,
     text: "댓글 수정",
     buttonProps: {
-      onclick: () => {
-        commentUpdateFetch({ dto: getDto(), postId, commentId });
+      dataset: {
+        actionType: "update-comment",
+        postId,
+        commentId,
       },
     },
     styleProps: {
-      radius: 16,
+      radius: 30,
       padding: "7px 10px",
+      fontSize: "18",
+      fontWeight: "700",
     },
   });
 }

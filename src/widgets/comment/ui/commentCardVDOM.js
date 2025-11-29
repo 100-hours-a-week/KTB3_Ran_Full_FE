@@ -21,6 +21,7 @@ export default function commentCardVDOM(props) {
           domainType: "comment",
           postId,
           commentId: props.commentId ?? "",
+          commentContent: props.content ?? "",
         }),
       ]),
     ]),

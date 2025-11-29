@@ -14,7 +14,8 @@ export default function actionGroupItemEffect() {
 
   const handlerTable = {
     comment: {
-      edit: ({ postId, commentId }) => handleCommentNav({ postId, commentId }),
+      edit: ({ postId, commentId, commentContent }) =>
+        handleCommentNav({ postId, commentId, content: commentContent }),
       delete: ({ postId, commentId }) =>
         handleCommentDelete({ postId, commentId }),
     },
@@ -40,6 +41,7 @@ export default function actionGroupItemEffect() {
         const postId = Number(btn.dataset.postId);
         console.log(postId);
         const commentId = Number(btn.dataset.commentId);
+        const commentContent = btn.dataset.commentContent || "";
 
         //해당 도메인의 handler가 없다면 반환
         if (!handlerTable[domainType]) return;
@@ -51,6 +53,7 @@ export default function actionGroupItemEffect() {
           domainType,
           postId,
           commentId,
+          commentContent,
         };
 
         // 모달 열기

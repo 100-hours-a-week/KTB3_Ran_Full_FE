@@ -7,15 +7,20 @@ let updatePostId = null;
 function BoardPostDetailEffect(postId) {
   if (updatePostId === postId) return; //같으면 반환
   updatePostId = postId; //다르면 갱신
+
   let hasFetched = false;
 
   handlePostDetail(postId).then((data) => {
     if (hasFetched) return;
 
-    setState({
+    setState((prev = {}) => ({
       post: data.postData,
       comments: data.commentsData,
-    });
+      commentForm: {
+        ...(prev.commentForm || {}),
+        postId: data.postData?.id ?? prev.commentForm?.postId ?? null,
+      },
+    }));
   });
   console.log("state:", getState());
   return () => {

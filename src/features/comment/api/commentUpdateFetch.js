@@ -1,13 +1,16 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function commentUpdateFetch({ dto, postId, commentId }) {
-  console.log(dto);
+  const token = sessionStorage.getItem("accessToken");
   try {
     const response = await fetch(
       Endpoint.COMMENT.UPDATE({ postId, commentId }),
       {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(dto),
         credentials: "include",
         cache: "no-store",

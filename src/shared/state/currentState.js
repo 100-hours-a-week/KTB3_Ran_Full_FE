@@ -13,6 +13,11 @@ export function getState() {
 }
 
 export default function setState(addState) {
-  currentState = { ...currentState, ...addState };
+  const nextPart =
+    typeof addState === "function" ? addState(currentState) : addState;
+
+  if (!nextPart || typeof nextPart !== "object") return;
+
+  currentState = { ...currentState, ...nextPart };
   rerender();
 }

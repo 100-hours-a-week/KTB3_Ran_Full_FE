@@ -5,6 +5,7 @@ import setState from "../../../../shared/state/currentState.js";
 
 async function handleCreatComment({ dto, postId }) {
   //필요한 props : postId
+  console.log(postId);
   if (dto.content === 0) {
     alert("댓글을 입력해주세요.");
     return;
