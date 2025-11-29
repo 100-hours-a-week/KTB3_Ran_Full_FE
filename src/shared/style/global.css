@@ -466,3 +466,9 @@ hr {
     opacity 1s ease,
     transform 0.5s ease;
 }
+
+#creat-post-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
