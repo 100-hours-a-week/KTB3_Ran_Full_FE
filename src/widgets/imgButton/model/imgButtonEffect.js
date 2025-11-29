@@ -4,11 +4,13 @@ function imgButtonEffect() {
   console.log("imgButtonEffect 실행됨");
 
   function onClick(e) {
-    const btnId = e.target.id;
-    if (btnId === "creat-post-btn") {
-      handlerPostCreat();
-    }
+    //closet : 어떤 요소를 잡더라도 결국 #creat-post-btn으로 반환함.
+    const btn = e.target.closest("#creat-post-btn");
+    if (!btn) return;
+
+    handlerPostCreat();
   }
+
   document.addEventListener("click", onClick);
 
   return () => {

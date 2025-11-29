@@ -25,22 +25,10 @@ export default function ImgButtonVDOM({
     ...buttonProps,
   };
 
-  return h(
-    "div",
-    {
-      className: "imgWrapper",
-      style: `
-        display: flex;
-        justify-content: ${styleProps.justifyContent || "flex-start"};
-      `,
-    },
-    [
-      h("button", buttonAttributes, [
-        h("img", {
-          src,
-          alt,
-        }),
-      ]),
-    ]
-  );
+  return h("button", buttonAttributes, [
+    h("img", {
+      src,
+      alt,
+    }),
+  ]);
 }
