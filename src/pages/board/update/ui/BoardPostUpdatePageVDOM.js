@@ -4,35 +4,41 @@ import { pageUpdateBtn } from "../../../../shared/ui/Button/ui/ButtonPresets.js"
 
 import TextareaFieldVDOM from "../../../../shared/ui/TextareaField/TextareaFieldVDOM.js";
 import PostInputFieldVDOM from "../../../../shared/ui/PostInputField/PostInputFieldVDOM.js";
+import LayoutVDOM from "../../../../app/layoutVDOM.js";
 
 export default function BoardPostUpdatePageVDOM(state) {
-  return h("div", { className: "board-post-update-page" }, [
-    TitleVDOM({
-      text: "게시물 수정",
-      styleProps: { fontWeight: "var(--font-weight-bold)" },
-    }),
+  return LayoutVDOM({
+    headerMode: "Home",
+    children: [
+      h("div", { className: "board-post-update-page" }, [
+        TitleVDOM({
+          text: "게시물 수정",
+          styleProps: { fontWeight: "var(--font-weight-bold)" },
+        }),
 
-    h("div", { className: "post-update-input-field" }, [
-      PostInputFieldVDOM({
-        id: "post-title",
-        label: "제목",
-        placeholder: "제목을 입력해주세요. (최대 26글자)",
-        state,
-        stateKey: "title",
-      }),
+        h("div", { className: "post-update-input-field" }, [
+          PostInputFieldVDOM({
+            id: "post-title",
+            label: "제목",
+            placeholder: "제목을 입력해주세요. (최대 26글자)",
+            state,
+            stateKey: "title",
+          }),
 
-      TextareaFieldVDOM({
-        id: "post-content",
-        label: "내용",
-        placeholder: "내용을 입력해주세요.",
-        state,
-        stateKey: "content",
-      }),
-    ]),
+          TextareaFieldVDOM({
+            id: "post-content",
+            label: "내용",
+            placeholder: "내용을 입력해주세요.",
+            state,
+            stateKey: "content",
+          }),
+        ]),
 
-    pageUpdateBtn({
-      id: "post-update-button",
-      state,
-    }),
-  ]);
+        pageUpdateBtn({
+          id: "post-update-button",
+          state,
+        }),
+      ]),
+    ],
+  });
 }
