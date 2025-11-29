@@ -25,3 +25,5 @@ export function PostInputFieldVDOM({
     h("div", { className: "helper", id: `${id}-helper` }, helper),
   ]);
 }
+
+export default PostInputFieldVDOM;

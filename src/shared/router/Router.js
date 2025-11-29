@@ -19,6 +19,10 @@ import actionGroupToggleEffect from "../../widgets/actionGroup/model/actionGroup
 import commentCardEffect from "../../widgets/comment/model/commentCardEffect.js";
 // import postCountGroupEffet from "../../pages/board/detail/ui/postCountGroup/model/postCountGroupEffect.js";
 import likeCreateDeleteTogle from "../../features/like/model/likeCreateDeleteTogle.js";
+import BoardPostUpdateEffect from "../../pages/board/model/BoardPostUpdateEffect.js";
+import { BoardPostUpdateState } from "../../pages/board/model/BoardPostUpdateState.js";
+import postDetail from "../../features/board/api/postDetailFetch.js";
+import BoardPostUpdatePageVDOM from "../../pages/board/update/ui/BoardPostUpdatePageVDOM.js";
 
 let cleanupFn = null;
 
@@ -26,7 +30,7 @@ export function initRouter() {
   console.log("라우터 초기화");
 }
 
-export function navigateTo(path) {
+export async function navigateTo(path) {
   const [, route, action, id] = path.split("/");
 
   //게시글 상세 라우팅
@@ -68,13 +72,15 @@ export function navigateTo(path) {
   }
   //게시글 수정
   if (route === "post" && action === "update" && id) {
+    const { postData } = await postDetail(id);
+
     resetVDOM();
 
-    setCurrentEffect(() => handlePostEditEffect(id));
-    setCurrentPage(EditPostVDOM);
+    setCurrentEffect(() => BoardPostUpdateEffect(postData));
+    setCurrentPage(BoardPostUpdatePageVDOM);
     setCurrentState({
-      ...postUpdateState,
-      postId: id,
+      post: postData,
+      ...BoardPostUpdateState,
     });
     rerender();
     return;
