@@ -3,9 +3,9 @@ export default function commentCardEffect() {
   if (!cards.length) return;
 
   cards.forEach((card) => {
-    const payload = card.dataset.payload;
+    // const payload = card.dataset.payload;
     const wrapper = card.querySelector(".action-group-wrapper");
 
-    wrapper.actionPayload = payload;
+    // wrapper.actionPayload = payload;
   });
 }

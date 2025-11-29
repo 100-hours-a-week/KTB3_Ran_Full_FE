@@ -19,13 +19,9 @@ export default function commentCardVDOM(props) {
       h("div", { className: "action-wrapper" }, [
         actionGroupBtnVDOM(),
         actionGroupVDOM({
-          type: "comment",
-          payloadId: props.commentId,
-          payload: {
-            type: ContentType.COMMENT,
-            onEdit: () => handleCommentNav({ postId, props }),
-            onDelete: () => handleCommentDelete({ postId, props }),
-          },
+          domainType: "comment",
+          postId: props.postId ?? "",
+          commentId: props.commentId ?? "",
         }),
       ]),
     ]),

@@ -6,7 +6,8 @@ import actionGroupVDOM from "../../../../widgets/actionGroup/ui/actionGroupVDOM.
 import handlePostDelete from "../../../../shared/lib/handlePostDelete.js";
 import handlePostEdit from "../../../../shared/lib/handlePostNavEdit.js";
 
-export default function postHeaderVDOM({ title, author, date, postId } = {}) {
+//props = { title, author, date, postId }
+export default function postHeaderVDOM(props) {
   return h(
     "div",
     { className: "post-header-wrapper" },
@@ -15,24 +16,20 @@ export default function postHeaderVDOM({ title, author, date, postId } = {}) {
       { className: "post-container", style: "padding: var(--padding-h3);" },
       [
         h("div", { className: "post-meta" }, [
-          h("div", { className: "post-title" }, title),
+          h("div", { className: "post-title" }, props.title),
           h("div", { className: "detail" }, [
             h("div", { className: "log" }, [
-              h("div", { className: "author" }, author),
-              h("div", { className: "date" }, date),
+              h("div", { className: "author" }, props.author),
+              h("div", { className: "date" }, props.date),
             ]),
           ]),
         ]),
         h("div", { className: "action-group-button-wrapper" }, [
-          actionGroupBtnVDOM({ id: `action-btn-${postId}` }),
+          actionGroupBtnVDOM({ id: `action-btn-${props.postId}` }),
           actionGroupVDOM({
-            type: "post",
-            payloadId: postId,
-            payload: {
-              type: ContentType.POST,
-              onDelete: () => handlePostDelete(postId),
-              onEdit: () => handlePostEdit(),
-            },
+            domainType: "post",
+            postId: props.postId ?? "",
+            commentId: props.commentId ?? "",
           }),
         ]),
       ]

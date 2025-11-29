@@ -1,18 +1,30 @@
 import h from "../../../shared/DOMutil/virtualDOM.js";
+import { getState } from "../../../shared/state/currentState.js";
 import { delBtn, editBtn } from "../../../shared/ui/Button/ui/ButtonPresets.js";
 
-export default function actionGroupVDOM({ type, payload, payloadId }) {
+//actionType 정의할게 없음
+//props = { domainType, postId, commentId }
+export default function actionGroupVDOM(props) {
   return h(
     "div",
     {
       className: "action-group-wrapper",
-      "data-type": type, // post / comment
-      "data-payload-id": payloadId, // commentId or postId
+      "data-type": props.domainType, // post / comment
     },
     [
       h("div", { className: "action-group" }, [
-        editBtn({ action: payload }),
-        delBtn({ action: payload }),
+        editBtn({
+          dataset: {
+            actionType: "edit",
+            ...props,
+          },
+        }),
+        delBtn({
+          dataset: {
+            actionType: "delete",
+            ...props,
+          },
+        }),
       ]),
     ]
   );

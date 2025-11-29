@@ -1,3 +1,8 @@
+import { ContentType } from "../../../shared/lib/ContentType.js";
+import handleCommentDelete from "../../../shared/lib/handleCommentDelete.js";
+import handleCommentNav from "../../../shared/lib/handleCommentNav.js";
+import handlePostDelete from "../../../shared/lib/handlePostDelete.js";
+import handlePostEdit from "../../../shared/lib/handlePostNavEdit.js";
 import modalController from "./modalController.js";
 
 export default function actionGroupItemEffect() {
@@ -6,29 +11,48 @@ export default function actionGroupItemEffect() {
 
   const cleanups = [];
 
-  //모든 className이 actionGroupWrapper를 불러옴.
+  const handlerTable = {
+    comment: {
+      edit: ({ postId, commentId }) => handleCommentNav({ postId, commentId }),
+      delete: ({ postId, commentId }) =>
+        handleCommentDelete({ postId, commentId }),
+    },
+
+    post: {
+      edit: ({ postId }) => handlePostEdit(postId),
+      delete: ({ postId }) => handlePostDelete(postId),
+    },
+  };
+
   wrappers.forEach((wrapper) => {
-    //imgBTn찾기
     const buttons = wrapper.querySelectorAll(".imgBtn");
+    console.log(buttons); //버튼 잡힘
 
     buttons.forEach((btn) => {
       const handler = (e) => {
         e.stopPropagation();
 
-        const action = btn.dataset.actionType; // "edit" | "delete"
-        const payload = JSON.parse(btn.dataset.actionPayload); // { type, onEdit, onDelete }
+        console.log(btn); //버튼 잡힘
 
-        console.log(payload);
-        if (!action || !payload) return;
+        const actionType = btn.dataset.actionType; // edit | delete
+        const domainType = btn.dataset.domainType; // post | comment
+        const postId = Number(btn.dataset.postId);
+        const commentId = Number(btn.dataset.commentId);
 
-        // action 그룹 닫기
-        wrapper.classList.remove("active");
-        wrapper.style.display = "none";
+        //해당 도메인의 handler가 없다면 반환
+        if (!handlerTable[domainType]) return;
+        const executor = handlerTable[domainType][actionType];
 
-        // 액션별로 그냥 payload에 있는 함수만 실행
-        console.log(payload);
-        if (action === "edit") modalController.open("edit", payload);
-        if (action === "delete") modalController.open("delete", payload);
+        //payload 정의
+        const payload = {
+          actionType,
+          domainType,
+          postId,
+          commentId,
+        };
+
+        // 모달 열기
+        modalController.open(actionType, domainType, () => executor(payload));
       };
 
       btn.addEventListener("click", handler);
