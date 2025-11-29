@@ -5,6 +5,7 @@ import handlePostDelete from "../../../shared/lib/handlePostDelete.js";
 import handlePostEdit from "../../../shared/lib/handlePostNavEdit.js";
 import modalController from "./modalController.js";
 
+//effect 읽고 행동 수행밖에 못함.
 export default function actionGroupItemEffect() {
   const wrappers = document.querySelectorAll(".action-group-wrapper");
   if (!wrappers.length) return;

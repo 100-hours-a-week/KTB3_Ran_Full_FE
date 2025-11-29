@@ -38,5 +38,5 @@ export const routerPage = {
   },
   "/user/info": handleUserInfo,
   "/user/password-modify": handlePasswordModify,
-  "/post/update": BoardPostUpdatePage,
+  // "/post/update": BoardPostUpdatePage,
 };

@@ -1,11 +1,15 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function postUpdateFetch({ dto, postId }) {
+  const token = sessionStorage.getItem("accessToken");
   console.log(dto);
   try {
     const response = await fetch(Endpoint.POST.UPDATE(postId), {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(dto),
       credentials: "include",
     });

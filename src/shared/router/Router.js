@@ -72,7 +72,10 @@ export function navigateTo(path) {
 
     setCurrentEffect(() => handlePostEditEffect(id));
     setCurrentPage(EditPostVDOM);
-    setCurrentState({});
+    setCurrentState({
+      ...postUpdateState,
+      postId: id,
+    });
     rerender();
     return;
   }

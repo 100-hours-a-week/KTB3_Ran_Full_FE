@@ -1,6 +1,7 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function post() {
+  const token = sessionStorage.getItem("accessToken");
   try {
     const token = sessionStorage.getItem("accessToken");
     const response = await fetch(Endpoint.POST.POST, {
