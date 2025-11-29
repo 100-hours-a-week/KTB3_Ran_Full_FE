@@ -1,9 +1,12 @@
-import Toast from "../ui/Toast/Toast.js";
+import { render } from "../DOMutil/render.js";
+import ToastVDOM from "../ui/Toast/ToastVDOM.js";
 
 function toast(message) {
-  const toast = Toast(message);
-  console.log(toast);
-  document.body.appendChild(toast); //보이기
+  const toastEl = render(ToastVDOM(message)); // DOM 생성
+  document.body.appendChild(toastEl);
+
+  // 자동 제거
+  setTimeout(() => toastEl.remove(), 1200);
 }
 
 export default toast;

@@ -1,11 +1,11 @@
 import h from "../../../shared/DOMutil/virtualDOM.js";
 import actionGroupBtnVDOM from "../../actionGroupBtn/ui/actionGroupBtnVDOM.js";
 import actionGroupVDOM from "../../actionGroup/ui/actionGroupVDOM.js";
-import { ContentType } from "../../../shared/lib/ContentType.js";
-import handleCommentNav from "../../../shared/lib/handleCommentNav.js";
-import { Props } from "../../../shared/ui/Button/model/Props.js";
+import { getState } from "../../../shared/state/currentState.js";
 
 export default function commentCardVDOM(props) {
+  const postId = getState()?.post.id;
+
   return h("div", { className: "comment-card" }, [
     h("div", { className: "top-area" }, [
       h("div", { className: "left" }, [
@@ -19,7 +19,7 @@ export default function commentCardVDOM(props) {
         actionGroupBtnVDOM(),
         actionGroupVDOM({
           domainType: "comment",
-          postId: props.postId ?? "",
+          postId,
           commentId: props.commentId ?? "",
         }),
       ]),
