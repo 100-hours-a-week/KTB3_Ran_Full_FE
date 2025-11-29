@@ -31,10 +31,23 @@ export function initRouter() {
 }
 
 export async function navigateTo(path) {
+  // token 처리 : 공개 페이지는 home, login, signup,
+  const token = sessionStorage.getItem("accessToken");
+  const publicPaths = ["/home", "/login", "/signup"];
+  const isPublic = publicPaths.includes(path);
+
+  if (!token && !isPublic) {
+    console.log("로그인 필요 : 로그인 페이지로 이동");
+    location.hash = "/login";
+    return;
+  }
+
+  //라우터
   const [, route, action, id] = path.split("/");
 
-  //게시글 상세 라우팅
+  //게시물 상세 페이지
   if (route === "post" && action === "get" && id) {
+    //게시글 상세 라우팅
     resetVDOM();
 
     //상세페이지 기본 state

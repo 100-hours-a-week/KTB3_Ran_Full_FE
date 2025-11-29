@@ -1,19 +1,20 @@
 import handlePostDetail from "../../../../features/board/model/handlePostDetail.js";
 import setState, { getState } from "../../../../shared/state/currentState.js";
 
-let updatePostId = null;
-
-//useEffect(()=>,[postId])
 function BoardPostDetailEffect(postId) {
-  if (updatePostId === postId) return; //같으면 반환
-  updatePostId = postId; //다르면 갱신
+  const state = getState();
+  const numId = Number(postId);
 
-  let hasFetched = false;
+  //받아올때까지 return
+  if (state?.post?.id === numId) return;
+
+  let aborted = false;
 
   handlePostDetail(postId).then((data) => {
-    if (hasFetched) return;
+    if (aborted) return;
 
-    setState((prev = {}) => ({
+    setState((prev) => ({
+      ...prev,
       post: data.postData,
       comments: data.commentsData,
       commentForm: {
@@ -24,7 +25,7 @@ function BoardPostDetailEffect(postId) {
   });
   console.log("state:", getState());
   return () => {
-    hasFetched = true;
+    aborted = true;
   };
 }
 
