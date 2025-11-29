@@ -80,7 +80,11 @@ export async function navigateTo(path) {
     setCurrentPage(BoardPostUpdatePageVDOM);
     setCurrentState({
       post: postData,
-      ...BoardPostUpdateState,
+      title: postData.title || "",
+      content: postData.content || "",
+      titleError: "",
+      contentError: "",
+      canSubmit: true,
     });
     rerender();
     return;
