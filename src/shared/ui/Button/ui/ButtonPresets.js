@@ -132,7 +132,7 @@ export function pageCreatBtn({ id, state }) {
   return ButtonVDOM({
     id: id,
     state: state,
-    text: "작성",
+    text: "작성하기",
     styleProps: {
       radius: "30",
       margin: "10px 0",
@@ -144,14 +144,11 @@ export function pageCreatBtn({ id, state }) {
 }
 
 //페이지 수정하기 버튼
-export function pageUpdateBtn({ getDto, postId }) {
+export function pageUpdateBtn({ id, state }) {
   return ButtonVDOM({
+    id: id,
+    state: state,
     text: "수정하기",
-    buttonProps: {
-      onclick: () => {
-        handlePostUpdate({ dto: getDto(), postId });
-      },
-    },
     styleProps: {
       margin: "10px 0",
       radius: 30,

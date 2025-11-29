@@ -76,7 +76,11 @@ export async function navigateTo(path) {
 
     resetVDOM();
 
-    setCurrentEffect(() => BoardPostUpdateEffect(postData));
+    setCurrentEffect([
+      () => BoardPostUpdateEffect(postData),
+      PostInputFieldEffect,
+      TextareaFieldEffect,
+    ]);
     setCurrentPage(BoardPostUpdatePageVDOM);
     setCurrentState({
       post: postData,
