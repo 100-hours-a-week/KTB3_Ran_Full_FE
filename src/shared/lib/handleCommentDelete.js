@@ -2,10 +2,8 @@ import postDeleteFetch from "../../features/board/api/postDeleteFetch.js";
 import commentDeleteFetch from "../../features/comment/api/commentDeleteFetch.js";
 import sessionUser from "../utils/session.js";
 
-function handleCommentDelete({ postId, props }) {
-  //모달이 꺼져야됨.
-  console.log("handleCommentDelete", props);
-  const commentId = props.commentId;
+function handleCommentDelete({ postId, commentId }) {
+  console.log(postId);
   return commentDeleteFetch({ postId, commentId });
 }
 

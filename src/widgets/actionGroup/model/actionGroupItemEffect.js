@@ -38,6 +38,7 @@ export default function actionGroupItemEffect() {
         const actionType = btn.dataset.actionType; // edit | delete
         const domainType = btn.dataset.domainType; // post | comment
         const postId = Number(btn.dataset.postId);
+        console.log(postId);
         const commentId = Number(btn.dataset.commentId);
 
         //해당 도메인의 handler가 없다면 반환

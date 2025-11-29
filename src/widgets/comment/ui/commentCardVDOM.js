@@ -2,7 +2,6 @@ import h from "../../../shared/DOMutil/virtualDOM.js";
 import actionGroupBtnVDOM from "../../actionGroupBtn/ui/actionGroupBtnVDOM.js";
 import actionGroupVDOM from "../../actionGroup/ui/actionGroupVDOM.js";
 import { ContentType } from "../../../shared/lib/ContentType.js";
-import handleCommentDelete from "../../../shared/lib/handleCommentDelete.js";
 import handleCommentNav from "../../../shared/lib/handleCommentNav.js";
 import { Props } from "../../../shared/ui/Button/model/Props.js";
 
