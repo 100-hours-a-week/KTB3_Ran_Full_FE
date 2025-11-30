@@ -8,7 +8,7 @@ export default function actionGroupVDOM(props) {
   return h(
     "div",
     {
-      className: "action-group-wrapper",
+      className: "action-group-wrapper ",
       "data-type": props.domainType, // post / comment
     },
     [

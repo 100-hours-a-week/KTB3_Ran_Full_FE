@@ -8,6 +8,8 @@ export default function actionGroupToggleEffect() {
     const wrapper = button.nextElementSibling;
     if (!wrapper || !wrapper.classList.contains("action-group-wrapper")) return;
 
+    wrapper.style.display = "none";
+
     const toggle = (e) => {
       e.stopPropagation();
       wrapper.classList.toggle("active");
@@ -17,8 +19,15 @@ export default function actionGroupToggleEffect() {
     };
 
     button.addEventListener("click", toggle);
-
     cleanups.push(() => button.removeEventListener("click", toggle));
+
+    const close = () => {
+      wrapper.classList.remove("active");
+      wrapper.style.display = "none";
+    };
+
+    document.addEventListener("click", close);
+    cleanups.push(() => document.removeEventListener("click", close));
   });
 
   return () => cleanups.forEach((fn) => fn());
