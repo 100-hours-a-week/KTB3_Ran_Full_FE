@@ -25,6 +25,7 @@ export default function ProfileMenuModalVDOM({
           className: "profile-menu-item top",
           onclick: onUserInfo,
           style: `
+            width:100px;
             padding: 12px 16px;
             background: white;
             border-bottom: 1px solid #ddd;
