@@ -31,12 +31,12 @@ export const routerPage = {
     effect: [BoardHomeEffect, imgButtonEffect],
     state: BoardHomeState,
   },
-  "/post/get": {
-    page: () => h("div", {}, "loading..."),
-    effect: null,
-    state: {},
-  },
-  "/user/info": handleUserInfo,
-  "/user/password-modify": handlePasswordModify,
+  // "/post/get": {
+  //   page: () => h("div", {}, "loading..."),
+  //   effect: null,
+  //   state: {},
+  // },
+  // "/user/info": handleUserInfo,
+  // "/user/password-modify": handlePasswordModify,
   // "/post/update": BoardPostUpdatePage,
 };
