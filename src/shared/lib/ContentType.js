@@ -1,4 +1,4 @@
 export const ContentType = Object.freeze({
-  POST: "게시글",
-  COMMENT: "댓글",
+  post: "게시글",
+  comment: "댓글",
 });

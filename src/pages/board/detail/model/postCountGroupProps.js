@@ -1,5 +1,5 @@
 export const postCountGroupProps = (props) => ({
-  postId: props.postId,
+  postId: props.id,
   liked: props.liked,
   likeCount: props.likeCount,
   viewCount: props.viewCount,

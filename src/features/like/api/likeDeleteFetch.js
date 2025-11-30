@@ -1,10 +1,14 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
 
 async function likeDeleteFetch(postId) {
+  const token = sessionStorage.getItem("accessToken");
   try {
     const response = await fetch(Endpoint.LIKE.DELETE(postId), {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       credentials: "include",
       cache: "no-store",
     });

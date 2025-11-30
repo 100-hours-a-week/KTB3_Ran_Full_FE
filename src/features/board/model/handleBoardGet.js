@@ -1,8 +1,8 @@
 import post from "../api/postHomeFetch.js";
 
 async function handleBoardGet() {
-  const postGet = await post();
+  const data = await post();
 
-  return postGet;
+  return data;
 }
 export default handleBoardGet;

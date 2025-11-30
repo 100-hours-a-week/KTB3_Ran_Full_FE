@@ -19,6 +19,8 @@
   --font-size-xlg: 22px;
   --font-size-sm: 16px;
   --font-size-xsm: 14px;
+  --font-size-default: 24px;
+
   /* 폰크 굵기 */
   --font-weight-normal: 400;
   --font-weigth-md: 500;

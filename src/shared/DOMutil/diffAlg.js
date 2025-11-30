@@ -1,4 +1,5 @@
 //boolean 타입 함수
+import propMap from "./propMap.js";
 import { render } from "./render.js";
 
 //바뀌면 true
@@ -63,17 +64,48 @@ export function updateElement(parent, newNode, oldNode, index = 0) {
 }
 
 //props를 업데이트
-function updateProps(element, newProps, oldProps) {
-  for (let k in newProps) {
-    if (element[k] !== newProps[k]) {
-      element[k] = newProps[k];
-    }
-  }
+function updateProps(element, newProps = {}, oldProps = {}) {
+  const allKeys = new Set([
+    ...Object.keys(oldProps || {}),
+    ...Object.keys(newProps || {}),
+  ]);
 
-  // 제거된 props 적용 -> 삭제된 props 속성 제거
-  for (let k in oldProps) {
-    if (!(k in newProps)) {
-      element[k] = "";
+  const applyProp = (el, key, value) => {
+    const targetKey = propMap[key] || key;
+
+    if (targetKey === "dataset") {
+      const next = value || {};
+      Object.keys(oldProps.dataset || {}).forEach((dataKey) => {
+        if (!(dataKey in next)) delete el.dataset[dataKey];
+      });
+      Object.entries(next).forEach(([dataKey, dataValue]) => {
+        if (dataValue == null) delete el.dataset[dataKey];
+        else el.dataset[dataKey] = dataValue;
+      });
+      return;
     }
-  }
+
+    if (targetKey.startsWith("data-")) {
+      if (value == null) el.removeAttribute(targetKey);
+      else el.setAttribute(targetKey, value);
+      return;
+    }
+
+    if (targetKey === "style" && typeof value === "string") {
+      el.setAttribute("style", value);
+      return;
+    }
+
+    if (value == null) {
+      el[targetKey] = "";
+      return;
+    }
+
+    el[targetKey] = value;
+  };
+
+  allKeys.forEach((key) => {
+    const newValue = newProps[key];
+    applyProp(element, key, newValue);
+  });
 }

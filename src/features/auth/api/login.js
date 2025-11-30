@@ -1,6 +1,4 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
-import { navigateTo } from "../../../shared/router/Router.js";
-import sessionUser from "../../../shared/utils/session.js";
 
 async function login(dto) {
   console.log("login dto", dto);
@@ -18,12 +16,15 @@ async function login(dto) {
 
     //세션에 유저 저장
     if (response.ok) {
-      const token = json.data.jwt;
-      console.log("token :", token);
+      const token = json.data.accessToken;
+      const refresh = json.data.refreshToken;
 
-      // persist the JWT so other modules can read it later
-      sessionStorage.setItem("token", token);
-      navigateTo("/home");
+      sessionStorage.setItem("accessToken", token);
+      sessionStorage.setItem("refreshToken", refresh);
+
+      console.log("token :", token, "refresh :", refresh);
+
+      location.hash = "/home";
       console.log("이동완료");
       return;
     }

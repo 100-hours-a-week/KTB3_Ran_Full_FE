@@ -1,25 +1,33 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
+import apiFetch from "../../../shared/api/fetchWrapper.js";
 
+// async function post() {
+//   const token = sessionStorage.getItem("accessToken");
+//   try {
+//     const token = sessionStorage.getItem("accessToken");
+//     const response = await fetch(Endpoint.POST.POST, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+
+//     const json = await response.json();
+//     console.log(json);
+//     if (response.ok) {
+//       const data = json.data;
+//       console.log(data);
+//       return data;
+//     } else {
+//       console.log("data가 없으세요.");
+//       throw new Error("POST_FETCH_FAILED");
+//     }
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 async function post() {
-  try {
-    const response = await fetch(Endpoint.POST.POST, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    const json = await response.json();
-    console.log(json);
-    if (response.ok) {
-      const data = json.data;
-      console.log(data);
-      return data;
-    } else {
-      console.log("data가 없으세요.", data);
-      throw error;
-    }
-  } catch (error) {
-    throw error;
-  }
+  return await apiFetch(Endpoint.POST.POST);
 }
-
 export default post;

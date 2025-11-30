@@ -1,12 +1,5 @@
 // router
-import { routerPage } from "./router.js/router.js";
 import { navigateTo } from "../shared/router/Router.js";
-import "../widgets/header/ui/Header.js";
-import session from "../shared/utils/session.js";
-import BoardPostDetailPage from "../pages/board/detail/ui/BoardPostDetailPage.js";
-import handlePostDetail from "../features/board/model/handlePostDetail.js";
-import handlePostEdit from "../shared/lib/handlePostNavEdit.js";
-import initialRedirect from "./router.js/initialRedirect.js";
 
 import { initRouter } from "../shared/router/Router.js";
 

@@ -1,16 +1,19 @@
+import { getState } from "../../../shared/state/currentState.js";
 import postCreatFetch from "../api/postCreatFetch.js";
 import { postCreatDto } from "./postCreatDto.js";
 
 async function handlePostCreat() {
+  console.log("handlePostCreat 등록됨");
+  const state = getState();
   const props = {
-    title: document.querySelector("#post-title").value,
-    content: document.querySelector("#post-content").value,
+    title: state.title,
+    content: state.content,
   };
 
   const postCreatEl = postCreatDto(props);
 
   const postCreatData = await postCreatFetch(postCreatEl);
-  location.hash = "/";
+  location.hash = "/home";
 
   return postCreatData;
 }
