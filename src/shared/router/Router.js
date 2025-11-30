@@ -89,7 +89,7 @@ export async function navigateTo(path) {
   }
   //게시글 수정
   if (route === "post" && action === "update" && id) {
-    const { postData } = await postDetail(id);
+    const postData = await postDetail(id);
 
     resetVDOM();
 

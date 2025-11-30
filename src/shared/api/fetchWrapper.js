@@ -18,6 +18,7 @@ export default async function apiFetch(url, options = {}) {
     if (res.status === 401) {
       //삭제하거나, 리프레시 토큰 발행
       const newToken = await requestRefresh();
+      console.log("newToken", newToken);
 
       //실패 시 또는 RT도 기간 만료 시
       if (!newToken) {
@@ -25,7 +26,6 @@ export default async function apiFetch(url, options = {}) {
         sessionStorage.removeItem("refreshToken");
 
         location.hash = "/login";
-        return null;
       }
 
       console.log(newToken);
