@@ -10,7 +10,7 @@ import { postCountGroupProps } from "../model/postCountGroupProps.js";
 import h from "../../../../shared/DOMutil/virtualDOM.js";
 import postHeaderVDOM from "./postHeaderVDOM.js";
 import { getState } from "../../../../shared/state/currentState.js";
-import LayoutVDOM from "../../../../app/LayoutVDOM.js";
+import LayoutVDOM from "../../../../app/layoutVDOM.js";
 
 export default function BoardPostDetailPageVDOM() {
   const { post, comments } = getState();
