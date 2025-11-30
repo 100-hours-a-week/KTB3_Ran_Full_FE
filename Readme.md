@@ -243,7 +243,7 @@ frontend/
 
 **[vanila JS - VDOM]**
 
-- [[TroubleShooting] effect LifeCycle]()
+- [[TroubleShooting] VDOM 환경에서 이벤트 리스너로 발생한 무한 루프](TroubleShooting/vdom-eventlistener-infinite-loop.md)
 - [[TroubleShooting] useState]()
 
 ---
