@@ -6,6 +6,8 @@
 
 해당 프로젝트의 핵심은 React 없이 **Vanilla JS만으로 SPA/VDOM/상태/Effect 시스템을 직접 구현했습니다.**
 
+### 프로젝트 데모 영상
+
 [![프로젝트 데모 영상](https://github.com/user-attachments/assets/816eb696-6d63-4079-816b-867ee7cc711e)](https://www.youtube.com/watch?v=DLSYWXPwkE8)
 
 
