@@ -1,5 +1,3 @@
-import postDeleteFetch from "../../features/board/api/postDeleteFetch.js";
-import postDetail from "../../features/board/api/postDetailFetch.js";
 import handlePostDetail from "../../features/board/model/handlePostDetail.js";
 import commentDeleteFetch from "../../features/comment/api/commentDeleteFetch.js";
 import setState, { getState } from "../state/currentState.js";

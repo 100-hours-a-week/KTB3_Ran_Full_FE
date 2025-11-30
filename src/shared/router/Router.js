@@ -35,6 +35,10 @@ export async function navigateTo(path) {
   const token = sessionStorage.getItem("accessToken");
   const publicPaths = ["/home", "/login", "/signup"];
   const isPublic = publicPaths.includes(path);
+  // const defaultPath = "/";
+  // if (defaultPath) {
+  //   location.hash = "/login";
+  // }
 
   if (!token && !isPublic) {
     console.log("로그인 필요 : 로그인 페이지로 이동");
