@@ -6,7 +6,7 @@ function toast(message) {
   document.body.appendChild(toastEl);
 
   // 자동 제거
-  setTimeout(() => toastEl.remove(), 1200);
+  setTimeout(() => toastEl.remove(), 1400);
 }
 
 export default toast;
