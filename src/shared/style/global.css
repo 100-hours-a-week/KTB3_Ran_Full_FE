@@ -465,6 +465,27 @@ hr {
   transition:
     opacity 1s ease,
     transform 0.5s ease;
+  animation: toast-up 1.4s ease forwards;
+}
+
+/*키프레임은 영상 제작 시 사용하는 키프레임 처럼 동일하게 동작 0->100은 처음과 끝을 이야기함. 키프레임 퍼센트에 도달할때 0에서 20으로 시간이 지날때 해당 애니메이션이 자연스럽게 동적 애니메이션을 갖는다. -> 에프터이펙트생각하기*/
+@keyframes toast-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }
 
 #creat-post-btn {

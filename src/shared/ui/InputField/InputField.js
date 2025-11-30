@@ -1,8 +1,3 @@
-// class InputField extends HTMLElement {
-//   static get observedAttributes() {
-//     return ["type", "placeholder", "helpertext"];
-//   }
-
 import h from "../../DOMutil/virtualDOM.js";
 
 export function InputField({

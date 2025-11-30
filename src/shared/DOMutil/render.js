@@ -1,3 +1,5 @@
+import propMap from "./propMap.js";
+
 export function render(vnode) {
   console.log("render node:", vnode);
   //vnode = children ={type, props , children }
@@ -19,25 +21,30 @@ export function render(vnode) {
   //vnode의 props는 여러개일 수 있기 때문에 for문으로 받는다.
   for (let key in vnode.props) {
     const value = vnode.props[key];
+    const mappedKey = propMap[key] || key;
 
-    if (key && key.startsWith("data-")) {
-      element.setAttribute(key, value);
+    if (mappedKey && mappedKey.startsWith("data-")) {
+      element.setAttribute(mappedKey, value);
       continue;
     }
 
-    if (key === "style" && typeof value === "string") {
+    if (mappedKey === "style" && typeof value === "string") {
       element.setAttribute("style", value);
       continue;
     }
 
-    if (key === "dataset" && typeof value === "object" && value !== null) {
+    if (
+      mappedKey === "dataset" &&
+      typeof value === "object" &&
+      value !== null
+    ) {
       Object.entries(value).forEach(([dataKey, dataValue]) => {
         element.dataset[dataKey] = dataValue;
       });
       continue;
     }
 
-    element[key] = value;
+    element[mappedKey] = value;
   }
 
   //3. children

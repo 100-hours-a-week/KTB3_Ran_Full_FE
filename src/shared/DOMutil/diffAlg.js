@@ -1,4 +1,5 @@
 //boolean 타입 함수
+import propMap from "./propMap.js";
 import { render } from "./render.js";
 
 //바뀌면 true
@@ -70,7 +71,9 @@ function updateProps(element, newProps = {}, oldProps = {}) {
   ]);
 
   const applyProp = (el, key, value) => {
-    if (key === "dataset") {
+    const targetKey = propMap[key] || key;
+
+    if (targetKey === "dataset") {
       const next = value || {};
       Object.keys(oldProps.dataset || {}).forEach((dataKey) => {
         if (!(dataKey in next)) delete el.dataset[dataKey];
@@ -82,23 +85,23 @@ function updateProps(element, newProps = {}, oldProps = {}) {
       return;
     }
 
-    if (key.startsWith("data-")) {
-      if (value == null) el.removeAttribute(key);
-      else el.setAttribute(key, value);
+    if (targetKey.startsWith("data-")) {
+      if (value == null) el.removeAttribute(targetKey);
+      else el.setAttribute(targetKey, value);
       return;
     }
 
-    if (key === "style" && typeof value === "string") {
+    if (targetKey === "style" && typeof value === "string") {
       el.setAttribute("style", value);
       return;
     }
 
     if (value == null) {
-      el[key] = "";
+      el[targetKey] = "";
       return;
     }
 
-    el[key] = value;
+    el[targetKey] = value;
   };
 
   allKeys.forEach((key) => {

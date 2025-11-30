@@ -1,6 +1,5 @@
 // router
 import { navigateTo } from "../shared/router/Router.js";
-import "../widgets/header/ui/Header.js";
 
 import { initRouter } from "../shared/router/Router.js";
 
