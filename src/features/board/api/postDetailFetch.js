@@ -1,35 +1,36 @@
 import { boardDetailProps } from "../../../pages/board/model/boardDto.js";
 import { commentDto } from "../../../pages/board/model/commentDto.js";
 import { Endpoint } from "../../../shared/api/endpoint.js";
+import apiFetch from "../../../shared/api/fetchWrapper.js";
 
 async function postDetail(postId) {
-  const token = sessionStorage.getItem("accessToken");
-  try {
-    const response = await fetch(`${Endpoint.POST.GET}/${postId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      credentials: "include",
-    });
+  return apiFetch(`${Endpoint.POST.GET}/${postId}`);
 
-    const json = await response.json();
-    console.log(json);
-    if (response.ok) {
-      const data = json.data;
-
-      const postData = boardDetailProps(data);
-      console.log(postData);
-      const commentsData = data.comments.map(commentDto);
-      return { postData, commentsData };
-    } else {
-      location.hash = "/";
-      throw new Error("error");
-    }
-  } catch (error) {
-    throw error;
-  }
+  // const token = sessionStorage.getItem("accessToken");
+  // try {
+  //   const response = await fetch(`${Endpoint.POST.GET}/${postId}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     credentials: "include",
+  //   });
+  //   const json = await response.json();
+  //   console.log(json);
+  //   if (response.ok) {
+  //     const data = json.data;
+  //     const postData = boardDetailProps(data);
+  //     console.log(postData);
+  //     const commentsData = data.comments.map(commentDto);
+  //     return { postData, commentsData };
+  //   } else {
+  //     location.hash = "/";
+  //     throw new Error("error");
+  //   }
+  // } catch (error) {
+  //   throw error;
+  // }
 }
 
 export default postDetail;
