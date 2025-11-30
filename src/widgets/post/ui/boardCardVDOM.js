@@ -1,5 +1,6 @@
 import postCountGroupVDOM from "../../../pages/board/detail/ui/postCountGroup/postCountGroupVDOM.js";
 import h from "../../../shared/DOMutil/virtualDOM.js";
+import timestamp from "../../../shared/utils/timestamp.js";
 
 export default function boardCardVDOM(props) {
   return h(
@@ -48,7 +49,7 @@ export default function boardCardVDOM(props) {
                     color: var(--color-meta);
                   `,
                 },
-                props.createdAt
+                timestamp(props.createdAt)
               ),
             ]),
           ]),
