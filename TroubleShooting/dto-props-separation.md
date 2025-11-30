@@ -1,5 +1,5 @@
 
-# [TroubleShooting] DTO와 Props 역할 분리
+# DTO와 Props 역할 분리
 
 초기 개발 당시, **DTO와 Props의 역할이 섞여 있는 구조**로 인해 UI 컴포넌트에서 직접 API 응답 필드를 참조하거나, fetch 응답을 그대로 컴포넌트에 전달하는 비일관적인 패턴이 존재했다.
 
