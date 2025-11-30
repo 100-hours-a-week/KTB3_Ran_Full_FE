@@ -1,3 +1,5 @@
+import requestRefresh from "./refreshToken.js";
+
 export default async function apiFetch(url, options = {}) {
   //options : HTTP요청 시 선택적으로 전달되는 모든 추갖 설정ㄷㄹ을 한번에 담을 수있는 객체
   const token = sessionStorage.getItem("accessToken");
@@ -12,12 +14,25 @@ export default async function apiFetch(url, options = {}) {
       },
     });
 
-    //백엔드와 상의 하에 401이 아닌 다른 코드로 얘기해볼수는 있을 듯
+    //AT 기간 만료 시, 리프레시 토큰 발행
     if (res.status === 401) {
       //삭제하거나, 리프레시 토큰 발행
-      sessionStorage.removeItem("accessToken");
-      location.hash = "/login"; //없으면 로그인 화면으로 : 리팩토링 필요
-      throw new Error("Access Token 만료 - 로그아웃 처리됨");
+      const newToken = await requestRefresh();
+
+      //실패 시 또는 RT도 기간 만료 시
+      if (!newToken) {
+        sessionStorage.removeItem("accessToken");
+        sessionStorage.removeItem("refreshToken");
+
+        location.hash = "/login";
+        return null;
+      }
+
+      console.log(newToken);
+      sessionStorage.setItem("accessToken", newToken.accessToken);
+
+      //재요청
+      return await apiFetch(url, options);
     }
 
     if (!res.ok) {

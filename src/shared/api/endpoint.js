@@ -11,6 +11,7 @@ export const Endpoint = {
     INFO: path("/users/userInfo"),
     PASSWORD: path("/users/userPassword"),
     DELETE: path("/users"),
+    REFRESH: path("/refresh"),
   },
   POST: {
     POST: path("/posts"),
