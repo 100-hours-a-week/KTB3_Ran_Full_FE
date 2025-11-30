@@ -1,6 +1,4 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
-import { navigateTo } from "../../../shared/router/Router.js";
-import sessionUser from "../../../shared/utils/session.js";
 
 async function login(dto) {
   console.log("login dto", dto);

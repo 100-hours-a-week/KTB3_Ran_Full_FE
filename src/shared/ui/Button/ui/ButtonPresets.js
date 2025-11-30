@@ -1,15 +1,6 @@
-import Button from "./PrimaryButton.js";
-import handleLoginClick from "../../../../pages/login/lib/handleLoginClick.js";
 import handleSignupClick from "../../../../pages/signup/lib/handleSignupClick.js";
-import handlerPostCreat from "../../../../features/navigation/handlerPostCreat.js";
-import ActionButton from "./ActionButton.js";
-import handlePostCreat from "../../../../features/board/model/handlePostCreat.js";
 import handleUserUpdate from "../../../../pages/info/lib/handleUserUpdate.js";
-import handlePostEdit from "../../../lib/handlePostUpdate.js";
-import handlePostUpdate from "../../../lib/handlePostUpdate.js";
-import commentUpdateFetch from "../../../../features/comment/api/commentUpdateFetch.js";
 import handleUserPasswordUpdate from "../../../../pages/info/lib/handleUserPasswordUpdate.js";
-import imgButton from "../../../../widgets/imgButton/ui/imgButton.js";
 import ButtonVDOM from "./VDOM/PrimaryButton.js";
 import ImgButtonVDOM from "../../../../widgets/imgButton/ui/imgButtonVDOM.js";
 
