@@ -236,15 +236,15 @@ frontend/
 
 **[vanila JS]**
 
-- [TroubleShooting] DTO와 Props 역할 분리
-- [TroubleShooting] ActionGroup 재사용 컴포넌트 설계
-- [TroubleShooting] 로그인 상태 관리와 라우팅 충돌 문제
-- [TroubleShooting] SPA Header 상태 제어와 Web Component 도입
+- [[TroubleShooting] DTO와 Props 역할 분리](TroubleShooting/dto-props-separation.md)
+- [[TroubleShooting] ActionGroup 재사용 컴포넌트 설계](TroubleShooting/actiongroup-reusable-component.md)
+- [[TroubleShooting] 로그인 상태 관리와 라우팅 충돌 문제](TroubleShooting/spa-auth-redirect-issue.md)
+- [[TroubleShooting] SPA Header 상태 제어와 Web Component 도입](TroubleShooting/webcomponent-header-state-control.md)
 
 **[vanila JS - VDOM]**
 
-- [TroubleShooting] effect LifeCycle
-- [TroubleShooting] useState
+- [[TroubleShooting] effect LifeCycle]()
+- [[TroubleShooting] useState]()
 
 ---
 
