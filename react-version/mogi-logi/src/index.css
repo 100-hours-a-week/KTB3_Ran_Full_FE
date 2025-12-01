@@ -1,21 +1,19 @@
-:root {
-}
-
-a {
-}
-a:hover {
-}
-
 body {
+  margin: 0;
+  height: 100vh;
+
+  /* height: 100vh;
+  display: flex;
+  flex-direction: column; */
 }
 
-h1 {
+html,
+body {
+  padding: 0;
+  height: 100%;
 }
 
-button {
-}
-button:hover {
-}
-button:focus,
-button:focus-visible {
+:root {
+  text-align: center;
+  margin: 0 auto;
 }

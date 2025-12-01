@@ -1,14 +1,26 @@
 :root {
-  --color-primary: #1dbfe0;
+  --color-primary: #e2a0a0;
+
   --color-secondary: #000000;
-  --color-error: #fc5e5e; /*경고*/
+  --color-error: #9b9b9b; /*경고*/
+
   --color-background: #faf9f9;
   --color-card: #ffffff;
-  --color-text: #6d6d6d;
+  /*텍스트 색상*/
+  --color-text-default: #575757; /*텍스트 디폴트*/
+  --color-text-title: #575757;
+  --color-text-content: #816d6d; /*콘텐츠 내용*/
+  --color-text-metaData: #9b9b9b;
+  --color-text-username: #9b9b9b;
+  --color-text-footer: #aeaeae;
+  --color-text-placeholder: #dbdbdb;
+  --color-text-header: #717171;
+
   --color-card-text: #565656;
   --color-light-gray: #d9d9d9;
 
-  --color-meta: #b2b2b2;
+  --color-line: #909090; /*hr같은 선*/
+  --color-icon-default: #4f4f4f;
 
   --color-disable: #cccccc;
   --color-option: #d9d9d9;
