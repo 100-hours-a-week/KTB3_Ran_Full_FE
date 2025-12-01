@@ -1,4 +1,4 @@
-import h from "../../../shared/DOMutil/virtualDOM.js";
+import h from "../../DOMutil/virtualDOM.js";
 import { confirmBtn, quitBtn } from "../Button/ui/ButtonPresets.js";
 
 export default function ModalVDOM({

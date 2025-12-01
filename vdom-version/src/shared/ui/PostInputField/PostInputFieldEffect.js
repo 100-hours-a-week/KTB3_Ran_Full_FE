@@ -1,4 +1,4 @@
-import setState, { getState } from "../../../shared/state/currentState.js";
+import setState, { getState } from "../../state/currentState.js";
 import validatePostTitle from "../../../features/board/lib/validatePostTitle.js";
 import validatePostContent from "../../../features/board/lib/validatePostContent.js";
 
