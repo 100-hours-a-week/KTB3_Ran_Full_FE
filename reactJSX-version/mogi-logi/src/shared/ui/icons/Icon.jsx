@@ -4,7 +4,9 @@
 
 import { IconMap } from "./map";
 
-export const Icon = ({ name, size = 10, className }) => {
+export const Icon = ({ name, size = 20, className }) => {
   const SvgIcon = IconMap[name];
-  return <SvgIcon width={size} height={size} className={className} />;
+  return (
+    <SvgIcon style={{ width: size, height: size }} className={className} />
+  );
 };

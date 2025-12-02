@@ -1,0 +1,8 @@
+.user-meta {
+  gap: 16px;
+  display: flex;
+}
+
+.user-meta div {
+  color: var(--color-text-metaData);
+}

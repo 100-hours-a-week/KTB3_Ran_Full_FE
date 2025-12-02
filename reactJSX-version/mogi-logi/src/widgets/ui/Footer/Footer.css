@@ -4,7 +4,7 @@ footer {
 }
 
 .footer-inner {
-  padding: 1rem 0;
+  padding: 4rem 0;
   display: flex;
   width: 100%;
   max-width: var(--layout-max-width);

@@ -1,9 +1,6 @@
-header {
-  max-width: var(--layout-max-width);
-  margin: 0 auto;
-}
-
 .header-inner {
+  margin: 0 auto;
+
   padding: 1rem 0;
   display: flex;
   width: 100%;
