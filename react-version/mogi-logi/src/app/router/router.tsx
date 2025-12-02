@@ -3,6 +3,7 @@ import App from "../../App";
 import { HomePage } from "../../pages/home/ui/HomePage";
 import { LoginPage } from "../../pages/auth/signup/ui/LoginPage";
 
+//라우터 가드
 function requireAuth() {
   const token = sessionStorage.getItem("accessToken");
   //   const publicPaths = ["/login", "/signup"];

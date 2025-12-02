@@ -7,7 +7,6 @@
   margin: 0 auto;
   height: 100%;
 
-  background-color: var(--color-background);
   max-width: var(--auth-max-width);
   gap: var(--gap-xlg);
 }
