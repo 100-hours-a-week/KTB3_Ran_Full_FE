@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { IconCircleButton } from "../../../../shared/ui/button/IconCircleButton";
 import { Icon } from "../../../../shared/ui/icons/Icon";
 
-export function PostCreateIconButton() {
+export function PostCreateNavButton() {
   const navigate = useNavigate();
 
   const onclick = () => {

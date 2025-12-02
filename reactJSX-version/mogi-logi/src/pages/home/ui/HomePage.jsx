@@ -1,6 +1,6 @@
 import { PostCardProps } from "../../../entities/post/model/PostCardProps";
 import { PostCard } from "../../../entities/post/ui/PostCard";
-import { PostCreateIconButton } from "../../../features/post/create/ui/PostCreateIconButton";
+import { PostCreateNavButton } from "../../../features/post/create/ui/PostNavIconButton";
 
 const dummyPost = {
   id: 5,
@@ -26,7 +26,7 @@ export function HomePage() {
       <PostCard {...postCardDummy} />
       <PostCard {...postCardDummy} />
       <PostCard {...postCardDummy} />
-      <PostCreateIconButton />
+      <PostCreateNavButton />
     </div>
   );
 }
