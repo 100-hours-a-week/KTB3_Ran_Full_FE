@@ -1,5 +1,5 @@
-import { Icon } from "../../../../shared/ui/icons/Icon";
-import "./PostCountGroup.css";
+import { Icon } from "../../../shared/ui/icons/Icon";
+import "../style/post.css";
 
 export default function PostCountGroup(props) {
   return (

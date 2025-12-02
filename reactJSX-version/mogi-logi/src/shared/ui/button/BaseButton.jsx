@@ -6,7 +6,7 @@ import "./button.css";
 export default function BaseButton({
   variant = "primary", //primary | secondary-outline | secondary-filled | icon
   size = "md", //sm | md | lg
-  shape = "rounded", //rounded | circle
+  shape = "rounded", //rounded | circle | square
   fullWidth = false,
   iconOnly = false,
   disabled = false,

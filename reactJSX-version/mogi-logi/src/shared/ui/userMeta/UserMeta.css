@@ -3,6 +3,10 @@
   display: flex;
 }
 
-.user-meta div {
+.user-meta .author {
+  color: var(--color-text-title);
+}
+
+.user-meta .createdAt {
   color: var(--color-text-metaData);
 }

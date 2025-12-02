@@ -9,5 +9,5 @@ export function SignupButton(props) {
     ...props,
     onClick: signup,
   };
-  return <PrimaryButton {...props} />;
+  return <PrimaryButton {...SignupButtonProps} />;
 }

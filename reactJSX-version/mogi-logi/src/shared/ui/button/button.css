@@ -75,6 +75,10 @@
   padding: 0;
 }
 
+.btn-shape-square {
+  border-radius: 0;
+}
+
 /*iconOnly*/
 .btn-icon-only {
   padding: 0;

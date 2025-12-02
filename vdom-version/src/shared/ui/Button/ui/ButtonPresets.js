@@ -143,7 +143,6 @@ export function pageUpdateBtn({ id, state }) {
     styleProps: {
       margin: "10px 0",
       radius: 30,
-      margin: "12px 0",
       width: 70,
       justifyContent: "center",
     },

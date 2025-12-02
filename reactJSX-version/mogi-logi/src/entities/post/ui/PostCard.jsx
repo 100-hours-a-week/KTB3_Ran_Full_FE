@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
-import "./PostCard.css";
-import PostCountGroup from "./PostCountGroup/PostCountGroup";
+import "../style/post.css";
+import PostCountGroup from "./PostCountGroup";
 
 export function PostCard(props) {
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log("props.postId", props.postId);
     navigate(`/post/get/${props.postId}`);
   };
 

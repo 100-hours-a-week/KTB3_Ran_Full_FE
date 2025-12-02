@@ -14,7 +14,7 @@ export const Header = () => {
         </button>
         <div className="header-menu">
           <button className="home-nev">홈</button>
-          <button className="login-nev">들어가기</button>
+          <button className="profile-modal"></button>
         </div>
       </div>
     </header>
