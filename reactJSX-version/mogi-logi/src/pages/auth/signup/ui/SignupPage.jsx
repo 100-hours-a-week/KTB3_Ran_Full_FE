@@ -1,3 +1,4 @@
+import { SignupButton } from "../../../../features/auth/ui/SignupButton";
 import { InputField } from "../../../../shared/ui/input-field/InputField";
 import { Logo } from "../../../../shared/ui/logo/Logo";
 
@@ -52,6 +53,11 @@ export function SignupPage() {
             helperText={""}
           />
         </div>
+        <SignupButton
+          children={"회원가입"}
+          shape={"rounded"}
+          fullWidth={true}
+        />
 
         {/* 하단 네비게이션 */}
         <div className="nav-btn-wrapper">

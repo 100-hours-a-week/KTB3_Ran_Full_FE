@@ -27,7 +27,7 @@
 }
 
 .auth-container .desc {
-  font-size: var(--font-size-xlg);
+  font-size: var(--font-size-content);
   color: var(--color-text);
   font-weight: var(--font-weigth-md);
   margin: auto;
