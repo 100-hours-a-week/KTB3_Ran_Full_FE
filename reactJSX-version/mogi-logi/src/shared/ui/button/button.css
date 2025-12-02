@@ -1,0 +1,92 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 15px;
+}
+
+.btn-icon-only {
+  padding: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Secondary Button */
+.btn-secondary-outline {
+  background-color: #fff;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+
+.btn-secondary-filled {
+  background-color: var(--color-secondary);
+  color: #fff;
+}
+
+/* Icon Button */
+.btn-icon {
+  background-color: #d19797;
+  color: white;
+}
+
+/*Size*/
+.btn-size-sm {
+  padding: 8px 14px;
+  font-size: var(--font-size-sm);
+}
+
+.btn-size-md {
+  padding: 12px 18px;
+  font-size: var(--font-size-md);
+}
+
+.btn-size-lg {
+  padding: 16px 22px;
+  font-size: var(--font-size-lg);
+}
+
+/*shape*/
+.btn-shape-rounded {
+  border-radius: var(--radius-button-lg);
+}
+
+.btn-shape-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 100px;
+  padding: 0;
+}
+
+/*iconOnly*/
+.btn-icon-only {
+  padding: 0;
+  width: 48px;
+  height: 48px;
+}
+
+/*disabled*/
+.btn-disabled,
+.btn:disabled {
+  color: white !important;
+  border: none !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

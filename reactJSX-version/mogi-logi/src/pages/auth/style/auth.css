@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  height: 100%;
+  height: 100vh;
 
   max-width: var(--auth-max-width);
   gap: var(--gap-xlg);
@@ -20,10 +20,10 @@
 }
 
 .auth-container-wrapper {
-  gap: var(--gap-md);
+  /* gap: var(--gap-md);
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: auto; */
 }
 
 .auth-container .desc {

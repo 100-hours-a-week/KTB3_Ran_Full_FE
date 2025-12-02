@@ -2,6 +2,7 @@ import { useState } from "react";
 import { InputField } from "../../../../shared/ui/input-field/InputField";
 import "../../style/auth.css";
 import { Logo } from "../../../../shared/ui/logo/Logo";
+import { LoginButton } from "../../../../features/auth/ui/LoginButton";
 
 //로그인 및 회원가입 구현시 form 사용하기!!
 
@@ -33,6 +34,7 @@ export function LoginPage() {
           helperText=""
           onChange={setPassword}
         />
+        <LoginButton children={"로그인"} shape={"rounded"} fullWidth={true} />
 
         <div className="auth-container-wrapper"></div>
       </div>
