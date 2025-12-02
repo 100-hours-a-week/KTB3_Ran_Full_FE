@@ -8,6 +8,7 @@ import { Logo } from "../../../../shared/ui/logo/Logo";
 export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   return (
     <div className="login-page">
       <div className="auth-container">

@@ -1,7 +1,9 @@
 import { createBrowserRouter, Navigate, redirect } from "react-router-dom";
 import App from "../../App";
 import { HomePage } from "../../pages/home/ui/HomePage";
-import { LoginPage } from "../../pages/auth/signup/ui/LoginPage";
+import { LoginPage } from "../../pages/auth/login/ui/LoginPage";
+import { SignupPage } from "../../pages/auth/signup/ui/SignupPage";
+import { ROUTES } from "./routes";
 
 //라우터 가드
 function requireAuth() {
@@ -24,14 +26,16 @@ export const router = createBrowserRouter([
   {
     element: <App />,
     children: [
-      { index: true, element: <Navigate to="/home" /> },
+      //기본 루트 리다이렉트
+      { index: true, element: <Navigate to={ROUTES.HOME} /> },
+      { path: ROUTES.LOGIN, element: <LoginPage /> },
+      { path: ROUTES.SIGNUP, element: <SignupPage /> },
       {
-        path: "/home",
+        path: ROUTES.HOME,
         element: <HomePage />,
         // loader: async () => requireAuth(),
       },
-      { path: "/login", element: <LoginPage /> },
-      { path: "/signup" },
+      { path: ROUTES.NONE, element: <SignupPage /> },
     ],
   },
 ]);
