@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="footer-info">
           <div className="footer-meta">
             <div className="copyright">
-              © 2024 Chaeyoung Yong. <br />
+              © 2025 Chaeyoung Yong. <br />
               All rights reserved.
             </div>
           </div>
