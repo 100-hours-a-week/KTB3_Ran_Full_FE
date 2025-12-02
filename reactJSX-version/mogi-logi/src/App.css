@@ -1,0 +1,10 @@
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}

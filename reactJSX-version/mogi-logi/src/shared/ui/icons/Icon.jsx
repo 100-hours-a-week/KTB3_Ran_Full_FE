@@ -1,0 +1,10 @@
+// 팩토리 패턴 : svg 아이콘
+// 선택 이유: 해당 서비스에서 사용하는 아이콘은 커뮤니티/블로그 중심이라
+// 아이콘 종류 변화가 많지 않아 svg만을 사용하는 팩토리 패턴으로 구현함.
+
+import { IconMap } from "./map";
+
+export const Icon = ({ name, size = 10, className }) => {
+  const SvgIcon = IconMap[name];
+  return <SvgIcon width={size} height={size} className={className} />;
+};
