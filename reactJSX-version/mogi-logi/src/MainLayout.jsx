@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Footer } from "./widgets/ui/Footer/Footer";
 import { Header } from "./widgets/ui/Header/Header";
 
-function App() {
+function MainLayout() {
   return (
     <>
       <Header />
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainLayout;
