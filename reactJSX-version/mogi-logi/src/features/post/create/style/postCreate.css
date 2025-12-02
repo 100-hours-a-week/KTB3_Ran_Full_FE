@@ -1,0 +1,21 @@
+.createInput {
+  width: 100%;
+  border: none;
+  background: #ffffff;
+  border-radius: var(--radius-button-lg);
+  font-size: 16px;
+}
+.createInput.content {
+  height: 300px;
+}
+.createInput:focus {
+  outline: none;
+}
+
+.input-post-container {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.input-post-wrapper {
+  padding: 20px 0;
+}
