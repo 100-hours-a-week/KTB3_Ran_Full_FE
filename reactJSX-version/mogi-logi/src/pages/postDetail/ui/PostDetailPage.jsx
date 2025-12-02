@@ -4,6 +4,7 @@ import { PostCountProps } from "../../../entities/post/model/PostCountProps";
 import { PostContent } from "../../../entities/post/ui/PostContent";
 import PostCountGroup from "../../../entities/post/ui/PostCountGroup";
 import PostHeader from "../../../entities/post/ui/PostHeader";
+import ScrollProgressBar from "../../../widgets/ScrollProgressBar/ui/ScrollProgressBar";
 
 const dummyPostDetail = {
   id: 5,
@@ -34,6 +35,7 @@ export function PostDetailPage() {
   const postCount = PostCountProps(dummyPostDetail.count);
   return (
     <div>
+      <ScrollProgressBar />
       <PostHeader {...dummyPostDetail} />
       <PostContent {...dummyPostDetail} />
       <PostCountGroup {...postCount} />
