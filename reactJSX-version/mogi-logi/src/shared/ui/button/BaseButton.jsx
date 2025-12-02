@@ -10,6 +10,7 @@ export default function BaseButton({
   fullWidth = false,
   iconOnly = false,
   disabled = false,
+  color = "default", //primary | default |
   children,
   className = "",
   ...props
@@ -19,6 +20,7 @@ export default function BaseButton({
     `btn-${variant}`,
     `btn-size-${size}`,
     `btn-shape-${shape}`,
+    `btn-color-${color}`,
     iconOnly ? "btn-icon-only" : "",
     disabled ? "btn-disabled" : "",
     fullWidth ? "btn-full" : "",
@@ -29,7 +31,7 @@ export default function BaseButton({
   return (
     <button className={classes} disabled={disabled} {...props}>
       {/*버튼 아이콘만 */}
-      {iconOnly && !children && <span className="btn-icon" />}
+      {iconOnly && children && <span className="btn-icon">{children}</span>}
 
       {/* 버튼 text만 */}
       {!iconOnly && children && <span className="btn-label">{children}</span>}

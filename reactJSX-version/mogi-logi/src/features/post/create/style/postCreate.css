@@ -19,3 +19,8 @@
 .input-post-wrapper {
   padding: 20px 0;
 }
+.post-create-icon-button {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+}
