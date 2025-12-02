@@ -14,7 +14,6 @@ export const Header = () => {
           <Logo width={200} style={{ cursor: "pointer" }} />
         </button>
         <div className="header-menu">
-          <button className="home-nev">홈</button>
           <button className="profile-modal"></button>
         </div>
       </div>
