@@ -1,6 +1,7 @@
 .user-meta {
   gap: 16px;
   display: flex;
+  align-items: center;
 }
 
 .user-meta .author {

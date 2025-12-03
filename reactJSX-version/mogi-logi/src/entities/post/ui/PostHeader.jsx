@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGroupContainer";
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/post.css";
+import { deletePost } from "../../../features/post/delete/model/useDeletePost";
 
 //props : { title, author, date, postId, commentId }
 export default function PostHeader(props) {
+  const navigate = useNavigate();
   console.log(props);
   return (
     <div className="post-header-wrapper">
@@ -15,6 +19,12 @@ export default function PostHeader(props) {
         {/* 액션 버튼 그룹 */}
         <div className="user-meta-wrapper">
           <UserMeta {...props} />
+          <ActionGroupContainer
+            domainType="post"
+            postId={props.postId}
+            onEdit={() => navigate(`/post/edit/${props.postId}`)}
+            onDelete={() => deletePost(props.postId)}
+          />
         </div>
         <div className="action-group-button-wrapper"></div>
       </div>
