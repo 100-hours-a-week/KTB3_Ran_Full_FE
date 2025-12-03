@@ -44,6 +44,16 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.board-card:hover {
+  transform: translateY(-1px);
+}
+
+.board-card:hover * {
+  transition: opacity 0.2s ease-in-out;
 }
 
 .board-card div {
