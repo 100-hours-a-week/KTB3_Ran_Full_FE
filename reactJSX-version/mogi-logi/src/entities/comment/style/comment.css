@@ -13,6 +13,10 @@
   outline: none;
 }
 
+#comment-textarea:valid {
+  font-size: var(--font-size-content);
+}
+
 .textarea-wrapper {
   padding: 14px;
   border: 1px solid var(--color-card-line);

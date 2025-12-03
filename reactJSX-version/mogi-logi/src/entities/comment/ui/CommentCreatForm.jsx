@@ -4,7 +4,6 @@ import "../style/comment.css";
 
 export function CommentCreatForm({
   mode = "create",
-  content = "",
   commentId = null,
   postId = "",
   //   onChangeContent,
@@ -14,7 +13,6 @@ export function CommentCreatForm({
       <div className="textarea-wrapper">
         <textarea
           id="comment-textarea"
-          value={content}
           placeholder="댓글을 입력해주세요"
           // onChange={(e) => onChangeContent(e.target.value)}
         />
