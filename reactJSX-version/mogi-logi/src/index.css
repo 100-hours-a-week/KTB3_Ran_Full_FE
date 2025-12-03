@@ -13,15 +13,17 @@ body {
   height: 100%;
 }
 
-:root {
+#root {
   text-align: center;
   margin: 0 auto;
+  /* height: 100%; */
 }
 
 main {
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 100px;
+  height: 100%;
 }
 
 header {

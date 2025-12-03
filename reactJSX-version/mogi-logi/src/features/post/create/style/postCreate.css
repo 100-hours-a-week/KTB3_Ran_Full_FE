@@ -1,9 +1,7 @@
 .createInput {
   width: 100%;
   border: none;
-  background: #ffffff;
-  border-radius: var(--radius-button-lg);
-  font-size: 16px;
+  font-size: var(--font-size-xtitle);
 }
 .createInput.content {
   height: 300px;
@@ -17,10 +15,60 @@
 }
 
 .input-post-wrapper {
-  padding: 20px 0;
+  padding: 40px 0;
+}
+.input-post-wrapper input:valid,
+.input-post-wrapper textarea:valid {
+  color: var(--color-text);
 }
 .post-create-icon-button {
   position: fixed;
   bottom: 30px;
   right: 40px;
+}
+
+/*PostCreateContentInput*/
+.input-post-content-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+}
+.input-post-content-container textarea {
+  flex: 1;
+  min-height: 0;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.input-post-wrapper input::placeholder {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-placeholder);
+}
+.input-post-content-container .input-post-wrapper {
+  display: flex;
+  height: auto;
+}
+.create-input:focus {
+  outline: none;
+}
+.text-input-field .input-title {
+  margin-bottom: 8px;
+  display: flex;
+  font-weight: 700;
+  font-size: 16px;
+}
+.post-content-helper {
+  color: var(--color-error, red);
+  display: flex;
+  margin-top: 8px;
+  min-height: 14px;
+  text-align: left;
+}
+
+textarea.create-input {
+  flex: 1;
+  resize: none;
+  border: none;
+  background: none;
+  font-size: var(--font-size-base);
 }

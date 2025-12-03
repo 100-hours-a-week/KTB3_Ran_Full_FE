@@ -10,6 +10,7 @@ export function PostCreateButton(props) {
     onClick: postCreat,
     children: "게시글 등록",
     shape: "square",
+    style: { position: "fixed", left: "50%", bottom: "40px" },
   };
   return <SecondaryOutlineButton {...postCreateButtonProps} />;
 }
