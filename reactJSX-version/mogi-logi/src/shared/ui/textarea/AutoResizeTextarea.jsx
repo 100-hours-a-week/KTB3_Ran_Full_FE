@@ -20,6 +20,7 @@ export function AutoResizeTextarea({ value = "", onChange, style, ...props }) {
       style={{
         overflow: "hidden",
         resize: "none",
+        "min-height": "500px",
         ...style,
       }}
     />

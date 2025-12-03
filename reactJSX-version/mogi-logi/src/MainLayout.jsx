@@ -9,6 +9,7 @@ function MainLayout() {
   return (
     <>
       <Header />
+      <div style={{ height: "100px" }} />
       <main>
         <Outlet />
       </main>

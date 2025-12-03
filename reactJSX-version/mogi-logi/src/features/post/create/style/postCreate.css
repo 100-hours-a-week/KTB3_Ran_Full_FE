@@ -65,7 +65,7 @@
   text-align: left;
 }
 
-textarea.create-input {
+.create-input {
   flex: 1;
   resize: none;
   border: none;
