@@ -7,6 +7,12 @@ button {
 body {
   margin: 0;
   height: 100vh;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 main .post-wrapper {
   max-width: 900px;

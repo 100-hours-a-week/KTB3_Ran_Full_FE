@@ -11,6 +11,8 @@ html,
 body {
   padding: 0;
   height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 #root {
