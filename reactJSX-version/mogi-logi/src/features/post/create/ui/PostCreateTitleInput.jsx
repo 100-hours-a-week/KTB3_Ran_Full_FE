@@ -1,6 +1,12 @@
 import "../style/postCreate.css";
 
-export function PostCreateTitleInput({ type = "text", placeholder, helper }) {
+export function PostCreateTitleInput({
+  type = "text",
+  value = "",
+  placeholder,
+  helper,
+  onChange,
+}) {
   return (
     <div className="input-post-container">
       <div className="input-post-wrapper">
@@ -8,6 +14,8 @@ export function PostCreateTitleInput({ type = "text", placeholder, helper }) {
           className="createInput post-input"
           placeholder={placeholder}
           type={type}
+          value={value}
+          onChange={onChange}
         />
       </div>
       <div className="post-helper">{helper}</div>

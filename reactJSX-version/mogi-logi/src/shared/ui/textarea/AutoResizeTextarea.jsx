@@ -16,7 +16,7 @@ export function AutoResizeTextarea({ value = "", onChange, style, ...props }) {
       {...props}
       ref={ref}
       value={value}
-      onChange={(e) => onChange?.(e.target.value)}
+      onChange={onChange}
       style={{
         overflow: "hidden",
         resize: "none",

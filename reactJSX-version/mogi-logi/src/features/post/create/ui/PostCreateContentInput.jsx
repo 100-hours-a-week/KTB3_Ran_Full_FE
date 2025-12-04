@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { AutoResizeTextarea } from "../../../../shared/ui/textarea/AutoResizeTextarea";
 
-export default function PostCreateContentInput({ placeholder = "", helper }) {
+export default function PostCreateContentInput({
+  placeholder = "",
+  helper,
+  value,
+  onChange,
+}) {
   const [content, setContent] = useState("");
   return (
     <div className="input-post-content-container">
@@ -9,8 +14,8 @@ export default function PostCreateContentInput({ placeholder = "", helper }) {
         <AutoResizeTextarea
           className="create-input textarea-content post-input"
           placeholder={placeholder}
-          value={content}
-          onChange={setContent}
+          value={value}
+          onChange={onChange}
         />
       </div>
 
