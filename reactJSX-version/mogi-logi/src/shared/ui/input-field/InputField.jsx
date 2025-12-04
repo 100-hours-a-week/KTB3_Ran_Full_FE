@@ -19,7 +19,7 @@ export function InputField({
           type={type}
           value={value}
           placeholder={placeholder}
-          onChange={(e) => onChange?.(e.target.value)}
+          onChange={onChange}
         />
       </div>
 
