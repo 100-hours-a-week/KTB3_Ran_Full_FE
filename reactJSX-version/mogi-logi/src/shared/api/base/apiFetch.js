@@ -3,7 +3,7 @@ import requestRefresh from "./refreshToken.js";
 //apiFetch는 api layer 이기 때문에 단순히 요청을 주고 받고 에러 코드를 던질 뿐이다.
 //즉, 로직은 수행하지 않는다.
 //return 반환값 ok + 실패시 code / 성공시 data / 서버응답 실패시 error
-export default async function apiFetch(url, method, dto, options = {}) {
+export default async function apiFetch(url, method = "GET", dto, options = {}) {
   const token = sessionStorage.getItem("accessToken");
   try {
     const res = await fetch(url, {
