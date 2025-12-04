@@ -23,7 +23,7 @@
   gap: var(--gap-md);
   display: flex;
   flex-direction: column;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .auth-container .desc {
