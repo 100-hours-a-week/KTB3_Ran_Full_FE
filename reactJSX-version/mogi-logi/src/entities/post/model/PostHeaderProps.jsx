@@ -1,4 +1,4 @@
-export const postHeaderProps = (post) => ({
+export const PostHeaderProps = (post) => ({
   title: post.title,
   author: post.postAuthor,
   date: post.createdAt,

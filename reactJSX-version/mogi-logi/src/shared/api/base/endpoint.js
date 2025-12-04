@@ -16,6 +16,7 @@ export const Endpoint = {
   POST: {
     POST: path("/posts"),
     GET: path("/posts"),
+    DETAIL: (postId) => path(`/posts/${postId}`),
     DELETE: (postId) => path(`/posts/${postId}`),
     UPDATE: (postId) => path(`/posts/${postId}`),
   },
