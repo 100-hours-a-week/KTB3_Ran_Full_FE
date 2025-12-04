@@ -14,7 +14,6 @@ export function useLogin() {
       const dto = loginDto(data);
       const res = await requestApi(Endpoint.USER.LOGIN, "POST", dto);
 
-      console.log(res);
       if (res) {
         console.log("login page move");
         navigator("/home");
