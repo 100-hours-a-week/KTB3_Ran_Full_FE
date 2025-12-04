@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ActionGroupButton } from "./ActionGroupButton";
 import { ActionGroup } from "./ActionGroup";
 import "../style/actionGroup.css";
+import { ConfirmModal } from "../../modal/ui/ConfirmModal";
 
 export function ActionGroupContainer({
   domainType,
@@ -11,6 +12,8 @@ export function ActionGroupContainer({
   onDelete,
 }) {
   const [open, setOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+  //null | delete | edit
 
   return (
     <div className="action-group-container" style={{ position: "relative" }}>
@@ -21,18 +24,36 @@ export function ActionGroupContainer({
           <ActionGroup
             domainType={domainType}
             onEdit={() => {
-              onEdit?.({ postId, commentId });
+              setModalType("edit");
               {
                 /*옵셔널 체인으로 바로 처리 */
               }
               setOpen(false);
             }}
             onDelete={() => {
-              onDelete?.({ postId, commentId });
+              setModalType("delete");
               setOpen(false);
             }}
           />
         </div>
+      )}
+
+      {/*모달*/}
+      {modalType && (
+        <ConfirmModal
+          mode={modalType}
+          domainType={domainType}
+          onCancel={() => setModalType(null)}
+          onConfirm={() => {
+            if (modalType === "delete") {
+              onDelete?.({ postId, commentId });
+            } else if (modalType === "edit") {
+              onEdit?.({ postId, commentId });
+            }
+
+            setModalType(null);
+          }}
+        />
       )}
     </div>
   );
