@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Endpoint } from "../../../shared/api/base/endpoint";
 import { useApi } from "../../../shared/api/base/useApi";
+import { loginDto } from "../model/authDto";
 
 //hooks
 export function useLogin() {
@@ -9,7 +10,9 @@ export function useLogin() {
 
   const handleLogin = async (data) => {
     try {
-      const res = await requestApi(Endpoint.USER.LOGIN, "POST", data);
+      //1. dto 가공
+      const dto = loginDto(data);
+      const res = await requestApi(Endpoint.USER.LOGIN, "POST", dto);
 
       console.log(res);
       if (res) {
