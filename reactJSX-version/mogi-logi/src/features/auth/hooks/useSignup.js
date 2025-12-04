@@ -10,7 +10,9 @@ export function useSignup() {
       //1.dto 가공
       const dto = signupDto(data);
       const res = await requestApi(Endpoint.USER.SIGNUP, "POST", dto);
-
+      if (!res) {
+        throw new Error("data가 반환되지 않았습니다.");
+      }
       return res;
     } catch (e) {
       console.error(e);
