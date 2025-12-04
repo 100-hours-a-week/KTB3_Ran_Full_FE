@@ -3,10 +3,6 @@ import { loginDto } from "../../../features/auth/model/authDto.js";
 import setState, { getState } from "../../../shared/state/currentState.js";
 
 async function loginService() {
-  // const props = { ...loginDto };
-  // props.email = emailField.value;
-  // props.password = passwordField.value;
-
   const state = getState();
   const dto = loginDto(state);
   console.log("loginState", dto);
