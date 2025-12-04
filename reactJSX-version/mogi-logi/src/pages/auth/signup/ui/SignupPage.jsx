@@ -1,8 +1,38 @@
+import { useSignup } from "../../../../features/auth/hooks/useSignup";
+import {
+  validateConfirmPassword,
+  validateEmail,
+  validatePassword,
+  validateUsername,
+} from "../../../../features/auth/lib/validater";
 import { SignupButton } from "../../../../features/auth/ui/SignupButton";
+import { useInput } from "../../../../shared/hooks/useInput";
 import { InputField } from "../../../../shared/ui/input-field/InputField";
 import { Logo } from "../../../../shared/ui/logo/Logo";
 
 export function SignupPage() {
+  const email = useInput("", validateEmail);
+  const password = useInput("", validatePassword);
+  const confirmPassword = useInput("", validateConfirmPassword);
+  const username = useInput("", validateUsername);
+
+  const canSubmit =
+    !email.error &&
+    !password.error &&
+    !confirmPassword.error &&
+    !username.error;
+  const { handleSignup } = useSignup();
+
+  const onSubmit = () => {
+    if (!canSubmit) console.log("회원가입의 유효성이 통과되지 않았습니다.");
+    handleSignup({
+      email: email.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value,
+      username: username.value,
+    });
+  };
+
   return (
     <div className="signup-page">
       <div className="auth-container">
@@ -19,8 +49,9 @@ export function SignupPage() {
             label="이메일"
             type="text"
             placeholder="이메일을 입력하세요"
-            value={""}
-            helperText={""}
+            value={email}
+            helperText={email.error}
+            {...email.bind}
           />
 
           {/* 비밀번호 */}
@@ -29,8 +60,8 @@ export function SignupPage() {
             label="비밀번호"
             type="password"
             placeholder="비밀번호를 입력하세요"
-            value={""}
-            helperText={""}
+            helperText={password.error}
+            {...password.bind}
           />
 
           {/* 비밀번호 확인 */}
@@ -39,8 +70,8 @@ export function SignupPage() {
             label="비밀번호 확인"
             type="password"
             placeholder="비밀번호를 재입력하세요"
-            value={""}
-            helperText={""}
+            helperText={confirmPassword.error}
+            {...confirmPassword.bind}
           />
 
           {/* 닉네임 */}
@@ -49,14 +80,17 @@ export function SignupPage() {
             label="닉네임"
             type="text"
             placeholder="닉네임을 입력하세요"
-            value={""}
-            helperText={""}
+            helperText={username.error}
+            {...username.bind}
           />
         </div>
         <SignupButton
-          children={"회원가입"}
+          disabled={!canSubmit}
+          children={"로그인"}
+          color={"primary"}
           shape={"rounded"}
           fullWidth={true}
+          onClick={onSubmit}
         />
 
         {/* 하단 네비게이션 */}
