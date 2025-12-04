@@ -13,14 +13,16 @@ import { Logo } from "../../../../shared/ui/logo/Logo";
 export function SignupPage() {
   const email = useInput("", validateEmail);
   const password = useInput("", validatePassword);
-  const confirmPassword = useInput("", validateConfirmPassword);
+  const confirmPassword = useInput("");
   const username = useInput("", validateUsername);
 
+  const confirmPasswordError = validateConfirmPassword({
+    password: password.value,
+    confirmPassword: confirmPassword.value,
+  });
+
   const canSubmit =
-    !email.error &&
-    !password.error &&
-    !confirmPassword.error &&
-    !username.error;
+    !email.error && !password.error && !confirmPasswordError && !username.error;
   const { handleSignup } = useSignup();
 
   const onSubmit = () => {
@@ -70,7 +72,8 @@ export function SignupPage() {
             label="비밀번호 확인"
             type="password"
             placeholder="비밀번호를 재입력하세요"
-            helperText={confirmPassword.error}
+            value={confirmPassword.value}
+            helperText={confirmPasswordError}
             {...confirmPassword.bind}
           />
 

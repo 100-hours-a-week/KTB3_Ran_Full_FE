@@ -9,6 +9,11 @@ export function useInput(init, validate) {
   //좀더 유동적으로 만들어주는 작업을 useCallback
   const onChange = useCallback(
     (e) => {
+      if (!validate) {
+        const v = e.target.value;
+        setValue(v);
+        return;
+      }
       console.log("onChange");
       const v = e.target.value;
       setValue(v);
