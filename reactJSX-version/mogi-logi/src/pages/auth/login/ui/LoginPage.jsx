@@ -38,7 +38,7 @@ export function LoginPage() {
         <InputField
           id="email"
           label="이메일"
-          value={email}
+          value={email.value}
           placeholder="이메일을 입력하세요"
           helperText={email.error}
           {...email.bind}
@@ -47,7 +47,7 @@ export function LoginPage() {
           id="password"
           label="비밀번호"
           type="password"
-          value={password}
+          value={password.value}
           placeholder="비밀번호를 입력하세요"
           helperText={password.error}
           {...password.bind}

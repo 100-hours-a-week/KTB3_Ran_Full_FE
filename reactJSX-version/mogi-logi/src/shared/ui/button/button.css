@@ -36,6 +36,12 @@
   border: 1px solid var(--color-secondary);
 }
 
+.btn-secondary-outline.btn-color-default:hover {
+  background-color: var(--color-secondary);
+
+  color: #fff;
+}
+
 .btn-secondary-filled {
   background-color: var(--color-secondary);
   border: 1px solid var(--color-secondary);
