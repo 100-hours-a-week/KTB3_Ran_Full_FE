@@ -8,6 +8,7 @@ import MainLayout from "../../MainLayout";
 import AuthLayout from "../../AuthLayout";
 import { PostDetailPage } from "../../pages/postDetail/ui/PostDetailPage";
 import { PostCreatePage } from "../../pages/postCreate/ui/PostCreatePage";
+import { Test } from "../../pages/test/test";
 
 //라우터 가드
 function requireAuth() {
@@ -55,6 +56,7 @@ export const router = createBrowserRouter([
       { path: ROUTES.DETAIL, element: <PostDetailPage /> },
       { path: ROUTES.NONE, element: <SignupPage /> },
       { path: ROUTES.CREATE, element: <PostCreatePage /> },
+      { path: ROUTES.TEST, element: <Test /> },
     ],
   },
 ]);

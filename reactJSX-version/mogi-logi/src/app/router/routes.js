@@ -5,5 +5,6 @@ export const ROUTES = Object.freeze({
   SIGNUP: "/signup",
   DETAIL: "/post/get/:id",
   CREATE: "/post/create",
+  TEST: "/test",
   NONE: "/*",
 });
