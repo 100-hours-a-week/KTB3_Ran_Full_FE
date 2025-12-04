@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import CommentCard from "../../../entities/comment/ui/CommentCard";
-import { CommentCreatForm } from "../../../entities/comment/ui/CommentCreatForm";
 import { PostCountProps } from "../../../entities/post/model/PostCountProps";
 import { PostHeaderProps } from "../../../entities/post/model/PostHeaderProps";
 import { PostContent } from "../../../entities/post/ui/PostContent";
@@ -11,7 +9,7 @@ import { usePostDetail } from "../../../features/post/detail/hooks/usePostDetail
 import { PostCardProps } from "../../../entities/post/model/PostCardProps";
 import { useParams } from "react-router-dom";
 import { PostContentProps } from "../../../entities/post/model/PostContentProps";
-import { CommentCardProps } from "../../../entities/comment/model/CommentCardProps";
+import { PostComments } from "./PostComments";
 
 export function PostDetailPage() {
   const { id } = useParams();
@@ -55,14 +53,7 @@ export function PostDetailPage() {
 
       <hr />
 
-      {/* 댓글 생성 */}
-      <CommentCreatForm postId={post.id} />
-
-      {/* 댓글 목록 */}
-      {post.comments?.map((c) => {
-        const commentProps = CommentCardProps(c);
-        return <CommentCard key={commentProps.commentId} {...commentProps} />;
-      })}
+      <PostComments post={post} />
     </div>
   );
 }
