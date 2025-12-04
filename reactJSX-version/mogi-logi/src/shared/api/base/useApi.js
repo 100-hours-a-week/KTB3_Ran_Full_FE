@@ -2,7 +2,7 @@
 //앞으로 얘가 apiFetch를 사용할 겁니다.
 
 import { useNavigate } from "react-router-dom";
-import apiFetch from "../../../shared/api/base/apiFetch";
+import apiFetch from "./apiFetch";
 
 export function useApi() {
   const navigator = useNavigate();
