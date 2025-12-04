@@ -9,23 +9,7 @@ import AuthLayout from "../../AuthLayout";
 import { PostDetailPage } from "../../pages/postDetail/ui/PostDetailPage";
 import { PostCreatePage } from "../../pages/postCreate/ui/PostCreatePage";
 import { Test } from "../../pages/test/test";
-
-//라우터 가드
-function requireAuth() {
-  const token = sessionStorage.getItem("accessToken");
-  //   const publicPaths = ["/login", "/signup"];
-  //   const isPublic = publicPaths.includes(path);
-
-  //   if (!token && !isPublic) {
-  //     console.log("로그인 필요 : 로그인 페이지로 이동");
-  //     location.hash = "/login";
-  //     return;
-  //   }
-  if (!token) {
-    throw redirect("/login");
-  }
-  return;
-}
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +28,11 @@ export const router = createBrowserRouter([
   },
   {
     // loader: async () => requireAuth(),
-    element: <MainLayout />,
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
     children: [
       //outlet
       //기본 루트 리다이렉트
