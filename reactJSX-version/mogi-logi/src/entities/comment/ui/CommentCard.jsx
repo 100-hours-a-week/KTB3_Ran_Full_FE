@@ -1,3 +1,6 @@
+import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGroupContainer";
+import { deletePost } from "../../../features/post/delete/model/useDeletePost";
+import { ContentType } from "../../../shared/lib/ContentType";
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/comment.css";
 
@@ -14,6 +17,12 @@ export default function CommentCard(props) {
     <div className="comment-card">
       <div className="top-area">
         <UserMeta {...props} />
+        <ActionGroupContainer
+          domainType={ContentType["comment"]}
+          postId={props.postId}
+          onEdit={() => console.log("수정")}
+          onDelete={() => deletePost(props.commentId)}
+        />
         <div className="action-wrapper"></div>
       </div>
 

@@ -3,6 +3,7 @@ import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGro
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/post.css";
 import { deletePost } from "../../../features/post/delete/model/useDeletePost";
+import { ContentType } from "../../../shared/lib/ContentType";
 
 //props : { title, author, date, postId, commentId }
 export default function PostHeader(props) {
@@ -20,7 +21,7 @@ export default function PostHeader(props) {
         <div className="user-meta-wrapper">
           <UserMeta {...props} />
           <ActionGroupContainer
-            domainType="post"
+            domainType={ContentType["post"]}
             postId={props.postId}
             onEdit={() => navigate(`/post/edit/${props.postId}`)}
             onDelete={() => deletePost(props.postId)}

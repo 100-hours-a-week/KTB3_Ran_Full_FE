@@ -161,7 +161,6 @@
 .post-container div {
   color: var(--color-card-text);
   gap: var(--gap-mn);
-  top: 100%;
 }
 
 .post-meta {
