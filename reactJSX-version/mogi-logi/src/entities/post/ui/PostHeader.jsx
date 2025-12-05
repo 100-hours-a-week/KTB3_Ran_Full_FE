@@ -3,11 +3,19 @@ import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGro
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/post.css";
 import { ContentType } from "../../../shared/lib/ContentType";
+import { usePostDelete } from "../../../features/post/delete/hooks/usePostDelete.jsx";
 
 //props : { title, author, date, postId, commentId }
 export default function PostHeader(props) {
   const navigate = useNavigate();
+  const { handlePostDelete } = usePostDelete();
   console.log(props);
+
+  const onDelete = async () => {
+    await handlePostDelete({ postId: props.postId });
+    navigate("/home");
+  };
+
   return (
     <div className="post-header-wrapper">
       <div className="post-container">
@@ -23,7 +31,7 @@ export default function PostHeader(props) {
             domainType={ContentType["post"]}
             postId={props.postId}
             onEdit={() => navigate(`/post/edit/${props.postId}`)}
-            onDelete={props.onDelete}
+            onDelete={onDelete}
           />
         </div>
         <div className="action-group-button-wrapper"></div>
