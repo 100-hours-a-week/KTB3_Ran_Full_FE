@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AutoResizeTextarea } from "../../../../shared/ui/textarea/AutoResizeTextarea";
 
 export default function PostCreateContentInput({
@@ -7,7 +6,6 @@ export default function PostCreateContentInput({
   value,
   onChange,
 }) {
-  const [content, setContent] = useState("");
   return (
     <div className="input-post-content-container">
       <div className="input-post-wrapper">
