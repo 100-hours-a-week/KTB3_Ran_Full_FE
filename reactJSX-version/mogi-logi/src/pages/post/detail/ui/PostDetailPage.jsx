@@ -9,14 +9,19 @@ import { usePostDetail } from "../../../../features/post/detail/hooks/usePostDet
 import { PostContentProps } from "../../../../entities/post/model/PostContentProps.jsx";
 import { PostComments } from "../../../../widgets/post-comments/ui/PostComments.jsx";
 import { useParams } from "react-router-dom";
+import { useLikeCreat } from "../../../../features/like/creat/hooks/useLikeCreat.js";
+import { useLikeDelete } from "../../../../features/like/delete/hooks/useLikeDelete.js";
 
 export function PostDetailPage() {
   //1. 전체 관할 dto
+
   const [post, setPost] = useState(null);
   const { handlePostDetail } = usePostDetail();
   const { id } = useParams();
   const postId = id;
-  console.log(id);
+
+  const { handleLikeCreat } = useLikeCreat();
+  const { handleLikeDelete } = useLikeDelete();
 
   const reload = async () => {
     try {
@@ -31,13 +36,22 @@ export function PostDetailPage() {
       console.error(e);
     }
   };
-
   useEffect(() => {
     reload();
   }, [id]);
-  if (!post) return <div>Loading...</div>;
 
+  if (!post) return <div>Loading...</div>;
   console.log(post);
+
+  const onLikeToggle = async () => {
+    if (!post) return;
+    if (!post.liked) {
+      await handleLikeCreat({ postId: postId });
+    } else {
+      await handleLikeDelete({ postId: postId });
+    }
+    reload();
+  };
 
   const headerProps = PostHeaderProps(post);
   console.log(headerProps);
@@ -51,7 +65,11 @@ export function PostDetailPage() {
 
       <PostHeader {...headerProps} />
       <PostContent {...contentProps} />
-      <PostCountGroup {...countProps} />
+      <PostCountGroup
+        {...countProps}
+        liked={post.liked}
+        onLikeToggle={onLikeToggle}
+      />
 
       <hr />
 

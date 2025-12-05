@@ -1,31 +1,35 @@
 import { Icon } from "../../../shared/ui/icons/Icon";
 import "../style/post.css";
 
-export default function PostCountGroup(props) {
+export default function PostCountGroup({
+  likeCount,
+  commentCount,
+  viewCount,
+  liked,
+  onLikeToggle,
+}) {
+  console.log(liked);
   return (
     <div className="post-count-group">
-      {/* Like */}
+      {/* LIKE */}
       <div
-        className={`count-content like ${props.liked ? "enabled" : ""}`}
-        data-role="like-wrapper"
-        data-post-id={props.postId}
+        className={`count-content like ${liked ? "enabled" : ""}`}
+        onClick={onLikeToggle}
       >
-        <Icon name="unliked" />
-        <div className="count" data-role="like-count">
-          {props.likeCount}
-        </div>
+        <Icon name={liked ? "liked" : "unliked"} />
+        <div className="count">{likeCount}</div>
       </div>
 
-      {/* Comment */}
+      {/* COMMENT */}
       <div className="count-content">
         <Icon name="comment" />
-        <div>{props.commentCount}</div>
+        <div>{commentCount}</div>
       </div>
 
-      {/* View */}
+      {/* VIEW */}
       <div className="count-content">
         <Icon name="view" />
-        <div>{props.viewCount}</div>
+        <div>{viewCount}</div>
       </div>
     </div>
   );
