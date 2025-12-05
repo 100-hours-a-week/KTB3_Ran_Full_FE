@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 export function PostComments({ post, onLoad }) {
   console.log("postComment", post); //id
   const { handleCommentDelete } = useCommentDelete();
-  const navigate = useNavigate();
 
   const onDelete = async (commentId) => {
     await handleCommentDelete({ postId: post.id, commentId });
