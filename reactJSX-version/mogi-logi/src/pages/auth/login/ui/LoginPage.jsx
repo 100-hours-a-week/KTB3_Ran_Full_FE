@@ -16,7 +16,11 @@ export function LoginPage() {
   const password = useInput("", validatePassword);
 
   //둘의 error가 아무것도 없을때만
-  const canSubmit = !email.error && !password.error;
+  const canSubmit =
+    email.value.length > 0 &&
+    password.value.length > 0 &&
+    !email.error &&
+    !password.error;
   console.log(canSubmit);
   const { handleLogin } = useLogin();
 
