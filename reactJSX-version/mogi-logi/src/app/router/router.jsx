@@ -6,8 +6,8 @@ import { SignupPage } from "../../pages/auth/signup/ui/SignupPage";
 import { ROUTES } from "./routes";
 import MainLayout from "../../MainLayout";
 import AuthLayout from "../../AuthLayout";
-import { PostDetailPage } from "../../pages/postDetail/ui/PostDetailPage";
-import { PostCreatePage } from "../../pages/postCreate/ui/PostCreatePage";
+import { PostDetailPage } from "../../pages/post/detail/ui/PostDetailPage";
+import { PostCreatePage } from "../../pages/post/create/ui/PostCreatePage";
 import { Test } from "../../pages/test/test";
 import { ProtectedRoute } from "./ProtectedRoute";
 
