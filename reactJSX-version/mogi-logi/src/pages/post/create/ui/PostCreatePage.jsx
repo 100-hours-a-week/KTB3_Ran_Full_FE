@@ -14,7 +14,7 @@ export function PostCreatePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const editData = location.state; //state 받기기
-  const isEditMode = editData.mode === "update";
+  const isEditMode = editData?.mode === "update";
   const { handlePostUpdate } = usePostUpdate();
   const { handlePostCreat } = usePostCreat();
 
