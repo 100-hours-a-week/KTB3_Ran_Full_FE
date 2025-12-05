@@ -21,14 +21,14 @@ export function useInput(init, validate) {
       setError(validate(v));
       console.log(validate(v));
     },
-    [validate]
+    [validate],
   );
 
   //초기설정
   const reset = useCallback(() => {
-    setValue(init), setError(undefined);
+    (setValue(init), setError(undefined));
   }, [init]);
 
   //value : 값 error : 에러메시지 onChange : 유효성 검사 메시지
-  return { value, error, onChange, reset, bind: { value, onChange } };
+  return { value, error, onChange, setValue, reset, bind: { value, onChange } };
 }
