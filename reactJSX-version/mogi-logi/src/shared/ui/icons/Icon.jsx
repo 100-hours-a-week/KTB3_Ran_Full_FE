@@ -6,6 +6,11 @@ import { IconMap } from "./map";
 
 export const Icon = ({ name, size = 20, className }) => {
   const SvgIcon = IconMap[name];
+
+  if (!SvgIcon) {
+    console.warn(`${name}을 찾지 못했습니다.`);
+    return null;
+  }
   return (
     <SvgIcon style={{ width: size, height: size }} className={className} />
   );
