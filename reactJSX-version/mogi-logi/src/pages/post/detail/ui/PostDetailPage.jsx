@@ -69,6 +69,7 @@ export function PostDetailPage() {
         {...countProps}
         liked={post.liked}
         onLikeToggle={onLikeToggle}
+        likeColor={"var(--color-primary)"}
       />
 
       <hr />

@@ -9,4 +9,5 @@ export const PostCardProps = (post) => ({
   commentCount: post.commentCount,
   likeCount: post.likeCount,
   viewCount: post.viewCount,
+  liked: post.liked,
 });

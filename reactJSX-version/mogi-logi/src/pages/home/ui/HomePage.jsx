@@ -13,6 +13,7 @@ export function HomePage() {
     async function load() {
       try {
         const data = await handleUseHome();
+        console.log(data);
         setPosts(data);
       } catch (e) {
         console.error(e);
@@ -26,7 +27,13 @@ export function HomePage() {
     <div className="post-wrapper">
       {posts.map((post) => {
         const postCard = PostCardProps(post);
-        return <PostCard key={postCard.postId} {...postCard} />;
+        return (
+          <PostCard
+            key={postCard.postId}
+            {...postCard}
+            likeColor={"var(--color-meta-gray)"}
+          />
+        );
       })}
       <PostCreateNavButton />
     </div>

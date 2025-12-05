@@ -3,9 +3,11 @@
 
   --color-secondary: #4f4f4f;
   --color-error: #9b9b9b; /*경고*/
+    --color-meta-gray: #9b9b9b;
 
   --color-background: #faf9f9;
   --color-card: #ffffff;
+
   /*텍스트 색상*/
   --color-text: #575757;
   --color-text-title: #575757;

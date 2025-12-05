@@ -5,7 +5,7 @@
 import { IconMap } from "./map";
 import "./icon.css";
 
-export const Icon = ({ name, size = 20, className }) => {
+export const Icon = ({ name, size = 20, className, style }) => {
   const SvgIcon = IconMap[name];
 
   if (!SvgIcon) {
@@ -13,6 +13,9 @@ export const Icon = ({ name, size = 20, className }) => {
     return null;
   }
   return (
-    <SvgIcon style={{ width: size, height: size }} className={className} />
+    <SvgIcon
+      style={{ width: size, height: size, ...style }}
+      className={className}
+    />
   );
 };
