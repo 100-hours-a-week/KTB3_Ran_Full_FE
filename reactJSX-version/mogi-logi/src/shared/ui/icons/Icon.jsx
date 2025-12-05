@@ -3,6 +3,7 @@
 // 아이콘 종류 변화가 많지 않아 svg만을 사용하는 팩토리 패턴으로 구현함.
 
 import { IconMap } from "./map";
+import "./icon.css";
 
 export const Icon = ({ name, size = 20, className }) => {
   const SvgIcon = IconMap[name];
