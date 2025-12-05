@@ -2,14 +2,16 @@ import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGro
 import { ContentType } from "../../../shared/lib/ContentType";
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/comment.css";
+import { UserMetaProps } from "../../../shared/ui/userMeta/UserMetaProps.js";
 
 // props: { author, createdAt, commentId, content, postId }
 export default function CommentCard(props) {
-  console.log("ondElete", props.onDelete);
+  const userMetaProps = UserMetaProps(props);
+  console.log(userMetaProps);
   return (
     <div className="comment-card">
       <div className="top-area">
-        <UserMeta {...props} />
+        <UserMeta {...userMetaProps} />
         <ActionGroupContainer
           domainType={ContentType["comment"]}
           postId={props.postId}
