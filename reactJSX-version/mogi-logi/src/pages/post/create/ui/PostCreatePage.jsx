@@ -7,22 +7,41 @@ import {
   validatePostContent,
   validatePostTitle,
 } from "../../../../features/post/create/lib/validater.js";
-import {useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { usePostUpdate } from "../../../../features/post/update/hooks/usePostUpdate.js";
 
 export function PostCreatePage() {
-  const title = useInput("", validatePostTitle);
-  const content = useInput("", validatePostContent);
-    const navigate = useNavigate();
-
-  const canSubmit = !title.error && !content.error;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const editData = location.state; //state 받기기
+  const isEditMode = editData.mode === "update";
+  const { handlePostUpdate } = usePostUpdate();
   const { handlePostCreat } = usePostCreat();
 
-  const onSubmit = async () => {
+  console.log(editData);
+  const title = useInput(editData?.title || "", validatePostTitle);
+  const content = useInput(editData?.content || "", validatePostContent);
 
-    console.log("선택됨", title, content);
+  console.log(title.error, content.error);
+  const canSubmit = !title.error && !content.error;
+  const onSubmit = async () => {
+    console.log(canSubmit);
     if (!canSubmit) return;
-    await handlePostCreat({ title: title.value, content: content.value });
-      navigate("/home"); //home화면에 setState가 반영되어야됨.
+
+    if (isEditMode) {
+      await handlePostUpdate(
+        {
+          title: title.value,
+          content: content.value,
+        },
+        editData.postId,
+      );
+      console.log("완료");
+      navigate(`/post/get/${editData.postId}`);
+    } else {
+      await handlePostCreat({ title: title.value, content: content.value });
+      navigate("/home");
+    }
   };
 
   return (
@@ -35,7 +54,10 @@ export function PostCreatePage() {
         />
         <PostCreateContentInput helper={content.error} {...content.bind} />
       </div>
-      <PostCreateButton onClick={onSubmit} />
+      <PostCreateButton
+        onClick={onSubmit}
+        children={isEditMode ? "수정" : "등록"}
+      />
     </>
   );
 }

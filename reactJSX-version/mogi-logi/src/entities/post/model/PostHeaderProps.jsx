@@ -3,4 +3,5 @@ export const PostHeaderProps = (post) => ({
   author: post.postAuthor,
   date: post.createdAt,
   postId: post.id,
+  content: post.content,
 });

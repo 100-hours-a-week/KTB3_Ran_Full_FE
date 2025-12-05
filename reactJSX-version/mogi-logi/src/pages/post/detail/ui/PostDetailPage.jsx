@@ -40,6 +40,7 @@ export function PostDetailPage() {
   console.log(post);
 
   const headerProps = PostHeaderProps(post);
+  console.log(headerProps);
 
   const contentProps = PostContentProps(post);
   const countProps = PostCountProps(post.count);

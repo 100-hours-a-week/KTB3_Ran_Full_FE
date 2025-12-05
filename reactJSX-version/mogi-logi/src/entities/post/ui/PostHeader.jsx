@@ -6,7 +6,7 @@ import { ContentType } from "../../../shared/lib/ContentType";
 import { usePostDelete } from "../../../features/post/delete/hooks/usePostDelete.jsx";
 import { useToast } from "../../../shared/ui/toast/Toast.jsx";
 
-//props : { title, author, date, postId, commentId }
+//props : { title, author, date, postId, commentId, content }
 export default function PostHeader(props) {
   const navigate = useNavigate();
   const { handlePostDelete } = usePostDelete();
@@ -33,7 +33,16 @@ export default function PostHeader(props) {
           <ActionGroupContainer
             domainType={ContentType["post"]}
             postId={props.postId}
-            onEdit={() => navigate(`/post/edit/${props.postId}`)}
+            onEdit={() =>
+              navigate(`/post/create`, {
+                state: {
+                  mode: "update",
+                  postId: props.postId,
+                  title: props.title,
+                  content: props.content,
+                },
+              })
+            }
             onDelete={onDelete}
           />
         </div>

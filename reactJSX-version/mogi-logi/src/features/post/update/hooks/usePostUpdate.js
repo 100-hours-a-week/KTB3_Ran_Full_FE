@@ -6,19 +6,12 @@ import { PostUpdateDto } from "../model/PostUpdateDto.js";
 export function usePostUpdate() {
   const { requestApi } = useApi();
   //data :content
-  const handlePostUpdate = async (data) => {
+  const handlePostUpdate = async (data, postId) => {
     try {
       /*dto*/
       console.log(data);
       const dto = PostUpdateDto(data);
-      const res = await requestApi(
-        Endpoint.POST.UPDATE({
-          postId: data.postId,
-          commentId: data.commentId,
-        }),
-        "PATCH",
-        dto,
-      );
+      const res = await requestApi(Endpoint.POST.UPDATE(postId), "PATCH", dto);
       if (!res) {
         throw new Error("data가 반환되지 않았습니다.");
       }
