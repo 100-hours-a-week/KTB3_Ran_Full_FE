@@ -3,32 +3,42 @@ import { CommentUpdateButton } from "../../../features/comment/update/ui/Comment
 import { useInput } from "../../../shared/hooks/useInput";
 import "../style/comment.css";
 import { useCommentCreat } from "../../../features/comment/create/hooks/useCommentCreat";
+import { useCommentUpdate } from "../../../features/comment/update/hooks/useCommentUpdate.js";
+import { useEffect } from "react";
 
 export function CommentCreatForm({
   mode = "create",
   commentId = null,
   postId = "",
+  initalContent = "",
   onLoad,
 }) {
-  const commentValue = useInput("");
+  const commentValue = useInput(initalContent);
   const { handleCommentCreat } = useCommentCreat();
+  const { handleCommentUpdate } = useCommentUpdate();
   const validateValue = commentValue.value;
+
+  useEffect(() => {
+    commentValue.setValue(initalContent);
+  }, [initalContent]);
 
   const onSubmit = async () => {
     if (!validateValue) return;
     console.log("제출 클릭", commentValue.value, postId);
-    await handleCommentCreat({ content: commentValue.value, postId: postId });
-    onLoad();
-    commentValue.setValue("");
-  };
 
-  const onModify = async () => {
-    if (!validateValue) return;
-    console.log("수정 클릭");
-    await handleCommentCreat({ content: commentValue.value, postId: postId });
+    if (mode === "create") {
+      await handleCommentCreat({ content: commentValue.value, postId: postId });
+    } else if (mode === "update") {
+      await handleCommentUpdate({
+        content: commentValue.value,
+        postId: postId,
+        commentId: commentId,
+      });
+    }
+
     onLoad();
     commentValue.setValue("");
-  };
+  }; // ← 여기 하나만 닫으면 됨
 
   return (
     <div className="comment-creat-card">
@@ -55,7 +65,7 @@ export function CommentCreatForm({
             children={"수정"}
             postId={postId}
             commentId={commentId}
-            onClick={onModify}
+            onClick={onSubmit}
           />
         )}
       </div>

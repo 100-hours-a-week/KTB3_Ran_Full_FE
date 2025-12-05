@@ -13,7 +13,7 @@ export default function CommentCard(props) {
         <ActionGroupContainer
           domainType={ContentType["comment"]}
           postId={props.postId}
-          onEdit={() => console.log("수정")}
+          onEdit={props.onEdit}
           onDelete={props.onDelete}
         />
         <div className="action-wrapper"></div>

@@ -3,13 +3,17 @@ import { CommentCreatForm } from "../../../entities/comment/ui/CommentCreatForm"
 import { CommentCardProps } from "../../../entities/comment/model/CommentCardProps";
 import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatProps";
 import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
-import { useNavigate } from "react-router-dom";
 import { useToast } from "../../../shared/ui/toast/Toast.jsx";
+import { useState } from "react";
 
 export function PostComments({ post, onLoad }) {
-  console.log("postComment", post); //id
   const { handleCommentDelete } = useCommentDelete();
   const { addToast } = useToast();
+
+  //수정모드 상태 추가
+  const [editMode, setEditMode] = useState(false);
+  const [editCommentId, setEditCommentId] = useState(null);
+  const [editContent, setEditContent] = useState("");
 
   //댓글 삭제
   const onDelete = async (commentId) => {
@@ -18,13 +22,36 @@ export function PostComments({ post, onLoad }) {
     onLoad();
   };
 
+  // 수정 버튼 클릭 시
+  const onEdit = (commentId, content) => {
+    setEditMode(true);
+    setEditCommentId(commentId);
+    setEditContent(content);
+  };
+
+  //수정 생성 후 초기화
+  const resetMode = () => {
+    setEditMode(false);
+    setEditCommentId(null);
+    setEditContent("");
+  };
+
   const CommentCreatProp = CommentCreatProps(post);
   const comments = post.comments ?? [];
 
   return (
     <section>
       {/* 댓글 생성 (현재 문제 commentId에 postID가 붙음)*/}
-      <CommentCreatForm {...CommentCreatProp} onLoad={onLoad} />
+      <CommentCreatForm
+        {...CommentCreatProp}
+        mode={editMode ? "update" : "create"}
+        commentId={editCommentId}
+        initalContent={editContent}
+        onLoad={() => {
+          onLoad();
+          resetMode();
+        }}
+      />
 
       {/* 댓글 목록 */}
       {comments.map((comment) => {
@@ -34,6 +61,7 @@ export function PostComments({ post, onLoad }) {
             key={commentProps.commentId}
             {...commentProps}
             onDelete={() => onDelete(commentProps.commentId)}
+            onEdit={() => onEdit(commentProps.commentId, commentProps.content)}
           />
         );
       })}
