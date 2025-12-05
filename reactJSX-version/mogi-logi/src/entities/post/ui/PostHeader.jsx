@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGroupContainer";
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/post.css";
-import { deletePost } from "../../../features/post/delete/model/useDeletePost";
 import { ContentType } from "../../../shared/lib/ContentType";
 
 //props : { title, author, date, postId, commentId }
@@ -24,7 +23,7 @@ export default function PostHeader(props) {
             domainType={ContentType["post"]}
             postId={props.postId}
             onEdit={() => navigate(`/post/edit/${props.postId}`)}
-            onDelete={() => deletePost(props.postId)}
+            onDelete={props.onDelete}
           />
         </div>
         <div className="action-group-button-wrapper"></div>
