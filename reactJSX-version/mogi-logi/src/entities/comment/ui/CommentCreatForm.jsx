@@ -1,5 +1,5 @@
 import { CommentCreateButton } from "../../../features/comment/create/ui/CommentCreateButton";
-import { CommentUpdateButton } from "../../../features/comment/create/ui/CommentUpdateButton";
+import { CommentUpdateButton } from "../../../features/comment/update/ui/CommentUpdateButton.jsx";
 import { useInput } from "../../../shared/hooks/useInput";
 import "../style/comment.css";
 import { useCommentCreat } from "../../../features/comment/create/hooks/useCommentCreat";
@@ -12,8 +12,10 @@ export function CommentCreatForm({
 }) {
   const commentValue = useInput("");
   const { handleCommentCreat } = useCommentCreat();
+  const validateValue = commentValue.value;
 
   const onSubmit = async () => {
+    if (!validateValue) return;
     console.log("제출 클릭", commentValue.value, postId);
     await handleCommentCreat({ content: commentValue.value, postId: postId });
     onLoad();
@@ -21,6 +23,7 @@ export function CommentCreatForm({
   };
 
   const onModify = async () => {
+    if (!validateValue) return;
     console.log("수정 클릭");
     await handleCommentCreat({ content: commentValue.value, postId: postId });
     onLoad();

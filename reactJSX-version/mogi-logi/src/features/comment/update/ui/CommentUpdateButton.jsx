@@ -1,4 +1,4 @@
-import { SecondaryButton } from "../../../../shared/ui/button/SecondaryButton";
+import { SecondaryButton } from "../../../../shared/ui/button/SecondaryButton.jsx";
 
 export function CommentUpdateButton(props) {
   const CommentUpdateProps = {

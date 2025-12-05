@@ -6,22 +6,21 @@ import PostCountGroup from "../../../../entities/post/ui/PostCountGroup.jsx";
 import PostHeader from "../../../../entities/post/ui/PostHeader.jsx";
 import ScrollProgressBar from "../../../../widgets/ScrollProgressBar/ui/ScrollProgressBar.jsx";
 import { usePostDetail } from "../../../../features/post/detail/hooks/usePostDetail.js";
-import { PostCardProps } from "../../../../entities/post/model/PostCardProps.jsx";
-import { useParams } from "react-router-dom";
 import { PostContentProps } from "../../../../entities/post/model/PostContentProps.jsx";
 import { PostComments } from "../../../../widgets/post-comments/ui/PostComments.jsx";
-import { CommentCardProps } from "../../../../entities/comment/model/CommentCardProps.jsx";
+import { useParams } from "react-router-dom";
 
 export function PostDetailPage() {
   //1. 전체 관할 dto
   const [post, setPost] = useState(null);
   const { handlePostDetail } = usePostDetail();
   const { id } = useParams();
+  const postId = id;
   console.log(id);
 
   const reload = async () => {
     try {
-      const data = await handlePostDetail(id);
+      const data = await handlePostDetail(postId);
       console.log(data);
       if (!data) {
         console.error("API에서 게시글 데이터를 받지 못했습니다.");

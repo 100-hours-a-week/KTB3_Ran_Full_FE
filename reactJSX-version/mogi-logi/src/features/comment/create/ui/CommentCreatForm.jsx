@@ -1,5 +1,5 @@
 import { CommentCreateButton } from "./CommentCreateButton";
-import { CommentUpdateButton } from "./CommentUpdateButton";
+import { CommentUpdateButton } from "../../update/ui/CommentUpdateButton.jsx";
 
 export function CommentCreatForm({
   mode = "create",
