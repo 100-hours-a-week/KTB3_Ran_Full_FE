@@ -17,6 +17,11 @@
   color: var(--color-text-metaData);
 }
 
+.post-count-group .count-content{
+    cursor: pointer;
+
+}
+
 .post-count-group div {
   font-weight: var(--font-weight-regular);
 }
