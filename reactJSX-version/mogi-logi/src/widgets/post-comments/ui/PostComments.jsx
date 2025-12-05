@@ -4,13 +4,17 @@ import { CommentCardProps } from "../../../entities/comment/model/CommentCardPro
 import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatProps";
 import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../../shared/ui/toast/Toast.jsx";
 
 export function PostComments({ post, onLoad }) {
   console.log("postComment", post); //id
   const { handleCommentDelete } = useCommentDelete();
+  const { addToast } = useToast();
 
+  //댓글 삭제
   const onDelete = async (commentId) => {
     await handleCommentDelete({ postId: post.id, commentId });
+    addToast("삭제 완료");
     onLoad();
   };
 
