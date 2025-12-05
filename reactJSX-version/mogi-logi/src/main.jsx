@@ -8,9 +8,12 @@ import { router } from "./app/router/router";
 import "./shared/styles/tokens/color.css";
 import "./shared/styles/tokens/spacing.css";
 import "./shared/styles/tokens/typography.css";
+import { ToastProvider } from "./shared/ui/toast/Toast.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <ToastProvider>
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  </ToastProvider>,
 );
