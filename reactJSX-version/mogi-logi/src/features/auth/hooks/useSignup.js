@@ -1,7 +1,7 @@
-import { Endpoint } from "../../../shared/api/base/endpoint";
+import { Endpoint } from "../../../shared/api/endpoint";
 import { signupDto } from "../model/authDto";
 import { useMutation } from "@tanstack/react-query";
-import apiFetch from "../../../shared/api/base/apiFetch.js";
+import apiFetch from "../../../shared/api/apiFetch.js";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../../shared/ui/toast/useToast.jsx";
 

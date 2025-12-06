@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { Endpoint } from "../../../shared/api/base/endpoint";
+import { Endpoint } from "../../../shared/api/endpoint";
 import { loginDto } from "../model/authDto";
 import { useMutation } from "@tanstack/react-query";
-import apiFetch from "../../../shared/api/base/apiFetch.js";
+import apiFetch from "../../../shared/api/apiFetch.js";
 
 //hooks
 export function useLogin() {

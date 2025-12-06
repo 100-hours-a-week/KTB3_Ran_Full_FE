@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/base/endpoint";
-import { useApi } from "../../../../shared/api/base/useApi";
+import { Endpoint } from "../../../../shared/api/endpoint";
+import { useApi } from "../../../../shared/api/useApi";
 import { CommentCreatDto } from "../model/commentCreatDto";
 
 //postId가 들어와야함
@@ -14,7 +14,7 @@ export function useCommentCreat() {
       const res = await requestApi(
         Endpoint.COMMENT.POST(data.postId),
         "POST",
-        dto
+        dto,
       );
       if (!res) {
         throw new Error("data가 반환되지 않았습니다.");

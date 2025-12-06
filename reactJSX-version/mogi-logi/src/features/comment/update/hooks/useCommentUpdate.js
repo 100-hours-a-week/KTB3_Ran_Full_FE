@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/base/endpoint";
-import { useApi } from "../../../../shared/api/base/useApi";
+import { Endpoint } from "../../../../shared/api/endpoint";
+import { useApi } from "../../../../shared/api/useApi";
 import { CommentUpdateDto } from "../../delete/model/CommentUpdateDto.js";
 
 export function useCommentUpdate() {

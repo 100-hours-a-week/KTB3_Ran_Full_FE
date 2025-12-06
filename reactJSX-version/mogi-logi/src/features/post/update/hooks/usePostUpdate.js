@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/base/endpoint";
-import { useApi } from "../../../../shared/api/base/useApi";
+import { Endpoint } from "../../../../shared/api/endpoint";
+import { useApi } from "../../../../shared/api/useApi";
 import { PostUpdateDto } from "../model/PostUpdateDto.js";
 
 //postId가 들어와야함
