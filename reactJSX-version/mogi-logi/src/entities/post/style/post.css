@@ -62,6 +62,7 @@
 }
 
 .board-card div {
+    min-width: 30px;
     font-size: var(--font-size-content);
 }
 .card-background {
