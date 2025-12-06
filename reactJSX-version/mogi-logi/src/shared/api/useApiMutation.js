@@ -2,13 +2,13 @@ import { useMutation } from "@tanstack/react-query";
 import apiFetch from "./apiFetch";
 import { useToast } from "../ui/toast/useToast";
 
-export function useApiMutation({ url, dtoFn, onSuccess }) {
+export function useApiMutation({ url, dtoFn, method, onSuccess }) {
   const { addToast } = useToast();
 
   return useMutation({
     mutationFn: async (form) => {
       const dto = dtoFn(form);
-      const res = await apiFetch(url, "POST", dto);
+      const res = await apiFetch(url, method, dto);
 
       if (!res.status) throw new Error(res.error || "요청 실패");
 

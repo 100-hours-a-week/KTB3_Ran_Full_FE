@@ -9,6 +9,7 @@ export function useLogin() {
 
   const loginMutation = useApiMutation({
     url: Endpoint.USER.LOGIN,
+    method: "POST",
     dtoFn: loginDto,
     onSuccess: (data) => {
       sessionStorage.setItem("accessToken", data.accessToken);

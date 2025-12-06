@@ -10,6 +10,7 @@ export function useSignup() {
 
   const signupMutation = useApiMutation({
     url: Endpoint.USER.SIGNUP,
+    method: "POST",
     dtoFn: signupDto,
     onSuccess: () => {
       addToast("회원가입 성공");
