@@ -17,10 +17,6 @@
     color: var(--color-text-metaData);
 }
 
-.post-count-group .count-content{
-    cursor: pointer;
-
-}
 
 .post-count-group div {
     font-weight: var(--font-weight-regular);
@@ -35,9 +31,11 @@
 .count-content div {
     display: flex;
     color: var(--color-text-metaData);
+    min-width: 20px;
 }
 .count-content .count {
     /* min-width: 13px; */
+
 }
 
 /*post-card*/
@@ -62,7 +60,7 @@
 }
 
 .board-card div {
-    min-width: 30px;
+
     font-size: var(--font-size-content);
 }
 .card-background {

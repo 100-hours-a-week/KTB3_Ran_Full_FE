@@ -17,7 +17,13 @@ export default function PostCountGroup({
         className={`count-content like ${liked ? "enabled" : ""}`}
         onClick={onLikeToggle}
       >
-        <Icon name={liked ? "liked" : "unliked"} style={{ color: likeColor }} />
+        <Icon
+         
+          name={liked ? "liked" : 
+         "unliked"}
+          style= {{ color: likeColor,
+        cursor: "pointer" }}
+        />
         <div className="count">{likeCount}</div>
       </div>
 
