@@ -3,17 +3,14 @@ import { useApi } from "../../../shared/api/base/useApi";
 
 export function useHome() {
   const { requestApi } = useApi();
-  const handleUseHome = (page) => {
+  const handleUseHome = async (cursor = null, size = 10) => {
     try {
       //무한 스크롤 api url
-      const res = requestApi(
-        `${Endpoint.POST.GET}?page=${page}&size=10`,
-        "GET",
-      );
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-
+      const query = cursor
+        ? `?cursor = ${cursor}&size=${size}`
+        : `?size=${size}`;
+      const res = await requestApi(`${Endpoint.POST.GET}${query}`, "GET");
+      if (!res) throw new Error("API 응답이 없습니다");
       console.log(res);
       return res;
     } catch (e) {
