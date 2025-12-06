@@ -1,38 +1,48 @@
 import { useNavigate } from "react-router-dom";
 import { Endpoint } from "../../../shared/api/base/endpoint";
-import { useApi } from "../../../shared/api/base/useApi";
 import { loginDto } from "../model/authDto";
+import { useMutation } from "@tanstack/react-query";
+import apiFetch from "../../../shared/api/base/apiFetch.js";
 
 //hooks
 export function useLogin() {
-  const { requestApi } = useApi();
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
-  const handleLogin = async (data) => {
-    try {
-      //1. dto 가공
-      const dto = loginDto(data);
-      const res = await requestApi(Endpoint.USER.LOGIN, "POST", dto);
+  const loginMutation = useMutation({
+    mutationFn: async (form) => {
+      //1. dto
+      const dto = loginDto(form);
 
-      // console.log(res);
-      if (res) {
-        console.log("login page move");
-        //세션에 유저 저장
-        const token = res.accessToken;
-        const refresh = res.refreshToken;
+      //2. 데이터 요청
+      const res = await apiFetch(Endpoint.USER.LOGIN, "POST", dto);
+      console.log(res);
 
-        sessionStorage.setItem("accessToken", token);
-        sessionStorage.setItem("refreshToken", refresh);
+      if (!res.status) throw new Error(res.error || "로그인 실패");
 
-        console.log("token :", token, "refresh :", refresh);
+      return res.data;
+    },
 
-        navigator("/home");
-      }
-    } catch (e) {
-      console.error(e);
-      throw e;
-    }
+    //로그인 성공 시
+    onSuccess: (data) => {
+      sessionStorage.setItem("accessToken", data.accessToken);
+      sessionStorage.setItem("refreshToken", data.refreshToken);
+
+      console.log("로그인 성공:", data);
+      navigate("/home");
+    },
+
+    //로그인 실패 시
+    // 로그인 실패 시
+    onError: (error) => {
+      console.error("로그인 오류:", error);
+      alert("로그인에 실패했습니다.");
+    },
+  });
+
+  return {
+    login: loginMutation.mutate, //즉시 실행
+    loginAsync: loginMutation.mutateAsync, // async/await 버전
+    isLoading: loginMutation.isPending,
+    error: loginMutation.error,
   };
-
-  return { handleLogin };
 }

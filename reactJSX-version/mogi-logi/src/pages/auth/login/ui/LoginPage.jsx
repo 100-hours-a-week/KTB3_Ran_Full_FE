@@ -22,13 +22,13 @@ export function LoginPage() {
     !email.error &&
     !password.error;
   console.log(canSubmit);
-  const { handleLogin } = useLogin();
+  const { login } = useLogin();
 
   //제출
-  const onSubmit = async () => {
+  const onSubmit = () => {
     console.log(email, password);
     if (!canSubmit) return;
-    handleLogin({ email: email.value, password: password.value });
+    login({ email: email.value, password: password.value });
   };
 
   return (

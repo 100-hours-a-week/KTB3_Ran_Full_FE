@@ -24,26 +24,25 @@ export default async function apiFetch(url, method = "GET", dto, options = {}) {
       // Refresh 실패
       if (!newToken) {
         sessionStorage.clear();
-
-        //ok, code
-        return { ok: false, code: "UNAUTHORIZED" };
+        throw new Error("UNAUTHORIZED");
       }
 
       // 토큰 갱신
       sessionStorage.setItem("accessToken", newToken.accessToken);
 
-      // 원래 요청 재시도
-      return await apiFetch(url, options);
+      // 재요청
+      return await apiFetch(url, method, dto, options);
     }
 
+    //요청 실패
     if (!res.ok) {
       throw new Error(`API Error: ${res.status}`);
     }
 
+    //요청 성공
     const json = await res.json();
-    const data = json.data;
-    //ok, data
-    return { ok: true, data: data };
+    console.log("응답", json);
+    return json;
   } catch (error) {
     console.log("apiFetch Error:", error);
     return { ok: false, error: error.message };
