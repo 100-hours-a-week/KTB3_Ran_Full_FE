@@ -9,20 +9,25 @@ export function useInput(init, validate) {
   //좀더 유동적으로 만들어주는 작업을 useCallback
   const onChange = useCallback(
     (e) => {
-      const v = e.target.value;
-      setValue(v);
-
-      if (validate) {
-        setError(validate(v));
+      if (!validate) {
+        const v = e.target.value;
+        setValue(v);
+        return;
       }
+
+      const v = e.target.value;
+      console.log(v);
+      setValue(v);
+      //validate 유효성이 바뀔때만 에러에 적용
+      setError(validate(v));
+      console.log(validate(v));
     },
     [validate],
   );
 
   //초기설정
   const reset = useCallback(() => {
-    setValue(init);
-    setError(null);
+    (setValue(init), setError(undefined));
   }, [init]);
 
   //value : 값 error : 에러메시지 onChange : 유효성 검사 메시지
