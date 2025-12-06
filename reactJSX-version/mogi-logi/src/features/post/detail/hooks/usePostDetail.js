@@ -1,22 +1,10 @@
 import { Endpoint } from "../../../../shared/api/endpoint";
-import { useApi } from "../../../../shared/api/useApi";
+import { useApiQuery } from "../../../../shared/api/useApiQuery.js";
 
-export function usePostDetail() {
-  const { requestApi } = useApi();
-  const handlePostDetail = async (data) => {
-    try {
-      const dto = data;
-
-      const res = await requestApi(Endpoint.POST.DETAIL(dto), "GET");
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-
-      console.log(res);
-      return res;
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  return { handlePostDetail };
+export function usePostDetail(postId) {
+  return useApiQuery({
+    queryKey: ["postDetail", postId],
+    url: Endpoint.POST.DETAIL(postId),
+    enabled: !!postId, //postId있을때만 실행
+  });
 }
