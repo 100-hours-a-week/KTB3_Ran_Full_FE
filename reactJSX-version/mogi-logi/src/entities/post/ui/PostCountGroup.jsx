@@ -9,7 +9,6 @@ export default function PostCountGroup({
   onLikeToggle,
   likeColor,
 }) {
-  console.log(likeColor);
   return (
     <div className="post-count-group">
       {/* LIKE */}
@@ -18,11 +17,8 @@ export default function PostCountGroup({
         onClick={onLikeToggle}
       >
         <Icon
-         
-          name={liked ? "liked" : 
-         "unliked"}
-          style= {{ color: likeColor,
-        cursor: "pointer" }}
+          name={liked ? "liked" : "unliked"}
+          style={{ color: likeColor, cursor: "pointer" }}
         />
         <div className="count">{likeCount}</div>
       </div>

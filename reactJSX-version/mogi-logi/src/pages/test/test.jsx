@@ -1,16 +1,26 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export function Test() {
-  const [state, setState] = useState(0);
-  const handle = (state) => {
-    console.log(state);
-    setState(state + 1);
+  const [count, setCount] = useState(0);
+  const countRef = useRef(0);
+  console.log(" test ");
+
+  const increaseCountState = () => {
+    console.log(count);
+    setCount(count + 1);
   };
 
+  //렌더링이 안됨
+  const increaseCountRef = () => {
+    console.log(count);
+    countRef.current = countRef.current + 1;
+  };
   return (
     <div>
-      <button onClick={() => handle(state)}>버튼</button>
-      <div>{state}</div>
+      <button onClick={() => increaseCountState()}>state 올려</button>
+      <button onClick={() => increaseCountRef()}>Ref 올려</button>
+      <p>Ref : {countRef.current}</p>
+      <div>{count}</div>
     </div>
   );
 }

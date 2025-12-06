@@ -1,0 +1,42 @@
+{
+  "hash": "d4ec4815",
+  "configHash": "08f42323",
+  "lockfileHash": "29ecbb01",
+  "browserHash": "b754ccab",
+  "optimized": {
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "d8853560",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "093887f5",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "17f9349a",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "99d693e7",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "react-CcqPggiU": {
+      "file": "react-CcqPggiU.js",
+      "isDynamicEntry": false
+    },
+    "react-dom-DMqAYKIE": {
+      "file": "react-dom-DMqAYKIE.js",
+      "isDynamicEntry": false
+    }
+  }
+}

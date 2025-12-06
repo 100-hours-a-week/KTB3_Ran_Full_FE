@@ -5,6 +5,7 @@ import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatP
 import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
 import { useToast } from "../../../shared/ui/toast/Toast.jsx";
 import { useState } from "react";
+import "./postComment.css";
 
 export function PostComments({ post, onLoad }) {
   const { handleCommentDelete } = useCommentDelete();
@@ -52,19 +53,22 @@ export function PostComments({ post, onLoad }) {
           resetMode();
         }}
       />
-
-      {/* 댓글 목록 */}
-      {comments.map((comment) => {
-        const commentProps = CommentCardProps(comment);
-        return (
-          <CommentCard
-            key={commentProps.commentId}
-            {...commentProps}
-            onDelete={() => onDelete(commentProps.commentId)}
-            onEdit={() => onEdit(commentProps.commentId, commentProps.content)}
-          />
-        );
-      })}
+      <div className="post-comment">
+        {/* 댓글 목록 */}
+        {comments.map((comment) => {
+          const commentProps = CommentCardProps(comment);
+          return (
+            <CommentCard
+              key={commentProps.commentId}
+              {...commentProps}
+              onDelete={() => onDelete(commentProps.commentId)}
+              onEdit={() =>
+                onEdit(commentProps.commentId, commentProps.content)
+              }
+            />
+          );
+        })}
+      </div>
     </section>
   );
 }

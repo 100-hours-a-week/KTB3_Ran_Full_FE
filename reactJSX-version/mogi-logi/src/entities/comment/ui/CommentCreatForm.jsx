@@ -65,6 +65,9 @@ export function CommentCreatForm({
             children={"수정"}
             postId={postId}
             commentId={commentId}
+            shape={"square"}
+            style={{ padding: "10px 20px" }}
+            color={"primary"}
             onClick={onSubmit}
           />
         )}

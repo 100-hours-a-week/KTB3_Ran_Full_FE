@@ -9,5 +9,6 @@
 }
 
 .user-meta .createdAt {
+    min-width: 125px;
   color: var(--color-text-metaData);
 }
