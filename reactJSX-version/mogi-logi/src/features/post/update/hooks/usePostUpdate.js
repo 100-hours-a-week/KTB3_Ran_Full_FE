@@ -3,9 +3,12 @@ import { PostUpdateDto } from "../model/PostUpdateDto.js";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 
 //postId가 들어와야함
 export function usePostUpdate(postId) {
+  console.log(postId);
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { addToast } = useToast();
 
@@ -14,7 +17,8 @@ export function usePostUpdate(postId) {
     method: "PATCH",
     dtoFn: PostUpdateDto,
     onSuccess: () => {
-      addToast("게시글 생성 성공");
+      queryClient.invalidateQueries(["posts"]);
+      addToast("게시글 수정 성공");
       navigate(`/post/get/${postId}`);
     },
   });
