@@ -4,22 +4,26 @@ import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 import { useQueryClient } from "@tanstack/react-query";
 
-export function useCommentUpdate(postId, commentId) {
+export function useCommentUpdate(postId) {
   const queryClient = useQueryClient();
   const { addToast } = useToast();
 
-  const commentCreatMutation = useApiMutation({
-    url: Endpoint.COMMENT.UPDATE({ postId, commentId }),
+  const commentUpdateMutation = useApiMutation({
+    url: (form) =>
+      Endpoint.COMMENT.UPDATE({
+        postId: form.postId,
+        commentId: form.commentId,
+      }),
     method: "PATCH",
     dtoFn: CommentUpdateDto,
     onSuccess: () => {
-      //캐시 posts에 저장해둔 값 캐시 무효화
+      queryClient.invalidateQueries(["comments", postId]);
       addToast("댓글 수정 성공");
     },
   });
 
   return {
-    commentUpdate: commentCreatMutation.mutate,
-    isLoading: commentCreatMutation.isPending,
+    commentUpdate: commentUpdateMutation.mutate,
+    isLoading: commentUpdateMutation.isPending,
   };
 }
