@@ -1,11 +1,11 @@
 import { createBrowserRouter, Navigate, redirect } from "react-router-dom";
-import App from "../../MainLayout";
+import App from "../../widgets/layout/MainLayout";
 import { HomePage } from "../../pages/home/ui/HomePage";
 import { LoginPage } from "../../pages/auth/login/ui/LoginPage";
 import { SignupPage } from "../../pages/auth/signup/ui/SignupPage";
 import { ROUTES } from "./routes";
-import MainLayout from "../../MainLayout";
-import AuthLayout from "../../AuthLayout";
+import MainLayout from "../../widgets/layout/MainLayout";
+import AuthLayout from "../../widgets/layout/AuthLayout";
 import { PostDetailPage } from "../../pages/post/detail/ui/PostDetailPage";
 import { PostCreatePage } from "../../pages/post/create/ui/PostCreatePage";
 import { Test } from "../../pages/test/test";
