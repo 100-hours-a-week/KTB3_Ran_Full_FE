@@ -21,22 +21,13 @@ export function PostDetailPage() {
 
   const { data, isLoading, error, refetch } = usePostDetail(postId);
 
-  const headerProps = useMemo(
-    () => (data ? PostHeaderProps(data) : null),
-    [data],
-  );
-  const contentProps = useMemo(
-    () => (data ? PostContentProps(data) : null),
-    [data],
-  );
-  const countProps = useMemo(
-    () => (data ? PostCountProps(data.count) : null),
-    [data],
-  );
-
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>error</div>;
   console.log(data);
+
+  const headerProps = PostHeaderProps(data);
+  const contentProps = PostContentProps(data);
+  const countProps = PostCountProps(data.count);
 
   const onLikeToggle = async () => {
     if (!data) return;

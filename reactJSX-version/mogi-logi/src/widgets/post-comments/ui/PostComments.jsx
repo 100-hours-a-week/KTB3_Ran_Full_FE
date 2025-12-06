@@ -6,10 +6,13 @@ import { useCommentDelete } from "../../../features/comment/delete/hooks/useComm
 import { useState } from "react";
 import "./postComment.css";
 import { useToast } from "../../../shared/ui/toast/useToast.jsx";
+import { useComments } from "../../../features/comment/read/hooks/useCommentRead.js";
 
 export function PostComments({ post, onLoad }) {
+  const { data: comments, isLoading } = useComments(post.id);
   const { handleCommentDelete } = useCommentDelete();
   const { addToast } = useToast();
+  console.log(comments);
 
   //수정모드 상태 추가
   const [editMode, setEditMode] = useState(false);
@@ -37,12 +40,12 @@ export function PostComments({ post, onLoad }) {
     setEditContent("");
   };
 
+  if (isLoading) return <div>댓글 불러오는 중...</div>;
+
   const CommentCreatProp = CommentCreatProps(post);
-  const comments = post.comments ?? [];
 
   return (
     <section>
-      {/* 댓글 생성 (현재 문제 commentId에 postID가 붙음)*/}
       <CommentCreatForm
         {...CommentCreatProp}
         mode={editMode ? "update" : "create"}
@@ -54,8 +57,7 @@ export function PostComments({ post, onLoad }) {
         }}
       />
       <div className="post-comment">
-        {/* 댓글 목록 */}
-        {comments.map((comment) => {
+        {comments?.map((comment) => {
           const commentProps = CommentCardProps(comment);
           return (
             <CommentCard

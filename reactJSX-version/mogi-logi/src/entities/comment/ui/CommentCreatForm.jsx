@@ -14,8 +14,11 @@ export function CommentCreatForm({
   onLoad,
 }) {
   const commentValue = useInput(initalContent);
-  const { handleCommentCreat } = useCommentCreat();
-  const { handleCommentUpdate } = useCommentUpdate();
+  const { commentCreat, isLoading: isCreating } = useCommentCreat(postId);
+  const { commentUpdate, isLoading: isUpdating } = useCommentUpdate(
+    postId,
+    commentId,
+  );
   const validateValue = commentValue.value;
 
   useEffect(() => {
@@ -24,21 +27,28 @@ export function CommentCreatForm({
 
   const onSubmit = async () => {
     if (!validateValue) return;
-    console.log("제출 클릭", commentValue.value, postId);
+
+    const payloadUpdate = {
+      content: commentValue.value,
+      postId: postId,
+      commentId: commentId,
+    };
+
+    const payloadCreat = {
+      content: commentValue.value,
+      postId: postId,
+      commentId: commentId,
+    };
 
     if (mode === "create") {
-      await handleCommentCreat({ content: commentValue.value, postId: postId });
+      await commentCreat(payloadCreat);
     } else if (mode === "update") {
-      await handleCommentUpdate({
-        content: commentValue.value,
-        postId: postId,
-        commentId: commentId,
-      });
+      await commentUpdate(payloadUpdate);
     }
 
     onLoad();
     commentValue.setValue("");
-  }; // ← 여기 하나만 닫으면 됨
+  };
 
   return (
     <div className="comment-creat-card">
@@ -51,7 +61,7 @@ export function CommentCreatForm({
       </div>
 
       {/*버튼*/}
-      <div className="buttonWrapper" data-mode={mode}>
+      <div className="buttonWrapper">
         {mode === "create" ? (
           <CommentCreateButton
             postId={postId}
