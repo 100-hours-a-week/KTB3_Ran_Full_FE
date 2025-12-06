@@ -1,7 +1,9 @@
+import Timestamp from "../../../shared/utils/timestamp.jsx";
+
 export const PostHeaderProps = (post) => ({
   title: post.title,
   author: post.postAuthor,
-  date: post.createdAt,
+  createdAt: Timestamp(post.createdAt),
   postId: post.id,
   content: post.content,
 });
