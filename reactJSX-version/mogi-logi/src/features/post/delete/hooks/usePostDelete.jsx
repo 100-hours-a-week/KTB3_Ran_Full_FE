@@ -1,23 +1,27 @@
 import { Endpoint } from "../../../../shared/api/endpoint";
-import { useApi } from "../../../../shared/api/useApi";
+import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
+import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 
-//postId가 들어와야함
-export function usePostDelete() {
-  const { requestApi } = useApi();
-  //data :content
-  const handlePostDelete = async (data) => {
-    try {
-      /*dto*/
-      console.log(data);
-      const res = await requestApi(Endpoint.POST.DELETE(data.postId), "DELETE");
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-      console.log(res);
-      return res;
-    } catch (e) {
-      console.error(e);
-    }
+export function usePostDelete(postId) {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const { addToast } = useToast();
+  console.log(postId);
+
+  const postDeleteMutation = useApiMutation({
+    url: Endpoint.POST.DELETE(postId),
+    method: "DELETE",
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
+      addToast("게시글 삭제 완료");
+      navigate("/home");
+    },
+  });
+
+  return {
+    postDelete: postDeleteMutation.mutate,
+    isLoading: postDeleteMutation.isPending,
   };
-  return { handlePostDelete };
 }
