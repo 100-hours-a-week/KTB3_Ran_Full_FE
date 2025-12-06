@@ -18,11 +18,9 @@ export function PostCreatePage() {
   const { handlePostUpdate } = usePostUpdate();
   const { handlePostCreat } = usePostCreat();
 
-  console.log(editData);
   const title = useInput(editData?.title || "", validatePostTitle);
   const content = useInput(editData?.content || "", validatePostContent);
 
-  console.log(title.error, content.error);
   const canSubmit = !title.error && !content.error;
   const onSubmit = async () => {
     console.log(canSubmit);
