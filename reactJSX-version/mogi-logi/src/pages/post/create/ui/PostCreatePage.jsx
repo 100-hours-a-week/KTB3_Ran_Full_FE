@@ -21,7 +21,11 @@ export function PostCreatePage() {
   const title = useInput(editData?.title || "", validatePostTitle);
   const content = useInput(editData?.content || "", validatePostContent);
 
-  const canSubmit = !title.error && !content.error;
+  const canSubmit =
+    title.value.length > 0 &&
+    content.value.length > 0 &&
+    !title.error &&
+    !content.error;
   const onSubmit = async () => {
     console.log(canSubmit);
     if (!canSubmit) return;
@@ -53,6 +57,7 @@ export function PostCreatePage() {
         <PostCreateContentInput helper={content.error} {...content.bind} />
       </div>
       <PostCreateButton
+        disabled={!canSubmit}
         onClick={onSubmit}
         children={isEditMode ? "수정" : "등록"}
       />
