@@ -3,9 +3,9 @@ import { CommentCreatForm } from "../../../entities/comment/ui/CommentCreatForm"
 import { CommentCardProps } from "../../../entities/comment/model/CommentCardProps";
 import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatProps";
 import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
-import { useToast } from "../../../shared/ui/toast/Toast.jsx";
 import { useState } from "react";
 import "./postComment.css";
+import { useToast } from "../../../shared/ui/toast/useToast.jsx";
 
 export function PostComments({ post, onLoad }) {
   const { handleCommentDelete } = useCommentDelete();

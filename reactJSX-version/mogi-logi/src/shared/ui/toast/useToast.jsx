@@ -1,6 +1,5 @@
-import { createContext, useContext } from "react";
-
-const ToastContext = createContext(null);
+import { useContext } from "react";
+import { ToastContext } from "./ToastContext";
 
 export function useToast() {
   return useContext(ToastContext);

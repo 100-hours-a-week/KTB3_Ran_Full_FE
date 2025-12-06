@@ -4,7 +4,7 @@ import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/post.css";
 import { ContentType } from "../../../shared/lib/ContentType";
 import { usePostDelete } from "../../../features/post/delete/hooks/usePostDelete.jsx";
-import { useToast } from "../../../shared/ui/toast/Toast.jsx";
+import { useToast } from "../../../shared/ui/toast/useToast.jsx";
 
 //props : { title, author, date, postId, commentId, content }
 export default function PostHeader(props) {

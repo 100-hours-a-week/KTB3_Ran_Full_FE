@@ -21,6 +21,7 @@ export function LoginPage() {
     password.value.length > 0 &&
     !email.error &&
     !password.error;
+
   console.log(canSubmit);
   const { login } = useLogin();
 
