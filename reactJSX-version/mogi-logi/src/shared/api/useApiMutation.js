@@ -13,7 +13,9 @@ export function useApiMutation({ url, dtoFn, method, onSuccess }) {
         dto = dtoFn(form);
       }
 
-      const res = await apiFetch(url, method, dto);
+      const apiUrl = typeof url === "function" ? url(form) : url;
+
+      const res = await apiFetch(apiUrl, method, dto);
 
       if (!res.status) throw new Error(res.error || "요청 실패");
 
