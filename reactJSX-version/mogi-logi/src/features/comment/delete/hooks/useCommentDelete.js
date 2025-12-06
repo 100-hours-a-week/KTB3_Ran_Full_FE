@@ -1,28 +1,23 @@
 import { Endpoint } from "../../../../shared/api/endpoint";
-import { useApi } from "../../../../shared/api/useApi";
+import { useQueryClient } from "@tanstack/react-query";
+import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
+import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 
-export function useCommentDelete() {
-  const { requestApi } = useApi();
-  //data :content
-  const handleCommentDelete = async (data) => {
-    try {
-      /*dto*/
-      console.log(data);
-      const res = await requestApi(
-        Endpoint.COMMENT.DELETE({
-          postId: data.postId,
-          commentId: data.commentId,
-        }),
-        "DELETE",
-      );
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-      console.log(res);
-      return res;
-    } catch (e) {
-      console.error(e);
-    }
+export function useCommentDelete(postId) {
+  const queryClient = useQueryClient();
+  const { addToast } = useToast();
+
+  const commentDeleteMutation = useApiMutation({
+    url: (commentId) => Endpoint.COMMENT.DELETE({ postId, commentId }),
+    method: "DELETE",
+    onSuccess: () => {
+      queryClient.invalidateQueries(["comments"]);
+      addToast("댓글 삭제 완료");
+    },
+  });
+
+  return {
+    commentDelete: commentDeleteMutation.mutate,
+    isLoading: commentDeleteMutation.isPending,
   };
-  return { handleCommentDelete };
 }

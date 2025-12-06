@@ -5,14 +5,13 @@ import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatP
 import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
 import { useState } from "react";
 import "./postComment.css";
-import { useToast } from "../../../shared/ui/toast/useToast.jsx";
 import { useComments } from "../../../features/comment/read/hooks/useCommentRead.js";
 
+//post  = {id, commentId}
 export function PostComments({ post, onLoad }) {
-  const { data: comments, isLoading } = useComments(post.id);
-  const { handleCommentDelete } = useCommentDelete();
-  const { addToast } = useToast();
-  console.log(comments);
+  console.log(post);
+  const { data: comments, isLoading: isReading } = useComments(post.id);
+  const { commentDelete, isLoading: isDeleting } = useCommentDelete(post.id);
 
   //수정모드 상태 추가
   const [editMode, setEditMode] = useState(false);
@@ -21,9 +20,7 @@ export function PostComments({ post, onLoad }) {
 
   //댓글 삭제
   const onDelete = async (commentId) => {
-    await handleCommentDelete({ postId: post.id, commentId });
-    addToast("삭제 완료");
-    onLoad();
+    await commentDelete(commentId);
   };
 
   // 수정 버튼 클릭 시
@@ -40,7 +37,7 @@ export function PostComments({ post, onLoad }) {
     setEditContent("");
   };
 
-  if (isLoading) return <div>댓글 불러오는 중...</div>;
+  if (isReading) return <div>댓글 불러오는 중...</div>;
 
   const CommentCreatProp = CommentCreatProps(post);
 
