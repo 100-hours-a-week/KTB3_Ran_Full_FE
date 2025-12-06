@@ -14,9 +14,11 @@ export function PostCreatePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const editData = location.state; //state 받기기
+  const postId = editData?.postId;
   const isEditMode = editData?.mode === "update";
-  const { handlePostUpdate } = usePostUpdate();
-  const { postCreat } = usePostCreat();
+
+  const { postUpdate, isLoading: isUpdating } = usePostUpdate(postId);
+  const { postCreat, isLoading: isCreating } = usePostCreat();
 
   const title = useInput(editData?.title || "", validatePostTitle);
   const content = useInput(editData?.content || "", validatePostContent);
@@ -28,25 +30,19 @@ export function PostCreatePage() {
     !content.error;
 
   const onSubmit = async () => {
-    console.log(canSubmit);
     if (!canSubmit) return;
 
+    const payload = {
+      title: title.value,
+      content: content.value,
+    };
+
     if (isEditMode) {
-      await handlePostUpdate(
-        {
-          title: title.value,
-          content: content.value,
-        },
-        editData.postId,
-      );
-      console.log("완료");
-      navigate(`/post/get/${editData.postId}`);
+      await postUpdate(payload);
     } else {
-      postCreat({ title: title.value, content: content.value });
-      navigate("/home");
+      await postCreat(payload);
     }
   };
-
   return (
     <>
       <div>
