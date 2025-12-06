@@ -1,0 +1,27 @@
+:root {
+  /* 전체 레이아웃 */
+  --layout-max-width: 1000px; /*1332*/
+
+  /* 인증 관련 페이지 레이아웃 */
+  --auth-max-width: 400px;
+  --max-width-md: 400px;
+
+  --gap-xlg: 50px;
+  --gap-lg: 40px;
+  --gap-xmd: 30px;
+  --gap-md: 20px;
+  --gap-mdn: 15px;
+  --gap-mn: 10px;
+
+  --padding-h3: 20px 0;
+  --padding-card: 20px;
+  --radius-md: 16px;
+  --padding-card-hori: 0 30px;
+
+  --radius-button: 12px;
+  --radius-button-lg: 50px;
+  --radius-button-md: 20px;
+  --card-height: 170px;
+  --card-top-height: 80px;
+  --card-bottom-height: 70px;
+}

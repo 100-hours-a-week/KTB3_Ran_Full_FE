@@ -2,16 +2,24 @@
   --font-family-base: "Pretendard", Arial, sans-serif;
 
   /*font size*/
-  --font-size-header: 32px;
+  /* --font-size-header: 32px;
   --font-size-h1: 32px;
   --font-size-h2: 28px;
-  --font-size-h3: 24px;
+  --font-size-h3: 24px; */
 
-  --font-size-xtitle: 26px;
-  --font-size-title: 24px;
-  --font-size-mtitle: 22px;
-  --font-size-content: 16px;
+  --font-size-xtitle: 36px;
 
+  /*개선된 font size*/
+  --font-size-title: 28px;
+
+  --font-size-header: 18px;
+
+  --font-size-content: 18px;
+  --font-size-metaData: 18px;
+  --font-size-username: 18px;
+
+  --font-size-footer: 16px;
+  /* 
   --font-size-action: 15px;
   --font-size-h4: 20px;
   --font-size-base: 18px;
@@ -19,12 +27,18 @@
   --font-size-xlg: 22px;
   --font-size-sm: 16px;
   --font-size-xsm: 14px;
-  --font-size-default: 24px;
+  --font-size-default: 24px; */
 
   /* 폰크 굵기 */
-  --font-weight-normal: 400;
-  --font-weigth-md: 500;
+  --font-weight-thin: 100;
+  --font-weigth-extraLight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weigth-medium: 500;
+  --font-weight-semiBold: 600;
   --font-weight-bold: 700;
+  --font-weigth-extraBold: 800;
+  --font-weight-black: 900;
 
   --line-height-base: 1.5;
 }

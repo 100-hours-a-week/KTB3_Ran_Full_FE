@@ -1,0 +1,111 @@
+.modal-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-wrapper {
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  min-width: 280px;
+  max-width: 400px;
+  width: calc(100% - 1000px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+  /* height: 200px; */
+}
+
+.modal-top {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 20px;
+  gap: 10px;
+}
+
+.modal-top .modal-title {
+  font-size: var(--font-modal-title);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 8px;
+}
+
+.modal-top .modal-subtitle {
+  font-size: var(--font-modal-title);
+  font-weight: var(--font-weight-semiBold);
+  color: #a7a7a7;
+  margin-bottom: 16px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.quit-btn,
+.confirm-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quit-btn {
+  background: #f3f3f3;
+  color: #333;
+}
+
+.confirm-btn {
+  background: #e03131;
+  color: white;
+}
+
+.modal-bottom {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 버튼 공통 스타일 */
+.modal-bottom-btn {
+  flex: 1;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.modal-bottom-btn.cancel {
+  color: #9e9e9e;
+}
+
+.modal-bottom-btn.confirm {
+  color: #e03131;
+}
+
+.modal-bottom-divider {
+  width: 1px;
+  background-color: #e5e5e5;
+}
+
+.modal-wrapper-bottom-rounded {
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  overflow: hidden;
+}

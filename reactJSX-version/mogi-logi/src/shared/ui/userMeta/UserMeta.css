@@ -1,0 +1,13 @@
+.user-meta {
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.user-meta .author {
+  color: var(--color-text-title);
+}
+
+.user-meta .createdAt {
+  color: var(--color-text-metaData);
+}

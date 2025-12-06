@@ -1,0 +1,79 @@
+.input-field-container {
+  width: 100%;
+}
+
+.input-field-container div {
+  color: var(--color-text);
+}
+
+.input-field-container .title {
+  margin-bottom: 8px;
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-content);
+}
+
+.input-title {
+  margin-bottom: 8px;
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.input-field-container .inputWrapper {
+  padding: 10px;
+  border-bottom: 2px solid var(--color-text);
+}
+.input-field-container input {
+  width: 380px;
+  border: none;
+  background: none;
+  font-size: var(--font-size-base);
+}
+.input-field-container input:focus {
+  outline: none;
+}
+.input-field-container .helper {
+  /* color: var(--color-error, red); */
+  margin-top: 8px;
+  min-height: 14px;
+  font-size: var(--font-size-sm);
+}
+
+/*textInputField*/
+.text-input-field {
+  width: 580px;
+  padding-bottom: 28px;
+}
+:host {
+  gap: 10px;
+}
+:host div {
+  display: flex;
+  color: var(--color-text);
+}
+
+.input-line {
+  /*width: 422px;*/
+  /*border:1px solid #d9d9d9;*/
+  /*background : #ffffff;*/
+  /*border-radius : var(--radius-button-lg);*/
+}
+.input-line input {
+  padding: 16px;
+}
+
+.text-input-field .input-title {
+  margin-bottom: 8px;
+  display: flex;
+  font-weight: 700;
+  font-size: 16px;
+}
+.helper {
+  color: var(--color-error, red);
+  display: flex;
+  margin-top: 8px;
+  min-height: 14px;
+  text-align: left;
+}

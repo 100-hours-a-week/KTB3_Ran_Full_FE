@@ -1,0 +1,46 @@
+.comment-creat-card {
+  width: 100%;
+}
+
+#comment-textarea {
+  width: 100%;
+  display: flex;
+  border: none;
+  resize: none;
+}
+
+#comment-textarea:focus {
+  outline: none;
+}
+
+#comment-textarea:valid {
+  font-size: var(--font-size-content);
+}
+
+.textarea-wrapper {
+  padding: 14px;
+  border: 1px solid var(--color-card-line);
+  border-radius: 10px 10px 0 10px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-content {
+  font-size: var(--font-size-content);
+  color: var(--color-text);
+  font-weight: var(--font-weigth-medium);
+  display: flex;
+}
+
+.comment-card {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.top-area {
+  display: flex;
+}

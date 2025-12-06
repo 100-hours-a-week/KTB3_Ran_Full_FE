@@ -1,10 +1,18 @@
 import "./App.css";
+import { Outlet } from "react-router-dom";
+import { Footer } from "./widgets/ui/Footer/Footer";
+import { Header } from "./widgets/ui/Header/Header";
 
-//Header
-//Router
-//Footer
 function App() {
-  return <>앱입니다.</>;
+  return (
+    <>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
