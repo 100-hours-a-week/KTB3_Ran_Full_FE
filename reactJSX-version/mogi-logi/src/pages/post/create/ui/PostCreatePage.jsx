@@ -7,11 +7,10 @@ import {
   validatePostContent,
   validatePostTitle,
 } from "../../../../features/post/create/lib/validater.js";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { usePostUpdate } from "../../../../features/post/update/hooks/usePostUpdate.js";
 
 export function PostCreatePage() {
-  const navigate = useNavigate();
   const location = useLocation();
   const editData = location.state; //state 받기기
   const postId = editData?.postId;
@@ -38,6 +37,7 @@ export function PostCreatePage() {
     };
 
     if (isEditMode) {
+      console.log(payload);
       await postUpdate(payload);
     } else {
       await postCreat(payload);

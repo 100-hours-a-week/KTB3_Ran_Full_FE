@@ -4,19 +4,14 @@ import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/post.css";
 import { ContentType } from "../../../shared/lib/ContentType";
 import { usePostDelete } from "../../../features/post/delete/hooks/usePostDelete.jsx";
-import { useToast } from "../../../shared/ui/toast/useToast.jsx";
 
 //props : { title, author, date, postId, commentId, content }
 export default function PostHeader(props) {
   const navigate = useNavigate();
-  const { handlePostDelete } = usePostDelete();
-  const { addToast } = useToast();
-  console.log(props);
+  const { postDelete, isLoading } = usePostDelete(props.postId);
 
   const onDelete = async () => {
-    await handlePostDelete({ postId: props.postId });
-    addToast("삭제 완료");
-    navigate("/home");
+    await postDelete();
   };
 
   return (
