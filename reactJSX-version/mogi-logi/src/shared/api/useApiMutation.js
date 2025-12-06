@@ -7,7 +7,12 @@ export function useApiMutation({ url, dtoFn, method, onSuccess }) {
 
   return useMutation({
     mutationFn: async (form) => {
-      const dto = dtoFn(form);
+      let dto = null;
+
+      if (method !== "DELETE" && dtoFn) {
+        dto = dtoFn(form);
+      }
+
       const res = await apiFetch(url, method, dto);
 
       if (!res.status) throw new Error(res.error || "요청 실패");

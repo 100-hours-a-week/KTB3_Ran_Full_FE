@@ -6,16 +6,21 @@ import requestRefresh from "./refreshToken.js";
 export default async function apiFetch(url, method = "GET", dto, options = {}) {
   const token = sessionStorage.getItem("accessToken");
   try {
-    const res = await fetch(url, {
-      method: method,
-      body: JSON.stringify(dto),
+    const fetchOptions = {
+      method,
       headers: {
         "Content-Type": "application/json",
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
         ...options.headers,
       },
       ...options,
-    });
+    };
+
+    if (method !== "DELETE") {
+      fetchOptions.body = JSON.stringify(dto);
+    }
+
+    const res = await fetch(url, fetchOptions);
 
     //AccessToken 만료 : Refresh 요청
     if (res.status === 401) {
