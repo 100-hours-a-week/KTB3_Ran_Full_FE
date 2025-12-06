@@ -1,14 +1,14 @@
 import { Endpoint } from "../../../shared/api/endpoint";
 import { signupDto } from "../model/authDto";
-import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../../shared/ui/toast/useToast.jsx";
+import { useApiMutation } from "../../../shared/api/useApiMutation.js";
 
 export function useSignup() {
   const navigate = useNavigate();
   const { addToast } = useToast();
 
-  const signupMutation = useMutation({
+  const signupMutation = useApiMutation({
     url: Endpoint.USER.SIGNUP,
     dtoFn: signupDto,
     onSuccess: () => {

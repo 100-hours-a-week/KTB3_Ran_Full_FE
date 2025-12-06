@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { Endpoint } from "../../../shared/api/endpoint";
 import { loginDto } from "../model/authDto";
-import { useMutation } from "@tanstack/react-query";
-import apiFetch from "../../../shared/api/apiFetch.js";
+import { useApiMutation } from "../../../shared/api/useApiMutation.js";
 
 //hooks
 export function useLogin() {
   const navigate = useNavigate();
 
-  const loginMutation = useMutation({
+  const loginMutation = useApiMutation({
     url: Endpoint.USER.LOGIN,
     dtoFn: loginDto,
     onSuccess: (data) => {
       sessionStorage.setItem("accessToken", data.accessToken);
       sessionStorage.setItem("refreshToken", data.refreshToken);
+      console.log("성공");
       navigate("/home");
     },
   });

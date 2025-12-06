@@ -1,21 +1,24 @@
 import { Endpoint } from "../../../../shared/api/endpoint";
-import { useApi } from "../../../../shared/api/useApi";
 import { PostCreatDto } from "../model/PostCreatDto";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 
 export function usePostCreat() {
-  const { requestApi } = useApi();
-  const handlePostCreat = async (data) => {
-    try {
-      const dto = PostCreatDto(data);
-      const res = await requestApi(Endpoint.POST.POST, "POST", dto);
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-      console.log(res);
-      return res;
-    } catch (e) {
-      console.error(e);
-    }
+  const navigate = useNavigate();
+  const { addToast } = useToast();
+
+  const postCreatMutation = useMutation({
+    url: Endpoint.POST.POST,
+    dtoFn: PostCreatDto,
+    onSuccess: () => {
+      addToast("게시글 생성 성공");
+      navigate("/home");
+    },
+  });
+
+  return {
+    postCreat: postCreatMutation.mutate,
+    isLoading: postCreatMutation.isPending,
   };
-  return { handlePostCreat };
 }

@@ -10,7 +10,7 @@ export function useApiMutation({ url, dtoFn, onSuccess }) {
       const dto = dtoFn(form);
       const res = await apiFetch(url, "POST", dto);
 
-      if (!res.ok) throw new Error(res.error || "요청 실패");
+      if (!res.status) throw new Error(res.error || "요청 실패");
 
       return res.data;
     },
