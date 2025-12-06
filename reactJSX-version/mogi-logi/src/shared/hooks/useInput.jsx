@@ -16,11 +16,9 @@ export function useInput(init, validate) {
       }
 
       const v = e.target.value;
-      console.log(v);
       setValue(v);
       //validate 유효성이 바뀔때만 에러에 적용
       setError(validate(v));
-      console.log(validate(v));
     },
     [validate],
   );
