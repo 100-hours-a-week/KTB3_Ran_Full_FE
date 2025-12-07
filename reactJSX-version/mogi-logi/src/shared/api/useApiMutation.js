@@ -7,7 +7,7 @@ export function useApiMutation({ url, dtoFn, method, onSuccess }) {
 
   return useMutation({
     mutationFn: async (form) => {
-      let dto = null;
+      let dto = dtoFn ? dtoFn(form) : undefined;
 
       if (method !== "DELETE" && dtoFn) {
         dto = dtoFn(form);
