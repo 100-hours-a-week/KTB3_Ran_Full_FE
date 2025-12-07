@@ -6,7 +6,7 @@ import { ContentType } from "@/shared";
 
 export function PostHeader({ title, author, createdAt, postId, content }) {
   const navigate = useNavigate();
-  const { postDelete } = usePostDelete(postId);
+  const { mutate: postDelete } = usePostDelete(postId);
 
   const onEdit = () => {
     navigate(`/post/create`, {
