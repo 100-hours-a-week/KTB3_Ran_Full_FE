@@ -258,5 +258,5 @@ frontend/
 
 > React version의 소개 페이지로 이동하기
 > 
->**[👉 React Version README](./reactJSX-version/mogi-logi/reactJSX-version-readme.md)**
+>**[👉 React Version README](../reactJSX-version/mogi-logi/reactJSX-version-readme.md)**
 

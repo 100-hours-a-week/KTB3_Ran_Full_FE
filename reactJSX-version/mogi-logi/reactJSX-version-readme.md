@@ -466,5 +466,5 @@ src
 
 > VDOM version의 소개 페이지로 이동하기
 >
-> **[👉 VDOM Version README](./vdom-version/vdom-version-readme.md)**
+> **[👉 VDOM Version README](../../vdom-version/vdom-version-readme.md)**
 
