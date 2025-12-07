@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import apiFetch from "../../../../shared/api/apiFetch.js";
-import { Endpoint } from "../../../../shared/api/endpoint.js";
+import apiFetch from "../../../../shared/api/base/apiFetch.js";
+import { Endpoint } from "../../../../shared/api/constants/endpoint.js";
 
 export function useComments(postId) {
   return useQuery({

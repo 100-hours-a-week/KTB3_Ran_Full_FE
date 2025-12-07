@@ -1,4 +1,4 @@
-import Timestamp from "../../../shared/utils/timestamp.jsx";
+import Timestamp from "../../../shared/utils/timestamp.js";
 
 export const PostHeaderProps = (post) => ({
   title: post.title,

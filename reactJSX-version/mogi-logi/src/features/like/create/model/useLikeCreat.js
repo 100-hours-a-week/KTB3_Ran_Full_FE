@@ -1,9 +1,9 @@
-import { Endpoint } from "../../../../shared/api/endpoint.js";
-import { useApi } from "../../../../shared/api/useApi.js";
+import { Endpoint } from "../../../../shared/api/constants/endpoint.js";
+import { useApi } from "../../../../shared/api/hooks/useApi.js";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
-import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
+import { useApiMutation } from "../../../../shared/api/hooks/useApiMutation.js";
 import { PostCreatDto } from "../../../post/create/model/PostCreatDto.js";
 
 export function useLikeCreat(postId) {

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import apiFetch from "./apiFetch.js";
+import apiFetch from "../base/apiFetch.js";
 
 export function useApiQuery({ queryKey, url, enabled = true, select }) {
   return useQuery({

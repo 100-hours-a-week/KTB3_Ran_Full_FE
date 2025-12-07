@@ -1,7 +1,6 @@
-import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { Endpoint, useApiMutation } from "@/shared";
 import { CommentUpdateDto } from "./CommentUpdateDto.js";
-import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
-import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
+import { useToast } from "@/shared";
 import { useQueryClient } from "@tanstack/react-query";
 
 export function useCommentUpdate(postId) {

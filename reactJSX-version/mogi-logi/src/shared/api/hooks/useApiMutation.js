@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import apiFetch from "./apiFetch";
-import { useToast } from "../ui/toast/useToast";
+import apiFetch from "../base/apiFetch.js";
+import { useToast } from "../../ui/toast/useToast.jsx";
 
 export function useApiMutation({ url, dtoFn, method, onSuccess }) {
   const { addToast } = useToast();

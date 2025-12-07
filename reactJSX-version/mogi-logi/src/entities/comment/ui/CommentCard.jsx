@@ -1,8 +1,6 @@
 import { ActionGroupContainer } from "@/features/actionGroup";
-import { ContentType } from "../../../shared/lib/ContentType";
-import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
+import { ContentType, UserMeta, UserMetaProps } from "@/shared";
 import "../style/comment.css";
-import { UserMetaProps } from "../../../shared/ui/userMeta/UserMetaProps.js";
 
 // props: { author, createdAt, commentId, content, postId }
 export function CommentCard(props) {

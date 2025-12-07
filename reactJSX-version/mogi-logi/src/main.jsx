@@ -6,7 +6,7 @@ import "./index.css";
 import "./shared/styles/tokens/color.css";
 import "./shared/styles/tokens/spacing.css";
 import "./shared/styles/tokens/typography.css";
-import { ToastProvider } from "./shared/ui/toast/Toast.jsx";
+import { ToastProvider } from "@/shared";
 import { AppRoot } from "./app/AppRoot.jsx";
 
 createRoot(document.getElementById("root")).render(

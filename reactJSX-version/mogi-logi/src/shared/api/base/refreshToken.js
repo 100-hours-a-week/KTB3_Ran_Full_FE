@@ -1,4 +1,4 @@
-import { Endpoint } from "./endpoint.js";
+import { Endpoint } from "../constants/endpoint.js";
 
 async function requestRefresh() {
   const refreshToken = sessionStorage.getItem("refreshToken");

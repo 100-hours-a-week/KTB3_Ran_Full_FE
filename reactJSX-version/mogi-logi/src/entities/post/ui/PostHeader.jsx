@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { ActionGroupContainer } from "@/features/actionGroup";
-import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
+import { UserMeta } from "@/shared";
 import "../style/post.css";
-import { ContentType } from "../../../shared/lib/ContentType";
+import { ContentType } from "@/shared";
 import { usePostDelete } from "@/features/post";
 
 //props : { title, author, date, postId, commentId, content }

@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { PostCard } from "@/entities/post";
 import { PostCreateNavButton } from "@/features/post";
 import { useHomeInfiniteQueue } from "@/features/home";
-import { useScrollStore } from "../../../shared/lib/useScrollStore.js";
+import { useScrollStore } from "../../../shared/model/useScrollStore.js";
 
 export function HomePage() {
   const loaderRef = useRef(null);

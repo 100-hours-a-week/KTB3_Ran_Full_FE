@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Endpoint } from "../../../shared/api/endpoint.js";
-import apiFetch from "../../../shared/api/apiFetch.js";
+import { Endpoint } from "../../../shared/api/constants/endpoint.js";
+import apiFetch from "../../../shared/api/base/apiFetch.js";
 
 export function useHomeInfiniteQueue() {
   return useInfiniteQuery({

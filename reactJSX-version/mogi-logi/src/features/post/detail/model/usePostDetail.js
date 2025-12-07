@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/endpoint.js";
-import { useApiQuery } from "../../../../shared/api/useApiQuery.js";
+import { Endpoint } from "../../../../shared/api/constants/endpoint.js";
+import { useApiQuery } from "../../../../shared/api/hooks/useApiQuery.js";
 
 export function usePostDetail(postId) {
   return useApiQuery({

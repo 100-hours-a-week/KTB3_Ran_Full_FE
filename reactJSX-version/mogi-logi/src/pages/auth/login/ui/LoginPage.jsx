@@ -1,7 +1,6 @@
-import { InputField } from "../../../../shared/ui/input-field/InputField";
+import { InputField, Logo } from "@/shared";
 import "../../style/auth.css";
-import { Logo } from "../../../../shared/ui/logo/Logo";
-import { useInput } from "../../../../shared/hooks/useInput";
+import { useInput } from "@/shared";
 import {
   LoginButton,
   useLogin,

@@ -1,4 +1,4 @@
-import Timestamp from "../../../shared/utils/timestamp.jsx";
+import Timestamp from "../../../shared/utils/timestamp.js";
 
 export const CommentCardProps = (comment) => ({
   commentId: comment.commentId,

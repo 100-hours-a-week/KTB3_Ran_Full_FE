@@ -1,4 +1,4 @@
-import { useInput } from "../../../../shared/hooks/useInput.jsx";
+import { useInput } from "../../../../shared/lib/useInput.jsx";
 import { useLocation } from "react-router-dom";
 import {
   PostCreateButton,

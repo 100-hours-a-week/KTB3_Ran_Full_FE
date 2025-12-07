@@ -3,7 +3,7 @@ import {
   CommentUpdateButton,
   useCommentUpdate,
 } from "@/features/comment/update";
-import { useInput } from "../../../../shared/hooks/useInput.jsx";
+import { useInput } from "../../../../shared/lib/useInput.jsx";
 import "../../../../entities/comment/style/comment.css";
 import { useCommentCreat } from "@/features/comment/create";
 import { useEffect } from "react";

@@ -1,6 +1,4 @@
-import { useInput } from "../../../../shared/hooks/useInput";
-import { InputField } from "../../../../shared/ui/input-field/InputField";
-import { Logo } from "../../../../shared/ui/logo/Logo";
+import { InputField, Logo, useInput } from "@/shared";
 import {
   SignupButton,
   useSignup,

@@ -1,8 +1,7 @@
-import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { Endpoint, useApiMutation } from "@/shared";
 import { CommentCreatDto } from "./CommentCreatDto.js";
 import { useQueryClient } from "@tanstack/react-query";
-import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
-import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
+import { useToast } from "@/shared";
 
 //postId가 들어와야함
 export function useCommentCreat(postId) {

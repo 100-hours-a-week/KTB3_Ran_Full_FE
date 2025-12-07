@@ -1,4 +1,4 @@
-import { PrimaryButton } from "../../../shared/ui/button/PrimaryButton";
+import { PrimaryButton } from "@/shared";
 import "../style/confirmModal.css";
 
 export function ConfirmModal({ mode, domainType, onConfirm, onCancel }) {
