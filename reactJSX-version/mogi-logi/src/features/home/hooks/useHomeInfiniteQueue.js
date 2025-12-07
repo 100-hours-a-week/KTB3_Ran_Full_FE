@@ -20,7 +20,10 @@ export function useHomeInfiniteQueue() {
     getNextPageParam: (lastPage) => {
       return lastPage.nextCursor ?? undefined;
     },
-
-    staleTime: 1000 * 30, // 30초 캐싱
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    gcTime: Infinity,
+    staleTime: Infinity,
   });
 }
