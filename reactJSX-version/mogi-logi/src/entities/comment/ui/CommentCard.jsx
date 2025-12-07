@@ -1,11 +1,11 @@
-import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGroupContainer";
+import { ActionGroupContainer } from "@/features/actionGroup";
 import { ContentType } from "../../../shared/lib/ContentType";
 import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
 import "../style/comment.css";
 import { UserMetaProps } from "../../../shared/ui/userMeta/UserMetaProps.js";
 
 // props: { author, createdAt, commentId, content, postId }
-export default function CommentCard(props) {
+export function CommentCard(props) {
   const userMetaProps = UserMetaProps(props);
   return (
     <div className="comment-card">

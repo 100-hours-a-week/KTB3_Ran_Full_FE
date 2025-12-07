@@ -1,9 +1,11 @@
-import { CommentCreateButton } from "../../../features/comment/create/ui/CommentCreateButton";
-import { CommentUpdateButton } from "../../../features/comment/update/ui/CommentUpdateButton.jsx";
-import { useInput } from "../../../shared/hooks/useInput";
-import "../style/comment.css";
-import { useCommentCreat } from "../../../features/comment/create/hooks/useCommentCreat";
-import { useCommentUpdate } from "../../../features/comment/update/hooks/useCommentUpdate.js";
+import { CommentCreateButton } from "./CommentCreateButton.jsx";
+import {
+  CommentUpdateButton,
+  useCommentUpdate,
+} from "@/features/comment/update";
+import { useInput } from "../../../../shared/hooks/useInput.jsx";
+import "../../../../entities/comment/style/comment.css";
+import { useCommentCreat } from "@/features/comment/create";
 import { useEffect } from "react";
 
 export function CommentCreatForm({

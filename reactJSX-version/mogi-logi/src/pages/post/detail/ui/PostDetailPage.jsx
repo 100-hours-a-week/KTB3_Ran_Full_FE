@@ -1,16 +1,14 @@
-import { useMemo } from "react";
-import { PostCountProps } from "../../../../entities/post/model/PostCountProps.jsx";
-import { PostHeaderProps } from "../../../../entities/post/model/PostHeaderProps.jsx";
-import { PostContent } from "../../../../entities/post/ui/PostContent.jsx";
-import PostCountGroup from "../../../../entities/post/ui/PostCountGroup.jsx";
-import PostHeader from "../../../../entities/post/ui/PostHeader.jsx";
+import { PostCountProps } from "@/entities/post";
+import { PostHeaderProps } from "@/entities/post";
+import { PostContent } from "@/entities/post";
+import { PostCountGroup } from "@/entities/post";
+import { PostHeader } from "@/entities/post";
 import ScrollProgressBar from "../../../../widgets/ScrollProgressBar/ui/ScrollProgressBar.jsx";
-import { usePostDetail } from "../../../../features/post/detail/hooks/usePostDetail.js";
-import { PostContentProps } from "../../../../entities/post/model/PostContentProps.jsx";
+import { PostContentProps } from "@/entities/post";
 import { PostComments } from "../../../../widgets/post-comments/ui/PostComments.jsx";
 import { useParams } from "react-router-dom";
-import { useLikeCreat } from "../../../../features/like/creat/hooks/useLikeCreat.js";
-import { useLikeDelete } from "../../../../features/like/delete/hooks/useLikeDelete.js";
+import { usePostDetail } from "@/features/post";
+import { useLikeCreat, useLikeDelete } from "@/features/like";
 
 export function PostDetailPage() {
   const { id } = useParams();
@@ -35,7 +33,8 @@ export function PostDetailPage() {
       await likeCreat();
     } else {
       await likeDelete();
-    }  };
+    }
+  };
   return (
     <div>
       <ScrollProgressBar />

@@ -1,11 +1,12 @@
-import CommentCard from "../../../entities/comment/ui/CommentCard";
-import { CommentCreatForm } from "../../../entities/comment/ui/CommentCreatForm";
-import { CommentCardProps } from "../../../entities/comment/model/CommentCardProps";
-import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatProps";
-import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
 import { useState } from "react";
+import { CommentCard, CommentCardProps } from "@/entities/comment";
+import {
+  CommentCreatForm,
+  CommentCreatProps,
+  useCommentDelete,
+  useComments,
+} from "@/features/comment";
 import "./postComment.css";
-import { useComments } from "../../../features/comment/read/hooks/useCommentRead.js";
 
 //post  = {id, commentId}
 export function PostComments({ post, onLoad }) {

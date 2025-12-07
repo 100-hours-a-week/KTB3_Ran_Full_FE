@@ -1,14 +1,14 @@
-import { useSignup } from "../../../../features/auth/hooks/useSignup";
+import { useInput } from "../../../../shared/hooks/useInput";
+import { InputField } from "../../../../shared/ui/input-field/InputField";
+import { Logo } from "../../../../shared/ui/logo/Logo";
 import {
+  SignupButton,
+  useSignup,
   validateConfirmPassword,
   validateEmail,
   validatePassword,
   validateUsername,
-} from "../../../../features/auth/lib/validater";
-import { SignupButton } from "../../../../features/auth/ui/SignupButton";
-import { useInput } from "../../../../shared/hooks/useInput";
-import { InputField } from "../../../../shared/ui/input-field/InputField";
-import { Logo } from "../../../../shared/ui/logo/Logo";
+} from "@/features/auth";
 
 export function SignupPage() {
   const email = useInput("", validateEmail);

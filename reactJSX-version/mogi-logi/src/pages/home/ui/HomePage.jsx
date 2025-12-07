@@ -1,8 +1,8 @@
-import { PostCardProps } from "../../../entities/post/model/PostCardProps";
+import { PostCardProps } from "@/entities/post";
 import { useEffect, useRef } from "react";
-import { PostCard } from "../../../entities/post/ui/PostCard";
-import { PostCreateNavButton } from "../../../features/post/create/ui/PostNavIconButton";
-import { useHomeInfiniteQueue } from "../../../features/home/hooks/useHomeInfiniteQueue.js";
+import { PostCard } from "@/entities/post";
+import { PostCreateNavButton } from "@/features/post";
+import { useHomeInfiniteQueue } from "@/features/home";
 import { useScrollStore } from "../../../shared/lib/useScrollStore.js";
 
 export function HomePage() {

@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
-import { CommentCreatDto } from "../model/commentCreatDto";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { CommentCreatDto } from "./CommentCreatDto.js";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";

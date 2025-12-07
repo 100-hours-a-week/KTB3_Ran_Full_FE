@@ -1,13 +1,13 @@
 import { InputField } from "../../../../shared/ui/input-field/InputField";
 import "../../style/auth.css";
 import { Logo } from "../../../../shared/ui/logo/Logo";
-import { LoginButton } from "../../../../features/auth/ui/LoginButton";
 import { useInput } from "../../../../shared/hooks/useInput";
 import {
+  LoginButton,
+  useLogin,
   validateEmail,
   validatePassword,
-} from "../../../../features/auth/lib/validater";
-import { useLogin } from "../../../../features/auth/hooks/useLogin";
+} from "@/features/auth";
 
 //로그인 및 회원가입 구현시 form 사용하기!!
 

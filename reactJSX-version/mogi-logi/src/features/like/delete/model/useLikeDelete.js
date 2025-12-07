@@ -1,27 +1,26 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { useApi } from "../../../../shared/api/useApi.js";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 
-export function usePostDelete(postId) {
+export function useLikeDelete(postId) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { addToast } = useToast();
-  console.log(postId);
 
-  const postDeleteMutation = useApiMutation({
-    url: Endpoint.POST.DELETE(postId),
+  const likeDeleteMutation = useApiMutation({
+    url: Endpoint.LIKE.DELETE(postId),
     method: "DELETE",
     onSuccess: () => {
+      queryClient.invalidateQueries(["post"], postId);
       queryClient.invalidateQueries(["posts"]);
-      addToast("게시글 삭제 완료");
-      navigate("/home");
     },
   });
 
   return {
-    postDelete: postDeleteMutation.mutate,
-    isLoading: postDeleteMutation.isPending,
+    likeDelete: likeDeleteMutation.mutate,
+    isLoading: likeDeleteMutation.isPending,
   };
 }

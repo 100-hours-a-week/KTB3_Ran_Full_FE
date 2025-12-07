@@ -1,4 +1,4 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
 import { useApiQuery } from "../../../../shared/api/useApiQuery.js";
 
 export function usePostDetail(postId) {

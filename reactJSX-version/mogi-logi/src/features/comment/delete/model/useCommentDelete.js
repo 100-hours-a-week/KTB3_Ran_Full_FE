@@ -1,4 +1,4 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";

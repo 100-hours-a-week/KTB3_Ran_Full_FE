@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
-import { PostUpdateDto } from "../model/PostUpdateDto.js";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { PostUpdateDto } from "./PostUpdateDto.js";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 import { useNavigate } from "react-router-dom";

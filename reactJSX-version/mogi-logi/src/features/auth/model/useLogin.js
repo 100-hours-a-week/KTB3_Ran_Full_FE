@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Endpoint } from "../../../shared/api/endpoint";
-import { loginDto } from "../model/authDto";
+import { Endpoint } from "../../../shared/api/endpoint.js";
+import { loginDto } from "./authDto.js";
 import { useApiMutation } from "../../../shared/api/useApiMutation.js";
 
 //hooks

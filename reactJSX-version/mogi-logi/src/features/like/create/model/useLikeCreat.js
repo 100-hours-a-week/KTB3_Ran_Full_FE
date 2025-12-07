@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
-import { useApi } from "../../../../shared/api/useApi";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { useApi } from "../../../../shared/api/useApi.js";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";

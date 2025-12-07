@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../../shared/api/endpoint";
-import { PostCreatDto } from "../model/PostCreatDto";
+import { Endpoint } from "../../../../shared/api/endpoint.js";
+import { PostCreatDto } from "./PostCreatDto.js";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../../shared/api/useApiMutation.js";

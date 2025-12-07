@@ -1,5 +1,5 @@
-import { Endpoint } from "../../../shared/api/endpoint";
-import { useApi } from "../../../shared/api/useApi";
+import { Endpoint } from "../../../shared/api/endpoint.js";
+import { useApi } from "../../../shared/api/useApi.js";
 
 export function useHome() {
   const { requestApi } = useApi();

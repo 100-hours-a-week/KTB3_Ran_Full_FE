@@ -1,14 +1,14 @@
-import { usePostCreat } from "../../../../features/post/create/hooks/usePostCreat.js";
-import { PostCreateButton } from "../../../../features/post/create/ui/PostCreateButton.jsx";
-import PostCreateContentInput from "../../../../features/post/create/ui/PostCreateContentInput.jsx";
-import { PostCreateTitleInput } from "../../../../features/post/create/ui/PostCreateTitleInput.jsx";
 import { useInput } from "../../../../shared/hooks/useInput.jsx";
+import { useLocation } from "react-router-dom";
 import {
+  PostCreateButton,
+  PostCreateContentInput,
+  PostCreateTitleInput,
+  usePostCreat,
+  usePostUpdate,
   validatePostContent,
   validatePostTitle,
-} from "../../../../features/post/create/lib/validater.js";
-import { useLocation } from "react-router-dom";
-import { usePostUpdate } from "../../../../features/post/update/hooks/usePostUpdate.js";
+} from "@/features/post";
 
 export function PostCreatePage() {
   const location = useLocation();
