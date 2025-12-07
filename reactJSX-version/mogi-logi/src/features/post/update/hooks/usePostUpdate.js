@@ -17,7 +17,7 @@ export function usePostUpdate(postId) {
     method: "PATCH",
     dtoFn: PostUpdateDto,
     onSuccess: () => {
-      queryClient.invalidateQueries(["posts"]);
+      queryClient.invalidateQueries(["post"], postId);
       addToast("게시글 수정 성공");
       navigate(`/post/get/${postId}`);
     },

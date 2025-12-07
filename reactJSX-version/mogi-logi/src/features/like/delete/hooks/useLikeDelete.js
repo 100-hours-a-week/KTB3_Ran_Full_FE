@@ -1,22 +1,26 @@
 import { Endpoint } from "../../../../shared/api/endpoint";
 import { useApi } from "../../../../shared/api/useApi";
+import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
+import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
 
-export function useLikeDelete() {
-  const { requestApi } = useApi();
-  //data :content
-  const handleLikeDelete = async (data) => {
-    try {
-      /*dto*/
-      console.log(data);
-      const res = await requestApi(Endpoint.LIKE.DELETE(data.postId), "DELETE");
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-      console.log(res);
-      return res;
-    } catch (e) {
-      console.error(e);
-    }
+export function useLikeDelete(postId) {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const { addToast } = useToast();
+
+  const likeDeleteMutation = useApiMutation({
+    url: Endpoint.LIKE.DELETE(postId),
+    method: "DELETE",
+    onSuccess: () => {
+      queryClient.invalidateQueries(["post"], postId);
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
+
+  return {
+    likeDelete: likeDeleteMutation.mutate,
+    isLoading: likeDeleteMutation.isPending,
   };
-  return { handleLikeDelete };
 }

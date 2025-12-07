@@ -16,8 +16,8 @@ export function PostDetailPage() {
   const { id } = useParams();
   const postId = id;
 
-  const { handleLikeCreat } = useLikeCreat();
-  const { handleLikeDelete } = useLikeDelete();
+  const { likeCreat, isLoading: isCreating } = useLikeCreat(postId);
+  const { likeDelete, isLoading: isDeleting } = useLikeDelete(postId);
 
   const { data, isLoading, error, refetch } = usePostDetail(postId);
 
@@ -29,12 +29,13 @@ export function PostDetailPage() {
   const contentProps = PostContentProps(data);
   const countProps = PostCountProps(data.count);
 
+  if (isLoading) return <div>로딩중...</div>;
+
   const onLikeToggle = async () => {
-    if (!data) return;
     if (!data.liked) {
-      await handleLikeCreat({ postId: postId });
+      await likeCreat();
     } else {
-      await handleLikeDelete({ postId: postId });
+      await likeDelete();
     }
 
     refetch();

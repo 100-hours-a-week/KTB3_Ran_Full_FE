@@ -1,22 +1,29 @@
 import { Endpoint } from "../../../../shared/api/endpoint";
 import { useApi } from "../../../../shared/api/useApi";
+import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
+import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
+import { useApiMutation } from "../../../../shared/api/useApiMutation.js";
+import { PostCreatDto } from "../../../post/create/model/PostCreatDto.js";
 
-export function useLikeCreat() {
-  const { requestApi } = useApi();
-  //data :content
-  const handleLikeCreat = async (data) => {
-    try {
-      /*dto*/
-      console.log(data);
-      const res = await requestApi(Endpoint.LIKE.POST(data.postId), "POST");
-      if (!res) {
-        throw new Error("data가 반환되지 않았습니다.");
-      }
-      console.log(res);
-      return res;
-    } catch (e) {
-      console.error(e);
-    }
+export function useLikeCreat(postId) {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { addToast } = useToast();
+
+  const likeCreatMutation = useApiMutation({
+    url: Endpoint.LIKE.POST(postId),
+    method: "POST",
+    onSuccess: () => {
+      //캐시 posts에 저장해둔 값 캐시 무효화
+      queryClient.invalidateQueries(["post"], postId);
+      queryClient.invalidateQueries(["posts"]);
+      console.log("좋아요를 눌렀습니다.");
+    },
+  });
+
+  return {
+    likeCreat: likeCreatMutation.mutate,
+    isLoading: likeCreatMutation.isPending,
   };
-  return { handleLikeCreat };
 }
