@@ -16,8 +16,8 @@ export function PostCreatePage() {
   const postId = editData?.postId;
   const isEditMode = editData?.mode === "update";
 
-  const { postUpdate, isLoading: isUpdating } = usePostUpdate(postId);
-  const { postCreat, isLoading: isCreating } = usePostCreat();
+  const { mutate: postUpdate, isLoading: isUpdating } = usePostUpdate(postId);
+  const { mutate: postCreat, isLoading: isCreating } = usePostCreat();
 
   const title = useInput(editData?.title || "", validatePostTitle);
   const content = useInput(editData?.content || "", validatePostContent);

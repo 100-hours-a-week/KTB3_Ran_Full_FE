@@ -1,29 +1,11 @@
-import { Endpoint } from "../../../../shared/api/constants/endpoint.js";
-import { PostCreatDto } from "./PostCreatDto.js";
-import { useNavigate } from "react-router-dom";
-import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
-import { useApiMutation } from "../../../../shared/api/hooks/useApiMutation.js";
-import { useQueryClient } from "@tanstack/react-query";
+import { Endpoint, postMutation } from "@/shared";
+import { PostCreatDto } from "./PostCreatDto";
 
-export function usePostCreat() {
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
-  const { addToast } = useToast();
-
-  const postCreatMutation = useApiMutation({
-    url: Endpoint.POST.POST,
-    method: "POST",
-    dtoFn: PostCreatDto,
-    onSuccess: () => {
-      //캐시 posts에 저장해둔 값 캐시 무효화
-      queryClient.invalidateQueries(["posts"]);
-      addToast("게시글 생성 성공");
-      navigate("/home");
-    },
-  });
-
-  return {
-    postCreat: postCreatMutation.mutate,
-    isLoading: postCreatMutation.isPending,
-  };
-}
+export const usePostCreat = postMutation({
+  urlFn: () => Endpoint.POST.POST,
+  method: "POST",
+  dtoFn: PostCreatDto,
+  invalidates: [["posts"]],
+  successMessage: "게시글 생성 성공",
+  redirectTo: "/home",
+});

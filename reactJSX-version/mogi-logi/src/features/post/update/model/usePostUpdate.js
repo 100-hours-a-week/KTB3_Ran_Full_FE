@@ -1,30 +1,14 @@
-import { Endpoint } from "../../../../shared/api/constants/endpoint.js";
-import { PostUpdateDto } from "./PostUpdateDto.js";
-import { useToast } from "../../../../shared/ui/toast/useToast.jsx";
-import { useApiMutation } from "../../../../shared/api/hooks/useApiMutation.js";
-import { useNavigate } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
+import { Endpoint, postMutation } from "@/shared";
+import { PostUpdateDto } from "./PostUpdateDto";
 
-//postId가 들어와야함
-export function usePostUpdate(postId) {
-  console.log(postId);
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const { addToast } = useToast();
-
-  const postUpdateMutation = useApiMutation({
-    url: Endpoint.POST.UPDATE(postId),
-    method: "PATCH",
-    dtoFn: PostUpdateDto,
-    onSuccess: () => {
-      queryClient.invalidateQueries(["post"], postId);
-      addToast("게시글 수정 성공");
-      navigate(`/post/get/${postId}`);
-    },
-  });
-
-  return {
-    postUpdate: postUpdateMutation.mutate,
-    isLoading: postUpdateMutation.isPending,
-  };
-}
+export const usePostUpdate = postMutation({
+  urlFn: (postId) => Endpoint.POST.UPDATE(postId),
+  method: "PATCH",
+  dtoFn: PostUpdateDto,
+  invalidates: [
+    ["posts"], // 전체 목록 리프레시
+    ["post", (postId) => postId], // 단일 포스트 캐시 리프레시
+  ],
+  successMessage: "게시글 수정 성공",
+  redirectTo: (postId) => `/post/get/${postId}`,
+});
