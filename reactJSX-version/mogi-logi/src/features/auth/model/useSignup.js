@@ -1,5 +1,5 @@
 import { Endpoint } from "../../../shared/api/endpoint.js";
-import { signupDto } from "./authDto.js";
+import { signupDto } from "./auth.dto.js";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../../shared/ui/toast/useToast.jsx";
 import { useApiMutation } from "../../../shared/api/useApiMutation.js";

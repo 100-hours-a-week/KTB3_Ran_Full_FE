@@ -5,7 +5,7 @@ export {
   validatePassword,
   validateUsername,
   validateConfirmPassword,
-} from "./lib/validater.js";
-export { authDto } from "./model/authDto";
+} from "./lib/validator.js";
+export { authDto } from "./model/auth.dto.js";
 export { LoginButton } from "./ui/LoginButton";
 export { SignupButton } from "./ui/SignupButton";
