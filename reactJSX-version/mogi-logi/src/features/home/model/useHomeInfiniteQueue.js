@@ -20,10 +20,11 @@ export function useHomeInfiniteQueue() {
     getNextPageParam: (lastPage) => {
       return lastPage.nextCursor ?? undefined;
     },
-    refetchOnMount: false,
+    // 생성/좋아요 등 무효화 후 홈으로 돌아오면 항상 최신 데이터를 받는다.
+    refetchOnMount: "always",
+    refetchOnReconnect: true,
     refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    gcTime: Infinity,
-    staleTime: Infinity,
+    staleTime: Infinity, // 10초
+    gcTime: 1000 * 60 * 60, // 1시간
   });
 }
