@@ -23,7 +23,6 @@ export function PostDetailPage() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>error</div>;
-  console.log(data);
 
   const headerProps = PostHeaderProps(data);
   const contentProps = PostContentProps(data);
@@ -36,10 +35,7 @@ export function PostDetailPage() {
       await likeCreat();
     } else {
       await likeDelete();
-    }
-
-    refetch();
-  };
+    }  };
   return (
     <div>
       <ScrollProgressBar />
