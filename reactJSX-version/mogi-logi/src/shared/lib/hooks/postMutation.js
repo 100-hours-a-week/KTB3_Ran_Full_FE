@@ -21,19 +21,18 @@ export function postMutation({
       method,
       dtoFn,
       onSuccess: () => {
-        invalidates.forEach((key) => {
-          if (Array.isArray(key)) {
-            queryClient.invalidateQueries(key);
-          } else {
-            queryClient.invalidateQueries([key]);
-          }
+        invalidates.forEach((queryKey) => {
+          queryClient.invalidateQueries({
+            queryKey: Array.isArray(queryKey) ? queryKey : [queryKey],
+            refetchType: "active",
+          });
         });
 
         successMessage && addToast(successMessage);
 
         if (redirectTo) {
           navigate(
-            typeof redirectTo === "function" ? redirectTo(postId) : redirectTo,
+            typeof redirectTo === "function" ? redirectTo(postId) : redirectTo
           );
         }
       },
