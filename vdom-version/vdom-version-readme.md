@@ -210,7 +210,7 @@ frontend/
 
 ## 3-5. 아키텍처 흐름도
 
-![diagram.png](TroubleShooting/img/diagram.png)
+![diagram.png](../TroubleShooting/img/diagram.png)
 
 ---
 
@@ -235,21 +235,21 @@ frontend/
 - 여백
 - 타이포그래피
 
-![css.png](TroubleShooting/img/css.png)
+![css.png](../TroubleShooting/img/css.png)
 ---
 
 # 6. TroubleShooting
 
 **[vanila JS]**
 
-- [[TroubleShooting] DTO와 Props 역할 분리](TroubleShooting/dto-props-separation.md)
-- [[TroubleShooting] ActionGroup 재사용 컴포넌트 설계](TroubleShooting/actiongroup-reusable-component.md)
-- [[TroubleShooting] 로그인 상태 관리와 라우팅 충돌 문제](TroubleShooting/spa-auth-redirect-issue.md)
-- [[TroubleShooting] SPA Header 상태 제어와 Web Component 도입](TroubleShooting/webcomponent-header-state-control.md)
+- [[TroubleShooting] DTO와 Props 역할 분리](../TroubleShooting/dto-props-separation.md)
+- [[TroubleShooting] ActionGroup 재사용 컴포넌트 설계](../TroubleShooting/actiongroup-reusable-component.md)
+- [[TroubleShooting] 로그인 상태 관리와 라우팅 충돌 문제](../TroubleShooting/spa-auth-redirect-issue.md)
+- [[TroubleShooting] SPA Header 상태 제어와 Web Component 도입](../TroubleShooting/webcomponent-header-state-control.md)
 
 **[vanila JS - VDOM]**
 
-- [[TroubleShooting] VDOM 환경에서 이벤트 리스너로 발생한 무한 루프](TroubleShooting/vdom-eventlistener-infinite-loop.md)
+- [[TroubleShooting] VDOM 환경에서 이벤트 리스너로 발생한 무한 루프](../TroubleShooting/vdom-eventlistener-infinite-loop.md)
 - [[TroubleShooting] useState]()
 
 ---

@@ -33,7 +33,7 @@ Vanilla JavaScript만으로 만든 SPA 버전으로,
 
 등을 포함해 **React 같은 렌더링 사이클을 직접 구현한 학습형 버전**입니다.
 
-> **[VDOM Version README 보러가기](./vdom-version/README.md)**
+> **[VDOM Version README 보러가기](./vdom-version/vdom-version-readme.md)**
 
 ---
 
@@ -51,7 +51,7 @@ VDOM 버전에서 얻은 인사이트를 기반으로
 - Container–Presenter / Compound Component / Custom Hook
 - 디자인 토큰 (Color/Spacing/Typography)
 
-> **[React Version README 보러가기](./react-version/README.md)**
+> **[React Version README 보러가기](./reactJSX-version/mogi-logi/reactJSX-version-readme.md)**
 
 ---
 
