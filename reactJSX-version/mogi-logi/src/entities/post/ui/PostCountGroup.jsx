@@ -1,7 +1,7 @@
 import { Icon } from "../../../shared/ui/icons/Icon";
 import "../style/post.css";
 
-export default function PostCountGroup({
+export function PostCountGroup({
   likeCount,
   commentCount,
   viewCount,

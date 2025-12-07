@@ -1,13 +1,10 @@
-import { ActionGroupContainer } from "../../../features/actionGroup/ui/ActionGroupContainer";
-import { ContentType } from "../../../shared/lib/ContentType";
-import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
+import { ActionGroupContainer } from "@/features/actionGroup";
+import { ContentType, UserMeta, UserMetaProps } from "@/shared";
 import "../style/comment.css";
-import { UserMetaProps } from "../../../shared/ui/userMeta/UserMetaProps.js";
 
 // props: { author, createdAt, commentId, content, postId }
-export default function CommentCard(props) {
+export function CommentCard(props) {
   const userMetaProps = UserMetaProps(props);
-  console.log(userMetaProps);
   return (
     <div className="comment-card">
       <div className="top-area">

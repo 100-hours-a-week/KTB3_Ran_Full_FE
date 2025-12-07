@@ -1,23 +1,25 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
+import { ToastContext } from "./ToastContext";
 import "./toast.css";
-
-const ToastContext = createContext(null);
 
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback((message) => {
-    const id = Date.now(); //고유 id 생성
+    const id = Date.now();
+
     setToasts((prev) => [...prev, { id, message }]);
 
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
     }, 1400);
   }, []);
+
   return (
     <ToastContext.Provider value={{ addToast }}>
       {children}
-      <div>
+
+      <div className="toast-container">
         {toasts.map((t) => (
           <div key={t.id} className="toast">
             {t.message}
@@ -26,7 +28,4 @@ export function ToastProvider({ children }) {
       </div>
     </ToastContext.Provider>
   );
-}
-export function useToast() {
-  return useContext(ToastContext);
 }

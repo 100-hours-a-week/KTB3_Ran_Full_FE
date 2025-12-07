@@ -1,4 +1,4 @@
-import { FooterLogo } from "../../../shared/ui/logo/FooterLogo";
+import { FooterLogo } from "@/shared/ui/logo";
 import "./Footer.css";
 
 export const Footer = () => {

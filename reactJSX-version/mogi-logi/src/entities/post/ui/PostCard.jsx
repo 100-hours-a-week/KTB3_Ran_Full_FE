@@ -1,12 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { UserMeta } from "../../../shared/ui/userMeta/userMeta";
+import { UserMeta } from "@/shared";
 import "../style/post.css";
-import PostCountGroup from "./PostCountGroup";
+import { PostCountGroup } from "./PostCountGroup";
 
-export function PostCard(props) {
+export function PostCard({
+  postId,
+  title,
+  content,
+  author,
+  createdAt,
+  commentCount,
+  likeCount,
+  viewCount,
+  liked,
+  onLikeToggle,
+}) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/post/get/${props.postId}`);
+    navigate(`/post/get/${postId}`);
   };
 
   return (
@@ -15,13 +26,19 @@ export function PostCard(props) {
       <div className="card-wrapper">
         {/* 게시글 헤더/내용 */}
         <div className="card-inner">
-          <div className="card-title">{props.title}</div>
-          <div className="card-content">{props.content}</div>
+          <div className="card-title">{title}</div>
+          <div className="card-content">{content}</div>
         </div>
         {/* 사용자 메타 */}
         <div className="card-meta">
-          <UserMeta {...props} />
-          <PostCountGroup {...props} />
+          <UserMeta author={author} date={createdAt} />
+          <PostCountGroup
+            likeCount={likeCount}
+            commentCount={commentCount}
+            viewCount={viewCount}
+            liked={liked}
+            onLikeToggle={onLikeToggle}
+          />
         </div>
       </div>
     </div>

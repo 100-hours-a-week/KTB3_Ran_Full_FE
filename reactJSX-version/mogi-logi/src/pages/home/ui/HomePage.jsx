@@ -1,74 +1,90 @@
-import { PostCardProps } from "../../../entities/post/model/PostCardProps";
-import { useEffect, useRef, useState } from "react";
-import { PostCard } from "../../../entities/post/ui/PostCard";
-import { useHome } from "../../../features/home/hooks/useHome";
-import { PostCreateNavButton } from "../../../features/post/create/ui/PostNavIconButton";
+import { PostCardProps } from "@/entities/post";
+import { useEffect, useRef } from "react";
+import { PostCard } from "@/entities/post";
+import { PostCreateNavButton } from "@/features/post";
+import { useHomeInfiniteQueue } from "@/features/home";
+import { useScrollStore } from "@/shared";
 
 export function HomePage() {
-  const [posts, setPosts] = useState([]); // 누적된 전체 게시글 목록
-  const [cursor, setCursor] = useState(0); // 현재 커서 위치
-  const [hasNext, setHasNext] = useState(true); // 마지막 페이지 여부
-  const [loading, setLoading] = useState(false); // 중복 요청 방지
-
-  const { handleUseHome } = useHome();
   const loaderRef = useRef(null);
 
-  // 페이지 로드 함수 (offset -> cursor 적용 )
-  const loadPage = async () => {
-    if (loading || !hasNext) return;
+  const { data, fetchNextPage, hasNextPage, isLoading } =
+    useHomeInfiniteQueue();
 
-    setLoading(true);
+  const { saveScroll, savePageIndex, getSavedState } = useScrollStore();
 
-    try {
-      const postPage = await handleUseHome(cursor, 10);
-
-      setPosts((prev) => [...prev, ...postPage.content]);
-      setHasNext(postPage.nextCursor); //응답에서 받은 cursor를 저장해두었다가 다음요청에 사용한다.
-      setCursor(postPage.hasNext);
-    } catch (e) {
-      console.error(e);
-    }
-
-    setLoading(false);
-  };
-
-  // 최초 1번 실행
+  //1. 스크롤 위치 저장
   useEffect(() => {
-    loadPage();
+    const save = () => saveScroll();
+    window.addEventListener("scroll", save);
+    return () => window.removeEventListener("scroll", save);
   }, []);
 
-  // Intersection Observer
+  //2) 새로고침 시 스크롤 + 페이지 복원
+  useEffect(() => {
+    const { scrollY, pageIndex } = getSavedState();
+    if (scrollY === 0 && pageIndex === 0) return; // 저장 기록 없으면 패스
+
+    let pageLoaded = 0;
+
+    // 저장된 페이지까지 fetch 반복
+    const restore = async () => {
+      while (pageLoaded < pageIndex && hasNextPage) {
+        await fetchNextPage();
+        pageLoaded++;
+      }
+
+      // 페인트 이후 스크롤 복원
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
+    };
+
+    restore();
+  }, [fetchNextPage, hasNextPage]);
+
+  //3) 페이지 로드될 때마다 현재 페이지 index 저장
+  useEffect(() => {
+    if (!data) return;
+    savePageIndex(data.pages.length - 1);
+  }, [data]);
+
+  // 4) 옵저버
+
   useEffect(() => {
     if (!loaderRef.current) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting) {
-          loadPage();
+        if (entry.isIntersecting && hasNextPage) {
+          fetchNextPage();
         }
       },
       { threshold: 1 },
     );
 
     observer.observe(loaderRef.current);
-    return () => observer.disconnect(); //클린업
-  }, [loaderRef.current, hasNext, loading]);
+    return () => observer.disconnect();
+  }, [hasNextPage, fetchNextPage]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="post-wrapper">
-      {posts.map((post) => {
-        const postCard = PostCardProps(post);
-        return (
-          <PostCard
-            key={postCard.postId}
-            {...postCard}
-            likeColor={"var(--color-meta-gray)"}
-          />
-        );
-      })}
+      {data?.pages?.map((page) =>
+        page.content.map((post) => {
+          const postCard = PostCardProps(post);
+          return (
+            <PostCard
+              key={postCard.postId}
+              {...postCard}
+              likeColor={"var(--color-meta-gray)"}
+            />
+          );
+        }),
+      )}
 
-      {/*이 div가 화면에 보일 때 loadPage 실행됨 */}
       <div ref={loaderRef} style={{ height: "50px" }} />
 
       <PostCreateNavButton />

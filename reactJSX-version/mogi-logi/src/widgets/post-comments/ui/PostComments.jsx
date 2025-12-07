@@ -1,15 +1,18 @@
-import CommentCard from "../../../entities/comment/ui/CommentCard";
-import { CommentCreatForm } from "../../../entities/comment/ui/CommentCreatForm";
-import { CommentCardProps } from "../../../entities/comment/model/CommentCardProps";
-import { CommentCreatProps } from "../../../entities/comment/model/CommentCreatProps";
-import { useCommentDelete } from "../../../features/comment/delete/hooks/useCommentDelete.js";
-import { useToast } from "../../../shared/ui/toast/Toast.jsx";
 import { useState } from "react";
+import { CommentCard, CommentCardProps } from "@/entities/comment";
+import {
+  CommentCreatForm,
+  CommentCreatProps,
+  useCommentDelete,
+  useComments,
+} from "@/features/comment";
 import "./postComment.css";
 
+//post  = {id, commentId}
 export function PostComments({ post, onLoad }) {
-  const { handleCommentDelete } = useCommentDelete();
-  const { addToast } = useToast();
+  console.log(post);
+  const { data: comments, isLoading: isReading } = useComments(post.id);
+  const { commentDelete, isLoading: isDeleting } = useCommentDelete(post.id);
 
   //수정모드 상태 추가
   const [editMode, setEditMode] = useState(false);
@@ -18,9 +21,7 @@ export function PostComments({ post, onLoad }) {
 
   //댓글 삭제
   const onDelete = async (commentId) => {
-    await handleCommentDelete({ postId: post.id, commentId });
-    addToast("삭제 완료");
-    onLoad();
+    await commentDelete(commentId);
   };
 
   // 수정 버튼 클릭 시
@@ -37,12 +38,12 @@ export function PostComments({ post, onLoad }) {
     setEditContent("");
   };
 
+  if (isReading) return <div>댓글 불러오는 중...</div>;
+
   const CommentCreatProp = CommentCreatProps(post);
-  const comments = post.comments ?? [];
 
   return (
     <section>
-      {/* 댓글 생성 (현재 문제 commentId에 postID가 붙음)*/}
       <CommentCreatForm
         {...CommentCreatProp}
         mode={editMode ? "update" : "create"}
@@ -54,8 +55,7 @@ export function PostComments({ post, onLoad }) {
         }}
       />
       <div className="post-comment">
-        {/* 댓글 목록 */}
-        {comments.map((comment) => {
+        {comments?.map((comment) => {
           const commentProps = CommentCardProps(comment);
           return (
             <CommentCard

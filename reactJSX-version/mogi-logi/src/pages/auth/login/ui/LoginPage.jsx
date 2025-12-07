@@ -1,13 +1,12 @@
-import { InputField } from "../../../../shared/ui/input-field/InputField";
+import { InputField, Logo } from "@/shared";
 import "../../style/auth.css";
-import { Logo } from "../../../../shared/ui/logo/Logo";
-import { LoginButton } from "../../../../features/auth/ui/LoginButton";
-import { useInput } from "../../../../shared/hooks/useInput";
+import { useInput } from "@/shared";
 import {
+  LoginButton,
+  useLogin,
   validateEmail,
   validatePassword,
-} from "../../../../features/auth/lib/validater";
-import { useLogin } from "../../../../features/auth/hooks/useLogin";
+} from "@/features/auth";
 
 //로그인 및 회원가입 구현시 form 사용하기!!
 
@@ -21,14 +20,15 @@ export function LoginPage() {
     password.value.length > 0 &&
     !email.error &&
     !password.error;
+
   console.log(canSubmit);
-  const { handleLogin } = useLogin();
+  const { login } = useLogin();
 
   //제출
-  const onSubmit = async () => {
+  const onSubmit = () => {
     console.log(email, password);
     if (!canSubmit) return;
-    handleLogin({ email: email.value, password: password.value });
+    login({ email: email.value, password: password.value });
   };
 
   return (

@@ -1,4 +1,4 @@
-import timestamp from "../../../shared/utils/timestamp";
+import timestamp from "../../../shared/utils/timestamp.js";
 
 export const PostCardProps = (post) => ({
   postId: post.id,

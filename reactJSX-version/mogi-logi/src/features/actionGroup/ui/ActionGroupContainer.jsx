@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ActionGroupButton } from "./ActionGroupButton";
 import { ActionGroup } from "./ActionGroup";
 import "../style/actionGroup.css";
-import { ConfirmModal } from "../../modal/ui/ConfirmModal";
+import { ConfirmModal } from "@/features/modal";
 
 export function ActionGroupContainer({
   domainType,

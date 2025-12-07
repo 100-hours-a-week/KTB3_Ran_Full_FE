@@ -1,4 +1,4 @@
-import { AutoResizeTextarea } from "../../../../shared/ui/textarea/AutoResizeTextarea";
+import { AutoResizeTextarea } from "@/shared/index.js";
 
 export default function PostCreateContentInput({
   placeholder = "",

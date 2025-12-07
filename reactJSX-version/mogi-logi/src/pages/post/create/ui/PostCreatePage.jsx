@@ -1,22 +1,23 @@
-import { usePostCreat } from "../../../../features/post/create/hooks/usePostCreat.js";
-import { PostCreateButton } from "../../../../features/post/create/ui/PostCreateButton.jsx";
-import PostCreateContentInput from "../../../../features/post/create/ui/PostCreateContentInput.jsx";
-import { PostCreateTitleInput } from "../../../../features/post/create/ui/PostCreateTitleInput.jsx";
-import { useInput } from "../../../../shared/hooks/useInput.jsx";
+import { useLocation } from "react-router-dom";
 import {
+  PostCreateButton,
+  PostCreateContentInput,
+  PostCreateTitleInput,
+  usePostCreat,
+  usePostUpdate,
   validatePostContent,
   validatePostTitle,
-} from "../../../../features/post/create/lib/validater.js";
-import { useLocation, useNavigate } from "react-router-dom";
-import { usePostUpdate } from "../../../../features/post/update/hooks/usePostUpdate.js";
+} from "@/features/post";
+import { useInput } from "@/shared";
 
 export function PostCreatePage() {
-  const navigate = useNavigate();
   const location = useLocation();
   const editData = location.state; //state 받기기
+  const postId = editData?.postId;
   const isEditMode = editData?.mode === "update";
-  const { handlePostUpdate } = usePostUpdate();
-  const { handlePostCreat } = usePostCreat();
+
+  const { mutate: postUpdate, isLoading: isUpdating } = usePostUpdate(postId);
+  const { mutate: postCreat, isLoading: isCreating } = usePostCreat();
 
   const title = useInput(editData?.title || "", validatePostTitle);
   const content = useInput(editData?.content || "", validatePostContent);
@@ -26,26 +27,22 @@ export function PostCreatePage() {
     content.value.length > 0 &&
     !title.error &&
     !content.error;
+
   const onSubmit = async () => {
-    console.log(canSubmit);
     if (!canSubmit) return;
 
+    const payload = {
+      title: title.value,
+      content: content.value,
+    };
+
     if (isEditMode) {
-      await handlePostUpdate(
-        {
-          title: title.value,
-          content: content.value,
-        },
-        editData.postId,
-      );
-      console.log("완료");
-      navigate(`/post/get/${editData.postId}`);
+      console.log(payload);
+      await postUpdate(payload);
     } else {
-      await handlePostCreat({ title: title.value, content: content.value });
-      navigate("/home");
+      await postCreat(payload);
     }
   };
-
   return (
     <>
       <div>

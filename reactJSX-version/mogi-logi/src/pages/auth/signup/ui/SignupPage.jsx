@@ -1,14 +1,12 @@
-import { useSignup } from "../../../../features/auth/hooks/useSignup";
+import { InputField, Logo, useInput } from "@/shared";
 import {
+  SignupButton,
+  useSignup,
   validateConfirmPassword,
   validateEmail,
   validatePassword,
   validateUsername,
-} from "../../../../features/auth/lib/validater";
-import { SignupButton } from "../../../../features/auth/ui/SignupButton";
-import { useInput } from "../../../../shared/hooks/useInput";
-import { InputField } from "../../../../shared/ui/input-field/InputField";
-import { Logo } from "../../../../shared/ui/logo/Logo";
+} from "@/features/auth";
 
 export function SignupPage() {
   const email = useInput("", validateEmail);
@@ -16,18 +14,35 @@ export function SignupPage() {
   const confirmPassword = useInput("");
   const username = useInput("", validateUsername);
 
-  const confirmPasswordError = validateConfirmPassword({
-    password: password.value,
-    confirmPassword: confirmPassword.value,
-  });
+  const confirmPasswordError =
+    confirmPassword.value.length === 0
+      ? ""
+      : validateConfirmPassword({
+          password: password.value,
+          confirmPassword: confirmPassword.value,
+        });
 
   const canSubmit =
-    !email.error && !password.error && !confirmPasswordError && !username.error;
-  const { handleSignup } = useSignup();
+    email.value.length > 0 &&
+    password.value.length > 0 &&
+    confirmPassword.value.length > 0 &&
+    username.value.length > 0 &&
+    !email.error &&
+    !password.error &&
+    !confirmPasswordError &&
+    !username.error;
+
+  const { signup } = useSignup();
 
   const onSubmit = () => {
+    console.log({
+      email: email.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value,
+      username: username.value,
+    });
     if (!canSubmit) console.log("회원가입의 유효성이 통과되지 않았습니다.");
-    handleSignup({
+    signup({
       email: email.value,
       password: password.value,
       confirmPassword: confirmPassword.value,
