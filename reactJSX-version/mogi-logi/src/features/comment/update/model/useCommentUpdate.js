@@ -1,28 +1,13 @@
-import { Endpoint, useApiMutation } from "@/shared";
-import { CommentUpdateDto } from "./CommentUpdateDto.js";
-import { useToast } from "@/shared";
-import { useQueryClient } from "@tanstack/react-query";
+import { commentMutation, Endpoint } from "@/shared";
+import { CommentUpdateDto } from "./CommentUpdateDto";
 
-export function useCommentUpdate(postId) {
-  const queryClient = useQueryClient();
-  const { addToast } = useToast();
-
-  const commentUpdateMutation = useApiMutation({
-    url: (form) =>
-      Endpoint.COMMENT.UPDATE({
-        postId: form.postId,
-        commentId: form.commentId,
-      }),
-    method: "PATCH",
-    dtoFn: CommentUpdateDto,
-    onSuccess: () => {
-      queryClient.invalidateQueries(["comments", postId]);
-      addToast("댓글 수정 성공");
-    },
-  });
-
-  return {
-    commentUpdate: commentUpdateMutation.mutate,
-    isLoading: commentUpdateMutation.isPending,
-  };
-}
+export const useCommentUpdate = commentMutation({
+  urlFn: (form) =>
+    Endpoint.COMMENT.UPDATE({
+      postId: form.postId,
+      commentId: form.commentId,
+    }),
+  method: "PATCH",
+  dtoFn: CommentUpdateDto,
+  successMessage: "댓글 수정 성공",
+});

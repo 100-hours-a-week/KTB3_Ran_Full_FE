@@ -16,8 +16,10 @@ export function CommentCreatForm({
   onLoad,
 }) {
   const commentValue = useInput(initalContent);
-  const { commentCreat, isLoading: isCreating } = useCommentCreat(postId);
-  const { commentUpdate, isLoading: isUpdating } = useCommentUpdate(postId);
+  const { mutate: commentCreat, isLoading: isCreating } =
+    useCommentCreat(postId);
+  const { mutate: commentUpdate, isLoading: isUpdating } =
+    useCommentUpdate(postId);
   const validateValue = commentValue.value;
 
   useEffect(() => {
