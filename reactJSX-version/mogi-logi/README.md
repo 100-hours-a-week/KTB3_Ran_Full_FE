@@ -198,6 +198,223 @@ FSD의 핵심인
 **“도메인(entities) → 기능(features) → 화면(pages)”**
 흐름이 자연스럽게 구성되도록 하였고, UI/로직이 단계적으로 분리되어 유지보수가 쉬운 구조를 이루도록 하였습니다.
 
+### 폴더 구조
+<details> <summary> 📄 폴더 구조 자세히 보기/숨기기</summary> <div markdown="1">
+
+```
+src
+├─ main.jsx
+├─ App.css
+├─ index.css
+│
+├─ app
+│  ├─ App.jsx
+│  ├─ AppRoot.jsx
+│  ├─ providers
+│  │  ├─ index.js
+│  │  ├─ with-query-client.jsx
+│  │  ├─ with-router.jsx
+│  │  └─ with-toast.jsx
+│  └─ router
+│     ├─ router.jsx
+│     ├─ ProtectedRoute.jsx
+│     └─ routes.js
+│
+├─ features
+│  ├─ home
+│  │  ├─ index.js
+│  │  └─ model
+│  │        ├─ useHome.js
+│  │        └─ useHomeInfiniteQueue.js
+│  │
+│  ├─ like
+│  │  ├─ index.js
+│  │  ├─ create
+│  │  │     ├─ index.js
+│  │  │     └─ model/useLikeCreat.js
+│  │  └─ delete
+│  │        ├─ index.js
+│  │        └─ model/useLikeDelete.js
+│  │
+│  ├─ post
+│  │  ├─ index.js
+│  │  ├─ create
+│  │  │     ├─ ui
+│  │  │     │     ├─ PostCreateButton.jsx
+│  │  │     │     ├─ PostCreateTitleInput.jsx
+│  │  │     │     ├─ PostCreateContentInput.jsx
+│  │  │     │     └─ PostNavIconButton.jsx
+│  │  │     ├─ model
+│  │  │     │     ├─ usePostCreat.js
+│  │  │     │     └─ PostCreatDto.js
+│  │  │     ├─ lib/validater.js
+│  │  │     └─ style/postCreate.css
+│  │  │
+│  │  ├─ update
+│  │  │     └─ model
+│  │  │           ├─ usePostUpdate.js
+│  │  │           └─ PostUpdateDto.js
+│  │  │
+│  │  ├─ delete
+│  │  │     └─ model/usePostDelete.jsx
+│  │  └─ detail
+│  │        └─ model/usePostDetail.js
+│  │
+│  ├─ auth
+│  │  ├─ ui
+│  │  │     ├─ LoginButton.jsx
+│  │  │     └─ SignupButton.jsx
+│  │  ├─ model
+│  │  │     ├─ useLogin.js
+│  │  │     ├─ useSignup.js
+│  │  │     └─ auth.dto.js
+│  │  └─ lib/validator.js
+│  │
+│  ├─ comment
+│  │  ├─ index.js
+│  │  ├─ create
+│  │  │     ├─ ui
+│  │  │     │     ├─ CommentCreatForm.jsx
+│  │  │     │     └─ CommentCreateButton.jsx
+│  │  │     └─ model
+│  │  │           ├─ useCommentCreat.js
+│  │  │           ├─ CommentCreatDto.js
+│  │  │           └─ CommentCreatProps.jsx
+│  │  │
+│  │  ├─ read
+│  │  │     └─ model/useCommentRead.js
+│  │  │
+│  │  ├─ update
+│  │  │     ├─ ui/CommentUpdateButton.jsx
+│  │  │     └─ model
+│  │  │           ├─ useCommentUpdate.js
+│  │  │           └─ CommentUpdateDto.js
+│  │  │
+│  │  └─ delete
+│  │        └─ model/useCommentDelete.js
+│  │
+│  ├─ actionGroup
+│  │  └─ ui
+│  │        ├─ ActionGroupContainer.jsx
+│  │        ├─ ActionGroup.jsx
+│  │        └─ ActionGroupButton.jsx
+│  │        └─ style/actionGroup.css
+│  │
+│  ├─ modal
+│  │  └─ ui/ConfirmModal.jsx
+│  │        └─ style/confirmModal.css
+│  │
+│  └─ readme.md
+│
+├─ shared
+│  ├─ index.js
+│  ├─ ui
+│  │  ├─ button
+│  │  │     ├─ BaseButton.jsx
+│  │  │     ├─ PrimaryButton.jsx
+│  │  │     ├─ SecondaryButton.jsx
+│  │  │     ├─ IconCircleButton.jsx
+│  │  │     └─ button.css
+│  │  │
+│  │  ├─ input-field
+│  │  │     ├─ InputField.jsx
+│  │  │     └─ InputField.css
+│  │  │
+│  │  ├─ icons
+│  │  │     ├─ Icon.jsx
+│  │  │     ├─ map.jsx
+│  │  │     ├─ LikeIcon.jsx
+│  │  │     ├─ assets/*.svg
+│  │  │     └─ icon.css
+│  │  │
+│  │  ├─ logo
+│  │  │     ├─ Logo.jsx
+│  │  │     ├─ FooterLogo.jsx
+│  │  │     └─ assets/{logo.svg, footer-logo.svg}
+│  │  │
+│  │  ├─ textarea/AutoResizeTextarea.jsx
+│  │  └─ toast
+│  │        ├─ Toast.jsx
+│  │        ├─ ToastContext.jsx
+│  │        ├─ useToast.jsx
+│  │        └─ toast.css
+│  │
+│  ├─ utils/timestamp.js
+│  ├─ styles
+│  │     ├─ global.css
+│  │     └─ tokens/{color.css, spacing.css, typography.css}
+│  │
+│  ├─ model/useScrollStore.js
+│  ├─ lib
+│  │     ├─ useInput.jsx
+│  │     ├─ ContentType.js
+│  │     ├─ hooks/postMutation.js
+│  │     └─ hooks/commentMutation.js
+│  └─ api
+│        ├─ constants/endpoint.js
+│        ├─ hooks/useApi.js
+│        ├─ hooks/useApiQuery.js
+│        ├─ hooks/useApiMutation.js
+│        └─ base
+│              ├─ apiFetch.js
+│              └─ refreshToken.js
+│
+├─ pages
+│  ├─ index.js
+│  ├─ home/ui/HomePage.jsx
+│  ├─ post/detail/ui/PostDetailPage.jsx
+│  ├─ post/create/ui/PostCreatePage.jsx
+│  ├─ auth
+│  │     ├─ login/ui/LoginPage.jsx
+│  │     └─ signup/ui/SignupPage.jsx
+│  │        └─ style/auth.css
+│  └─ test/test.jsx
+│
+└─ widgets
+   ├─ index.js
+   ├─ layout
+   │     ├─ AuthLayout.jsx
+   │     └─ MainLayout.jsx
+   │
+   ├─ ui/Header
+   │     ├─ Header.jsx
+   │     └─ Header.css
+   │
+   ├─ ui/Footer
+   │     ├─ Footer.jsx
+   │     └─ Footer.css
+   │
+   ├─ ScrollProgressBar/ui
+   │     └─ ScrollProgressBar.jsx
+   │           └─ ScrollProgressBar.css
+   │
+   ├─ post-header/ui/PostHeader.jsx
+   └─ post-comments/ui/PostComments.jsx
+         └─ postComment.css
+│
+└─ entities
+   ├─ post
+   │     ├─ ui
+   │     │     ├─ PostCard.jsx
+   │     │     ├─ PostCountGroup.jsx
+   │     │     ├─ PostContent.jsx
+   │     │     └─ PostHeaderBase.jsx
+   │     ├─ model
+   │     │     ├─ PostCardProps.jsx
+   │     │     ├─ PostContentProps.jsx
+   │     │     ├─ PostCountProps.jsx
+   │     │     └─ PostHeaderProps.jsx
+   │     └─ style/post.css
+   │
+   └─ comment
+         ├─ ui/CommentCard.jsx
+         ├─ model/CommentCardProps.jsx
+         └─ style/comment.css
+
+```
+
+</div> </details>
+
 ---
 
 # 5. UI/UX 설계 포인트
