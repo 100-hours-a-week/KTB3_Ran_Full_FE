@@ -8,7 +8,7 @@ import { useScrollStore } from "@/shared";
 export function HomePage() {
   const loaderRef = useRef(null);
 
-  const { data, fetchNextPage, hasNextPage, isLoading } =
+  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useHomeInfiniteQueue();
 
   const { saveScroll, savePageIndex, getSavedState } = useScrollStore();
@@ -57,7 +57,7 @@ export function HomePage() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting && hasNextPage) {
+        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
           fetchNextPage();
         }
       },
@@ -66,7 +66,7 @@ export function HomePage() {
 
     observer.observe(loaderRef.current);
     return () => observer.disconnect();
-  }, [hasNextPage, fetchNextPage]);
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   if (isLoading) return <div>Loading...</div>;
 
