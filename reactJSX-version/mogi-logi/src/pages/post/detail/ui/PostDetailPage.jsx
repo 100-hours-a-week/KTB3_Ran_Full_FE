@@ -21,6 +21,7 @@ export function PostDetailPage() {
   if (error) return <div>error</div>;
 
   const headerProps = PostHeaderProps(data);
+  console.log(headerProps);
   const contentProps = PostContentProps(data);
   const countProps = PostCountProps(data.count);
 

@@ -4,7 +4,7 @@ import { ActionGroupContainer } from "@/features/actionGroup";
 import { usePostDelete } from "@/features/post/delete";
 import { ContentType } from "@/shared";
 
-export function PostHeader({ title, author, date, postId, content }) {
+export function PostHeader({ title, author, createdAt, postId, content }) {
   const navigate = useNavigate();
   const { postDelete } = usePostDelete(postId);
 
@@ -15,7 +15,7 @@ export function PostHeader({ title, author, date, postId, content }) {
   };
 
   return (
-    <PostHeaderBase title={title} author={author} date={date}>
+    <PostHeaderBase title={title} author={author} createdAt={createdAt}>
       <ActionGroupContainer
         domainType={ContentType.post}
         postId={postId}

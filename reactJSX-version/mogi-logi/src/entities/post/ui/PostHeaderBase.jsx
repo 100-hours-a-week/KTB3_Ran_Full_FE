@@ -1,12 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { ActionGroupContainer } from "@/features/actionGroup";
 import { UserMeta } from "@/shared";
 import "../style/post.css";
-import { ContentType } from "@/shared";
-import { usePostDelete } from "@/features/post";
 
-//props : { title, author, date, postId, commentId, content }
-export function PostHeaderBase({ title, author, date }) {
+export function PostHeaderBase({ title, author, createdAt, children }) {
   return (
     <div className="post-header-wrapper">
       <div className="post-container">
@@ -14,7 +9,8 @@ export function PostHeaderBase({ title, author, date }) {
           <div className="post-title">{title}</div>
         </div>
         <div className="user-meta-wrapper">
-          <UserMeta author={author} date={date} />
+          <UserMeta author={author} createdAt={createdAt} />
+          {children}
         </div>
       </div>
     </div>

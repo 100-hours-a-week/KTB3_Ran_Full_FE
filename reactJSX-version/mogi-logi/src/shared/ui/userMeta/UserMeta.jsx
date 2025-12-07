@@ -1,10 +1,10 @@
 import "./UserMeta.css";
 
-export function UserMeta(props) {
+export function UserMeta({ author, createdAt }) {
   return (
     <div className="user-meta">
-      <div className="author">{props.author}</div>
-      <div className="createdAt">{props.createdAt}</div>
+      <div className="author">{author}</div>
+      <div className="createdAt">{createdAt}</div>
     </div>
   );
 }
