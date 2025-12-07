@@ -1,4 +1,4 @@
-export default function LikeIcon({ size = 20, className, ...props }) {
+export function LikeIcon({ size = 20, className, ...props }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,3 +22,5 @@ export default function LikeIcon({ size = 20, className, ...props }) {
     </svg>
   );
 }
+
+export default LikeIcon;

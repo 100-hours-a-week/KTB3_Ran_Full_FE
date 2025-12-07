@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "../ui/Footer/Footer.jsx";
 import { Header } from "../ui/Header/Header.jsx";
 
-function MainLayout() {
+export function MainLayout() {
   const location = useLocation();
   const hideFooter = location.pathname === "/post/create";
   return (
@@ -17,5 +17,3 @@ function MainLayout() {
     </>
   );
 }
-
-export default MainLayout;

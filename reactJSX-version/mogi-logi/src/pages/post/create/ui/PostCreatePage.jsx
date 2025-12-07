@@ -1,4 +1,3 @@
-import { useInput } from "../../../../shared/lib/useInput.jsx";
 import { useLocation } from "react-router-dom";
 import {
   PostCreateButton,
@@ -9,6 +8,7 @@ import {
   validatePostContent,
   validatePostTitle,
 } from "@/features/post";
+import { useInput } from "@/shared";
 
 export function PostCreatePage() {
   const location = useLocation();

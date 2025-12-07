@@ -1,8 +1,6 @@
-import { SecondaryOutlineButton } from "../../../../shared/ui/button/SecondaryButton.jsx";
+import { SecondaryOutlineButton } from "@/shared";
 
 export function CommentUpdateButton(props) {
-  const CommentUpdateProps = {
-    ...props,
-  };
-  return <SecondaryOutlineButton {...CommentUpdateProps} />;
+  const { postId, commentId, ...buttonProps } = props;
+  return <SecondaryOutlineButton {...buttonProps} />;
 }

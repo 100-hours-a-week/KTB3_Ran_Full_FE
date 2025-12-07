@@ -1,13 +1,7 @@
 import { createBrowserRouter, Navigate, redirect } from "react-router-dom";
-import App from "../../widgets/layout/MainLayout";
-import { HomePage } from "../../pages/home/ui/HomePage";
-import { LoginPage } from "../../pages/auth/login/ui/LoginPage";
-import { SignupPage } from "../../pages/auth/signup/ui/SignupPage";
+import { AuthLayout, MainLayout } from "@/widgets";
+import { HomePage, LoginPage, SignupPage, PostDetailPage, PostCreatePage } from "@/pages";
 import { ROUTES } from "./routes";
-import MainLayout from "../../widgets/layout/MainLayout";
-import AuthLayout from "../../widgets/layout/AuthLayout";
-import { PostDetailPage } from "../../pages/post/detail/ui/PostDetailPage";
-import { PostCreatePage } from "../../pages/post/create/ui/PostCreatePage";
 import { Test } from "../../pages/test/test";
 import { ProtectedRoute } from "./ProtectedRoute";
 

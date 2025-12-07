@@ -1,6 +1,6 @@
 export { PostCard } from "./ui/PostCard";
 export { PostContent } from "./ui/PostContent";
-export { PostHeader } from "./ui/PostHeader";
+export { PostHeaderBase } from "./ui/PostHeaderBase.jsx";
 export { PostCountGroup } from "./ui/PostCountGroup";
 
 export { PostCardProps } from "./model/PostCardProps";

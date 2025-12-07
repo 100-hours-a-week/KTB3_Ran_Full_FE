@@ -6,6 +6,6 @@ export {
   validateUsername,
   validateConfirmPassword,
 } from "./lib/validator.js";
-export { authDto } from "./model/auth.dto.js";
+export { loginDto, signupDto } from "./model/auth.dto.js";
 export { LoginButton } from "./ui/LoginButton";
 export { SignupButton } from "./ui/SignupButton";
