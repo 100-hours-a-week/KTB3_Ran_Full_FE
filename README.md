@@ -16,22 +16,58 @@ React 19 + Router v7 + TanStack Query + FSD 구조(React 버전)로 확장한
 
 ---
 
-## 📚 Version Overview
+## 🧭 Summary Table
 
-프로젝트는 아래 두 가지 버전으로 구성되어 있습니다.
+| 구분                 | 내용                                                                                                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| **프로젝트명**          | Community Platform — Vanilla SPA → React Migration                                                               |
+| **Version**        | VDOM Version / React Version (Current Stable)                                                                    |
+| **Frontend Stack** | Vanilla JS(ESM), Custom VDOM, React 19, React Router v7, TanStack Query, Vite                                    |
+| **Backend Stack**  | Spring Boot 3, JWT, MySQL, Spring Data JPA                                                                       |
+| **Architecture**   | SPA, VDOM Engine, FSD 구조, Container–Presenter, Compound Components                                               |
+| **인증 방식**          | VDOM: Session Cookie / React: Access·Refresh Token (sessionStorage)                                              |
+| **주요 기능**          | 게시글·댓글 CRUD, 좋아요, 무한스크롤, 액션 모달, 토스트, 인증                                                                          |
+| **Current Status** | React Version을 기준으로 기능 확장 및 구조 개선 진행 중                                                                           |
+| **Repository**     | FE: `/react-version`, `/vdom-version` · BE: [Backend Repo](https://github.com/100-hours-a-week/KTB3_Ran_Full_BE) |
+
+
 
 ---
 
+## 👥 Development Info
+
+### **📌 팀 구성**
+
+- **개발 인원: 1명 (개인 프로젝트)**
+- **역할: Full-Stack Developer**
+    - Frontend: VDOM SPA → React Migration 설계 및 구현
+    - Backend: Spring Boot(JWT) 기반 API 서버 개발
+    - UI/UX: 디자인 토큰, 공통 컴포넌트 시스템 구축
+
+---
+
+### **📆 개발 기간**
+
+- **2025.10 ~ 진행 중**
+- 두 단계로 나누어 개발
+    - **Phase 1:** Vanilla SPA + Custom VDOM 엔진 제작
+    - **Phase 2:** React 19 + Router 7 + FSD 구조로 리팩토링 및 확장
+
+
+---
+
+## 📚 Version Overview
+
+
 ### 🔵 **VDOM Version (Custom SPA + Virtual DOM Engine)**
 
-Vanilla JavaScript만으로 만든 SPA 버전으로,
+Vanilla JavaScript 기반 SPA로 직접 구현한 학습형 아키텍처입니다.
 
-- 직접 설계한 **Virtual DOM + Diff Engine**
-- 전역 상태 시스템 및 Effect Tracking
+- Virtual DOM + Diff Engine
+- 전역 상태 시스템 & Effect Tracking
 - Custom Hash Router
-- **쿠키 기반 인증 (session cookie 자동 전송 방식)**
+- **쿠키 기반 인증**
 
-등을 포함해 **React 같은 렌더링 사이클을 직접 구현한 학습형 버전**입니다.
 
 > **[VDOM Version README 보러가기](./vdom-version/vdom-version-readme.md)**
 
@@ -39,8 +75,7 @@ Vanilla JavaScript만으로 만든 SPA 버전으로,
 
 ### 🟣 **React Version (React 19 + FSD Architecture)**
 
-VDOM 버전에서 얻은 인사이트를 기반으로
-실제 서비스 설계를 가능한 수준까지 확장한 **React 리팩토링 버전**입니다.
+VDOM 버전에서 구축한 개념을 실제 서비스 아키텍처로 확장한 버전입니다.
 
 - React 19 + Vite (rolldown)
 - React Router v7(Data Router)
@@ -54,6 +89,18 @@ VDOM 버전에서 얻은 인사이트를 기반으로
 > **[React Version README 보러가기](./reactJSX-version/mogi-logi/reactJSX-version-readme.md)**
 
 ---
+### **🟡 Backend**
+프로젝트 양쪽 버전이 공통으로 사용하는 백엔드입니다.
+
+- **Framework:** Spring Boot 3
+- **Auth:** JWT (Access + Refresh Token)
+- **DB:** MySQL
+- **문서화:** Swagger 
+
+>  **[Backend Spring README 보러가기](https://github.com/100-hours-a-week/KTB3_Ran_Full_BE)**
+
+
+---
 
 # ⭐ Current Stable Version
 
@@ -63,11 +110,10 @@ VDOM 버전에서 얻은 인사이트를 기반으로
 
 ---
 
-# 🎯 Project Goals 
+##  🎯 Project Goals 
 ### What this project aims to show
 
-이 프로젝트의 핵심 목표는 단순한 CRUD가 아니다.
-아래 4가지 목표를 중심으로 설계되었다.
+이 프로젝트의 핵심 목표는 아래 4가지 목표를 중심으로 설계되었습니다.
 
 ### 1) **브라우저 렌더링 구조를 근본부터 이해하기**
 
@@ -95,9 +141,9 @@ VDOM 버전에서 얻은 인사이트를 기반으로
 
 ---
 
-# 🧩 Shared Features (공통 구현 기능)
+# 🧩 Shared Features
 
-두 버전 모두 다음 기능을 포함합니다:
+두 버전 모두 다음 기능을 포함하고 있습니다.
 
 * 게시글 CRUD
 * 댓글 CRUD
@@ -119,7 +165,7 @@ VDOM 버전에서 얻은 인사이트를 기반으로
 
 프레임워크에 의존하지 않고,
 렌더링 엔진 + 라우터 + 상태 관리 + 이벤트 시스템을
-**완전 자체 제작**하며 프론트엔드의 근본을 학습.
+**자체 제작**하며 프론트엔드의 근본을 학습.
 
 → 이 단계에서 React의 핵심 구조를 직접 구현해봄.
 
@@ -153,4 +199,4 @@ VDOM 버전에서 얻은 인사이트를 기반으로
 
 # 🎉 Thanks for reading!
 
-프론트엔드 아키텍처를 깊이 이해하고 실제로 구현한 프로젝트입니다.
+프론트엔드 아키텍처를 깊이 이해하고 실제로 구현을 목표로 진행한 프로젝트입니다. 
