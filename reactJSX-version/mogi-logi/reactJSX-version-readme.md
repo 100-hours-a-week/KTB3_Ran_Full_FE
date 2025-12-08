@@ -3,10 +3,8 @@
 **React 19 + Vite 기반에서 Router v7 · React Query · FSD 아키텍처를 전면 적용해 구현한 커뮤니티 SPA입니다.**
 홈 피드·게시글·댓글·인증까지 모든 기능을 클라이언트에서 처리하며, UI/로직 분리와 디자인 패턴(Container–Presenter, Compound Component 등)을 도입했습니다.
 
-간단한 글을 메모처럼 기록하고 공유할 수 있는 **커뮤니티 플랫폼**입니다.
 
 
-![banner-logo.png](../../TroubleShooting/img/banner-logo.png)
 ---
 
 # 1. Project Overview
