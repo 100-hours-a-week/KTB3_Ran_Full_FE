@@ -71,7 +71,7 @@ Vanilla JavaScript 기반 SPA로 직접 구현한 학습형 아키텍처입니�
 > **[VDOM Version README 보러가기](./vdom-version/vdom-version-readme.md)**
 
 
-
+###
 
 ### 🟣 **React Version (React 19 + FSD Architecture)**
 
@@ -88,7 +88,7 @@ VDOM 버전에서 구축한 개념을 실제 서비스 아키텍처로 확장한
 
 > **[React Version README 보러가기](./reactJSX-version/mogi-logi/reactJSX-version-readme.md)**
 
-
+###
 
 ### **🟡 Backend**
 프로젝트 양쪽 버전이 공통으로 사용하는 백엔드입니다.
@@ -170,7 +170,7 @@ VDOM 버전에서 구축한 개념을 실제 서비스 아키텍처로 확장한
 
 → 이 단계에서 React의 핵심 구조를 직접 구현해봄.
 
-
+###
 
 ### **Phase 2 — React 19 + FSD Migration (Practical Phase)**
 
