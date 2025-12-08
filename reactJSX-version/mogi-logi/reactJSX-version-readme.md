@@ -1,10 +1,12 @@
-#  🔖 Mogi_Logi
+#  🔖 mogi_logi
 
 **React 19 + Vite 기반에서 Router v7 · React Query · FSD 아키텍처를 전면 적용해 구현한 커뮤니티 SPA입니다.**
 홈 피드·게시글·댓글·인증까지 모든 기능을 클라이언트에서 처리하며, UI/로직 분리와 디자인 패턴(Container–Presenter, Compound Component 등)을 도입했습니다.
 
 간단한 글을 메모처럼 기록하고 공유할 수 있는 **커뮤니티 플랫폼**입니다.
 
+
+![banner-logo.png](../../TroubleShooting/img/banner-logo.png)
 ---
 
 # 1. Project Overview
@@ -58,7 +60,37 @@
 | **Container–Presenter 패턴**  | UI와 로직 분리, FSD와 결합     | PostHeader / PostHeaderBase 구조   등    |
 
 ---
+## 2-1. React Version Architecture
+```mermaid
+flowchart TB
 
+    APP[App Root]
+    PROVIDERS[Providers<br>Router · QueryClient · Toast]
+ROUTER[React Router]
+PAGES[Pages<br>Home · Detail · Create]
+FEATURES[Features<br>Auth · Post · Comment · Like]
+QUERY[React Query Layer]
+API[API Layer<br>apiFetch · refresh]
+UI[Shared UI<br>Button · Input · Toast]
+WIDGETS[Widgets<br>PostCard · PostComments]
+BACKEND[Backend<br>Spring Boot JWT]
+
+APP --> PROVIDERS
+PROVIDERS --> ROUTER
+ROUTER --> PAGES
+
+PAGES --> FEATURES
+PAGES --> UI
+PAGES --> WIDGETS
+
+FEATURES --> QUERY
+QUERY --> API
+API --> BACKEND
+
+
+```
+
+---
 # 3. 아키텍처 설명 (Architecture)
 
 React 마이그레이션 버전에서 핵심으로 구축한 시스템 구조입니다.
@@ -413,9 +445,17 @@ src
 
 ```
 
+
+
 </div> </details>
 
+
+
+
 ---
+
+
+
 
 # 5. UI/UX 설계 포인트
 
