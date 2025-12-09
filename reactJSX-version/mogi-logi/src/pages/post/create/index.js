@@ -1,1 +1,1 @@
-export { PostCreatePage } from "./ui/PostCreatePage";
+export { PostCreatePage } from "./ui/PostCreate.page";;

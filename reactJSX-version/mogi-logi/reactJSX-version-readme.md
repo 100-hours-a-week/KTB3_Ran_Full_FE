@@ -393,7 +393,7 @@ src
 │  ├─ index.js
 │  ├─ home/ui/HomePage.jsx
 │  ├─ post/detail/ui/PostDetail.page.jsx
-│  ├─ post/create/ui/PostCreatePage.jsx
+│  ├─ post/create/ui/PostCreate.page.jsx
 │  ├─ auth
 │  │     ├─ login/ui/LoginPage.jsx
 │  │     └─ signup/ui/SignupPage.jsx

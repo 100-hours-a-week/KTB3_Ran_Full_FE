@@ -5,3 +5,6 @@ export { PostCreateButton } from "./ui/PostCreateButton";
 export { PostCreateTitleInput } from "./ui/PostCreateTitleInput";
 export { default as PostCreateContentInput } from "./ui/PostCreateContentInput";
 export { PostCreateNavButton } from "./ui/PostNavIconButton";
+
+export { PostCreatContainer } from "./PostCreat.container";
+export { PostCreatPresenter } from "./ui/PostCreat.presenter";

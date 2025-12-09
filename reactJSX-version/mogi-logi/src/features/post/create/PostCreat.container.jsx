@@ -1,16 +1,14 @@
 import { useLocation } from "react-router-dom";
 import {
-  PostCreateButton,
-  PostCreateContentInput,
-  PostCreateTitleInput,
+  PostCreatPresenter,
   usePostCreat,
   usePostUpdate,
   validatePostContent,
   validatePostTitle,
-} from "@/features/post";
-import { useInput } from "@/shared";
+} from "@/features/index.js";
+import { useInput } from "@/shared/index.js";
 
-export function PostCreatePage() {
+export function PostCreatContainer() {
   const location = useLocation();
   const editData = location.state; //state 받기기
   const postId = editData?.postId;
@@ -43,21 +41,14 @@ export function PostCreatePage() {
       await postCreat(payload);
     }
   };
+
   return (
-    <>
-      <div className={"post-wrapper"}>
-        <PostCreateTitleInput
-          placeholder={"제목"}
-          helper={title.error}
-          {...title.bind}
-        />
-        <PostCreateContentInput helper={content.error} {...content.bind} />
-      </div>
-      <PostCreateButton
-        disabled={!canSubmit}
-        onClick={onSubmit}
-        children={isEditMode ? "수정" : "등록"}
-      />
-    </>
+    <PostCreatPresenter
+      title={title}
+      content={content}
+      canSubmit={canSubmit}
+      onSubmit={onSubmit}
+      isEditMode={isEditMode}
+    />
   );
 }
