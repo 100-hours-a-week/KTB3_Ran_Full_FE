@@ -27,7 +27,7 @@ export function PostCard({
         {/* 게시글 헤더/내용 */}
         <div className="card-inner">
           <div className="card-title">{title}</div>
-          <div className="card-content">{content}</div>
+          <div className="card-content ellipsis-2">{content}</div>
         </div>
         {/* 사용자 메타 */}
         <div className="card-meta">

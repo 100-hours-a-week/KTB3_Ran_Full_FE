@@ -84,6 +84,7 @@
 
 .card-content {
     color: var(--color-text-content);
+    word-break: break-all;
 }
 
 .createdAt {

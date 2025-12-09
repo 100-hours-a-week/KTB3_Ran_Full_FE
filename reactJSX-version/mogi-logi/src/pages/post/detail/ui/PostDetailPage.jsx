@@ -35,7 +35,7 @@ export function PostDetailPage() {
     }
   };
   return (
-    <div>
+    <div className={"post-wrapper"}>
       <ScrollProgressBar />
 
       <PostHeader {...headerProps} />
