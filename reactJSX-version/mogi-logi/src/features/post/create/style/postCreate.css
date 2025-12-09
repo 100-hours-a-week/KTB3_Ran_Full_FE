@@ -72,3 +72,9 @@
   background: none;
   font-size: var(--font-size-base);
 }
+
+.post-helper{
+    text-align: left;
+    padding: 10px;
+    color: var(--color-meta-gray);
+}

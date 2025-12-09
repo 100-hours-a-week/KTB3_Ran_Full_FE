@@ -45,7 +45,7 @@ export function PostCreatePage() {
   };
   return (
     <>
-      <div>
+      <div className={"post-wrapper"}>
         <PostCreateTitleInput
           placeholder={"제목"}
           helper={title.error}
