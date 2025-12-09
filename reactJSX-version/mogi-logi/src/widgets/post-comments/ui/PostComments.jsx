@@ -11,8 +11,10 @@ import "./postComment.css";
 //post  = {id, commentId}
 export function PostComments({ post, onLoad }) {
   console.log(post);
-  const { data: comments, isLoading: isReading } = useComments(post.id);
-  const { commentDelete, isLoading: isDeleting } = useCommentDelete(post.id);
+  const { data: comments, isLoading: isReading } = useComments(post.postId);
+  const { commentDelete, isLoading: isDeleting } = useCommentDelete(
+    post.postId,
+  );
 
   //수정모드 상태 추가
   const [editMode, setEditMode] = useState(false);

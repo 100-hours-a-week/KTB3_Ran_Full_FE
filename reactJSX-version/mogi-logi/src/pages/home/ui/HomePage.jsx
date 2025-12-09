@@ -75,20 +75,24 @@ export function HomePage() {
     <div>
       <Banner />
       <div className="post-wrapper">
-        {data?.pages?.map((page) =>
-          page.content.map((post) => {
-            const postCard = PostCardProps(post);
-            return (
-              <PostCard
-                key={postCard.postId}
-                {...postCard}
-                likeColor={"var(--color-meta-gray)"}
-              />
-            );
-          }),
-        )}
+        <div
+          style={{ display: "flex", gap: "40px", "flex-direction": "column" }}
+        >
+          {data?.pages?.map((page) =>
+            page.content.map((post) => {
+              const postCard = PostCardProps(post);
+              return (
+                <PostCard
+                  key={postCard.postId}
+                  {...postCard}
+                  likeColor={"var(--color-meta-gray)"}
+                />
+              );
+            }),
+          )}
 
-        <div ref={loaderRef} style={{ height: "50px" }} />
+          <div ref={loaderRef} style={{ height: "50px" }} />
+        </div>
 
         <PostCreateNavButton />
       </div>

@@ -15,6 +15,7 @@ export function CommentCreatForm({
   initalContent = "",
   onLoad,
 }) {
+  console.log(commentId);
   const commentValue = useInput(initalContent);
   const { mutate: commentCreat, isLoading: isCreating } =
     useCommentCreat(postId);
