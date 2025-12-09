@@ -4,6 +4,7 @@ import { PostCard } from "@/entities/post";
 import { PostCreateNavButton } from "@/features/post";
 import { useHomeInfiniteQueue } from "@/features/home";
 import { useScrollStore } from "@/shared";
+import { Banner } from "@/shared/ui/banner/banner.jsx";
 
 export function HomePage() {
   const loaderRef = useRef(null);
@@ -71,23 +72,26 @@ export function HomePage() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <div className="post-wrapper">
-      {data?.pages?.map((page) =>
-        page.content.map((post) => {
-          const postCard = PostCardProps(post);
-          return (
-            <PostCard
-              key={postCard.postId}
-              {...postCard}
-              likeColor={"var(--color-meta-gray)"}
-            />
-          );
-        }),
-      )}
+    <div>
+      <Banner />
+      <div className="post-wrapper">
+        {data?.pages?.map((page) =>
+          page.content.map((post) => {
+            const postCard = PostCardProps(post);
+            return (
+              <PostCard
+                key={postCard.postId}
+                {...postCard}
+                likeColor={"var(--color-meta-gray)"}
+              />
+            );
+          }),
+        )}
 
-      <div ref={loaderRef} style={{ height: "50px" }} />
+        <div ref={loaderRef} style={{ height: "50px" }} />
 
-      <PostCreateNavButton />
+        <PostCreateNavButton />
+      </div>
     </div>
   );
 }

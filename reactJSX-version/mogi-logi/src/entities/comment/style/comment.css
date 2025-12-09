@@ -29,6 +29,7 @@
 }
 
 .comment-content {
+    text-align: left;
   font-size: var(--font-size-content);
   color: var(--color-text);
   font-weight: var(--font-weigth-medium);
