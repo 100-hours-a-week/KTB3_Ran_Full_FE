@@ -391,7 +391,7 @@ src
 │
 ├─ pages
 │  ├─ index.js
-│  ├─ home/ui/HomePage.jsx
+│  ├─ home/ui/HomeFeed.page.jsx
 │  ├─ post/detail/ui/PostDetail.page.jsx
 │  ├─ post/create/ui/PostCreate.page.jsx
 │  ├─ auth

@@ -1,1 +1,1 @@
-export { HomePage } from "./ui/HomePage";
+export { HomeFeedPage } from "./ui/HomeFeed.page.jsx";

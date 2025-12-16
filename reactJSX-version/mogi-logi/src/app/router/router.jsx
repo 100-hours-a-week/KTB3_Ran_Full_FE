@@ -1,6 +1,12 @@
 import { createBrowserRouter, Navigate, redirect } from "react-router-dom";
 import { AuthLayout, MainLayout } from "@/widgets";
-import { HomePage, LoginPage, SignupPage, PostDetailPage, PostCreatePage } from "@/pages";
+import {
+  HomeFeedPage,
+  LoginPage,
+  SignupPage,
+  PostDetailPage,
+  PostCreatePage,
+} from "@/pages";
 import { ROUTES } from "./routes";
 import { Test } from "../../pages/test/test";
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -33,7 +39,7 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to={ROUTES.HOME} /> },
       {
         path: ROUTES.HOME,
-        element: <HomePage />,
+        element: <HomeFeedPage />,
       },
       { path: ROUTES.DETAIL, element: <PostDetailPage /> },
       { path: ROUTES.NONE, element: <SignupPage /> },
